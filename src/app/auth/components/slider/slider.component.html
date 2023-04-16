@@ -1,6 +1,6 @@
-<div *ngIf="sliders && sliders.length > 0" class="slide__wrapper " >
-    <img class="animate__animated animate__fadeInRightBig animate__faster" *ngFor="let image of sliders; let i = index" [src]="image.url" [alt]="image.urlAlt"
-        [ngClass]="{'active':currentSlide === i}">
+<div *ngIf="sliders && sliders.length > 0" class="slide__wrapper" >
+    <img class="animate__animated animate__fadeIn animate__slow" *ngFor="let image of sliders; let i = index" [src]="image.url" [alt]="image.urlAlt"
+    [ngClass]="{'active':currentSlide === i}">
 </div>
 
 <div class="text__wrap">

@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { MainComponent } from './pages/main/main.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 
 
 
@@ -14,7 +15,8 @@ import { SliderComponent } from './components/slider/slider.component';
     LoginComponent,
     MainComponent,
     RegistrarComponent,
-    SliderComponent
+    SliderComponent,
+    ProgressbarComponent
   ],
   imports: [
     CommonModule,

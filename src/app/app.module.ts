@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
+import { ProyectoModule } from './proyecto/proyecto.module';
+
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { ApproutingModule } from './app-routing.module';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { AppComponent } from './app.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    SidemenuComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ApproutingModule
+    AppRoutingModule,
+    AuthModule,
+    ProyectoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

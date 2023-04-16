@@ -30,4 +30,4 @@ const router:Routes = [
   ],
   exports: [RouterModule]
 })
-export class ApproutingModule { }
+export class AppRoutingModule { }

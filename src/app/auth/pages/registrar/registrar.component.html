@@ -1,3 +1,50 @@
 <div class="logo">
     <img src="assets/img/iconlogo.svg" alt="logo" class="logo__img">
 </div>
+<div class="register__container">
+   <app-progressbar></app-progressbar>
+    <form class="form" autocomplete="off">
+        <div class="form__heading">
+            <p class="form__title">¡Bienvenido!</p>
+            <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
+        </div>
+        <div class="form__sign-up">
+            <div class="input__wrap">
+                <input type="text" id="nombre" formControlName="nombre" class="input__field">
+                <label for="nombre" class="label__field">Nombres</label>
+            </div>
+            <div class="input__wrap">
+                <input type="text" id="apeMaterno" formControlName="apeMaterno" class="input__field">
+                <label for="apeMaterno" class="label__field">Apellido Materno</label>
+            </div>
+            <div class="input__wrap">
+                <input type="text" id="apePaterno" formControlName="apePaterno" class="input__field">
+                <label for="apePaterno" class="label__field">Apellido Paterno</label>
+            </div>
+            <div class="input__wrap">
+                <input type="text" id="telefono" formControlName="contacto" class="input__field">
+                <label for="telefono" class="label__field">Contacto</label>
+            </div>
+            <div class="input__wrap">
+                <input type="email" id="correo" formControlName="correo" class="input__field">
+                <label for="correo" class="label__field">Correo</label>
+            </div>
+            <div class="input__wrap">
+                <input type="password" id="contrasena" formControlName="contrasena" class="input__field">
+                <i class="fa-solid fa-eye-slash"></i>
+                <label for="contrasena" class="label__field">Contraseña</label>
+            </div>
+          <div class="valid__contraseña">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>Por su seguridad , tú contraseña debe contener al menos una mayúscula, una minúscula y un número.</p>
+          </div>
+        </div>
+        <div class="form__selectión-btn">
+
+        </div>
+        <div class="input__button">
+            <a routerLink="/dashboard/home" class="btn__back">Atras</a>
+            <a href="#" class="btn__access">Siguiente</a>
+        </div>
+    </form>
+</div>
