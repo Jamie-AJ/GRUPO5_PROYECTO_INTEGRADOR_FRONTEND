@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root{
+    --primary-color: #3FB9DF;
+    --circle-color: #7DE8FF;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --grey-color:#6F6F6F;
+    --form-color:#B9B6B6;
+    --previus-color-btn:#EBEBEB;
+    --previus-color:#7A7A7A;
+    --carousel-color:#323232;
+    --top-color:#9ef4ff;
+    --bot-color:#7ed4e1;
+
+    /* TYPOGRAPHY */
+    --font-primary: 'Poppins', sans-serif;
+}
+*,
+*::before,*::after {
+  box-sizing: border-box;
+  padding:0;
+  margin:0; 
+}
+body{
+    font-family:var(--font-primary)
+}
+ul,
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+}
