@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProyectoRoutingModule } from './proyecto-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -18,7 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     CommonModule,
     ProyectoRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProyectoModule { }

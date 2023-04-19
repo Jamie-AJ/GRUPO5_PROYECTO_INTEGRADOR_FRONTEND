@@ -7,6 +7,7 @@ import { ProyectoModule } from './proyecto/proyecto.module';
 
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    ProyectoModule
+    ProyectoModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

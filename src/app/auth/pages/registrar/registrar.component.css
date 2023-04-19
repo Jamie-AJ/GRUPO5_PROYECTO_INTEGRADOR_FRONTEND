@@ -14,7 +14,7 @@
 }
 
 .form__heading {
-    margin-top: 1.5rem;
+    margin: 2.2rem 0 2.2rem 0;
 }
 
 .form__title {
@@ -32,12 +32,11 @@
     padding-bottom: 1.5rem;
 }
 
-.input__wrap:nth-child(6) {
+.input__wrap:nth-child(7) {
     padding-bottom: 0;
 }
 .input__button{
     padding-bottom: 0;
-    padding-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
@@ -48,6 +47,8 @@
 .btn__access{
     border-radius: 10px;
     padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
     /* background-color: red; */
 }
 .btn__back{
