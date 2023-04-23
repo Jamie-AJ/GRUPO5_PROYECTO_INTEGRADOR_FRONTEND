@@ -16,8 +16,6 @@ export class SliderComponent implements OnInit {
 
   currentSlide = 0;
 
-
-  
   ngOnInit() {
     if(this.autoPlay){
       this.autoSlideImage();
@@ -29,6 +27,7 @@ export class SliderComponent implements OnInit {
       this.nextClick();
     },this.slideInterval)
   }
+  
   nextClick():void{
     if(this.currentSlide === this.sliders.length - 1){
       this.currentSlide = 0;
