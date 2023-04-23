@@ -1,66 +1,120 @@
 <div class="logo">
-    <img src="assets/img/iconlogo.svg" alt="logo" class="logo__img">
+  <img src="assets/img/iconlogo.svg" alt="logo" class="logo__img" />
 </div>
 <div class="register__container">
-    <!-- <app-progressbar></app-progressbar> -->
-    <form class="form" autocomplete="off" (ngSubmit)="next()">
-        <div class="form__sign-up" *ngIf="step === 1">
-            <div class="form__heading">
-                <p class="form__title">¡Bienvenido!</p>
-                <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
-            </div>
-            <div class="input__wrap">
-                <input type="text" id="nombre" formControlName="nombre" class="input__field">
-                <label for="nombre" class="label__field">Nombres</label>
-            </div>
-            <div class="input__wrap">
-                <input type="text" id="apeMaterno" formControlName="apeMaterno" class="input__field">
-                <label for="apeMaterno" class="label__field">Apellido Materno</label>
-            </div>
-            <div class="input__wrap">
-                <input type="text" id="apePaterno" formControlName="apePaterno" class="input__field">
-                <label for="apePaterno" class="label__field">Apellido Paterno</label>
-            </div>
-            <div class="input__wrap">
-                <input type="text" id="telefono" formControlName="contacto" class="input__field">
-                <label for="telefono" class="label__field">Contacto</label>
-            </div>
-            <div class="input__wrap">
-                <input type="email" id="correo" formControlName="correo" class="input__field">
-                <label for="correo" class="label__field">Correo</label>
-            </div>
-            <div class="input__wrap">
-                <input type="password" id="contrasena" formControlName="contrasena" class="input__field">
-                <i class="fa-solid fa-eye-slash"></i>
-                <label for="contrasena" class="label__field">Contraseña</label>
-            </div>
-            <div class="valid__contraseña">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <p>Por su seguridad , tú contraseña debe contener al menos una mayúscula, una minúscula y un número.</p>
-            </div>
-        </div>
-        <div class="form__selectión-btn" *ngIf="step === 2">
-            <div class="form__heading">
-                <p class="form__title">¿Que tipo de cuenta necesitas?</p>
-                <p class="form__subtitle">Selecciona lo que más se adecue a tí</p>
-            </div>
-            <button (click)="next()" *ngIf="step !== 3">Empresa</button>
-            <button>Inversionista</button>
-        </div>
-        <div class="form__selectión-btn" *ngIf="step === 3">
-            <div class="input__wrap">
-                <input type="text" id="telefono" formControlName="contacto" class="input__field">
-                <label for="telefono" class="label__field">Contacto</label>
-            </div>
-            <div class="input__wrap">
-                <input type="email" id="correo" formControlName="correo" class="input__field">
-                <label for="correo" class="label__field">Correo</label>
-            </div>
-        </div>
-        <div class="input__button">
-            <a class="btn__back" (click)="previus()">Atras</a>
-            <a class="btn__access" *ngIf=" step !== 2 && step !== 3" (click)="next()">Siguiente</a>
-            <button type="submit" class="btn__access" *ngIf=" step === 3">Registrarse</button>
-        </div>
-    </form>
+  <!-- <app-progressbar></app-progressbar> -->
+  <form class="form" autocomplete="off">
+    <div class="form__sign-up" *ngIf="step === 1">
+      <div class="form__heading">
+        <p class="form__title">¡Bienvenido!</p>
+        <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="nombre"
+          class="input__field"
+        />
+        <label for="nombre" class="label__field">Nombres</label>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="apeMaterno"
+          class="input__field"
+        />
+        <label for="apeMaterno" class="label__field">Apellido Materno</label>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="apePaterno"
+          class="input__field"
+        />
+        <label for="apePaterno" class="label__field">Apellido Paterno</label>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="telefono"
+          class="input__field"
+        />
+        <label for="telefono" class="label__field">Contacto</label>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="email"
+          id="correo"
+          class="input__field"
+        />
+        <label for="correo" class="label__field">Correo</label>
+      </div>
+      <div class="input__wrap">
+        <input type="password" id="contrasena"  class="input__field"/>
+        <i class="fa-solid fa-eye-slash"></i>
+        <label for="contrasena" class="label__field">Contraseña</label>
+      </div>
+      <div class="valid__contraseña">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>
+          Por su seguridad , tú contraseña debe contener al menos una mayúscula,
+          una minúscula y un número.
+        </p>
+      </div>
+    </div>
+    <div class="form__selectión-btn" *ngIf="step === 2">
+      <div class="form__heading">
+        <p class="form__title">¿Que tipo de cuenta necesitas?</p>
+        <p class="form__subtitle">Selecciona lo que más se adecue a tí</p>
+      </div>
+      <button type="button" (click)="setRole('empresa')">Empresa</button>
+      <button type="button" (click)="setRole('inversionista')">Inversionista</button>
+    </div>
+    <div class="form__selectión-btn" *ngIf="step === 3 && roles === 'empresa'">
+      <div class="form__heading">
+        <p class="form__title">Cuenta Empresa</p>
+        <p class="form__subtitle">Completa los siguientes datos:</p>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="ruc"
+          class="input__field"
+        />
+        <label for="telefono" class="label__field">RUC</label>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="razonSocial"
+
+          class="input__field"
+        />
+        <label for="correo" class="label__field">Razon social</label>
+      </div>
+    </div>
+    <div class="form__selectión-btn" *ngIf="step === 3 && roles === 'inversionista'">
+      <div class="form__heading">
+        <p class="form__title">Cuenta Inversionista</p>
+        <p class="form__subtitle">Completa los siguientes datos:</p>
+      </div>
+      <div class="input__wrap">
+        <input
+          type="text"
+          id="dni"
+          class="input__field"
+        />
+        <label for="telefono" class="label__field">DNI</label>
+      </div>
+    </div>
+    <div class="input__button">
+      <a class="btn__back" (click)="previus()">Atras</a>
+      <a class="btn__access" *ngIf="step !== 2 && step < 3" (click)="next()"
+        >Siguiente</a
+      >
+      <button type="submit" class="btn__access" *ngIf="step === 3" (click)="createUser()">
+        Registrarse
+      </button>
+    </div>
+  </form>
 </div>
