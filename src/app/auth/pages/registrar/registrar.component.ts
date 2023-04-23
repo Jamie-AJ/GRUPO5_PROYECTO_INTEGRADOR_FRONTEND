@@ -36,8 +36,5 @@ export class RegistrarComponent implements OnInit {
     this.router.navigate(['/dashboard/home']);
     console.log('crear usuario');
   }
-  createRol(){
-    console.log('crear rol asdasd');
-    console.log('this.roles',this.roles);
-  }
+
 }
