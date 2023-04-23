@@ -38,5 +38,6 @@ export class RegistrarComponent implements OnInit {
   }
   createRol(){
     console.log('crear rol asdasd');
+    console.log('this.roles',this.roles);
   }
 }
