@@ -3,6 +3,7 @@
     margin: 2.5rem 0rem 0rem 2.5rem;
 }
 
+
 .form {
     max-width: 450px;
     width: 100%;
@@ -69,7 +70,6 @@
     color: var(--grey-color);
     font-size: 1rem;
 }
-
 .input__wrap i {
     position: absolute;
     top: 60%;
@@ -117,4 +117,4 @@ input:focus~.label__field {
     color: var(--grey-color);
 }
 
-.btn__back {}
+
