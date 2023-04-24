@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
-<div class="wrapper">
-    <app-sidebar></app-sidebar>
-</div>
+<app-navbar (toggleSidebar)="toggleSideBar()"></app-navbar>
+
+<app-sidebar [isOpen]="isSideBarOpen"></app-sidebar>
+
 <div class="container">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

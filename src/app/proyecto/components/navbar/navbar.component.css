@@ -1,12 +1,42 @@
-.navbar{
+.navbar {
     position: relative;
     width: calc(100% - 260px);
+    left: 260px;
+}
+.navbar__container {
     height: 64px;
     padding:0 20px;
-    left: 260px;
-    top: 0;
-    background-color:var(--white-color);
+    background-color: var(--white-color);
     border-bottom: 1px solid #f1f0f6;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.navbar__container .icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.navbar__items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.75rem;
+}
+.navbar__items p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--black-color);
+}
+
+.navbar__items i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+.navbar-collapsed{
+    max-width: 60px;
+}
+.navbar-expanded{
+    max-width: 260px;
 }

@@ -1,13 +1,7 @@
-.wrapper{
-    position: fixed;
-    width: 260px;
-    height: 100%;
-    top:0;
-    left: 0;
-    background-color:var(--white-color);
-}
+
 .container{
     position: absolute;
     width:calc(100% - 260px);
     left: 260px;
+    padding:40px 20px;
 }
