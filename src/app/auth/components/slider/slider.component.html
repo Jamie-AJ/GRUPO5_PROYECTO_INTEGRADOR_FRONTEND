@@ -13,16 +13,3 @@
     <span *ngFor="let dot of sliders; let i = index" [ngClass]="{'active':currentSlide === i}" (click)="selectImage(i)">
     </span>
 </div>
-
-<!-- <div class="slider__text">
-    <div class="slider__wrap">
-        <div class="slider-content" *ngFor="let image of sliders">
-            <p>{{ image.text}}</p>
-        </div>
-    </div>
-    <div class="slider__bullets">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-    </div>
-</div> -->

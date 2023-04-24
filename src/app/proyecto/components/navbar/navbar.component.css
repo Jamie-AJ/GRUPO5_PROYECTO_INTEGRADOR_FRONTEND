@@ -1,0 +1,7 @@
+.navbar{
+    position: absolute;
+    width: calc(100% - 260px);
+    right: 0;
+    top: 0;
+    background-color:var(--white-color);
+}

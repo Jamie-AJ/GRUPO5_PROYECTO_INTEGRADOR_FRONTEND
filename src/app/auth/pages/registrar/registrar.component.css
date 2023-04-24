@@ -95,7 +95,7 @@ input:focus {
     pointer-events: none;
 }
 
-input:focus~.label__field {
+input:focus~ .label__field {
     top: -14px;
     font-size: 0.75rem;
     color: var(--primary-color);
