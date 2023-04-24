@@ -1,1 +1,39 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+    <div class="sidebar__logo">
+        <img src="assets/img/logo12.png" alt="logo">
+        <p>Invest <span>Go!</span></p>
+    </div>
+    <ul class="sidebar__menu">
+        <li class="sidebar__item">
+            <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="bx bxs-dashboard icon"></i>
+                 <p>Dashboard</p>
+             </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="bx bxs-credit-card icon"></i>
+                <p>Estado de Cuenta</p>
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/oportunities" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="bx bxs-bar-chart-alt-2 icon"></i>
+                <p>Oportunidad de Invertir</p>
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/inversiones" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="bx bx-wallet icon"></i>
+                <p>Mis Inversiones</p>
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="bx bxs-user-detail icon"></i>
+                <p>Mis datos personales</p>
+            </a>
+        </li>
+    </ul>
+</div>
+

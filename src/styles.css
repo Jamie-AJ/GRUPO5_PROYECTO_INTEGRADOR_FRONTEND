@@ -24,7 +24,8 @@
   margin:0; 
 }
 body{
-    font-family:var(--font-primary)
+    font-family:var(--font-primary);
+    background-color:#f1f0f6;
 }
 ul,
 li{
