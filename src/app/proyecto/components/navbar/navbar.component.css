@@ -1,7 +1,12 @@
 .navbar{
-    position: absolute;
+    position: relative;
     width: calc(100% - 260px);
-    right: 0;
+    height: 64px;
+    padding:0 20px;
+    left: 260px;
     top: 0;
     background-color:var(--white-color);
+    border-bottom: 1px solid #f1f0f6;
+    display: flex;
+    align-items: center;
 }
