@@ -1,59 +1,40 @@
-
-  <div class="sidebar" [class.open]="isOpen">
-    <a class="sidebar__logo">
-      <i class="bx bx-dollar-circle icon"></i>
-      Invest <span>Go!</span>
-    </a>
-    <ul class="sidebar__menu">
-      <li class="sidebar__item">
-        <a
-          routerLink="/dashboard/dashboard"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bx bxs-dashboard icon"></i>
-          <p>Dashboard</p>
+<div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+    <div clasS="logo__container">
+        <a class="sidebar__logo" (click)="toggleCollapse()">
+            <i class="bx bx-dollar-circle icon"></i>
+            <p>Invest <span>Go!</span></p>
         </a>
-      </li>
-      <li class="sidebar__item">
-        <a
-          routerLink="/dashboard/account-status"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bx bxs-credit-card icon"></i>
-          <p>Cuenta</p>
-        </a>
-      </li>
-      <li class="sidebar__item">
-        <a
-          routerLink="/dashboard/oportunities"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bx bxs-bar-chart-alt-2 icon"></i>
-          <p>Oportunidades</p>
-        </a>
-      </li>
-      <li class="sidebar__item">
-        <a
-          routerLink="/dashboard/inversiones"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bx bx-wallet icon"></i>
-          <p>Inversiones</p>
-        </a>
-      </li>
-      <li class="sidebar__item">
-        <a
-          routerLink="/dashboard/profile"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bx bxs-user-detail icon"></i>
-          <p>Perfil</p>
-        </a>
-      </li>
-    </ul>
-  </div>
+    </div>
+  	<ul class="sidebar__menu">
+    	<li class="sidebar__item">
+            <a routerLink="/dashboard/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bxs-dashboard icon"></i>
+                <p>Dashboard</p>
+            </a>
+    	</li>
+   		<li class="sidebar__item">
+            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class="bx bxs-credit-card icon"></i>
+                <p>Cuenta</p>
+            </a>
+    	</li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/oportunities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+                <i class="bx bxs-bar-chart-alt-2 icon"></i>
+                <p>Oportunidades</p>
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/inversiones" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bx-wallet icon"></i>
+                <p>Inversiones</p>
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+                <i class="bx bxs-user-detail icon"></i>
+                <p>Perfil</p>
+            </a>
+        </li>
+  	</ul>
+</div>

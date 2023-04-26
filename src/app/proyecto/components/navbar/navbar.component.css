@@ -1,7 +1,8 @@
 .navbar {
     position: relative;
-    width: calc(100% - 260px);
-    left: 260px;
+    width: calc(100% - 265px);
+    left: 265px;
+    transition: all .3s ease;
 }
 .navbar__container {
     height: 64px;
@@ -13,6 +14,7 @@
     justify-content: space-between;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index:200;
 }
 .navbar__container .icon {
     font-size: 1.5rem;
@@ -33,10 +35,4 @@
 .navbar__items i {
     font-size: 1.5rem;
     color: var(--primary-color);
-}
-.navbar-collapsed{
-    max-width: 60px;
-}
-.navbar-expanded{
-    max-width: 260px;
 }
