@@ -1,7 +1,7 @@
-<app-navbar (toggleSidebar)="toggleSideBar()"></app-navbar>
 
-<app-sidebar [isOpen]="isSideBarOpen"></app-sidebar>
+<app-sidebar (onToggleSideBar)="onToggleSideBar($event)"></app-sidebar>
 
+<app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
