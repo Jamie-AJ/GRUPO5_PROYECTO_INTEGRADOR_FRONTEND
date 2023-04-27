@@ -32,10 +32,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ProyectoRoutingModule,
     ReactiveFormsModule,
   ],
-  exports: [
+  exports:[
     HomeComponent,
-    NavbarComponent,
-    SidebarComponent,
-  ],
+  ]
 })
 export class ProyectoModule { }

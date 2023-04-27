@@ -18,7 +18,7 @@ const router:Routes = [
   // },
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: ''
   }
 ]
 
