@@ -1,0 +1,29 @@
+/*marcador*/
+.inversiones_section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 2rem;
+    height:calc(100vh - 153px);
+    box-sizing: border-box;
+}
+
+.inversiones_section div:nth-child(2) {
+    flex-grow: 1;
+    border: 1px solid rgba(160, 160, 160, 0.589);
+}
+
+.tabla_inversiones {
+    width: 100%;
+    text-align: center;
+    border-spacing: 0;
+}
+
+.tabla_inversiones>thead>th {
+    padding: 1.5rem;
+}
+
+.tabla_inversiones>tbody>td {
+    padding: 1.5rem;
+    background-color: rgba(128, 128, 128, 0.308);
+}
