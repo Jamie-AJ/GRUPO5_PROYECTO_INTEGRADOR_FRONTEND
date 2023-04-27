@@ -1,7 +1,7 @@
 .navbar {
     position: relative;
-    width: calc(100% - 265px);
-    left: 265px;
+    width: calc(100% - 260px);
+    left: 260px;
     transition: all .3s ease;
 }
 .navbar__container {
@@ -11,7 +11,7 @@
     border-bottom: 1px solid #f1f0f6;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index:200;

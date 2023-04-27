@@ -1,7 +1,19 @@
 
 .container{
-    position: absolute;
+    position: relative;
+    width:calc(100% - 60px);
+    left: 60px;
+    top:0;
+    padding:40px 20px;
+    transition: all .3s ease;
+    z-index:0;
+
+}
+.container.sidebar-open{
     width:calc(100% - 260px);
     left: 260px;
-    padding:40px 20px;
+}
+.container.sidebar-md-screen{
+    width:calc(100% - 60px);
+    left: 60px;
 }
