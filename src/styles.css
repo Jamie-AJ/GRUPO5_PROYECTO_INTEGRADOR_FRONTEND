@@ -24,6 +24,7 @@
   margin:0; 
 }
 body{
+    /* position: relative; */
     font-family:var(--font-primary);
     background-color:#f1f0f6;
 }

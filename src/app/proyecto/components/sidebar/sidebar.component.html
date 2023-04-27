@@ -4,9 +4,9 @@
         <p class="sidebar__logo" >
             Invest <span> Go!</span>
         </p>
-        <i class="bx bx-x btn-close" (click)="toggleCollapse()"></i>
+        <i class="bx bx-x btn-close" (click)="closeCollapse()"></i>
     </div>
-  	<ul class="sidebar__menu">
+  	<ul class="sidebar__menu" >
     	<li class="sidebar__item">
             <a routerLink="/dashboard/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-dashboard icon"></i>

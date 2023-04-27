@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './inversiones.component.html',
   styleUrls: ['./inversiones.component.css']
 })
+
+
 export class InversionesComponent {
 
 }
