@@ -23,7 +23,6 @@ export class SidebarComponent {
   collapse = false;
   screenWidth = 0;
 
-  
   /**
    * The function toggles the collapse state of a sidebar and emits an event with the current screen
    * width and collapse state.

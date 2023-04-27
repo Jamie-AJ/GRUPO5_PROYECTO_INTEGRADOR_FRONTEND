@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 interface SideNavToggle{
@@ -12,8 +12,11 @@ interface SideNavToggle{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  isSideBarCollapse: boolean = false;
-  screenWidth:number = 0;
+
+  @Input() collapse = false;
+  @Input() screenWidth = 0;
+  isSideBarCollapse = false;
+  screenWith = 0;
   
 /**
  * The function onToggleSideBar sets the screenWidth and isSideBarCollapse properties based on the data
@@ -21,7 +24,17 @@ export class HomeComponent {
  * @param {SideNavToggle} data - SideNavToggle object, which contains two properties:
  */
   onToggleSideBar(data:SideNavToggle):void{
-    this.screenWidth = data.screenWidth;
+    this.screenWith = data.screenWidth;
     this.isSideBarCollapse = data.isOpen;
+  }
+
+  getBodyClass(){
+    let styleClass:string = '';
+    if(this.collapse && this.screenWith > 768){
+      styleClass = 'sidebar-open';
+    }else if(this.collapse && this.screenWidth <= 768 && this.screenWidth > 0){
+      styleClass = 'sidebar-md-screen';
+    }
+    return styleClass;
   }
 }
