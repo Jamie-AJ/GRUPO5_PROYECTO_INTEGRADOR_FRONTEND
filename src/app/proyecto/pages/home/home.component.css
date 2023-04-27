@@ -9,11 +9,11 @@
     z-index:0;
 
 }
-.container.sidebar-open{
+.body-open{
     width:calc(100% - 260px);
     left: 260px;
 }
-.container.sidebar-md-screen{
+.body-md-screen{
     width:calc(100% - 60px);
     left: 60px;
 }
