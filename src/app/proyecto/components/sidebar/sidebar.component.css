@@ -1,10 +1,8 @@
 .sidebar{
     position: fixed;
-    max-width:60px;
-    width:100%;
+    width:60px;
     height: 100%;
     top:0;
-    left:0;
     overflow-y: auto;
     background-color:var(--white-color);
     transition: all 0.3s ease;
@@ -13,9 +11,8 @@
 .sidebar::-webkit-scrollbar{
     display: none;
 }
-.sidebar.sidebar-collapse{
-    /* left: 0; */
-    max-width:260px;
+.sidebar-collapse{
+    width:260px;
 }
 .sidebar .icon{
     min-width: 48px;
@@ -61,9 +58,7 @@
     padding: 0 6px;
     transition: all .3s ease;
 }
-.sidebar.sidebar-collapse .sidebar__menu{
-    padding: 0 20px;
-}
+
 .sidebar__item{
     /* width:100%; */
     margin-bottom: 1.5625rem;

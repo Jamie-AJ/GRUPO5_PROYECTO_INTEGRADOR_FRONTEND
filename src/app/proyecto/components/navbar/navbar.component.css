@@ -1,8 +1,18 @@
 .navbar {
     position: relative;
-    width: calc(100% - 260px);
-    left: 260px;
+    width: calc(100% - 60px);
+    margin-left: 60px;
+    top:0;
+    z-index:1;
     transition: all .3s ease;
+}
+.head-collapsedss{
+    width: calc(100% - 260px);
+    margin-left: 260px;
+}
+.head-expanded{
+    width: calc(100% - 60px);
+    margin-left: 60px;
 }
 .navbar__container {
     height: 64px;
@@ -11,7 +21,7 @@
     border-bottom: 1px solid #f1f0f6;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index:200;

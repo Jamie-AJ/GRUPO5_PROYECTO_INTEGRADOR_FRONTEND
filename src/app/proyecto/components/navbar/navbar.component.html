@@ -1,9 +1,7 @@
-<div class="navbar" [ngClass]="">
-    <nav class="navbar__container">
-        
+<div class="navbar" [ngClass]="getHeadClass()">
+    <nav class="navbar__container">       
         <a class="navbar__items">
             {{ user.username }}
-            <i class='bx bx-chevron-down'></i>
         </a>
     </nav>
 </div>
