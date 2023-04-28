@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { trigger } from '@angular/animations';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 
 interface SideNavToggle{
@@ -12,13 +13,28 @@ interface SideNavToggle{
   styleUrls: ['./sidebar.component.css']
 })
 
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
+/* Este codigo esta añadiendo un Hoslistener al componente que escucha al evento "resize" de la ventana.*/
+//notificar al componente padre si la barra lateral esta abierta o cerrada 
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any){
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth <= 768){
+      this.collapse = false;
+      this.onToggleSideBar.emit({screenWidth: this.screenWidth, isOpen: this.collapse});
+    }
+  }
+  
+
+    ngOnInit(): void {
+      this.screenWidth = window.innerWidth;
+    }
 
  /* Creating an output property called `onToggleSideBar` which is an instance of the `EventEmitter`
  class with a generic type of `SideNavToggle`. This output property can emit events of type
  `SideNavToggle` which can be subscribed to by parent components. */
- @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
+  @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
 
   collapse = false;
   screenWidth = 0;

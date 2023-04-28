@@ -55,7 +55,7 @@
         <label for="contrasena" class="label__field">Contraseña</label>
       </div>
       <div class="valid__contraseña">
-        <i class="fa-solid fa-triangle-exclamation"></i>
+        <i class='bx bxs-error'></i>
         <p>
           Por su seguridad , tú contraseña debe contener al menos una mayúscula,
           una minúscula y un número.
@@ -67,8 +67,8 @@
         <p class="form__title">¿Que tipo de cuenta necesitas?</p>
         <p class="form__subtitle">Seleccionael tipo de perfil.</p>
       </div>
-      <button type="button" (click)="setRole('empresa')">Empresa</button>
-      <button type="button" (click)="setRole('inversionista')">Inversionista</button>
+      <button type="button" class="btn__company"(click)="setRole('empresa')">Empresa</button>
+      <button type="button" class="btn__capitalist"(click)="setRole('inversionista')">Inversionista</button>
     </div>
     <div class="form__selectión-btn" *ngIf="step === 3 && roles === 'empresa'">
       <div class="form__heading">

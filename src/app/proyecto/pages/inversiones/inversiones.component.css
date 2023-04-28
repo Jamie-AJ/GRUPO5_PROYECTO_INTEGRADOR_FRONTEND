@@ -5,14 +5,13 @@
     width: 100%;
     padding: 0 2rem;
     height:calc(100vh - 153px);
-    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .inversiones_section div:nth-child(2) {
     flex-grow: 1;
     border: 1px solid rgba(160, 160, 160, 0.589);
 }
-
 .tabla_inversiones {
     width: 100%;
     text-align: center;

@@ -6,7 +6,7 @@
     z-index:1;
     transition: all .3s ease;
 }
-.head-collapsedss{
+.head-collapsed{
     width: calc(100% - 260px);
     margin-left: 260px;
 }
@@ -23,9 +23,9 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index:200;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
+
 .navbar__container .icon {
     font-size: 1.5rem;
     cursor: pointer;
