@@ -67,8 +67,11 @@
         <p class="form__title">¿Que tipo de cuenta necesitas?</p>
         <p class="form__subtitle">Seleccionael tipo de perfil.</p>
       </div>
-      <button type="button" class="btn__company"(click)="setRole('empresa')">Empresa</button>
-      <button type="button" class="btn__capitalist"(click)="setRole('inversionista')">Inversionista</button>
+      <div class="btn__group">
+        <button type="button" class="btn btn__company" (click)="setRole('empresa')">Empresa</button>
+        <button type="button" class="btn btn__capitalist" (click)="setRole('inversionista')">Inversionista</button>
+
+      </div>
     </div>
     <div class="form__selectión-btn" *ngIf="step === 3 && roles === 'empresa'">
       <div class="form__heading">
@@ -108,8 +111,8 @@
       </div>
     </div>
     <div class="input__button">
-      <a class="btn__back" (click)="previus()">Atras</a>
-      <a class="btn__access" *ngIf="step !== 2 && step < 3" (click)="next()"
+      <a class="btn btn__back" (click)="previus()">Atras</a>
+      <a class="btn btn__access" *ngIf="step !== 2 && step < 3" (click)="next()"
         >Siguiente</a
       >
       <button type="submit" class="btn__access" *ngIf="step === 3" (click)="createUser()">
