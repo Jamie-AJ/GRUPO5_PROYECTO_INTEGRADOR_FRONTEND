@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 
 
@@ -7,20 +8,31 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-  
-  @Input() collapse = false;
-  @Input() screenWidth = 0;
+
+export class NavbarComponent implements OnInit {
+
 
   
-  getHeadClass():string{
-    let styleClass: string = '';
-    if(this.collapse && this.screenWidth > 768){
-      styleClass = 'head-collapsed';
-    }else {
-      styleClass = 'head-expanded';
-    }
-    return styleClass;
+  isLoggedIn = false;
+  user:any = null;
 
+
+  constructor(public login:LoginService){}
+  ngOnInit(): void {
+    this.isLoggedIn = this.login.isLoggedIn();
+    this.user = this.login.getUser();
+    this.login.loginStatusSubjec.asObservable().subscribe(
+      data => {
+        this.isLoggedIn = this.login.isLoggedIn();
+        this.user = this.login.getUser();
+      }
+    )
   }
+  public logout(){
+    this.login.logout();
+    window.location.reload();
+  }
+  @Input()
+  getHeadClass(){ }
+  
 }

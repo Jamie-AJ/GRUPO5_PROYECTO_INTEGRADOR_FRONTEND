@@ -4,7 +4,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ProyectoModule } from './proyecto/proyecto.module';
-
+import { authInterceptorProviders } from './services/auth.interceptor';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     ProyectoModule,
     FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
