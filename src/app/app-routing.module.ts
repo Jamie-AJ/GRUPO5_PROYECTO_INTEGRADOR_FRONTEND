@@ -1,17 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule} from '@angular/router'
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { HomeComponent } from './proyecto/pages/home/home.component';
-import { LoginComponent } from './auth/pages/login/login.component';
+import { Error404PagesComponent } from './shared/pages/error404-pages/error404-pages.component';
 
 const router:Routes = [
 
-  {
-    path :'login',
-    component : LoginComponent,
-    pathMatch : 'full'
-  },
   {
     path:'auth',
     loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule)
@@ -20,13 +13,18 @@ const router:Routes = [
     path:'dashboard',
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
   },
-  // {
-  //   path:'404',
-  //   component:PageNotFoundComponent
-  // },
+  {
+    path:'404',
+    component:Error404PagesComponent
+  },
+  {
+    path:'',
+    redirectTo:'dashboard',
+    pathMatch:'full'
+  },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '404'
   }
 ]
 

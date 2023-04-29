@@ -11,7 +11,8 @@ import { LoginService } from 'src/app/services/login.service';
 
 export class NavbarComponent implements OnInit {
 
-
+  @Input() collapse = false;
+  @Input() screenWidth= 0;
   
   isLoggedIn = false;
   user:any = null;
@@ -19,6 +20,10 @@ export class NavbarComponent implements OnInit {
 
   constructor(public login:LoginService){}
   ngOnInit(): void {
+    this.singIn();
+  }
+
+  singIn(){
     this.isLoggedIn = this.login.isLoggedIn();
     this.user = this.login.getUser();
     this.login.loginStatusSubjec.asObservable().subscribe(
@@ -32,7 +37,15 @@ export class NavbarComponent implements OnInit {
     this.login.logout();
     window.location.reload();
   }
-  @Input()
-  getHeadClass(){ }
+
+  getHeadClass():string{ 
+    let styleClass:string='';
+    if(this.collapse && this.screenWidth > 768){
+      styleClass ='head-collapsed'
+    }else{
+      styleClass ='head-expanded'
+    }
+    return styleClass;
+  }
   
 }
