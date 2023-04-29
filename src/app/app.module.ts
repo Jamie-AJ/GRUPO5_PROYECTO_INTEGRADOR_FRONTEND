@@ -5,15 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ProyectoModule } from './proyecto/proyecto.module';
 import { authInterceptorProviders } from './services/auth.interceptor';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AuthModule,
     ProyectoModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

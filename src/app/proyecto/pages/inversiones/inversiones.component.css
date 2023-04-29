@@ -1,28 +1,28 @@
 /*marcador*/
-.inversiones_section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0 2rem;
-    height:calc(100vh - 153px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+.head__title{
+    margin-bottom: 2.5rem;
+    font-weight: 500;
 }
 
-.inversiones_section div:nth-child(2) {
-    flex-grow: 1;
-    border: 1px solid rgba(160, 160, 160, 0.589);
-}
-.tabla_inversiones {
+.inversiones_section {
     width: 100%;
+    height:calc(100vh - 180px);
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-spacing: 0;
+    padding:1.5rem 0;
+}
+.inversiones_section table{
+    width: 100%;
 }
 
-.tabla_inversiones>thead>th {
-    padding: 1.5rem;
+.inversiones_section table tr{
+    margin: 1.5rem  0 ;
 }
 
-.tabla_inversiones>tbody>td {
+.inversiones_section>tbody>td {
     padding: 1.5rem;
     background-color: rgba(128, 128, 128, 0.308);
 }
