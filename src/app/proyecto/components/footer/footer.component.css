@@ -1,0 +1,35 @@
+.footer{
+    position: fixed;
+    bottom:0; 
+    width:60px;
+    z-index: 2;
+    overflow-y: auto;
+    transition: all .3s ease;
+    
+}
+.footer::-webkit-scrollbar{
+    display: none;
+}
+.footer__container .footer__text{
+    display: flex;
+    align-items: center; 
+    font-size:0.875rem;
+    color:var(--text-color);
+    transition: all 0.3s ease;
+    padding: 12px 16px 12px 0;
+    border-radius: 10px;
+    /* margin: 4px 0; */
+}
+.footer__text p{
+    margin-left: 6px;
+    display:flex;
+    align-items: center;
+}
+.footer .icon{
+    min-width: 48px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    font-size: 20px;
+}

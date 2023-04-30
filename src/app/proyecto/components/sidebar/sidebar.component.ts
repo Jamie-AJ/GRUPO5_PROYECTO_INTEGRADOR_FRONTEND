@@ -2,9 +2,9 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 
-interface SideNavToggle{
-  screenWidth:number;
-  isOpen:boolean;
+interface SideNavToggle {
+  screenWidth: number;
+  collapse: boolean;
 }
 
 @Component({
@@ -15,44 +15,32 @@ interface SideNavToggle{
 
 export class SidebarComponent implements OnInit {
 
-/* Este codigo esta añadiendo un Hoslistener al componente que escucha al evento "resize" de la ventana.*/
-//notificar al componente padre si la barra lateral esta abierta o cerrada 
-  @HostListener('window:resize', ['$event'])
-  onResize(event:any){
-    this.screenWidth = window.innerWidth;
-    if(this.screenWidth <= 768){
-      this.collapse = false;
-      this.onToggleSideBar.emit({screenWidth: this.screenWidth, isOpen: this.collapse});
-    }
-  }
-  
 
-    ngOnInit(): void {
-      this.screenWidth = window.innerWidth;
-    }
-
- /* Creating an output property called `onToggleSideBar` which is an instance of the `EventEmitter`
- class with a generic type of `SideNavToggle`. This output property can emit events of type
- `SideNavToggle` which can be subscribed to by parent components. */
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
 
   collapse = false;
   screenWidth = 0;
 
-  /**
-   * The function toggles the collapse state of a sidebar and emits an event with the current screen
-   * width and collapse state.
-   */
-  toggleCollapse():void{
-    this.collapse = !this.collapse;
-    this.onToggleSideBar.emit({screenWidth: this.screenWidth, isOpen: this.collapse});
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth <= 768) {
+      this.collapse = false;
+      this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
+    }
   }
-  /**
-   * This function sets the "collapse" property to false and emits an event indicating that the sidebar
-   * has been closed.
-   */
-  closeCollapse():void{
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+  }
+
+  toggleCollapse(): void {
+    this.collapse = !this.collapse;
+    this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
+  }
+
+  closeCollapse(): void {
     this.collapse = false;
-    this.onToggleSideBar.emit({screenWidth: this.screenWidth, isOpen: this.collapse});
+    this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
   }
 }

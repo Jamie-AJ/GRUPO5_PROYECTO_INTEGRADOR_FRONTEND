@@ -2,18 +2,19 @@
 .container{
     position: relative;
     width:calc(100% - 60px);
-    left: 60px;
+    margin-left: 60px;
     top:0;
-    padding:20px 20px;
+    padding: 30px 20px;
     transition: all .3s ease;
     z-index:0;
+    /* height: calc(100vh - 100px); */
 
 }
 .body-open{
     width:calc(100% - 260px);
-    left: 260px;
+    margin-left: 260px;
 }
 .body-md-screen{
     width:calc(100% - 60px);
-    left: 60px;
+    margin-left: 60px;
 }

@@ -1,12 +1,14 @@
 <div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
     <div class="sidebar__logo">
-        <i class="bx bx-dollar-circle icon" (click)="toggleCollapse()"></i>
-        <p>
-            Invest <span> Go!</span>
-        </p>
-        <i class="bx bx-x btn-close" (click)="closeCollapse()"></i>
+        <button class="btn-open" (click)="toggleCollapse()">
+            <i class="bx bx-dollar-circle toggle" ></i>
+        </button>
+        <p>Invest <span> Go!</span></p>
+        <button class="btn-close" *ngIf="collapse">
+            <i class="bx bx-x" (click)="closeCollapse()"></i>
+        </button>
     </div>
-  	<ul class="sidebar__menu" >
+  	<ul class="sidebar__menu">
     	<li class="sidebar__item">
             <a routerLink="/dashboard/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-dashboard icon"></i>
@@ -22,7 +24,7 @@
         <li class="sidebar__item">
             <a routerLink="/dashboard/oportunities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
                 <i class="bx bxs-bar-chart-alt-2 icon"></i>
-                <p>Oportunidades de inversión</p>
+                <p>Oportunidades</p>
             </a>
         </li>
         <li class="sidebar__item">
@@ -38,4 +40,5 @@
             </a>
         </li>
   	</ul>
+    <!-- <app-footer></app-footer> -->
 </div>

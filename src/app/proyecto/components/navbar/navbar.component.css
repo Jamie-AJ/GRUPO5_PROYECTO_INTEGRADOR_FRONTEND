@@ -5,6 +5,8 @@
     top:0;
     z-index:1;
     transition: all .3s ease;
+    border-bottom: 1px solid #f1f0f6;
+    
 }
 .head-collapsed{
     width: calc(100% - 260px);
@@ -18,7 +20,6 @@
     height: 64px;
     padding:0 20px;
     background-color: var(--white-color);
-    border-bottom: 1px solid #f1f0f6;
     display: flex;
     align-items: center;
     justify-content: space-between;

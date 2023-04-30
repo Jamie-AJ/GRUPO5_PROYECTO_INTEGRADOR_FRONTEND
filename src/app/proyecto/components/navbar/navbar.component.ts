@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
     }else{
       styleClass ='head-expanded'
     }
+
     return styleClass;
   }
   
