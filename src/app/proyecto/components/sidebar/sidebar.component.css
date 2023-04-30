@@ -43,13 +43,14 @@
     margin-left: 6px;
     display:flex;
     align-items: center;
+    margin-bottom:0;
 }
 
 .sidebar__logo span{
     margin-left: 0.375rem;
     color: var(--primary-color);
 }
-.btn-open{
+.button-open{
     background: var(--primary-color);
     text-align: center;
     border: none;
@@ -61,11 +62,11 @@
     margin-right: 6px;
     padding: 0.3125rem;
 }
-.btn-open .toggle{
+.button-open .side-open{
     color: var(--white-color);
     font-size: 30px;
 }
-.btn-close{
+.button-close{
     margin-left: 1.5rem;
     font-size: 2rem;
     background-color: transparent;

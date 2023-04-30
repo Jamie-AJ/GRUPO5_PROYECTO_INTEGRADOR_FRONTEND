@@ -1,24 +1,90 @@
 <section class="status">
-    <h3>Estado de cuenta</h3>
-    <div class="status__tabs">
-        <ul class="status__tabs--container">
-            <li class="status__link" (click)="onTabClick('Movimientos')" [class.active]="activeTabs == 'Movimientos'">Movimientos</li>
-            <li class="status__link" (click)="onTabClick('DepositoRetiros')" [class.active]="activeTabs == 'DepositoRetiros'"> Depositos y Retiros</li>
-            <li class="status__link" (click)="onTabClick('CuentaBancaria')" [class.active]="activeTabs == 'CuentaBancaria'">Cuenta Bancaria</li>
-            <div class="line"></div>
-        </ul>
-    </div>
-   
-</section> 
+  <h3>Estado de cuenta</h3>
+  <div class="status__tabs">
+    <ul class="status__tabs--container">
+      <li
+        class="status__link"
+        (click)="onTabClick('Movimientos')"
+        [class.active]="activeTabs == 'Movimientos'"
+      >
+        Movimientos
+      </li>
+      <li
+        class="status__link"
+        (click)="onTabClick('DepositoRetiros')"
+        [class.active]="activeTabs == 'DepositoRetiros'"
+      >
+        Depositos y Retiros
+      </li>
+      <li
+        class="status__link"
+        (click)="onTabClick('CuentaBancaria')"
+        [class.active]="activeTabs == 'CuentaBancaria'"
+      >
+        Cuenta Bancaria
+      </li>
+      <div class="line"></div>
+    </ul>
+  </div>
+</section>
 <div class="status__box">
-    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'Movimientos'">
-        <p>Movimiento.</p>
+  <div
+    class="status__content animate__animated animate__fadeIn animete_faster"
+    *ngIf="activeTabs == 'Movimientos'"
+  >
+    <p>Movimiento.</p>
+  </div>
+  <div
+    class="status__content animate__animated animate__fadeIn animete_faster"
+    *ngIf="activeTabs == 'DepositoRetiros'"
+  >
+    <p>deposito</p>
+  </div>
+  <div
+    class="status__content animate__animated animate__fadeIn animete_faster"
+    *ngIf="activeTabs == 'CuentaBancaria'"
+  >
+    <div class="account">
+      <button class="account__content open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Agregar Cuenta Bancaria
+        <i class="bx bx-plus icon"></i>
+      </button>
+      <div class="account__content">
+        <div class="account__bank">
+          <h4>Banco de Credito del Perú BCP</h4>
+          <div class="account__info">
+            <div class="account__info-content">
+              <p>Titular</p>
+              <span>Mario Bros de Peaches</span>
+            </div>
+            <div class="account__info-content">
+                <div>
+                    <p>Moneda:</p>
+                    <span>PEN</span>
+                </div>
+                <i class="bx bx-trash icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'DepositoRetiros'">
-        <p>deposito</p>
-
-    </div>
-    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'CuentaBancaria'">
-        <p>Retiro</p>
-    </div>
+  </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
