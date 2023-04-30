@@ -1,5 +1,5 @@
-.navbar {
-    position: relative;
+.nav {
+    /* position: absolute; */
     width: calc(100% - 60px);
     margin-left: 60px;
     top:0;
@@ -16,7 +16,7 @@
     width: calc(100% - 60px);
     margin-left: 60px;
 }
-.navbar__container {
+.nav__container {
     height: 64px;
     padding:0 20px;
     background-color: var(--white-color);
@@ -27,23 +27,23 @@
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
-.navbar__container .icon {
+.nav__container .icon {
     font-size: 1.5rem;
     cursor: pointer;
 }
-.navbar__items {
+.nav__items {
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 0.75rem;
 }
-.navbar__items p {
+.nav__items p {
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--black-color);
 }
 
-.navbar__items i {
+.nav__items i {
     font-size: 1.5rem;
     color: var(--primary-color);
 }

@@ -1,10 +1,10 @@
 <div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
     <div class="sidebar__logo">
-        <button class="btn-open" (click)="toggleCollapse()">
-            <i class="bx bx-dollar-circle toggle" ></i>
+        <button class="button-open" (click)="toggleCollapse()">
+            <i class="bx bx-dollar-circle side-open" ></i>
         </button>
         <p>Invest <span> Go!</span></p>
-        <button class="btn-close" *ngIf="collapse">
+        <button class="button-close" *ngIf="collapse">
             <i class="bx bx-x" (click)="closeCollapse()"></i>
         </button>
     </div>

@@ -1,12 +1,12 @@
 
-.container{
-    position: relative;
+.main{
+    /* position: absolute; */
     width:calc(100% - 60px);
     margin-left: 60px;
-    top:0;
+    /* top:0; */
     padding: 30px 20px;
     transition: all .3s ease;
-    z-index:0;
+    /* z-index:0; */
     /* height: calc(100vh - 100px); */
 
 }

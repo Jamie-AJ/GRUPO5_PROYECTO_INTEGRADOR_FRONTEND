@@ -11,8 +11,8 @@
     --text-color:#707070;
     --pass-color:#6D6D6D;
     --carousel-color:#323232;
-    --top-color:#9ef4ff;
-    --bot-color:#7ed4e1;
+    --top-color:#9F96FF;
+    --bot-color:#9A94DE;
     --table-color: #f8f9fc;
     --second-table-color: #e3e6f0;
     --panel-color: #ffffff;
@@ -28,9 +28,10 @@
   margin:0; 
 }
 body{
-    position: relative;
+    /* position: relative; */
     font-family:var(--font-primary);
-    background-color:#f1f0f6;
+    background-color:#f4f6fc;
+    line-height: normal;
 }
 ul,
 li{
@@ -38,4 +39,11 @@ li{
 }
 a{
     text-decoration:none;
+}
+p{
+    margin:0;
+    line-height: normal;
+}
+button{
+    line-height: normal;
 }
