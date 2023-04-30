@@ -1,5 +1,10 @@
 import { Component, Input } from '@angular/core';
 
+interface SideNavToggle{
+  screenWidth:number;
+  collapse:boolean;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +12,6 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'investGofrontend';
+
+
 }

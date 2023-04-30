@@ -1,6 +1,6 @@
 
 :root{
-    --primary-color: #3FB9DF;
+    --primary-color: #695CFE;
     --circle-color: #7DE8FF;
     --white-color: #ffffff;
     --black-color: #000000;
@@ -8,10 +8,14 @@
     --form-color:#B9B6B6;
     --previus-color-btn:#EBEBEB;
     --text-color-btn:#7A7A7A;
+    --text-color:#707070;
     --pass-color:#6D6D6D;
     --carousel-color:#323232;
     --top-color:#9ef4ff;
     --bot-color:#7ed4e1;
+    --table-color: #f8f9fc;
+    --second-table-color: #e3e6f0;
+    --panel-color: #ffffff;
 
 
     /* TYPOGRAPHY */

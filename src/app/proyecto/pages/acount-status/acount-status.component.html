@@ -1,1 +1,24 @@
-<p>acount-status works!</p>
+<section class="status">
+    <h3>Estado de cuenta</h3>
+    <div class="status__tabs">
+        <ul class="status__tabs--container">
+            <li class="status__link" (click)="onTabClick('Movimientos')" [class.active]="activeTabs == 'Movimientos'">Movimientos</li>
+            <li class="status__link" (click)="onTabClick('DepositoRetiros')" [class.active]="activeTabs == 'DepositoRetiros'"> Depositos y Retiros</li>
+            <li class="status__link" (click)="onTabClick('CuentaBancaria')" [class.active]="activeTabs == 'CuentaBancaria'">Cuenta Bancaria</li>
+            <div class="line"></div>
+        </ul>
+    </div>
+   
+</section> 
+<div class="status__box">
+    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'Movimientos'">
+        <p>Movimiento.</p>
+    </div>
+    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'DepositoRetiros'">
+        <p>deposito</p>
+
+    </div>
+    <div class="status__content animate__animated animate__fadeIn animete_faster" *ngIf = "activeTabs == 'CuentaBancaria'">
+        <p>Retiro</p>
+    </div>
+</div>

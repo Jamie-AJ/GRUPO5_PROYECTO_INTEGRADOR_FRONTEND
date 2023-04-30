@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AcountStatusComponent {
 
+activeTabs:string = 'Movimientos';
+
+  onTabClick(tab:string):void{
+    this.activeTabs = tab;
+  }
 }
