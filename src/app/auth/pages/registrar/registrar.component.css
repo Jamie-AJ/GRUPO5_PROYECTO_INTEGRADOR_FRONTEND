@@ -61,6 +61,38 @@
     background-color:var(--primary-color);
     color:var(--white-color);
 }
+.btn__group{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    margin: auto;
+    cursor: pointer;
+}
+.btn-style{
+    border: none;
+    padding:1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    color: var(--white-color);
+}
+.btn__capitalist{
+    background-image:linear-gradient(to left, var(--primary-color) 50%, #221c68 100%);
+    text-align: left;  
+}
+.btn__capitalist i,
+.btn__company i{
+    font-size: 4rem;
+}
+.btn__capitalist p,
+.btn__company p{
+    font-weight: 600;
+    margin-top: -2.375rem;
+}
+
 .input__field {
     width: 100%;
     background: none;

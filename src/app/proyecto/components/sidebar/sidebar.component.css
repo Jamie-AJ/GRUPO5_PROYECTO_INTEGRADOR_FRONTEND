@@ -27,6 +27,8 @@
     font-size: 1.5rem;
     display:flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
     height: 64px;
     font-weight: bold;
     position: sticky;
@@ -52,19 +54,17 @@
 }
 .button-open{
     background: var(--primary-color);
-    text-align: center;
     border: none;
     cursor: pointer;
     border-radius: 10px;
     padding:5px;
-    width:3rem;
+    width:3rem;  
     min-width: 3rem;
-    margin-right: 6px;
-    padding: 0.3125rem;
 }
 .button-open .side-open{
     color: var(--white-color);
     font-size: 30px;
+    line-height: 1.2;
 }
 .button-close{
     margin-left: 1.5rem;
