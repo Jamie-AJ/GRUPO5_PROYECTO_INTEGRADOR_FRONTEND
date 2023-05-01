@@ -1,55 +1,26 @@
 <section class="status">
   <h3>Estado de cuenta</h3>
-  <div class="status__tabs">
-    <ul class="status__tabs--container">
-      <li
-        class="status__link"
-        (click)="onTabClick('Movimientos')"
-        [class.active]="activeTabs == 'Movimientos'"
-      >
-        Movimientos
-      </li>
-      <li
-        class="status__link"
-        (click)="onTabClick('DepositoRetiros')"
-        [class.active]="activeTabs == 'DepositoRetiros'"
-      >
-        Depositos y Retiros
-      </li>
-      <li
-        class="status__link"
-        (click)="onTabClick('CuentaBancaria')"
-        [class.active]="activeTabs == 'CuentaBancaria'"
-      >
-        Cuenta Bancaria
-      </li>
-      <div class="line"></div>
-    </ul>
-  </div>
+  <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
 </section>
 <div class="status__box">
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
-    *ngIf="activeTabs == 'Movimientos'"
+    *ngIf="activeTabsIndex === 0"
   >
     <p>Movimiento.</p>
   </div>
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
-    *ngIf="activeTabs == 'DepositoRetiros'"
+    *ngIf="activeTabsIndex === 1"
   >
     <p>deposito</p>
   </div>
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
-    *ngIf="activeTabs == 'CuentaBancaria'"
+    *ngIf="activeTabsIndex === 2"
   >
     <div class="account">
-      <button
-        class="account__content open-modal"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
+      <button class="account__content open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Agregar Cuenta Bancaria
         <i class="bx bx-plus icon"></i>
       </button>
@@ -118,7 +89,6 @@
                 <label for="cuenta">Número de cuenta</label>
                 <input type="text" class="form__input" name="cuenta" id="cuenta">
             </div>
-           
             <div class="form__box">
                 <label for="mes">Mes de vencimiento</label>
                 <select class="form__input" name="mes" id="mes">
@@ -131,14 +101,18 @@
                     <option disabled selected>Año</option>
                 </select>
             </div>
+            <div class="form__box">
+              <label for="cvv">CVV</label>
+              <input type="text" class="form__input" name="cvv" id="cvv">
+            </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-success">Save changes</button>
       </div>
     </div>
   </div>

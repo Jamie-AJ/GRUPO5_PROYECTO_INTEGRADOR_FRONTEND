@@ -12,6 +12,7 @@ import { OportunitiesComponent } from './pages/oportunities/oportunities.compone
 import { AcountStatusComponent } from './pages/acount-status/acount-status.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 
 
@@ -27,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AcountStatusComponent,
     DashboardComponent,
     FooterComponent,
+    TabsComponent,
   ],
   imports: [
     CommonModule,

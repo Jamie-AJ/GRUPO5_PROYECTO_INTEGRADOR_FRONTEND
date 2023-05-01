@@ -68,8 +68,19 @@
         <p class="form__subtitle">Seleccionael tipo de perfil.</p>
       </div>
       <div class="btn__group">
-        <button type="button" class="btn btn__company" (click)="setRole('empresa')">Empresa</button>
-        <button type="button" class="btn btn__capitalist" (click)="setRole('inversionista')">Inversionista</button>
+        <button type="button" class="btn__company btn-style" (click)="setRole('empresa')">
+          <p>
+          Cuenta Empresa
+         </p>
+          <i class='bx bx-building-house'></i>
+          
+        </button>
+        <button type="button" class="btn__capitalist btn-style" (click)="setRole('inversionista')">
+          <i class="bx bxs-bar-chart-alt-2 icon"></i>
+          <p>
+           Cuenta Inversionista
+          </p>
+        </button>
 
       </div>
     </div>
