@@ -1,9 +1,9 @@
 <div class="nav" [ngClass]="getHeadClass()">
     <nav class="nav__container">
         <i class='bx bx-menu'></i>
-           <a class="nav__items">
+        <a class="nav__items" (click)="logout()">
             {{ user.username }}
+            <i class='bx bx-chevron-down'></i>
             </a>
-        <i class='bx bx-chevron-down'></i>
     </nav>
 </div>

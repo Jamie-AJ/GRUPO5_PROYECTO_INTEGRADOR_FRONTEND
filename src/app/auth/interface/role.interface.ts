@@ -1,3 +1,4 @@
 export class Rol{
-    role?:string;
+    idTipoUsu?:number;
+    tipo?:string;
 }

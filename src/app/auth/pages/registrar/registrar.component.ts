@@ -1,7 +1,14 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Rol } from '../../interface/role.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { dniPattern, emailPattern, passwordPattern, telefonoPattern } from 'src/app/shared/components/validators';
+
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/services/login.service';
+import { Usuario } from '../../interface/usuario.interface';
+
 
 @Component({
   selector: 'app-registrar',
@@ -10,31 +17,95 @@ import { Rol } from '../../interface/role.interface';
 })
 export class RegistrarComponent implements OnInit {
 
-  roles: string ='empresa'
-  step: any = 1;
+  objUsuario:Usuario = {
+    nombre: '',
+    apellidoMa: '',
+    apellidoPa: '',
+    dni: '',
+    correo: '',
+    telefono: '',
+    password: '',
+    username: '',
+    idTipoUsu: 2
+  }
 
-  constructor(private builder: FormBuilder, private router: Router) { }
+  form: FormGroup = this.builder.group({
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    apellidoMa: ['', [Validators.required, Validators.minLength(3)]],
+    apellidoPa: ['', [Validators.required, Validators.minLength(3)]],
+    dni: ['', [Validators.required, Validators.pattern(dniPattern)]],
+    correo: ['', [Validators.required, Validators.pattern(emailPattern)]],
+    telefono: ['', [Validators.required, Validators.pattern(telefonoPattern)]],
+    password: ['', [Validators.required, Validators.pattern(passwordPattern)]],
+    username: ['', [Validators.required]],
+    idTipoUsu:['', [Validators.required]]
+  });
+  role: string = 'Inversionista';
+  step: any = 1;
+  constructor(
+    private builder: FormBuilder, 
+    private router: Router, 
+    private usuarioService: UserService, 
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
-
-  }
-  setRole(role:string){
-    this.roles = role;
-    this.next();
-  }
-  next() {
-    this.step++;
+    // this.form.valueChanges.pipe(
+    //   debounceTime(500)
+    // ).subscribe(value => {
+    //   console.log(value);
+    // });
   }
   previus() {
-    if(this.step > 1){
-      this.step --;
-    }else{
+    if (this.step > 1) {
+      this.step--;
+    } else {
       this.router.navigate(['/auth/login']);
     }
   }
-  createUser():void{
-    this.router.navigate(['/dashboard/home']);
-    console.log('crear usuario');
+  //VALIDACIONES
+  // isValid(field: string) {
+  //   return this.form.controls[field].errors && this.form.controls[field].touched;
+  // }
+  // getFieldError(field: string): string | null {
+  //   if (!this.form.controls[field]) return null;
+  //   const errors = this.form.controls[field].errors || {};
+  //   for (const key of Object.keys(errors)) {
+  //     switch (key) {
+  //       case 'required':
+  //         return 'Este campo es requerido';
+  //       case 'minlength':
+  //         return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+  //       case 'pattern':
+  //         return 'El valor ingresado no tiene formato válido';
+  //     }
+  //   }
+  //   return null;
+  // }
+  /**REGISTRAR */
+  createUser( ): void {
+    // //VALIDAR BOTON GUARDAR Y ACTIVAR LAS VALIDACIONES
+    // if (this.form.invalid) {
+    //   this.form.markAllAsTouched();
+    //   return;
+    // }
+    this.usuarioService.añadirUsuario(this.objUsuario).subscribe((resp) => {
+     
+      Swal.fire({
+        title: 'Mensaje',
+        text: resp.mensaje,
+        icon: 'success',
+      });
+      this.objUsuario = {
+        nombre: '',
+        apellidoMa: '',
+        apellidoPa: '',
+        dni: '',
+        correo: '',
+        telefono: '',
+        password: '',
+        username: '',
+        idTipoUsu: 2
+      }
+    });
   }
-
 }

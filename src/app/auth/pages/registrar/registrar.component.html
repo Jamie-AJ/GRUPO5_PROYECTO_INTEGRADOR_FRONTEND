@@ -1,68 +1,94 @@
 <div class="logo">
   <img src="assets/img/Logo.svg" alt="logo" class="logo__img" />
 </div>
-<div class="register__container">
+<div
+  class="register__container animate__animated animate__fadeIn animate__faster"
+>
   <!-- <app-progressbar></app-progressbar> -->
-  <form class="form" autocomplete="off">
-    <div class="form__sign-up" *ngIf="step === 1">
-      <div class="form__heading">
-        <p class="form__title">¡Bienvenido!</p>
-        <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
+  <form
+    class="form"
+    autocomplete="off"
+    [formGroup]="form"
+    (ngSubmit)="createUser()"
+  >
+    <div class="form__heading">
+      <p class="form__title">¡Bienvenido!</p>
+      <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
+    </div>
+    <div class="form__sign-up">
+      <div class="input__wrap">
+        <input type="text" formControlName="nombre" [(ngModel)]="objUsuario.nombre" id="nombre" class="input__field" placeholder="Nombre completo"/>
+        <!-- <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span> -->
       </div>
       <div class="input__wrap">
         <input
           type="text"
-          id="nombre"
-          class="input__field"
-        />
-        <label for="nombre" class="label__field">Nombres</label>
-      </div>
-      <div class="input__wrap">
-        <input
-          type="text"
+          formControlName="apellidoPa" [(ngModel)]="objUsuario.apellidoPa"
           id="apeMaterno"
-          class="input__field"
+          class="input__field" placeholder="Apellido paterno"
         />
-        <label for="apeMaterno" class="label__field">Apellido Materno</label>
+        <!-- <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span> -->
       </div>
       <div class="input__wrap">
         <input
           type="text"
+          formControlName="apellidoMa"
+          [(ngModel)]="objUsuario.apellidoMa"
           id="apePaterno"
           class="input__field"
+          placeholder="Apellido materno"
         />
-        <label for="apePaterno" class="label__field">Apellido Paterno</label>
+        <!-- <span *ngIf="isValid('apellidoMa')" class="invalid">{{getFieldError('apellidoMa')}}</span> -->
       </div>
       <div class="input__wrap">
-        <input
-          type="text"
-          id="telefono"
-          class="input__field"
-        />
-        <label for="telefono" class="label__field">Contacto</label>
+        <input type="text" formControlName="dni"  [(ngModel)]="objUsuario.dni" id="dni" class="input__field" placeholder="DNI"/>
+          <!-- <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span> -->
+      </div>
+      
+      <div class="input__wrap">
+        <input type="text" formControlName="telefono"  [(ngModel)]="objUsuario.telefono" id="telefono" class="input__field" placeholder="Telefono de contacto" />
+        
+          <!-- <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span> -->
+      
       </div>
       <div class="input__wrap">
-        <input
-          type="email"
-          id="correo"
-          class="input__field"
-        />
-        <label for="correo" class="label__field">Correo</label>
+        <input type="email" formControlName="correo"  [(ngModel)]="objUsuario.correo" id="correo" class="input__field" placeholder="Correo electronico" />
+          <!-- <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span> -->
+      </div>
+      <!-- <div class="input__wrap">
+        <select name="rol" id="rol" class="input__field">
+          <option disabled selected>Tipo de cuenta</option>
+          <option value="Inversionista">Inversionista</option>
+        </select>
+      </div> -->
+      <div class="input__wrap">
+        <input  type="text" formControlName="username"  [(ngModel)]="objUsuario.username"  id="username" class="input__field" placeholder="Nombre de usuario" />
+        <!-- <span *ngIf="isValid('username')" class="invalid">{{getFieldError('username')}}</span> -->
       </div>
       <div class="input__wrap">
-        <input type="password" id="contrasena"  class="input__field"/>
+        <input type="password" formControlName="password"  [(ngModel)]="objUsuario.password" id="contrasena" class="input__field" placeholder="Contraseña" />
         <i class="fa-solid fa-eye-slash"></i>
-        <label for="contrasena" class="label__field">Contraseña</label>
+          <!-- <span *ngIf="isValid('password')" class="invalid">{{getFieldError('password')}}</span> -->
       </div>
+      
       <div class="valid__contraseña">
-        <i class='bx bxs-error'></i>
+        <i class="bx bxs-error"></i>
         <p>
           Por su seguridad , tú contraseña debe contener al menos una mayúscula,
           una minúscula y un número.
         </p>
       </div>
     </div>
-    <div class="form__selectión-btn" *ngIf="step === 2">
+    <div class="input__button">
+      <a class="btn btn__back" (click)="previus()">Atras</a>
+      <!-- <a class="btn btn__access" *ngIf="step !== 2 && step < 3" (click)="next()"
+        >Siguiente</a
+      > -->
+      <button type="submit" class="btn__access">Registrarse</button>
+    </div>
+  </form>
+</div>
+<!-- <div class="form__selectión-btn" *ngIf="step === 2">
       <div class="form__heading">
         <p class="form__title">¿Que tipo de cuenta necesitas?</p>
         <p class="form__subtitle">Seleccionael tipo de perfil.</p>
@@ -120,16 +146,4 @@
         />
         <label for="telefono" class="label__field">DNI</label>
       </div>
-    </div>
-    <div class="input__button">
-      <a class="btn btn__back" (click)="previus()">Atras</a>
-      <a class="btn btn__access" *ngIf="step !== 2 && step < 3" (click)="next()"
-        >Siguiente</a
-      >
-      <button type="submit" class="btn__access" *ngIf="step === 3" (click)="createUser()">
-        Registrarse
-      </button>
-    </div>
-  </form>
-</div>
-
+    </div> -->
