@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
   user:any = null;
 
 
-  constructor(public login:LoginService){}
+  constructor(public login:LoginService, private router:Router){}
   ngOnInit(): void {
     this.singIn();
   }
@@ -35,7 +36,8 @@ export class NavbarComponent implements OnInit {
   }
   public logout(){
     this.login.logout();
-    window.location.reload();
+    // window.location.reload();
+    this.router.navigate(['/auth/login']);
   }
 
   getHeadClass():string{ 

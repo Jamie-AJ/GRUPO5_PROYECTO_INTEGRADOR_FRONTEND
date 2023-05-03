@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit{
           this.loginService.setUser(user);
           console.log(user);
 
-          if(this.loginService.getUserRole() == 'por defecto'){
+          if(this.loginService.getUserRole() == 'Inversionista'){
             //dashboard admin
             //window.location.href = '/admin';
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['dashboard/dashboard']);
             this.loginService.loginStatusSubjec.next(true);
           }
           /*else if(this.loginService.getUserRole() == 'por defecto'){
