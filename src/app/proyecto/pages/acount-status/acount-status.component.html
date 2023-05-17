@@ -1,4 +1,4 @@
-<section class="status">
+<section class="status animate__animated animate__fadeIn animete_faster">
   <h3>Estado de cuenta</h3>
   <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
 </section>
@@ -20,28 +20,24 @@
     *ngIf="activeTabsIndex === 2"
   >
     <div class="account">
-      <button class="account__content open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button class="open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Agregar Cuenta Bancaria
         <i class="bx bx-plus icon"></i>
       </button>
-      <div class="account__content">
-        <div class="account__bank">
-          <h4>Banco de Credito del Perú BCP</h4>
+        <div class="account__bank" *ngFor="let cuenta of cuentaBancariaList" >
+          <h4>{{cuenta.banco?.nomBancos}}</h4>
           <div class="account__info">
             <div class="account__info-content">
               <p>Titular</p>
-              <span>Mario Bros de Peaches</span>
+              <span>{{cuenta.usuario?.nombre}} {{cuenta.usuario?.apellidoPa}} {{cuenta.usuario?.apellidoMa}}</span>
             </div>
             <div class="account__info-content">
-              <div>
                 <p>Moneda:</p>
-                <span>PEN</span>
-              </div>
-              <i class="bx bx-trash icon"></i>
+                <span>{{cuenta.moneda?.nomMonedas}}</span>
+                <i class="bx bx-trash icon"></i>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
@@ -67,52 +63,55 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form class="form" id="form-tarjeta">
+        <form class="form" id="form-tarjeta" (ngSubmit)="postCuentaBancaria()">
           <div class="form__content">
-            <div class="form__box">
+            <!-- <div class="form__box">
                 <label for="titular">Titular de la cuenta</label>
                 <input type="text" class="form__input" name="titular" id="titular" disabled>
-            </div>
+            </div> -->
             <div class="form__box">
               <label for="banco">Selecciona el banco</label>
-              <select class="form__input" name="banco" id="n">
-                <option value="banco">Banco de credio del Perú BCP</option>
+              <select class="form__input" name="banco" id="banco" [(ngModel)]="objCuentaBancaria.banco!.idBancos">
+                <option value="-1">Selecciona Bancos</option>
+                <option *ngFor="let banco  of bancos" value="{{banco.idBancos}}">{{banco.nomBancos}}</option>
               </select>
             </div>
             <div class="form__box">
                 <label for="moneda">Tipo de Moneda</label>
-                <select class="form__input" name="moneda" id="moneda">
-                  <option value="moneda">Moneda</option>
+                <select class="form__input" name="moneda" id="moneda" [(ngModel)]="objCuentaBancaria.moneda!.idMonedas">
+                  <option value="-1">Selecciona Moneda</option>
+                  <option *ngFor="let moneda of monedas" value="{{moneda.idMonedas}}">{{moneda.nomMonedas}}</option>
                 </select>
             </div>
             <div class="form__box">
                 <label for="cuenta">Número de cuenta</label>
-                <input type="text" class="form__input" name="cuenta" id="cuenta">
+                <input type="text" class="form__input" name="cuenta" id="cuenta" [(ngModel)]="objCuentaBancaria.nroCuenta">
             </div>
             <div class="form__box">
                 <label for="mes">Mes de vencimiento</label>
-                <select class="form__input" name="mes" id="mes">
-                    <option disabled selected>Mes</option>
+                <select class="form__input" name="mes" id="mes" [(ngModel)]="objCuentaBancaria.mes">
+                    <option  value="-1">Mes</option>
                 </select>
             </div>
             <div class="form__box">
                 <label for="year">Año de vencimiento</label>
-                <select class="form__input" name="year" id="year">
-                    <option disabled selected>Año</option>
+                <select class="form__input" name="year" id="year" [(ngModel)]="objCuentaBancaria.year">
+                    <option disabled selected value="-1">Año</option>
                 </select>
             </div>
             <div class="form__box">
               <label for="cvv">CVV</label>
-              <input type="text" class="form__input" name="cvv" id="cvv">
+              <input type="text" class="form__input" name="cvv" id="cvv" [(ngModel)]="objCuentaBancaria.cvv">
             </div>
           </div>
+          
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success" (click)="postCuentaBancaria()">Guarda</button>
       </div>
     </div>
   </div>

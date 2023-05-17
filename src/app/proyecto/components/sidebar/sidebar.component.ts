@@ -1,5 +1,9 @@
 
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { Usuario } from 'src/app/interface/usuario.interface';
+import { UserService } from 'src/app/services/user.service';
 
 
 interface SideNavToggle {
@@ -17,10 +21,10 @@ export class SidebarComponent implements OnInit {
 
 
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
-
+  @Output() onToggleDarkMode: EventEmitter<void> = new EventEmitter();
   collapse = false;
   screenWidth = 0;
-
+  user!:Usuario;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -32,6 +36,7 @@ export class SidebarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+
   }
 
   toggleCollapse(): void {

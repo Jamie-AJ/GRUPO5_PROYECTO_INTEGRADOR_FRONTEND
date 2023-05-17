@@ -1,3 +1,4 @@
+import { Role } from "./role.interface";
 
 export class Usuario{
     id?:number;
@@ -11,5 +12,5 @@ export class Usuario{
     fecha?:Date; 
     dni?:string;
     enable?:string;  
-    idTipoUsu?:number;
+    rol?:Role;
 }

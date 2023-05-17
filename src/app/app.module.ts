@@ -4,7 +4,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ProyectoModule } from './proyecto/proyecto.module';
-import { authInterceptorProviders } from './services/auth.interceptor';
+import { authInterceptorProviders } from './interceptors/auth.interceptor';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';

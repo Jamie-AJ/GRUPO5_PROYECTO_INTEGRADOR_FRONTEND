@@ -23,7 +23,7 @@ export class LoginService {
     return true;
   }
   public isLoggedIn(){
-    let tokenStr = localStorage.getItem('token');
+    let tokenStr:string | null = localStorage.getItem('token');
     if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
       return false;
     }else{
@@ -42,7 +42,7 @@ export class LoginService {
     localStorage.setItem('user', JSON.stringify(user));
   }
   public getUser(){
-    let userStr = localStorage.getItem('user');
+    let userStr:string | null = localStorage.getItem('user');
     if(userStr != null){
       return JSON.parse(userStr);
     }else{
@@ -51,7 +51,7 @@ export class LoginService {
     }
   }
   public getUserRole(){
-    let user = this.getUser();
+    let user:any = this.getUser();
     return user.authorities[0].authority;
   }
 

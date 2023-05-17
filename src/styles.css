@@ -21,6 +21,25 @@
     /* TYPOGRAPHY */
     --font-primary: 'Poppins', sans-serif;
 }
+.dark-mode {
+    --primary-color: #ABCDEF;
+    --circle-color: #123456;
+    --white-color: #000000;
+    --black-color: #ffffff;
+    --grey-color: #999999;
+    --form-color: #333333;
+    --previus-color-btn: #333333;
+    --text-color-btn: #ffffff;
+    --text-color: #ffffff;
+    --pass-color: #cccccc;
+    --carousel-color: #dddddd;
+    --top-color: #ABCDEF;
+    --bot-color: #654321;
+    --table-color: #222222;
+    --second-table-color: #333333;
+    --panel-color: #000000;
+    --font-primary: 'Poppins', sans-serif;
+}
 *,
 *::before,*::after {
   box-sizing: border-box;

@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Bancos } from 'src/app/interface/bancos.interface';
+import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
+
+import { Monedas } from 'src/app/interface/monedas.interface';
+import { BancoService } from 'src/app/services/banco.service';
+import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
+import { MonedaService } from 'src/app/services/moneda.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-acount-status',
@@ -7,11 +16,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcountStatusComponent implements OnInit {
 
+  
+  bancos:Bancos[] = [];
+  monedas:Monedas[] = [];
+  cuentaBancariaList:CuentaBancaria[] = [];
   tabs: string[] = ['Movimientos','Depositos y Retiros','Cuentas Bancaria' ]
   activeTabsIndex: number = 0;
+  id:number = 0;
 
+  objCuentaBancaria:CuentaBancaria = {
+    nroCuenta: '',
+    nroCuentaCci: '',
+    cvv: '',
+    mes: new Date(),
+    year: new Date(),
+    banco: {
+      idBancos: -1,
+    },
+    moneda:{
+      idMonedas: -1,
+    },
+      usuario:{
+        id: -1,
+      }
+  }
+
+  constructor(
+    private bancoService:BancoService, 
+    private monedasService:MonedaService, 
+    private userService:UserService,
+    private cuentaBancaria:CuentaBancariaService,
+    private activeRouter:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.bancoService.getBancos().subscribe(bancos =>{this.bancos = bancos});
+    this.monedasService.getMonedas().subscribe(monedas => {this.monedas = monedas})
+    this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
+      console.log(cuentaBancaria);
+      this.cuentaBancariaList = cuentaBancaria;
+    });
     this.mesDinamico();   
     this.yearDinamico();
     this.inputNumber();
@@ -57,6 +101,16 @@ export class AcountStatusComponent implements OnInit {
        //eliminar letras
       cvv.value = valorInput.replace(/\D/g, '').trim();
     });
+  }
 
+  postCuentaBancaria(){
+    this.cuentaBancaria.postCuentaBancaria(this.id,this.objCuentaBancaria).subscribe((resp) =>{
+      this.cuentaBancaria =resp;
+      console.log(resp);
+      alert('Cuenta Bancaria Registrada');
+    }, (err) =>{
+      console.log(err);
+      
+    });
   }
 }

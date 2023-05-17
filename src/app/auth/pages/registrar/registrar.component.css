@@ -33,8 +33,8 @@
     gap: 1.5rem;
 }
 .input__wrap {
-    position: relative;
-     height: 37px;
+    /* position: relative; */
+    height: 37px;
 }
 .input__wrap:nth-child(1),
 .input__wrap:nth-child(6) {
@@ -121,7 +121,7 @@
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: -1rem;
+    margin-top: -0.2rem;
     grid-column: 1/3;
 }
 
