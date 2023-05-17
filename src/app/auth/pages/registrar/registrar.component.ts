@@ -6,8 +6,10 @@ import { dniPattern, emailPattern, passwordPattern, telefonoPattern } from 'src/
 
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
-import { LoginService } from 'src/app/services/login.service';
-import { Usuario } from '../../interface/usuario.interface';
+import { Usuario } from 'src/app/interface/usuario.interface';
+import { debounceTime } from 'rxjs';
+import { Role } from 'src/app/interface/role.interface';
+
 
 
 @Component({
@@ -17,17 +19,7 @@ import { Usuario } from '../../interface/usuario.interface';
 })
 export class RegistrarComponent implements OnInit {
 
-  objUsuario:Usuario = {
-    nombre: '',
-    apellidoMa: '',
-    apellidoPa: '',
-    dni: '',
-    correo: '',
-    telefono: '',
-    password: '',
-    username: '',
-    idTipoUsu: 2
-  }
+  roles:Role[] = [];
 
   form: FormGroup = this.builder.group({
     nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -38,74 +30,58 @@ export class RegistrarComponent implements OnInit {
     telefono: ['', [Validators.required, Validators.pattern(telefonoPattern)]],
     password: ['', [Validators.required, Validators.pattern(passwordPattern)]],
     username: ['', [Validators.required]],
-    idTipoUsu:['', [Validators.required]]
+    idTipoUsu:[ 1, [Validators.required]]
   });
-  role: string = 'Inversionista';
+
   step: any = 1;
+
   constructor(
     private builder: FormBuilder, 
     private router: Router, 
-    private usuarioService: UserService, 
-    private loginService: LoginService) { }
+    private usuarioService: UserService) { }
 
   ngOnInit(): void {
-    // this.form.valueChanges.pipe(
-    //   debounceTime(500)
-    // ).subscribe(value => {
-    //   console.log(value);
-    // });
+    this.usuarioService.listarRoles().subscribe(roles =>{
+      this.roles = roles;
+    });
   }
   previus() {
     if (this.step > 1) {
       this.step--;
     } else {
       this.router.navigate(['/auth/login']);
-    }
+    } 
   }
   //VALIDACIONES
-  // isValid(field: string) {
-  //   return this.form.controls[field].errors && this.form.controls[field].touched;
-  // }
-  // getFieldError(field: string): string | null {
-  //   if (!this.form.controls[field]) return null;
-  //   const errors = this.form.controls[field].errors || {};
-  //   for (const key of Object.keys(errors)) {
-  //     switch (key) {
-  //       case 'required':
-  //         return 'Este campo es requerido';
-  //       case 'minlength':
-  //         return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
-  //       case 'pattern':
-  //         return 'El valor ingresado no tiene formato válido';
-  //     }
-  //   }
-  //   return null;
-  // }
-  /**REGISTRAR */
-  createUser( ): void {
-    // //VALIDAR BOTON GUARDAR Y ACTIVAR LAS VALIDACIONES
-    // if (this.form.invalid) {
-    //   this.form.markAllAsTouched();
-    //   return;
-    // }
-    this.usuarioService.añadirUsuario(this.objUsuario).subscribe((resp) => {
-     
-      Swal.fire({
-        title: 'Mensaje',
-        text: resp.mensaje,
-        icon: 'success',
-      });
-      this.objUsuario = {
-        nombre: '',
-        apellidoMa: '',
-        apellidoPa: '',
-        dni: '',
-        correo: '',
-        telefono: '',
-        password: '',
-        username: '',
-        idTipoUsu: 2
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+        case 'pattern':
+          return 'El valor ingresado no tiene formato válido';
       }
+    }
+    return null;
+  }
+
+  //TODO: REGISTRAR
+  onSubmit() {
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
+      return;
+    } 
+    this.usuarioService.añadirUsuario(this.form.value).subscribe(resp =>{
+      Swal.fire('Exito', resp.mensaje, 'success');
+      this.router.navigate(['/auth/login']);
     });
   }
+
 }

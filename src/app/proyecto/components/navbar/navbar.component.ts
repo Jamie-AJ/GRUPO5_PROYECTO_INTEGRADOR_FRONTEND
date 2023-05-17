@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -16,10 +18,10 @@ export class NavbarComponent implements OnInit {
   @Input() screenWidth= 0;
   
   isLoggedIn = false;
-  user:any = null;
+  user!:Usuario;
 
 
-  constructor(public login:LoginService, private router:Router){}
+  constructor(private login:LoginService, private router:Router){}
   ngOnInit(): void {
     this.singIn();
   }

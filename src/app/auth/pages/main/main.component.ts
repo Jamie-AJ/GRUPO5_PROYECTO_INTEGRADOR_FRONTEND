@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { ImageSlider } from '../../interface/image.interface';
+
 
 @Component({
   selector: 'app-main',

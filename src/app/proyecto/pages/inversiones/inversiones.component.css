@@ -76,7 +76,7 @@
 .btn__save {
     padding: 0.625rem 1rem;
     border-radius: 5px;
-    background-color: var(--text-color);
+    background-color: #157347;
     color: var(--white-color);
     font-size: 0.875rem;
     font-weight: 500;

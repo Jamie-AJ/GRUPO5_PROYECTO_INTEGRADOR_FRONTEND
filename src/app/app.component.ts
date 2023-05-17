@@ -12,6 +12,10 @@ interface SideNavToggle{
 })
 export class AppComponent {
   title = 'investGofrontend';
+  isDarkMode= false;
 
+  onToggleDarkMode(){
+    this.isDarkMode = !this.isDarkMode;
+  }
 
 }
