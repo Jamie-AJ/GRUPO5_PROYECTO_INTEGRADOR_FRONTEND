@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
-import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -38,7 +37,6 @@ export class NavbarComponent implements OnInit {
   }
   public logout(){
     this.login.logout();
-    // window.location.reload();
     this.router.navigate(['/auth/login']);
   }
 

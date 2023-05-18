@@ -83,5 +83,4 @@ export class RegistrarComponent implements OnInit {
       this.router.navigate(['/auth/login']);
     });
   }
-
 }

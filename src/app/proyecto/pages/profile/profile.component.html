@@ -1,7 +1,7 @@
-<section class="profile animate__animated animate__fadeIn animete_faster">
+<div class="profile animate__animated animate__fadeIn animete_faster">
   <h3>Mis datos Personales</h3>
-</section>
-<div class="profile__container animate__animated animate__fadeIn animete_faster">
+</div>
+<section class="profile__container animate__animated animate__fadeIn animete_faster">
   <div class="profile__content">
     <div class="contenedor">
       <div class="profile__box">
@@ -36,24 +36,24 @@
       </div>
     </div>
     <div class="profiel__button">
-      <button type="button" class="btn__save" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="searchUser(usuario)">
+      <a [routerLink]="['/dashboard/profile-edit',usuario.id]" class="btn__save">
         <i class="bx bx-edit"></i>
         Editar Perfil
-      </button>
+      </a>
     </div>
     
   </div>
   <div class="profile__photo">
     <img src="../../../../assets/img/foto-default.png" alt="foto-defaul" />
   </div>
-</div>
+</section>
 
 <!-- <div *ngIf="mostrarForm">
   <p>ACTUALIZADO</p>
 </div> -->
 
 <!-- Modal -->
-<div
+<!-- <div
   class="modal fade"
   id="exampleModal"
   tabindex="-1"
@@ -74,75 +74,94 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form class="form" autocomplete="off" [formGroup]="form" (ngSubmit)="putUsuario()">
+        <form class="form" autocomplete="off" (ngSubmit)="putUsuario()">
           <div class="form__content">
+            <div class="form__box">
+              <label for="nombre">Nombres</label>
+            <input
+              type="text"
+              id="nombre"
+              name="id"
+              class="input__field"
+              placeholder="Nombre completo"
+              [(ngModel)]="usuario.id"
+            />
+             <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span> 
+          </div>
             <div class="form__box">
                 <label for="nombre">Nombres</label>
               <input
                 type="text"
-                formControlName="nombre"
                 id="nombre"
+                name="nombre"
                 class="input__field"
                 placeholder="Nombre completo"
+                [(ngModel)]="usuario.nombre"
               />
-               <!-- <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span>  -->
+               <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span> 
             </div>
             <div class="form__box">
                 <label for="apeMaterno">Apellido Paterno</label>
               <input
                 type="text"
-                formControlName="apellidoPa"
                 id="apeMaterno"
+                name="apellidoMa"
                 class="input__field"
                 placeholder="Apellido paterno"
+                [(ngModel)]="usuario.apellidoPa"
               />
-              <!-- <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>  -->
+              <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span> 
             </div>
             <div class="form__box">
                 <label for="apePaterno">Apellido Materno</label>
               <input
                 type="text"
-                formControlName="apellidoMa"
                 id="apePaterno"
+                name="apellidoPa"
                 class="input__field"
                 placeholder="Apellido materno"
+                [(ngModel)]="usuario.apellidoMa"
               />
-            <!-- <span *ngIf="isValid('apellidoMa')" class="invalid">{{getFieldError('apellidoMa')}}</span>  -->
+            <span *ngIf="isValid('apellidoMa')" class="invalid">{{getFieldError('apellidoMa')}}</span> 
             </div>
             <div class="form__box">
                 <label for="dni">Documento de identidad</label>
               <input
                 type="text"
-                formControlName="dni"
                 id="dni"
+                name="dni"
                 class="input__field"
                 placeholder="DNI"
+                [(ngModel)]="usuario.dni"
+
               />
-            <!-- <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span>  -->
+            <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span> 
             </div>
 
             <div class="form__box">
                 <label for="telefono">Telefono de contacto</label>
               <input
                 type="text"
-                formControlName="telefono"
                 id="telefono"
+                name="telefono"
                 class="input__field"
                 placeholder="Telefono de contacto"
+                [(ngModel)]="usuario.telefono"
               />
 
-         <!-- <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span> -->
+         <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span>
             </div>
             <div class="form__box">
                 <label for="correo">Correo</label>
               <input
                 type="email"
-                formControlName="correo"
                 id="correo"
                 class="input__field"
+                name="correo"
                 placeholder="Correo electronico"
+                [(ngModel)]="usuario.correo"
               />
-             <!-- <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span>  -->
+             <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span> 
             </div>
           </div>
         </form>
@@ -155,4 +174,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

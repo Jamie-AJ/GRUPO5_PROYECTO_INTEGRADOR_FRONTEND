@@ -21,7 +21,6 @@ export class SidebarComponent implements OnInit {
 
 
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
-  @Output() onToggleDarkMode: EventEmitter<void> = new EventEmitter();
   collapse = false;
   screenWidth = 0;
   user!:Usuario;

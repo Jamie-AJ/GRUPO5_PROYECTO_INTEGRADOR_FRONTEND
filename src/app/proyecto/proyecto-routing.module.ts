@@ -7,6 +7,7 @@ import { AcountStatusComponent } from './pages/acount-status/acount-status.compo
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OportunitiesComponent } from './pages/oportunities/oportunities.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 const router:Routes = [
   {
@@ -16,8 +17,9 @@ const router:Routes = [
       {path:'dashboard',component:DashboardComponent},
       {path:'inversiones', component:InversionesComponent},
       {path:'account-status', component:AcountStatusComponent},
-      {path:'profile/:id', component:ProfileComponent},
+      {path:'profile-edit/:id',component:EditProfileComponent},
       {path:'oportunities',component:OportunitiesComponent},
+      {path:':id', component:ProfileComponent},
       {path:'**', redirectTo:'dashboard'}
     ]
   }
