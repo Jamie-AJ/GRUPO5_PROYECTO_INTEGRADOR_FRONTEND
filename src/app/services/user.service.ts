@@ -24,19 +24,21 @@ export class UserService {
       })
     );
   }
-  getUsuarioById(id:number):Observable<Usuario>{
-    return this.http.get<Usuario>(url + '/buscar/' + id);
+  getUsuarioById(id:number):Observable<Usuario|undefined>{
+    return this.http.get<Usuario>(url + '/buscar/' + id).pipe(
+      catchError(e => of(undefined))
+    );
   }
   añadirUsuario(user:Usuario):Observable<any>{;
     return this.http.post<any>(url + '/registrar',user).pipe(
-      catchError(e => {
-        Swal.fire('Error', e.error.mensaje, 'error');
-        return throwError(e);
+      catchError((error):any => {
+        Swal.fire('Error', error.error.mensaje, 'error');
+        return throwError(error);
       })
     );
   }
   actualizarUsuario(user:Usuario):Observable<any>{
-    return this.http.put<any>(url + '/actualizar',user).pipe(
+    return this.http.put<any>(url + '/actualizar/'+ user.id,user).pipe(
       catchError(e => {
         Swal.fire('Error', e.error.mensaje, 'error');
         return throwError(e);

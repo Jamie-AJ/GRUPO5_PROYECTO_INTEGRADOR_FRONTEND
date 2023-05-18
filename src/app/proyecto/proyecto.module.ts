@@ -13,6 +13,7 @@ import { AcountStatusComponent } from './pages/acount-status/acount-status.compo
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 
@@ -29,6 +30,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
     DashboardComponent,
     FooterComponent,
     TabsComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -14,8 +14,8 @@ import { dniPattern, emailPattern, passwordPattern, telefonoPattern } from 'src/
 })
 export class ProfileComponent implements  OnInit{
 
-  mostrarForm:boolean = false;
   id:number = 0;
+
   usuario:Usuario = {
     id:0,
     nombre:'',
@@ -26,38 +26,29 @@ export class ProfileComponent implements  OnInit{
     dni:'',
   }
 
-  form: FormGroup = this.builder.group({
-    nombre: ['', [Validators.required, Validators.minLength(3)]],
-    apellidoMa: ['', [Validators.required, Validators.minLength(3)]],
-    apellidoPa: ['', [Validators.required, Validators.minLength(3)]],
-    dni: ['', [Validators.required, Validators.pattern(dniPattern)]],
-    correo: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    telefono: ['', [Validators.required, Validators.pattern(telefonoPattern)]],
-    password: ['', [Validators.required, Validators.pattern(passwordPattern)]],
-    username: ['', [Validators.required]],
-    idTipoUsu:[ 1, [Validators.required]]
-  });
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private builder:FormBuilder) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private builder:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.params[ 'id' ];
-    this.userService.getUsuarioById(this.id).subscribe((res) =>
-    {
-      this.usuario = res;
-      console.log(res);
-    }, (error) => { console.log(error) });
+    this.activatedRoute.params.pipe(
+      switchMap(({id}) => this.userService.getUsuarioById(id))
+    ).subscribe(usuario =>
+      {
+        if(!usuario)return this.router.navigate(['/dashboard/dashboard']);
+        this.usuario = usuario;
+        console.log(usuario);
+        return;
+      })
+      
+    // this.id = this.activatedRoute.snapshot.params[ 'id' ];
+    // this.userService.getUsuarioById(this.id).subscribe((res) =>
+    // { 
+    //   this.usuario = res;
+    //   console.log(res);
+    // }, (error) => { console.log(error) });
   }
-  mostrarFormulario(){
-    this.mostrarForm = true;
-  }
-  searchUser(usuario:Usuario){
-    this.form.reset(usuario);
-    console.log(usuario);
-  }
+  // mostrarFormulario(){
+  //   this.mostrarForm = true;
+  // }
 
-  putUsuario(){
-    this.userService.actualizarUsuario(this.form.value).subscribe((res)=>{
-      console.log(res);
-    })
-  }
+ 
 }

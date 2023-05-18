@@ -6,12 +6,7 @@
 >
   <!-- <app-progressbar></app-progressbar> -->
   
-  <form
-    class="form"
-    autocomplete="off"
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-  >
+  <form class="form" autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" >
     <div class="form__heading">
       <p class="form__title">¡Bienvenido!</p>
       <p class="form__subtitle">Ingresa la información de tú cuenta.</p>
@@ -22,12 +17,7 @@
         <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span>
       </div>
       <div class="input__wrap">
-        <input
-          type="text"
-          formControlName="apellidoPa"
-          id="apeMaterno"
-          class="input__field" placeholder="Apellido paterno"
-        />
+        <input type="text" formControlName="apellidoPa" id="apeMaterno" class="input__field" placeholder="Apellido paterno" />
         <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>
       </div>
       <div class="input__wrap">
@@ -56,13 +46,6 @@
         <input type="email" formControlName="correo" id="correo" class="input__field" placeholder="Correo electronico" />
           <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span>
       </div>
-      <!-- <div class="input__wrap">
-        <select name="rol" id="rol" class="input__field" formControlName="rol">
-          <option disabled selected value="">Tipo de cuenta</option>
-          <option *ngFor="let rol of roles" [value]="rol.idTipoUsu">{{rol.tipo}}</option>
-        </select>
-        <span *ngIf="isValid('rol')" class="invalid">{{getFieldError('rol')}}</span>
-      </div> -->
       <div class="input__wrap">
         <input  type="text" formControlName="username"   id="username" class="input__field" placeholder="Nombre de usuario" />
         <span *ngIf="isValid('username')" class="invalid">{{getFieldError('username')}}</span>
