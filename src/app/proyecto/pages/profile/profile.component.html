@@ -9,6 +9,7 @@
           <span class="profile__tiny">Nombre del inversionista</span>
           <span class="profile__normal">{{usuario.nombre}}</span>
         </div>
+        
         <div class="profile__box--content">
           <span class="profile__tiny-one profile__tiny ">Documento de identidad</span>
           <span class="profile__normal profile__tiny-one">{{usuario.dni}}</span>
@@ -36,7 +37,7 @@
       </div>
     </div>
     <div class="profiel__button">
-      <a [routerLink]="['/dashboard/profile-edit',usuario.id]" class="btn__save">
+      <a routerLink="/dashboard/profile-edit" class="btn__save">
         <i class="bx bx-edit"></i>
         Editar Perfil
       </a>

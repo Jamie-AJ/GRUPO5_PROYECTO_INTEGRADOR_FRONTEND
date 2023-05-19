@@ -16,6 +16,7 @@ const url = 'http://localhost:8091/api';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+
   listarRoles():Observable<Role[]>{
     return this.http.get<Role[]>(url + '/listarRoles').pipe(
       catchError(e => {
@@ -29,6 +30,7 @@ export class UserService {
       catchError(e => of(undefined))
     );
   }
+
   añadirUsuario(user:Usuario):Observable<any>{;
     return this.http.post<any>(url + '/registrar',user).pipe(
       catchError((error):any => {
@@ -38,7 +40,8 @@ export class UserService {
     );
   }
   actualizarUsuario(user:Usuario):Observable<any>{
-    return this.http.put<any>(url + '/actualizar/'+ user.id,user).pipe(
+    if(!user.id) throw Error("El id es requerido");
+    return this.http.put<any>(url + '/actualizar',user).pipe(
       catchError(e => {
         Swal.fire('Error', e.error.mensaje, 'error');
         return throwError(e);

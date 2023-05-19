@@ -17,9 +17,9 @@ const router:Routes = [
       {path:'dashboard',component:DashboardComponent},
       {path:'inversiones', component:InversionesComponent},
       {path:'account-status', component:AcountStatusComponent},
-      {path:'profile-edit/:id',component:EditProfileComponent},
+      {path:'profile-edit',component:EditProfileComponent},
       {path:'oportunities',component:OportunitiesComponent},
-      {path:':id', component:ProfileComponent},
+      {path:'details-profile', component:ProfileComponent},
       {path:'**', redirectTo:'dashboard'}
     ]
   }
