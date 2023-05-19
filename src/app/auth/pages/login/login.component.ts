@@ -46,11 +46,15 @@ export class LoginComponent implements OnInit{
     this.loginService.generateToken(this.loginData).subscribe(
       (data:any) => {
         console.log(data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido',
+          text: 'Iniciando Sesion',
+        });
         this.loginService.loginUser(data.token);
         this.loginService.getCurrentUser().subscribe((user:any) => {
           this.loginService.setUser(user);
           console.log(user);
-
           if(this.loginService.getUserRole() == 'INVERSIONISTA'){
             //dashboard admin
             //window.location.href = '/admin';
@@ -66,6 +70,7 @@ export class LoginComponent implements OnInit{
           else{
             this.loginService.logout();
           }
+
         })
       },(error) => {
         console.log(error);

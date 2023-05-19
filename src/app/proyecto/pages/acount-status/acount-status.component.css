@@ -72,7 +72,7 @@
     margin-bottom: 0.5rem;
     color:var(--text-color);
 }
-.account__info  span{
+.account__info span{
     font-size: 13px;
     font-weight: 600;
     color:var(--text-color);
@@ -84,9 +84,9 @@
     justify-content: space-between;
     gap: 0.5rem;
 }
-.account__info .account__info-content:last-child{
+.account__info .account__info-content div{
     display: flex;
-    justify-content:space-between;
+    align-items: center;
     gap: 0.5rem;
 }
 .account__info .account__info-content:last-child .icon{

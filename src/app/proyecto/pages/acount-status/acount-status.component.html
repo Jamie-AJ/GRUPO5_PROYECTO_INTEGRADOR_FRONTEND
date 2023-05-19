@@ -24,16 +24,18 @@
         Agregar Cuenta Bancaria
         <i class="bx bx-plus icon"></i>
       </button>
-        <div class="account__bank" *ngFor="let cuenta of cuentaBancariaList" >
-          <h4>{{cuenta.banco?.nomBancos}}</h4>
+        <div class="account__bank">
+          <h4>Banco de credito</h4>
           <div class="account__info">
             <div class="account__info-content">
               <p>Titular</p>
-              <span>{{cuenta.usuario?.nombre}} {{cuenta.usuario?.apellidoPa}} {{cuenta.usuario?.apellidoMa}}</span>
+              <span>Jorge Gonzales</span>
             </div>
             <div class="account__info-content">
+              <div>
                 <p>Moneda:</p>
-                <span>{{cuenta.moneda?.nomMonedas}}</span>
+                <span>PEN</span>
+              </div>
                 <i class="bx bx-trash icon"></i>
             </div>
           </div>

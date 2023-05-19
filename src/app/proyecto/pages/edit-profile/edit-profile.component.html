@@ -8,26 +8,32 @@
                 <div class="edit__group">
                     <label for="nombre">Nombres</label>
                     <input type="text" id="nombre" formControlName="nombre" class="edit__input">
+                    <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span>
                 </div>
                 <div class="edit__group">
                     <label for="apellidoPa">Apellido Paterno</label>
                     <input type="text" id="apellidoPa" formControlName="apellidoPa" class="edit__input">
+                    <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>
                 </div>
                 <div class="edit__group">
                     <label for="apellidoMa">Apellido Materno</label>
                     <input type="text" id="apellidoMa" formControlName="apellidoMa" class="edit__input">
+                    <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>
                 </div>
                 <div class="edit__group">
                     <label for="dni">Documento de Identidad</label>
                     <input type="text" id="dni" formControlName="dni" class="edit__input">
+                    <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span>
                 </div>
                 <div class="edit__group">
                     <label for="correo">Correo Electronico</label>
                     <input type="email" id="correo" formControlName="correo" class="edit__input">
+                    <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span>
                 </div>
                 <div class="edit__group">
                     <label for="telefono">Telefono</label>
                     <input type="text" id="telefono" formControlName="telefono" class="edit__input">
+                    <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span>
                 </div>
             </div>
             <div class="edit__btn-group">
