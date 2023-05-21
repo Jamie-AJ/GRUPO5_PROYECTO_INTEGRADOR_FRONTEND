@@ -6,8 +6,6 @@ import { dniPattern, emailPattern, passwordPattern, telefonoPattern } from 'src/
 
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
-import { Usuario } from 'src/app/interface/usuario.interface';
-import { debounceTime } from 'rxjs';
 import { Role } from 'src/app/interface/role.interface';
 
 
@@ -20,6 +18,7 @@ import { Role } from 'src/app/interface/role.interface';
 export class RegistrarComponent implements OnInit {
 
   roles:Role[] = [];
+
 
   form: FormGroup = this.builder.group({
     nombre: ['', [Validators.required, Validators.minLength(3)]],

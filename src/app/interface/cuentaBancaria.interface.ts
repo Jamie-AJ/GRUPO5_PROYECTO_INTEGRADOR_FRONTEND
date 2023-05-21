@@ -7,9 +7,11 @@ export class CuentaBancaria{
     nroCuenta?:string;
     nroCuentaCci?:string;
     cvv?:string;
-    mes?:Date;
-    year?:Date;
-    banco?:Bancos;
-    moneda?:Monedas;
+    mes?:string;
+    year?:string;
+    saldo?:number;
+    bancos?:Bancos;
+    monedas?:Monedas;
+    eneable?:string;
     usuario?:Usuario;
 }

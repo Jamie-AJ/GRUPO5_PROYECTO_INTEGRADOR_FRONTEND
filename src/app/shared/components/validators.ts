@@ -10,3 +10,6 @@ export const datePattern: string = "^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]
 export const telefonoPattern: string = "^9[\\d]{8}$";
 //La contraseña debe ser minimo de 8 caracteres, contar con al menos 1 caracter especial y al menos un numero
 export const passwordPattern: string = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Za-z]).{8,}$";
+
+export const cuentaBancariaPattern: string = "^[0-9]{16,20}$";
+export const cvvPattern: string ="^[0-9]{3,4}$";

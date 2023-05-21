@@ -12,5 +12,5 @@ export class Usuario{
     fecha?:Date; 
     dni?:string;
     enable?:string;  
-    rol?:Role;
+    // rol?:Role;
 }

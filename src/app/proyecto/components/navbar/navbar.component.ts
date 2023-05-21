@@ -2,6 +2,7 @@ import { Component,Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -38,6 +39,11 @@ export class NavbarComponent implements OnInit {
   public logout(){
     this.login.logout();
     this.router.navigate(['/auth/login']);
+    Swal.fire({
+      icon: 'success',
+      title: `${this.user.nombre}`,
+      text:'Cerraste sesion correctamente' , 
+    });
   }
 
   getHeadClass():string{ 

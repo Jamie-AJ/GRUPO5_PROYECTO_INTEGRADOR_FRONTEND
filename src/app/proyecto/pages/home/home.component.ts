@@ -13,17 +13,12 @@ interface SideNavToggle{
 })
 export class HomeComponent {
 
-
-
   isSideBarCollapse = false;
   screenWidth = 0;
-  
-
   onToggleSideBar(data:SideNavToggle):void{
     this.screenWidth = data.screenWidth;
     this.isSideBarCollapse = data.collapse;
   }
-
   getBodyClass(){
     let styleClass:string = '';
     if(this.isSideBarCollapse && this.screenWidth > 768){

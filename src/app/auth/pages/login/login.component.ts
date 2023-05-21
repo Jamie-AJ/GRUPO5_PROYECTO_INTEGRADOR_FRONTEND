@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
@@ -15,6 +16,15 @@ export class LoginComponent implements OnInit{
   loginData = {
     "username" : '',
     "password" : '',
+  }
+  objUsuario: Usuario = {
+    id: 0,
+    nombre: '',
+    apellidoPa: '',
+    apellidoMa: '',
+    correo: '',
+    telefono: '',
+    dni: ''
   }
   form:FormGroup =this.formBuilder.group({
     email:['',[Validators.required]],
@@ -46,13 +56,13 @@ export class LoginComponent implements OnInit{
     this.loginService.generateToken(this.loginData).subscribe(
       (data:any) => {
         console.log(data);
-        Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido',
-          text: 'Iniciando Sesion',
-        });
         this.loginService.loginUser(data.token);
         this.loginService.getCurrentUser().subscribe((user:any) => {
+          Swal.fire({
+            icon: 'success',
+            title: `Bienvenido ${user.nombre}`,
+            text:'Iniciaste sesion correctamente' ,
+          });
           this.loginService.setUser(user);
           console.log(user);
           if(this.loginService.getUserRole() == 'INVERSIONISTA'){

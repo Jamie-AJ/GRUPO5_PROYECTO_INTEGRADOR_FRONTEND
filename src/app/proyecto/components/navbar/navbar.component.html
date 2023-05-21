@@ -1,10 +1,10 @@
 <div class="nav" [ngClass]="getHeadClass()">
   <nav class="nav__container">
-    <i class="bx bx-menu"></i>
+    <button type="button" class="btn btn-primary">Nueva Inversión</button>
     <div class="nav__profile">
       <div class="dropdown">
         <button class="btn btn-outline-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-          {{ user.username }}
+          {{ user.nombre }} {{ user.apellidoPa }} {{ user.apellidoMa }}
         </button>
         <ul class="dropdown-menu">
           <li>
