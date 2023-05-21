@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Bancos } from 'src/app/interface/bancos.interface';
 import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
+import { Mes, Year } from 'src/app/interface/expiration.interface';
 
 import { Monedas } from 'src/app/interface/monedas.interface';
+import { Usuario } from 'src/app/interface/usuario.interface';
 import { BancoService } from 'src/app/services/banco.service';
 import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
+import { DateService } from 'src/app/services/date.service';
+import { LoginService } from 'src/app/services/login.service';
 import { MonedaService } from 'src/app/services/moneda.service';
 import { UserService } from 'src/app/services/user.service';
+import { cuentaBancariaPattern, cvvPattern } from 'src/app/shared/components/validators';
+import Swal from 'sweetalert2';
+declare var $:any;
 
 @Component({
   selector: 'app-acount-status',
@@ -16,101 +24,143 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AcountStatusComponent implements OnInit {
 
-  
+  //LISTA DE BANCOS Y MONEDAS
+  cuentaBancariaList:CuentaBancaria[] = []; 
   bancos:Bancos[] = [];
   monedas:Monedas[] = [];
-  cuentaBancariaList:CuentaBancaria[] = [];
-  tabs: string[] = ['Movimientos','Depositos y Retiros','Cuentas Bancaria' ]
-  activeTabsIndex: number = 0;
-  id:number = 0;
 
   objCuentaBancaria:CuentaBancaria = {
-    nroCuenta: '',
-    nroCuentaCci: '',
-    cvv: '',
-    mes: new Date(),
-    year: new Date(),
-    banco: {
-      idBancos: -1,
+    idCuentaBancaria:0,
+    nroCuenta:'',
+    cvv:'',
+    mes:'',
+    year:'',
+    bancos:{
+      idBancos:-1,
+      nomBancos:'',
     },
-    moneda:{
-      idMonedas: -1,
-    },
-      usuario:{
-        id: -1,
-      }
-  }
+    monedas:{
+      idMonedas:-1,
+      nomMonedas:'',
+      valorMonedas:''
+    }
+  };
+
+  //COMPORTAMIENTO DE LOS TABS
+  tabs: string[] = ['Movimientos','Depositos y Retiros','Cuentas Bancaria' ]
+  //TAB ACTIVO
+  activeTabsIndex: number = 0;
+
+  //USUARIO LOGEADO
+  user!:Usuario;
+
 
   constructor(
     private bancoService:BancoService, 
     private monedasService:MonedaService, 
-    private userService:UserService,
     private cuentaBancaria:CuentaBancariaService,
-    private activeRouter:ActivatedRoute) { }
+    private builder:FormBuilder,
+    private dateService:DateService){}
+
+    form: FormGroup = this.builder.group({
+      nroCuenta: ['', [Validators.required,Validators.pattern(cuentaBancariaPattern)]],
+      nroCuentaCci: ['', [Validators.required,Validators.pattern(cuentaBancariaPattern)]],
+      cvv: ['', [Validators.required,Validators.pattern(cvvPattern)]],
+      mes: ['', [Validators.required]],
+      year: ['', [Validators.required]],
+      bancos: [undefined, [Validators.required]],
+      monedas: ['', [Validators.required,Validators.minLength(1)]],
+    });
 
   ngOnInit(): void {
-
     this.bancoService.getBancos().subscribe(bancos =>{this.bancos = bancos});
     this.monedasService.getMonedas().subscribe(monedas => {this.monedas = monedas})
-    this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
-      console.log(cuentaBancaria);
-      this.cuentaBancariaList = cuentaBancaria;
-    });
-    this.mesDinamico();   
-    this.yearDinamico();
-    this.inputNumber();
+    this.getCuentaBancarias();
   }
-
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
   }
   //llena el select con los meses
-  mesDinamico(){
-    for(let i:number = 1; i <= 12; i++){
-      const option = document.createElement('option');
-      option.value = i.toString();
-      option.innerText = i.toString();
-      document.getElementById('mes')?.appendChild(option);
-    } 
+  get meses():Mes[]{
+    return this.dateService.meses;
   }
   //llena el select con los años
-  yearDinamico(){
-    const date = new Date().getFullYear();
-    for(let i:number = date; i <= date + 10; i++){
-      const option = document.createElement('option');
-      option.value = i.toString();
-      option.innerText = i.toString();
-      document.getElementById('year')?.appendChild(option);
-    }
+  get years():Year[]{
+    return this.dateService.years;
   }
-  //valida que solo se ingresen numeros en el input
-  inputNumber(){
-    const input:any = document.querySelector('#cuenta');
-    const cvv:any = document.querySelector('#cvv')
-    input.addEventListener('keyup', (e:any) => {
-      let valorInput:string = e.target.value;
-      //eliminar el espacio en blanco
-      input.value = valorInput.replace(/\s/g, '')
-      //eliminar letras
-      .replace(/\D/g, '')
-      //poner espacio cada 4 numeros
-      .replace(/([0-9]{4})/g, '$1 ').trim();
-    });
-    cvv.addEventListener('keyup', (e:any) => {
-      let valorInput:string = e.target.value;
-       //eliminar letras
-      cvv.value = valorInput.replace(/\D/g, '').trim();
+
+  //VALIDACIONES
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+        case 'pattern':
+          return 'El valor ingresado no tiene formato válido';
+      }
+    }
+    return null;
+  }
+  validarEstadoTarjeta(){
+    if(this.objCuentaBancaria.idCuentaBancaria === 0){
+      return 'Activo';
+    }
+    return 'Inactivo';
+  }
+  //VALIDACIONES DE LOS SELECTS
+  compareBancos(o1: Bancos, o2: Bancos):any {
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.idBancos === o2.idBancos;
+  }
+  getCuentaBancarias(){
+    this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
+      console.log(cuentaBancaria);
+      this.cuentaBancariaList = cuentaBancaria;});
+  }
+  postCuentaBancaria(){
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
+      return;
+    }
+    console.log(this.form.value);
+    this.cuentaBancaria.postCuentaBancaria(this.objCuentaBancaria).subscribe(resp => {
+      this.getCuentaBancarias()
+      Swal.fire('Excelente', resp.mensaje, 'success');
+      $('#exampleModal').modal('hide');
     });
   }
 
-  postCuentaBancaria(){
-    this.cuentaBancaria.postCuentaBancaria(this.id,this.objCuentaBancaria).subscribe((resp) =>{
-      this.cuentaBancaria =resp;
-      console.log(resp);
-      alert('Cuenta Bancaria Registrada');
-    }, (err) =>{
-      console.log(err);
-      
-    });
+  desactivarCuentasBancarias(cuentaBacaria:CuentaBancaria){
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "No podras revertir esto!",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cuentaBancaria.deleteById(cuentaBacaria.idCuentaBancaria || 0).subscribe(resp =>{
+          this.getCuentaBancarias();
+          Swal.fire(
+            'Deleted!',
+            resp.mensaje,
+            'success'
+          )
+        }) 
+      }
+    })
+    
   }
+
 }

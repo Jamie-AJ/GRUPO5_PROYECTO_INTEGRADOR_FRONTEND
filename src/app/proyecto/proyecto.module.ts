@@ -14,6 +14,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
+import { MovementListComponent } from './pages/movement-list/movement-list.component';
+import { AddAccountBankComponent } from './pages/add-account-bank/add-account-bank.component';
 
 
 
@@ -31,6 +34,9 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
     FooterComponent,
     TabsComponent,
     EditProfileComponent,
+    WalletComponent,
+    MovementListComponent,
+    AddAccountBankComponent,
   ],
   imports: [
     CommonModule,

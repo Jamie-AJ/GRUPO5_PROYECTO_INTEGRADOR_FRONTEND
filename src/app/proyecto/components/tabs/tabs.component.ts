@@ -9,6 +9,7 @@ export class TabsComponent implements OnInit{
 
   @Input() tabs:string[] = [];
   @Output() onTabsChange = new EventEmitter<number>();
+  
   activeTabs: number = 0;
   ngOnInit(): void {
     
