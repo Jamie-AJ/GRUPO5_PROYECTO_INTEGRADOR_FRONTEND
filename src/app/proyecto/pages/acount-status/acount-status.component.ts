@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { Bancos } from 'src/app/interface/bancos.interface';
 import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
 import { Mes, Year } from 'src/app/interface/expiration.interface';
@@ -10,12 +9,12 @@ import { Usuario } from 'src/app/interface/usuario.interface';
 import { BancoService } from 'src/app/services/banco.service';
 import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
 import { DateService } from 'src/app/services/date.service';
-import { LoginService } from 'src/app/services/login.service';
 import { MonedaService } from 'src/app/services/moneda.service';
-import { UserService } from 'src/app/services/user.service';
+
 import { cuentaBancariaPattern, cvvPattern } from 'src/app/shared/components/validators';
 import Swal from 'sweetalert2';
 declare var $:any;
+
 
 @Component({
   selector: 'app-acount-status',
@@ -23,6 +22,7 @@ declare var $:any;
   styleUrls: ['./acount-status.component.css']
 })
 export class AcountStatusComponent implements OnInit {
+ 
 
   //LISTA DE BANCOS Y MONEDAS
   cuentaBancariaList:CuentaBancaria[] = []; 
@@ -68,7 +68,7 @@ export class AcountStatusComponent implements OnInit {
       cvv: ['', [Validators.required,Validators.pattern(cvvPattern)]],
       mes: ['', [Validators.required]],
       year: ['', [Validators.required]],
-      bancos: [undefined, [Validators.required]],
+      bancos: ['', [Validators.required]],
       monedas: ['', [Validators.required,Validators.minLength(1)]],
     });
 
@@ -108,12 +108,6 @@ export class AcountStatusComponent implements OnInit {
     }
     return null;
   }
-  validarEstadoTarjeta(){
-    if(this.objCuentaBancaria.idCuentaBancaria === 0){
-      return 'Activo';
-    }
-    return 'Inactivo';
-  }
   //VALIDACIONES DE LOS SELECTS
   compareBancos(o1: Bancos, o2: Bancos):any {
     if(o1 === undefined && o2 === undefined){
@@ -126,6 +120,7 @@ export class AcountStatusComponent implements OnInit {
       console.log(cuentaBancaria);
       this.cuentaBancariaList = cuentaBancaria;});
   }
+
   postCuentaBancaria(){
     if(this.form.invalid){
       this.form.markAllAsTouched();
@@ -133,9 +128,9 @@ export class AcountStatusComponent implements OnInit {
     }
     console.log(this.form.value);
     this.cuentaBancaria.postCuentaBancaria(this.objCuentaBancaria).subscribe(resp => {
-      this.getCuentaBancarias()
+      document.getElementById('btnCloseModal')?.click();
       Swal.fire('Excelente', resp.mensaje, 'success');
-      $('#exampleModal').modal('hide');
+      this.getCuentaBancarias()
     });
   }
 
