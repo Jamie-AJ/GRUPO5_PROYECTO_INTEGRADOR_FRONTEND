@@ -27,7 +27,7 @@ export class ProfileComponent implements  OnInit{
     dni:'',
   }
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,private builder:FormBuilder,private router:Router, private loginService:LoginService) { }
+  constructor( private activatedRoute: ActivatedRoute,private builder:FormBuilder,private router:Router, private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -36,7 +36,7 @@ export class ProfileComponent implements  OnInit{
       {
         if(!usuario)return this.router.navigate(['/dashboard/dashboard']);
         this.usuario = usuario;
-        console.log(usuario);
+        // console.log(usuario);
         return;
     })
   }

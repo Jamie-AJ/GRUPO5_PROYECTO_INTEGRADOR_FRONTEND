@@ -2,12 +2,7 @@
   <ul class="status__tabs--container">
     <!-- (click)="onTabClick('Movimientos')" -->
     <!-- [class.active]="activeTabs == 'Movimientos'" -->
-    <li
-      class="status__link"
-      *ngFor="let tab of tabs; let sr = index"
-      (click)="onTabClick(sr)"
-      [ngClass]="activeTabs == sr ? 'active' : ''"
-    >
+    <li class="status__link" *ngFor="let tab of tabs; let sr = index" (click)="onTabClick(sr)" [ngClass]="activeTabs == sr ? 'active' : ''">
       {{ tab }}
     </li>
     <!-- <li class="status__link" (click)="onTabClick('DepositoRetiros')" [class.active]="activeTabs == 'DepositoRetiros'">

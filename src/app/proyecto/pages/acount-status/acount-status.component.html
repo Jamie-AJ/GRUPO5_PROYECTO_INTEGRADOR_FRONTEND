@@ -7,114 +7,113 @@
     class="status__content animate__animated animate__fadeIn animete_faster"
     *ngIf="activeTabsIndex === 0"
   >
-    <app-movement-list></app-movement-list>
+  <app-movement-list></app-movement-list>
   </div>
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
     *ngIf="activeTabsIndex === 1"
   >
-    <app-wallet></app-wallet>
+  <app-wallet></app-wallet>
   </div>
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
-    *ngIf="activeTabsIndex === 2"
-  >
+    *ngIf="activeTabsIndex === 2">
     <div class="account">
-        <div class="account__bank" *ngFor="let cta of cuentaBancariaList">    
-          <div class="account__info">
-            <h4>{{cta.bancos?.nomBancos}}</h4>
-            <div class="account__info-content">
-                <p>Titular:</p>
-                <span>{{cta.usuario?.nombre | uppercase}} {{cta.usuario?.apellidoPa | uppercase}}  </span>
+      <div class="account__bank" *ngFor="let cta of cuentaBancariaList">    
+        <div class="account__info">
+          <h4>{{cta.bancos?.nomBancos}}</h4>
+          <div class="account__info-content">
+              <p>Titular:</p>
+              <span>{{cta.usuario?.nombre | uppercase}} {{cta.usuario?.apellidoPa | uppercase}}  </span>
+          </div>
+          <div class="account__info-content">
+            <div>
+              <p>Moneda:</p>
+              <span>{{cta.monedas?.nomMonedas}}</span>
             </div>
-            <div class="account__info-content">
-              <div>
-                <p>Moneda:</p>
-                <span>{{cta.monedas?.nomMonedas}}</span>
-              </div>
-              <i class="bx bx-trash icon" (click)="desactivarCuentasBancarias(cta)"></i>
-            </div>
+            <i class="bx bx-trash icon" (click)="desactivarCuentasBancarias(cta)"></i>
           </div>
         </div>
-        <button class="open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Agregar Cuenta Bancaria
-          <i class="bx bx-plus icon"></i>
-        </button>
-    </div>
+      </div>
+      <button class="open-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Agregar Cuenta Bancaria
+        <i class="bx bx-plus icon"></i>
+      </button>
   </div>
+</div>
 </div>
 
 <!-- Modal -->
 <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Ingresa los datos de tú tarjeta
-        </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form class="form" id="form-tarjeta" [formGroup]="form" (ngSubmit)="postCuentaBancaria()">
-          <div class="form__content">
-            <div class="form__box">
-              <!-- <label for="banco">Selecciona el banco</label> -->
-              <select [compareWith]="compareBancos" class="form__input" formControlName="bancos" id="bancos" [(ngModel)]="objCuentaBancaria.bancos">
-                <option [ngValue]="undefined">Selecciona Bancos</option>
-                <option *ngFor="let banco of bancos" [ngValue]="banco">{{banco.nomBancos}}</option>
-              </select>
-              <span *ngIf="isValid('bancos')" class="invalid">{{getFieldError('bancos')}}</span>
-            </div>
-            <div class="form__box">
-              <input type="text" class="form__input"[(ngModel)]="objCuentaBancaria.nroCuenta" formControlName="nroCuenta" id="nroCuenta" placeholder="Ingrese su número de tarjeta">
-              <span *ngIf="isValid('nroCuenta')" class="invalid">{{getFieldError('nroCuenta')}}</span>
-            </div>
-            <div class="form__box">
-              <input type="text" class="form__input"[(ngModel)]="objCuentaBancaria.nroCuentaCci" formControlName="nroCuentaCci" id="nroCuentaCci" placeholder="Ingrese su número de tarjeta CCI">
-              <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{getFieldError('nroCuentaCci')}}</span>
-            </div>
-            <div class="form__box">
-              <select  class="form__input" id="monedas" [(ngModel)]="objCuentaBancaria.monedas" formControlName="monedas">
-                <option value="">Selecciona Moneda</option>
-                <option *ngFor="let moneda of monedas" [ngValue]="moneda">{{moneda.nomMonedas}}</option>
-              </select>
-              <span *ngIf="isValid('monedas')" class="invalid">{{getFieldError('monedas')}}</span>
-            </div>
-            <div class="form__box">
-              <select class="form__input" id="mes" [(ngModel)]="objCuentaBancaria.mes" formControlName="mes">
-                  <option disabled selected value="">Mes</option>
-                  <option *ngFor="let mes of meses" [value]="mes">{{mes}}</option>
-              </select>
-              <span *ngIf="isValid('mes')" class="invalid">{{getFieldError('mes')}}</span>
-            </div>
-            <div class="form__box">
-              <select class="form__input"id="year"  [(ngModel)]="objCuentaBancaria.year" formControlName="year">
-                  <option disabled selected value="">Año</option>
-                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
-              </select>
-              <span *ngIf="isValid('year')" class="invalid">{{getFieldError('year')}}</span>
-            </div>
-            <!-- <div class="form__box">
-              <input type="text" class="form__input"  id="saldo"  [(ngModel)]="objCuentaBancaria.saldo" formControlName="saldo" placeholder="Monto" >
-              <span *ngIf="isValid('saldo')" class="invalid">{{getFieldError('saldo')}}</span>
-            </div> -->
-            <div class="form__box">              
-              <!-- <label for="cvv">CVV</label> -->
-              <input type="text" class="form__input" [(ngModel)]="objCuentaBancaria.cvv" id="cvv" formControlName="cvv" placeholder="CVV">
-              <span *ngIf="isValid('cvv')" class="invalid">{{getFieldError('cvv')}}</span>
-            </div>
-          </div>
-        </form>
-        <!-- <pre>
-          {{this.objCuentaBancaria | json}}
-        </pre> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="btnCloseModal">
-          Close
-        </button>
-        <button type="submit" class="btn btn-success" (click)="postCuentaBancaria()">Guarda</button>
-      </div>
+<div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">
+        Ingresa los datos de tú tarjeta
+      </h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    <div class="modal-body">
+      <form class="form" id="form-tarjeta" [formGroup]="form" (ngSubmit)="postCuentaBancaria()">
+        <div class="form__content">
+          <div class="form__box">
+            <!-- <label for="banco">Selecciona el banco</label> -->
+            <select class="form__input" formControlName="bancos" id="bancos" [(ngModel)]="objCuentaBancaria.bancos">
+              <option [ngValue]="undefined">Selecciona Bancos</option>
+              <option *ngFor="let banco of bancos" [ngValue]="banco">{{banco.nomBancos}}</option>
+            </select>
+            <span *ngIf="isValid('bancos')" class="invalid">{{getFieldError('bancos')}}</span>
+          </div>
+          <div class="form__box">
+            <input type="text" class="form__input"[(ngModel)]="objCuentaBancaria.nroCuenta" formControlName="nroCuenta" id="nroCuenta" placeholder="Ingrese su número de tarjeta">
+            <span *ngIf="isValid('nroCuenta')" class="invalid">{{getFieldError('nroCuenta')}}</span>
+          </div>
+          <div class="form__box">
+            <input type="text" class="form__input"[(ngModel)]="objCuentaBancaria.nroCuentaCci" formControlName="nroCuentaCci" id="nroCuentaCci" placeholder="Ingrese su número de tarjeta CCI">
+            <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{getFieldError('nroCuentaCci')}}</span>
+          </div>
+          <div class="form__box">
+            <select  class="form__input" id="monedas" [(ngModel)]="objCuentaBancaria.monedas" formControlName="monedas">
+              <option value="">Selecciona Moneda</option>
+              <option *ngFor="let moneda of monedas" [ngValue]="moneda">{{moneda.nomMonedas}}</option>
+            </select>
+            <span *ngIf="isValid('monedas')" class="invalid">{{getFieldError('monedas')}}</span>
+          </div>
+          <div class="form__box">
+            <select class="form__input" id="mes" [(ngModel)]="objCuentaBancaria.mes" formControlName="mes">
+                <option disabled selected value="">Mes</option>
+                <option *ngFor="let mes of meses" [value]="mes">{{mes}}</option>
+            </select>
+            <span *ngIf="isValid('mes')" class="invalid">{{getFieldError('mes')}}</span>
+          </div>
+          <div class="form__box">
+            <select class="form__input"id="year"  [(ngModel)]="objCuentaBancaria.year" formControlName="year">
+                <option disabled selected value="">Año</option>
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+            </select>
+            <span *ngIf="isValid('year')" class="invalid">{{getFieldError('year')}}</span>
+          </div>
+          <!-- <div class="form__box">
+            <input type="text" class="form__input"  id="saldo"  [(ngModel)]="objCuentaBancaria.saldo" formControlName="saldo" placeholder="Monto" >
+            <span *ngIf="isValid('saldo')" class="invalid">{{getFieldError('saldo')}}</span>
+          </div> -->
+          <div class="form__box">              
+            <!-- <label for="cvv">CVV</label> -->
+            <input type="text" class="form__input" [(ngModel)]="objCuentaBancaria.cvv" id="cvv" formControlName="cvv" placeholder="CVV">
+            <span *ngIf="isValid('cvv')" class="invalid">{{getFieldError('cvv')}}</span>
+          </div>
+        </div>
+      </form>
+      <!-- <pre>
+        {{this.objCuentaBancaria | json}}
+      </pre> -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="btnCloseModal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-success" (click)="postCuentaBancaria()">Guarda</button>
+    </div>
+  </div>
   </div>
 </div>

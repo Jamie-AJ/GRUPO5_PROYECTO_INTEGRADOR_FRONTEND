@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background:linear-gradient(to left, var(--top-color) 50%, var(--bot-color) 100%);
+    background:#11131b;
     padding:2rem;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
 .box{
     position: relative;
     width: 100%;
-    background-color: #ffffff;
+    background-color:var(--sidebar-color-content);
     max-width: 1200px;
     height: 680px;
     border-radius:1rem;

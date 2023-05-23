@@ -9,17 +9,18 @@ import { OportunitiesComponent } from './pages/oportunities/oportunities.compone
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
+
 const router:Routes = [
   {
     path:'',
     component: HomeComponent,
     children:[
-      {path:'dashboard',component:DashboardComponent},
+      {path:'',component:DashboardComponent},
       {path:'inversiones', component:InversionesComponent},
-      {path:'account-status', component:AcountStatusComponent},
       {path:'profile-edit',component:EditProfileComponent},
       {path:'oportunities',component:OportunitiesComponent},
       {path:'details-profile', component:ProfileComponent},
+      {path:'account-status', component:AcountStatusComponent},
       {path:'**', redirectTo:'dashboard'}
     ]
   }

@@ -5,7 +5,7 @@
     top:0;
     z-index:1;
     transition: all .3s ease;
-    border-bottom: 1px solid #f1f0f6;
+    /* border-bottom: 1px solid #1E2433; */
     
 }
 .head-collapsed{
@@ -19,7 +19,7 @@
 .nav__container {
     height: 64px;
     padding:0 20px;
-    background-color: var(--white-color);
+    background-color: var(--sidebar-color-content);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,22 +60,39 @@
     align-items: center;
     justify-content: space-around;
 }
-/* .navbar__menu .nav__links{
+.nav__profile{
     display: flex;
     align-items: center;
-    height: 25px;
-    cursor: zpointer;
-    padding:0 16px;
-    background-color: var(--white-color);
-
+    justify-content: space-between;
+    gap: 1rem;
 }
-.navbar__menu .nav__links:hover{
-    background-color: #f2f2f2;
+.nav__profile button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5rem;
 }
-.nav__links i{
-    font-size: 20px;
-    margin-right: 10px;
-} */
+.nav__profile i{
+    font-size: 1.3rem;
+    color: var(--sidebar-color);
+}
+.wallet-button{
+    /* background-color: var(--primary-color); */
+    background: transparent;
+    border: 0.5px solid #fac790;
+    color: var(--white-color);
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.wallet-button:hover{
+    /* background-color: var(--primary-color); */
+    border: 0.5px solid var(--primary-color);
+    color: var(--white-color);
+}
 .nav__profile a,
 .nav__profile a i {
     color:var(--black-color);

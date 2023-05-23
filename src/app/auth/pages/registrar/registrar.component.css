@@ -20,6 +20,7 @@
 
 .form__title {
     font-weight: 600;
+    color: var(--white-color);
 }
 
 .form__subtitle {
@@ -76,45 +77,20 @@
     margin: auto;
     cursor: pointer;
 }
-/* .btn-style{
-    border: none;
-    padding:1rem 2rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.125rem;
-    color: var(--white-color);
-}
-.btn__capitalist{
-    background-image:linear-gradient(to left, var(--primary-color) 50%, #221c68 100%);
-    text-align: left;  
-}
-.btn__capitalist i,
-.btn__company i{
-    font-size: 4rem;
-}
-.btn__capitalist p,
-.btn__company p{
-    font-weight: 600;
-    margin-top: -2.375rem;
-} */
-
 .input__field {
     width: 100%;
     background: none;
     border: none;
     outline: none;
-    border-bottom: 1px solid var(--form-color);
-    color: var(--grey-color);
-    
+    border-bottom: 1px solid var(--white-color);
+    color: var(--white-color);
 }
 .input__wrap i {
-    position: absolute;
-    top: 60%;
-    right: 0;
+    position: relative;
+    top: -25%;
+    right: -93%;
     transform: translateY(-50%);
-    color: var(--grey-color);
+    color: var(--white-color);
     font-size: 1rem;
 }
 .valid__contraseña {
@@ -127,21 +103,21 @@
 
 .valid__contraseña p {
     font-size: 0.8rem;
-    color: var(--pass-color);
+    color: var(--white-color);
 }
 
 .valid__contraseña i {
-    color: var(--grey-color);
+    color: var(--white-color);
 }
 .input__field::placeholder{
-    color: #b5b5b5;
+    color: var(--grey-color);
     font-size: 0.875rem;
 }
 .invalid {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    color: #d45360;
+    color: #ff4747;
     font-size: 12px;
     font-weight: 600;
     width: 100%;

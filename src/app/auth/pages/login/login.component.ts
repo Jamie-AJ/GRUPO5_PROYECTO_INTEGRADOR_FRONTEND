@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup,FormBuilder,Validators, ValidationErrors } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
+import { passwordPattern } from 'src/app/shared/components/validators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,63 +13,54 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+  isLoading = false;
 
-  loginData = {
-    "username" : '',
-    "password" : '',
-  }
-  objUsuario: Usuario = {
-    id: 0,
-    nombre: '',
-    apellidoPa: '',
-    apellidoMa: '',
-    correo: '',
-    telefono: '',
-    dni: ''
-  }
   form:FormGroup =this.formBuilder.group({
-    email:['',[Validators.required]],
-    password:['',[Validators.required]]
+    username:['',[Validators.required,Validators.minLength(2)]],
+    password:['',[Validators.required,Validators.pattern(passwordPattern)]]
   })
 
   constructor(private formBuilder:FormBuilder, private loginService:LoginService, private router:Router){}
+  
   ngOnInit(): void {
+    
+  }
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+//VALIDACIONES
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors:ValidationErrors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+        case 'pattern':
+          return 'El valor ingresado no tiene formato válido';
+      }
+    }
+    return null;
   }
   formSubmit(){
-    
-    if(this.loginData.username.trim() == '' || this.loginData.username.trim() == null){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'usuario requerido',
-      })
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
       return;
     }
-
-    if(this.loginData.password.trim() == '' || this.loginData.password.trim() == null){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'contraseña requerida',
-      })
-      return;
-    }
-    this.loginService.generateToken(this.loginData).subscribe(
+    this.isLoading = true;
+    this.loginService.generateToken(this.form.value).subscribe(
       (data:any) => {
         console.log(data);
         this.loginService.loginUser(data.token);
         this.loginService.getCurrentUser().subscribe((user:any) => {
-          Swal.fire({
-            icon: 'success',
-            title: `Bienvenido ${user.nombre}`,
-            text:'Iniciaste sesion correctamente' ,
-          });
           this.loginService.setUser(user);
           console.log(user);
           if(this.loginService.getUserRole() == 'INVERSIONISTA'){
             //dashboard admin
             //window.location.href = '/admin';
-            this.router.navigate(['dashboard/dashboard']);
+            this.router.navigate(['dashboard/']);
             this.loginService.loginStatusSubjec.next(true);
           }
           /*else if(this.loginService.getUserRole() == 'por defecto'){

@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule} from '@angular/router'
 import { Error404PagesComponent } from './shared/pages/error404-pages/error404-pages.component';
+import { isNotAuthenticatedGuard, isAuthenticatedGuard } from './auth/guards';
 
 const router:Routes = [
 
   {
     path:'auth',
+    canActivate:[isNotAuthenticatedGuard],
     loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path:'dashboard',
+    canActivate:[isAuthenticatedGuard],
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
   },
   {

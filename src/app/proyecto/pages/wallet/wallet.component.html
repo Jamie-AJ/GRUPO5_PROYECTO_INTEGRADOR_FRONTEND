@@ -1,0 +1,38 @@
+<section class="wallet">
+    <div class="wallet__container">
+        <div class="wallet__box">
+            <div>
+                <span class="wallet__saldo">Saldo: </span>
+                <span>{{objSaldo.saldo |  currency:'PEN&nbsp;':'symbol-narrow'}}</span>
+
+            </div>
+            <div class="wallet__btn">
+                <button type="button" class="deposit">Deposito</button>
+                <button type="button" class="withdraw">Retiro</button>
+            </div>
+        </div>
+        <div class="listar__content">
+            <div class="listar__content-table">
+                <table class="listar__table">
+                    <thead class="listar__thead">
+                        <tr>
+                            <th>Codigó</th>
+                            <th>Fecha</th>
+                            <th>Transacción</th>
+                            <th>Monto</th>
+                            <!-- <th>Estado</th> -->
+                        </tr>
+                    </thead>
+                    <tbody class="listar__tbody">
+                        <tr *ngFor="let trans of transaccion">
+                            <td>{{trans.idTransaccion}}</td>
+                            <td>{{trans.fecha | date:'fullDate'}}</td>
+                            <td>{{trans.tipoTransaccion!.tipo}}</td>
+                            <td>{{trans.monto | currency:'PEN&nbsp;':'symbol-narrow'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

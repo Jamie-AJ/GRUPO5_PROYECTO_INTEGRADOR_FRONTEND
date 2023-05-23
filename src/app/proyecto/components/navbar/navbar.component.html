@@ -2,22 +2,25 @@
   <nav class="nav__container">
     <button type="button" class="btn btn-primary">Nueva Inversión</button>
     <div class="nav__profile">
-      <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+      <button type="button" class="wallet-button">
+        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'PEN&nbsp;':'symbol-narrow' }}
+      </button>
+      <div class="dropdown"> 
+        <button  class="btn btn-outline-light dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ user.nombre }} {{ user.apellidoPa }} {{ user.apellidoMa }}
         </button>
         <ul class="dropdown-menu">
           <li>
             <a class="dropdown-item select_btn" routerLink="/dashboard/details-profile">
-                Mis Datos<i class='bx bx-user-circle'></i>
+              Mis Datos<i class="bx bx-user-circle"></i>
             </a>
-        </li>
-          <li><hr class="dropdown-divider"></li>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
           <li>
-            <a class="dropdown-item select_btn"(click)="logout()">
-                Logout<i class='bx bx-log-out'></i>
+            <a class="dropdown-item select_btn" (click)="logout()">
+              Logout<i class="bx bx-log-out"></i>
             </a>
-        </li>
+          </li>
         </ul>
       </div>
     </div>
