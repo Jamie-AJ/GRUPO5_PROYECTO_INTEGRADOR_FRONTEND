@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, inject} from '@angular/core';
+import { FormBuilder,FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Bancos } from 'src/app/interface/bancos.interface';
 import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
 import { Mes, Year } from 'src/app/interface/expiration.interface';
@@ -21,7 +21,7 @@ declare var $:any;
   templateUrl: './acount-status.component.html',
   styleUrls: ['./acount-status.component.css']
 })
-export class AcountStatusComponent implements OnInit {
+export class AcountStatusComponent implements OnInit{
  
 
   //LISTA DE BANCOS Y MONEDAS
@@ -54,11 +54,11 @@ export class AcountStatusComponent implements OnInit {
   //USUARIO LOGEADO
   user!:Usuario;
 
-
+ private bancoService = inject(BancoService);
+ private cuentaBancaria= inject(CuentaBancariaService);
+ 
   constructor(
-    private bancoService:BancoService, 
     private monedasService:MonedaService, 
-    private cuentaBancaria:CuentaBancariaService,
     private builder:FormBuilder,
     private dateService:DateService){}
 
@@ -95,7 +95,7 @@ export class AcountStatusComponent implements OnInit {
   }
   getFieldError(field: string): string | null {
     if (!this.form.controls[field]) return null;
-    const errors = this.form.controls[field].errors || {};
+    const errors:ValidationErrors = this.form.controls[field].errors || {};
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
@@ -109,15 +109,9 @@ export class AcountStatusComponent implements OnInit {
     return null;
   }
   //VALIDACIONES DE LOS SELECTS
-  compareBancos(o1: Bancos, o2: Bancos):any {
-    if(o1 === undefined && o2 === undefined){
-      return true;
-    }
-    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.idBancos === o2.idBancos;
-  }
   getCuentaBancarias(){
     this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
-      console.log(cuentaBancaria);
+      // console.log(cuentaBancaria);
       this.cuentaBancariaList = cuentaBancaria;});
   }
 

@@ -7,6 +7,7 @@ import { MainComponent } from './pages/main/main.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

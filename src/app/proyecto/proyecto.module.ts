@@ -16,7 +16,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
-import { AddAccountBankComponent } from './pages/add-account-bank/add-account-bank.component';
+
 
 
 
@@ -36,7 +36,6 @@ import { AddAccountBankComponent } from './pages/add-account-bank/add-account-ba
     EditProfileComponent,
     WalletComponent,
     MovementListComponent,
-    AddAccountBankComponent,
   ],
   imports: [
     CommonModule,
