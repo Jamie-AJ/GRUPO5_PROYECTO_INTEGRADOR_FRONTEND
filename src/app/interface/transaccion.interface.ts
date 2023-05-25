@@ -8,5 +8,5 @@ export class Transaccion{
     tipoTransaccion?: TipoTransaccion;
     idTipoTransaccion?: number;
     cuentaBancaria?:CuentaBancaria;
-    
+    idCuentaBancaria?: number;
 }

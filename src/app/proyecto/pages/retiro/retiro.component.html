@@ -8,20 +8,21 @@
             <label for="cuentaBancaria"
               >De las cuentas que tienes registradas, selecciona la que usaras
               para retirar a InvestGo!</label>
-            <select name="cuentaBancaria" id="cuentaBancaria" class="retiro__input">
+            <select name="cuentaBancaria" id="cuentaBancaria" class="retiro__input" [(ngModel)]="objTransaccion.idCuentaBancaria">
               <option selected disabled value="">
                 Selecciona Cuenta Bancaria
               </option>
+              <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
             </select>
           </div>
           <div class="retiro__box">
             <label for="monto">Escribe el monto de retiro</label>
-            <input type="text" name="monto" class="retiro__input"/>
+            <input type="number" [(ngModel)]="objTransaccion.monto" name="monto" class="retiro__input"/>
           </div>
         </div>
         <div class="deposito__group-btn">
-          <button type="button" class="deposito__btn group-btn">
-            Depositar
+          <button type="button" class="deposito__btn group-btn" (click)="postRetirar()">
+            Retirar
           </button>
           <button type="button" class="deposito__goBack group-btn" (click)="finalizarRetiro()">
             Cancelar
