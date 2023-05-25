@@ -1,45 +1,42 @@
-<section class="company__container animate__animated animate__fadeIn animete_faster">
-    <div>
-        <h3>{{title}}</h3>
+<section class="factura__container animate__animated animate__fadeIn animete_faster">
+  <div>
+    <h2>{{title}}</h2>
+  </div>
+  <div class="factura__form">
+    <div class="form__content">
+      <form action="" class="factura__content-form" (ngSubmit)="postFactura()">
+        <h3>Generar Facturas</h3>
+        <div class="form__group">
+          <!-- <div class="form__box">
+          <label for="numeroFactura">Codigó de Factura</label>
+          <input type="text" id="numeroFactura" name="numeroFactura"  readonly>
+          </div> -->
+          <div class="form__box">
+            <label for="empresa">Empresa</label>
+            <select id="empresa" name="empresa" [(ngModel)]="objFactura.idEmpresa" class="form__input"> 
+              <option disabled select [ngValue]="undefined">Seleccion la empresa</option>
+              <option *ngFor="let emp of empresas" [value]="emp.idEmpresa">{{emp.razonSocial}}</option>
+            </select>
+          </div>
+          <div class="form__box">
+            <label for="fechaPago">Fecha de Pago</label>
+            <input type="date" id="fechaPago" name="fechaPago" [(ngModel)]="objFactura.fechaPago" class="form__input">
+          </div>
+          <div class="form__box">
+            <label for="monto">Monto de Factura</label>
+            <input type="number" id="monto" name="monto" [(ngModel)]="objFactura.monto" class="form__input">
+          </div>
+          <div class="form__box">
+            <label for="descripcion">Descripción de factura</label>
+            <textarea id="descripcion" name="descripcion" [(ngModel)]="objFactura.descripcion"></textarea>
+          </div>
+        </div>  
+        <div class="form__group--btn">
+          <button class="btn btn-danger" (click)="goBack()">Cancelar</button>
+          <button class="btn btn-primary">Guardar</button>
+      </div>  
+      </form>
     </div>
-<form action="">
-    <div class="factura__grid">
-        <div class="form-container">
-            <fieldset>
-                <legend>Datos del Cliente</legend>
-                <div class="form-group">
-                  <label for="nombre">Nombre del Cliente</label>
-                  <input type="text" id="nombre" name="nombre" required>
-                </div>
-            
-                <div class="form-group">
-                  <label for="email">Correo Electrónico</label>
-                  <input type="email" id="email" name="email"required>
-                </div>
-              </fieldset>
-            
-              <fieldset>
-                <legend>Datos de la Factura</legend>
-                <div class="form-group">
-                  <label for="numeroFactura">Número de Factura</label>
-                  <input type="text" id="numeroFactura" name="numeroFactura" required>
-                </div>
-            
-                <div class="form-group">
-                  <label for="fechaFactura">Fecha de Factura</label>
-                  <input type="date" id="fechaFactura" name="fechaFactura"  required>
-                </div>
-            
-                <div class="form-group">
-                  <label for="monto">Monto de Factura</label>
-                  <input type="number" id="monto" name="monto"required>
-                </div>
-              </fieldset>
-        </div>
-        <div class="factura__btn-group">
-            <button class="btn btn-danger">Cancelar</button>
-            <button class="btn btn-primary">Guardar</button>
-        </div>
-    </div>
-</form>
+  </div>
 </section>
+

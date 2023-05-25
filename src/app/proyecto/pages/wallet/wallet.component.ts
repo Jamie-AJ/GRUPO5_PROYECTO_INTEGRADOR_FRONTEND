@@ -67,6 +67,4 @@ export class WalletComponent implements OnInit{
       this.transaccion = transaccion;
     })
  }
- 
-
 }

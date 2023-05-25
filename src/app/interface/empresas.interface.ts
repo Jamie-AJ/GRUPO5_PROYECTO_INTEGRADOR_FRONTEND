@@ -3,7 +3,7 @@ export interface Empresas {
     nomEmpresa?:        string;
     ruc?:               string;
     razonSocial?:       string;
-    nomRepresentante?:  string;
+    representanteLegal?:  string;
     fechaDeInicioActv?: Date;
     direccion?:         string;
     telefono?:          string;

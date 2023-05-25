@@ -15,13 +15,16 @@ import Swal from 'sweetalert2';
 })
 
 export class DepositoComponent {
+  @Output() depositoCompletado = new EventEmitter<void>();
   objTransaccion: Transaccion = new Transaccion();
+  
   /*objTransaccion:Transaccion = {
     idCuentaBancaria:0,
     monto: 0
   };*/
   cuentabancariaCombo: CuentaBancaria[] = [];
 
+  private router = inject(Router);
   constructor(private cuentaBancariaService: CuentaBancariaService, private transaccionService: TransaccionService){
    }
   
@@ -29,12 +32,7 @@ export class DepositoComponent {
     this.obtenerCuentasBancarias();
   }
 
-
-
-
-
-  @Output() depositoCompletado = new EventEmitter<void>();
-  private router = inject(Router);
+ 
 
   obtenerCuentasBancarias(){
     this.cuentaBancariaService.getCuentaBancaria().subscribe(

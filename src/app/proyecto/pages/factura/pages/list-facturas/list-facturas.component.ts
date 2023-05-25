@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Factura } from 'src/app/interface/factura.interface';
+import { FacturaService } from 'src/app/services/factura.service';
 
 @Component({
   selector: 'app-list-facturas',
@@ -8,13 +10,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class ListFacturasComponent {
   title = 'Facturas de Empresas';
-  showModal = false;
+  factura:Factura[] = [];
+  constructor(private facturaService:FacturaService){}
+  // showModal = false;
 
-  openModal() {
-    this.showModal = true;
+  // openModal() {
+  //   this.showModal = true;
+  // }
+
+  // closeModal() {
+  //   this.showModal = false;
+  // }
+  agregarFactura(){
+    
   }
 
-  closeModal() {
-    this.showModal = false;
-  }
 }

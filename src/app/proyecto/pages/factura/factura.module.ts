@@ -5,6 +5,7 @@ import { FacturaRoutingModule } from './factura-routing.module';
 import { AddFacturaComponent } from './pages/add-factura/add-factura.component';
 import { ListFacturasComponent } from './pages/list-facturas/list-facturas.component';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,7 @@ import { ModalComponent } from '../../components/modal/modal.component';
   imports: [
     CommonModule,
     FacturaRoutingModule,
+    FormsModule
   ]
 })
 export class FacturaModule { }

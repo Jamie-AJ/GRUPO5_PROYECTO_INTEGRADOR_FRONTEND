@@ -11,7 +11,6 @@ import { SharedModule } from './shared/shared.module';
 import localeEsPE from '@angular/common/locales/es-PE';
 
 import { registerLocaleData } from '@angular/common';
-import { FacturaComponent } from './services/factura/factura.component'; 
 
 registerLocaleData(localeEsPE);
 
@@ -19,7 +18,6 @@ registerLocaleData(localeEsPE);
 @NgModule({
   declarations: [
     AppComponent,
-    FacturaComponent,
     
   ],
   imports: [
