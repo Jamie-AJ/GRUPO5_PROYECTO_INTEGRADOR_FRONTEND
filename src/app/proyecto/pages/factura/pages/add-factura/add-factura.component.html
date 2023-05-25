@@ -1,1 +1,45 @@
-<p>add-factura works!</p>
+<section class="company__container animate__animated animate__fadeIn animete_faster">
+    <div>
+        <h3>{{title}}</h3>
+    </div>
+<form action="">
+    <div class="factura__grid">
+        <div class="form-container">
+            <fieldset>
+                <legend>Datos del Cliente</legend>
+                <div class="form-group">
+                  <label for="nombre">Nombre del Cliente</label>
+                  <input type="text" id="nombre" name="nombre" required>
+                </div>
+            
+                <div class="form-group">
+                  <label for="email">Correo Electrónico</label>
+                  <input type="email" id="email" name="email"required>
+                </div>
+              </fieldset>
+            
+              <fieldset>
+                <legend>Datos de la Factura</legend>
+                <div class="form-group">
+                  <label for="numeroFactura">Número de Factura</label>
+                  <input type="text" id="numeroFactura" name="numeroFactura" required>
+                </div>
+            
+                <div class="form-group">
+                  <label for="fechaFactura">Fecha de Factura</label>
+                  <input type="date" id="fechaFactura" name="fechaFactura"  required>
+                </div>
+            
+                <div class="form-group">
+                  <label for="monto">Monto de Factura</label>
+                  <input type="number" id="monto" name="monto"required>
+                </div>
+              </fieldset>
+        </div>
+        <div class="factura__btn-group">
+            <button class="btn btn-danger">Cancelar</button>
+            <button class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>
+</section>

@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AddCompanyComponent,
     ListPageComponent,
+    
 
   ],
   imports: [

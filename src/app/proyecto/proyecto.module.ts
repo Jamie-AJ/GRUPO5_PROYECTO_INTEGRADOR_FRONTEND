@@ -45,7 +45,6 @@ registerLocaleData(localeEsPE);
     MovementListComponent,
     DepositoComponent,
     RetiroComponent,
-  
 
   ],
   imports: [
@@ -56,7 +55,7 @@ registerLocaleData(localeEsPE);
     AuthModule
   ],
   exports:[
-    HomeComponent,
+    HomeComponent
   ]
 })
 export class ProyectoModule { }

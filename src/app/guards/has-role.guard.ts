@@ -6,7 +6,7 @@ export const hasRoleGuard: CanActivateFn = (route, state) => {
 
   const authService: LoginService = inject(LoginService);
   // const router = inject(Router);
-  if(authService.getUserRole() === 'ADMINISTRADOR'){
+  if(authService.getUserRole() === 'ADMIN'){
     return true;
   }else{
     alert('Acceso denegado');

@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
 
   private authService = inject(LoginService);
-  isAdministrador = this.authService.getUserRole() === 'ADMINISTRADOR';
+  isAdministrador = this.authService.getUserRole() === 'ADMIN';
   isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
 
   collapse = false;
