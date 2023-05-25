@@ -1,9 +1,7 @@
 
 <app-sidebar (onToggleSideBar)="onToggleSideBar($event)"></app-sidebar>
 
-<app-navbar [collapse]="isSideBarCollapse"
-            [screenWidth]="screenWidth"
-></app-navbar>
+<app-navbar [collapse]="isSideBarCollapse" [screenWidth]="screenWidth"></app-navbar>
 <div class="main" [ngClass]="getBodyClass()">
   <router-outlet></router-outlet>
 </div>

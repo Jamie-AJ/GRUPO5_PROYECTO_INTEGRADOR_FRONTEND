@@ -8,6 +8,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OportunitiesComponent } from './pages/oportunities/oportunities.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
 
 
 const router:Routes = [
@@ -21,6 +22,7 @@ const router:Routes = [
       {path:'oportunities',component:OportunitiesComponent},
       {path:'details-profile', component:ProfileComponent},
       {path:'account-status', component:AcountStatusComponent},
+      {path:'wallet',component:WalletComponent},
       {path:'**', redirectTo:'dashboard'}
     ]
   }

@@ -23,11 +23,11 @@ declare var $:any;
 })
 export class AcountStatusComponent implements OnInit{
  
-
   //LISTA DE BANCOS Y MONEDAS
   cuentaBancariaList:CuentaBancaria[] = []; 
   bancos:Bancos[] = [];
   monedas:Monedas[] = [];
+  mostrarFormularioDeposito:boolean = false;
 
   objCuentaBancaria:CuentaBancaria = {
     idCuentaBancaria:0,
@@ -111,7 +111,7 @@ export class AcountStatusComponent implements OnInit{
   //VALIDACIONES DE LOS SELECTS
   getCuentaBancarias(){
     this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
-      // console.log(cuentaBancaria);
+      console.log(cuentaBancaria);
       this.cuentaBancariaList = cuentaBancaria;});
   }
 

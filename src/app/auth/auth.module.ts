@@ -8,6 +8,8 @@ import { SliderComponent } from './components/slider/slider.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     MainComponent,
     RegistrarComponent,
     SliderComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

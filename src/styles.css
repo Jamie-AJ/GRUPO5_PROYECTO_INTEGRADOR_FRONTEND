@@ -8,7 +8,7 @@
     --black-color: #000000;
     --grey-color:#6F6F6F;
     --form-color:#B9B6B6;
-    --previus-color-btn:#EBEBEB;
+    --previus-color-btn:#dadada;
     --text-color-btn:#7A7A7A;
     --text-color:#707070;
     --pass-color:#6D6D6D;
@@ -70,4 +70,7 @@ p{
 button{
     line-height: normal;
     margin:none;
+}
+h1,h2,h3,h4,h5{
+    margin:0;
 }

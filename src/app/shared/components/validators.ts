@@ -13,3 +13,4 @@ export const passwordPattern: string = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-
 
 export const cuentaBancariaPattern: string = "^[0-9]{16,20}$";
 export const cvvPattern: string ="^[0-9]{3,4}$";
+export const rucPattern: string ="^20[\\d]{9}$";

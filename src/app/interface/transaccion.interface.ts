@@ -6,6 +6,7 @@ export class Transaccion{
     fecha?: Date;
     monto?: number;
     tipoTransaccion?: TipoTransaccion;
+    idTipoTransaccion?: number;
     cuentaBancaria?:CuentaBancaria;
     
 }

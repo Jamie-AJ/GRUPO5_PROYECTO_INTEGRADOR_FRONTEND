@@ -1,14 +1,13 @@
-<section class="wallet">
-    <div class="wallet__container">
+<section class="wallet" *ngIf="mostrarLista">
+    <div class="wallet__container" >
         <div class="wallet__box">
             <div>
-                <span class="wallet__saldo">Saldo: </span>
-                <span>{{objSaldo.saldo |  currency:'PEN&nbsp;':'symbol-narrow'}}</span>
-
+                <span class="wallet__saldo">Saldo: {{objSaldo.saldo  |  currency:'PEN&nbsp;':'symbol-narrow' }}</span>
+                <span></span>
             </div>
             <div class="wallet__btn">
-                <button type="button" class="deposit">Deposito</button>
-                <button type="button" class="withdraw">Retiro</button>
+                <button type="button" class="deposit" (click)="mostrarFormularioDeposito()" >Deposito</button>
+                <button type="button" class="withdraw" (click)="mostrarFormularioRetiro()">Retiro</button>
             </div>
         </div>
         <div class="listar__content">
@@ -34,5 +33,15 @@
                 </table>
             </div>
         </div>
+        
+       
     </div>
 </section>
+
+
+<div *ngIf="formularioActivo ==='deposito'" class="transaccion__deposito">
+    <app-deposito (depositoCompletado)=" finalizarTransaccion()"></app-deposito>
+</div>
+<div *ngIf="formularioActivo === 'retiro'" class="transaccion__retiro">
+    <app-retiro (retiroCompletado)="finalizarTransaccion()"></app-retiro>
+</div>

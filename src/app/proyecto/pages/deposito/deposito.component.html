@@ -1,0 +1,25 @@
+<div class="deposito">
+    <form action="" class="form__deposito">
+        <div class="deposito__group">
+            <div class="form__deposito-content">
+                <h3>Deposito</h3>
+              <div class="deposito__box">
+                <label for="cuentaBancaria">De las cuentas que tienes registradas, selecciona la que usaras para depositar a InvestGo!</label>
+                <select name="cuentaBancaria" id="cuentaBancaria" class="deposito__input">
+                  <option selected disabled value="">Selecciona Cuenta Bancaria</option>
+                </select>
+              </div>
+              <div class="deposito__box">
+                <label for="monto">Escribe el monto de deposito</label>
+                <input type="text" name="monto" class="deposito__input">
+              </div>
+              <div class="deposito__group-btn">
+                <button type="button" class="deposito__btn group-btn">Depositar</button>
+                <button type="button" class="deposito__goBack group-btn" (click)="finalizarDeposito()">Cancelar</button>
+            </div>
+            </div>
+            
+        </div>
+        
+      </form>
+</div>

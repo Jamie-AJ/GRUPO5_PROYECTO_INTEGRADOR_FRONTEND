@@ -1,0 +1,69 @@
+
+<section class="company__container animate__animated animate__fadeIn animete_faster">
+    <div>
+        <h3>{{title}}</h3>
+    </div>
+    <div class="company__form">
+        <div class="form__content">
+            <form [formGroup]="form" class="company__content-form" (ngSubmit)="postEmpresas()">
+                <div class="form__group">
+                    <div class="form__box">
+                        <label for="razonSocial">Razon social</label>
+                        <input type="text" formControlName="razonSocial" id="razonSocial">
+                        <span class="invalid" *ngIf="isValid('razonSocial')">{{getFieldError('razonSocial')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="nomEmpresa">Nombre Comercial</label>
+                        <input type="text" formControlName="nomEmpresa" id="nomEmpresa">
+                        <span class="invalid" *ngIf="isValid('nomEmpresa')">{{getFieldError('nomEmpresa')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="ruc">RUC</label>
+                        <input type="text" formControlName="ruc" id="ruc">
+                        <span class="invalid" *ngIf="isValid('ruc')">{{getFieldError('ruc')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="telefono">Telefono</label>
+                        <input type="text" formControlName="telefono" id="telefono">
+                        <span class="invalid" *ngIf="isValid('telefono')">{{getFieldError('telefono')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="nomRepresentante">Nombre del Representante</label>
+                        <input type="text" formControlName="nomRepresentante" id="nomRepresentante">
+                        <span class="invalid" *ngIf="isValid('nomRepresentante')">{{getFieldError('nomRepresentante')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="fechaDeInicioActv">Fecha Inicio Actividades</label>
+                        <input type="date" formControlName="fechaDeInicioActv" id="fechaDeInicioActv">
+                        <span class="invalid" *ngIf="isValid('fechaDeInicioActv')">{{getFieldError('fechaDeInicioActv')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="sector">Actividad Comercial</label>
+                        <input type="text" formControlName="sector" id="sector">
+                        <span class="invalid" *ngIf="isValid('sector')">{{getFieldError('sector')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" formControlName="direccion" id="direccion">
+                        <span class="invalid" *ngIf="isValid('direccion')">{{getFieldError('direccion')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="correo">Correo</label>
+                        <input type="email" formControlName="correo" id="correo" >
+                        <span class="invalid" *ngIf="isValid('correo')">{{getFieldError('correo')}}</span>
+                    </div>
+                    
+                </div>
+                <div class="form__group--btn">
+                    <button class="btn btn-danger" (click)="postEmpresas()">Cancelar</button>
+                    <button class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="form__img">
+            <img src="/assets/img/building.svg" alt="building.svg">
+        </div>
+    </div>
+    
+</section>

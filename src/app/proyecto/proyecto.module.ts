@@ -16,6 +16,9 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
+import { AuthModule } from '../auth/auth.module';
+import { DepositoComponent } from './pages/deposito/deposito.component';
+import { RetiroComponent } from './pages/retiro/retiro.component';
 
 
 
@@ -36,12 +39,16 @@ import { MovementListComponent } from './pages/movement-list/movement-list.compo
     EditProfileComponent,
     WalletComponent,
     MovementListComponent,
+    DepositoComponent,
+    RetiroComponent,
+
   ],
   imports: [
     CommonModule,
     ProyectoRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AuthModule
   ],
   exports:[
     HomeComponent,
