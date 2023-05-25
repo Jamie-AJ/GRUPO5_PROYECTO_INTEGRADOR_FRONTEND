@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+
 import { Observable, catchError, pipe, throwError } from 'rxjs';
 import { TipoTransaccion } from '../interface/tipoTransaccion.interface';
 import { Transaccion } from '../interface/transaccion.interface';
@@ -21,6 +22,7 @@ export class TransaccionService {
     return this.http.get<Transaccion[]>(`${this.url}/user/listaTransacciones`);
   }
   postDeposito(transaccion:Transaccion):Observable<any>{
+
     return this.http.post<any>(`${this.url}/deposito`,transaccion,{headers:this.httpHeaders}).pipe(
       catchError(error =>{
         Swal.fire('Error', error.error.mensaje, 'error');

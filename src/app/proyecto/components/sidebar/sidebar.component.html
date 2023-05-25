@@ -32,13 +32,23 @@
                 <i class="bx bxs-credit-card icon"></i>
                 <p>Cuenta</p>
             </a>
+            <!-- <span class="box">Empresas</span> -->
     	</li>
         <li class="sidebar__item">
-            <a *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <a *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> 
                 <i class='bx bx-buildings icon'></i>
                 <p>Empresa</p>
             </a>
+            
     	</li>
+        <li class="sidebar__item">
+            <a *ngIf="isAdministrador" routerLink="/facturas/list-factura" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bxs-report icon'></i>
+                <p>Factura</p>
+            </a>
+    	</li>
+        
   	</ul>
     <!-- <app-footer></app-footer> -->
 </div>
+

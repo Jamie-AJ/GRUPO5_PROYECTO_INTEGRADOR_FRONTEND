@@ -1,16 +1,19 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
 import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-deposito',
   templateUrl: './deposito.component.html',
   styleUrls: ['./deposito.component.css']
 })
+
 export class DepositoComponent {
   objTransaccion: Transaccion = new Transaccion();
   /*objTransaccion:Transaccion = {
@@ -25,6 +28,9 @@ export class DepositoComponent {
   ngOnInit() {
     this.obtenerCuentasBancarias();
   }
+
+
+
 
 
   @Output() depositoCompletado = new EventEmitter<void>();
@@ -57,6 +63,7 @@ export class DepositoComponent {
       }
     );
   }
+
 
   finalizarDeposito() {
     // Restablecer el estado del componente principal

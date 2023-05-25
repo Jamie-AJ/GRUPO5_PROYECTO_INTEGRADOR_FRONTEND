@@ -4,6 +4,7 @@ import { Empresas } from 'src/app/interface/empresas.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import Swal from 'sweetalert2';
 import { rucPattern, telefonoPattern } from '../../../../../shared/components/validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-company',
@@ -14,7 +15,7 @@ export class AddCompanyComponent {
   title:string ='Agregar empresa'
   empresas:Empresas[] = [];
 
-  constructor(private empresasService:EmpresasService,private builder:FormBuilder) { }
+  constructor(private empresasService:EmpresasService,private builder:FormBuilder,private router:Router) { }
 
   form:FormGroup = this.builder.group({
     nomEmpresa:['',[Validators.required,Validators.minLength(3)]],
@@ -27,25 +28,28 @@ export class AddCompanyComponent {
     correo:['',[Validators.required]],
     sector:['',[Validators.required]],
   })
-    //VALIDACIONES
-    isValid(field: string) {
-      return this.form.controls[field].errors && this.form.controls[field].touched;
-    }
-    getFieldError(field: string): string | null {
-      if (!this.form.controls[field]) return null;
-      const errors:ValidationErrors = this.form.controls[field].errors || {};
-      for (const key of Object.keys(errors)) {
-        switch (key) {
-          case 'required':
-            return 'Este campo es requerido';
-          case 'minlength':
-            return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
-          case 'pattern':
-            return 'El valor ingresado no tiene formato válido';
-        }
+  //VALIDACIONES
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors:ValidationErrors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+        case 'pattern':
+          return 'El valor ingresado no tiene formato válido';
       }
-      return null;
     }
+    return null;
+  }
+  goBack(){
+    this.router.navigate(['/empresas/list-company']);
+  }
   //REGISTRAR EMPRESA
   postEmpresas(){
     if(this.form.invalid){
