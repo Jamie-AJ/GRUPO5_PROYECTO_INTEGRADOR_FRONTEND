@@ -39,7 +39,7 @@
     width: 50%;
     top:0;
     left:50%;
-    background-color: var(--primary-color);
+    background-color: var(--sidebar-color);
     border-radius:0rem 1rem 1rem 0rem;
     display: grid;
     grid-template-rows: auto 1fr;

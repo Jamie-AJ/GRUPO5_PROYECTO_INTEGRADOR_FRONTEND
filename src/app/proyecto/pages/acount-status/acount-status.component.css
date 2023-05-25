@@ -9,14 +9,12 @@
 }
 .status h3{
     padding: 1rem;
-    /* border-bottom: 1px solid var(--primary-color); */
     background-color: var(--primary-color);
-    /* border-radius: 10px; */
     border-top-left-radius:10px;
     border-top-right-radius: 10px;
     color:var(--white-color);
     font-size: 18px;
-    font-weight: 500;
+    /* font-weight: 500; */
 }
 .status__box{
     padding: 1rem 0;
@@ -48,6 +46,12 @@
     font-size: 30px;
     color: var(--primary-color);
     
+}
+.modal-bg{
+    background-color: #121f2b;
+}
+.modal-bg h1{
+    color: var(--sidebar-color);
 }
 .account__bank{
     display:flex;
@@ -133,14 +137,19 @@
 .form__input{
     width: 100%;
     height: 40px;
-    border: 1px solid var(--second-table-color);
+    background-color: #114966;
+    border:1px solid #114966;
     border-radius: 5px;
     padding: 0 0.5rem;
     font-size: 14px;
     font-weight: 500;
-    color:var(--text-color);
+    color:var(--white-color);
     outline: none;
 }
+.form__input::placeholder{
+    color:var(--white-color);
+}
+
 .invalid {
     display: flex;
     flex-direction: column;

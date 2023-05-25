@@ -10,15 +10,9 @@
     </div>
   	<ul class="sidebar__menu">
     	<li class="sidebar__item">
-            <a routerLink="/dashboard/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a  routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-dashboard icon"></i>
                 <p>Dashboard</p>
-            </a>
-    	</li>
-   		<li class="sidebar__item">
-            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
-                <i class="bx bxs-credit-card icon"></i>
-                <p>Cuenta</p>
             </a>
     	</li>
         <li class="sidebar__item">
@@ -33,12 +27,18 @@
                 <p>Inversiones</p>
             </a>
         </li>
-        <!-- <li class="sidebar__item">
-            <a [routerLink]="['/dashboard/profile/',user.id]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
-                <i class="bx bxs-user-detail icon"></i>
-                <p>Perfil</p>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class="bx bxs-credit-card icon"></i>
+                <p>Cuenta</p>
             </a>
-        </li> -->
+    	</li>
+        <li class="sidebar__item">
+            <a *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bx-buildings icon'></i>
+                <p>Empresa</p>
+            </a>
+    	</li>
   	</ul>
     <!-- <app-footer></app-footer> -->
 </div>

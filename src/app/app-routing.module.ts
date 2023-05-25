@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule} from '@angular/router'
 import { Error404PagesComponent } from './shared/pages/error404-pages/error404-pages.component';
-import { isNotAuthenticatedGuard, isAuthenticatedGuard } from './auth/guards';
+import { isNotAuthenticatedGuard, isAuthenticatedGuard } from './guards';
+import { hasRoleGuard } from './guards/has-role.guard';
+import { RoleGuard } from './guards/role.guard';
 
 const router:Routes = [
 
@@ -15,6 +17,17 @@ const router:Routes = [
     path:'dashboard',
     canActivate:[isAuthenticatedGuard],
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
+  },
+  {
+    path:'dashboard',
+    // canActivate:[hasRoleGuard],
+    // data:{ allowedRole:['ADMINISTRADOR','INVERSIONISTA']},
+    loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
+  },
+  {
+    path:'empresas',
+    canActivate:[hasRoleGuard],
+    loadChildren: () => import('./proyecto/pages/empresas/empresas.module').then(m => m.EmpresasModule)
   },
   {
     path:'404',

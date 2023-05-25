@@ -18,9 +18,11 @@ export class NavbarComponent implements OnInit {
 
 
   private saldoService = inject(SaldoService);
+  private authService = inject(LoginService);
 
   @Input() collapse = false;
   @Input() screenWidth= 0;
+  isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
   
   isLoggedIn = false;
   user!:Usuario;
@@ -39,6 +41,7 @@ export class NavbarComponent implements OnInit {
       this.objSaldo = resp;
     })
   }
+
   singIn(){
     this.isLoggedIn = this.login.isLoggedIn();
     this.user = this.login.getUser();

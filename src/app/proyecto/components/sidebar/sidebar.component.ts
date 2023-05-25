@@ -1,8 +1,10 @@
 
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { Role } from 'src/app/interface/role.interface';
 import { Usuario } from 'src/app/interface/usuario.interface';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -18,9 +20,12 @@ interface SideNavToggle {
 })
 
 export class SidebarComponent implements OnInit {
-
-
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
+
+  private authService = inject(LoginService);
+  isAdministrador = this.authService.getUserRole() === 'ADMINISTRADOR';
+  isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
+
   collapse = false;
   screenWidth = 0;
   user!:Usuario;

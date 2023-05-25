@@ -1,50 +1,20 @@
-.wallet__container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap:1rem;
-}
-
-.wallet__box{
-    background-color: var(--white-color);
+.company__container{
+    position: relative;
+    background-color: var(--panel-color);
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-    /* border-radius: 10px; */
-    /* border-bottom-left-radius: 10px; */
+    border-radius: 10px;
+    height: 100%;
+}
+.company__container h3{
     padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-bottom: 1rem; */
-}
-.wallet__btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-}
-.wallet__btn .deposit{
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-}
-.wallet__btn .withdraw{
-    background-color: var(--previus-color-btn);
-    color: var(--black-btn);
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
+    background-color: var(--primary-color);
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    color:var(--white-color);
+    font-size: 18px;
 }
 
 .listar__content {
-    background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-    /* border-radius: 10px; */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -99,8 +69,20 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-.transaccion__group{
-    /* margin-top: 1rem; */
-    padding:1rem;
-    background-color: var(--white-color);
+.btn__save {
+    padding: 0.625rem 1rem;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn__save:hover{
+    background-color: #b86704;
 }

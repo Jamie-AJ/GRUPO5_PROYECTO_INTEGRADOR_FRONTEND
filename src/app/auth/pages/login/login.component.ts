@@ -63,12 +63,12 @@ export class LoginComponent implements OnInit{
             this.router.navigate(['dashboard/']);
             this.loginService.loginStatusSubjec.next(true);
           }
-          /*else if(this.loginService.getUserRole() == 'por defecto'){
+          else if(this.loginService.getUserRole() == 'ADMINISTRADOR'){
             //user dashboard
             //window.location.href = '/user-dashboard';
-            this.router.navigate(['user-dashboard']);
+            this.router.navigate(['/dashboard']);
             this.loginService.loginStatusSubjec.next(true);
-          }*/
+          }
           else{
             this.loginService.logout();
           }

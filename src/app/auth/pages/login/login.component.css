@@ -39,7 +39,7 @@
 }
 .input__wrap:nth-child(3), .forgot__link{
     text-align: right;
-    color: var(--white-color);
+    color: var(--sidebar-color);
     margin-bottom: 2.5rem;
 }
 .input__wrap:nth-child(4){
@@ -74,10 +74,10 @@ input:focus~.label__field,
 input:not(:placeholder-shown)~.label__field{
     top:-14px;
     font-size: 0.75rem;
-    color:var(--primary-color);
+    color:var(--sidebar-color);
 }
 .btn__acceses{
-    background-color: var(--primary-color);
+    background-color: var(--sidebar-color);
     color: var(--white-color);
     border: none;
     border-radius:10px;
@@ -97,7 +97,7 @@ input:not(:placeholder-shown)~.label__field{
     color:var(--white-color);
 }
 .form__text a{
-    color:var(--primary-color);
+    color:var(--sidebar-color);
     font-weight: 600;
 }
 /* .input__wrap{

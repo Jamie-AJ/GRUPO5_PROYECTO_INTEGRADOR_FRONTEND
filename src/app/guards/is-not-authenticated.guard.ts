@@ -5,7 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 export const isNotAuthenticatedGuard: CanActivateFn = (route, state) => {
 
-  const authService =inject(LoginService);
+  const authService:LoginService =inject(LoginService);
   const router = inject(Router);
   
   if(authService.isLoggedIn()){
