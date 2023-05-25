@@ -9,9 +9,7 @@
               >De las cuentas que tienes registradas, selecciona la que usaras
               para retirar a InvestGo!</label>
             <select name="cuentaBancaria" id="cuentaBancaria" class="retiro__input" [(ngModel)]="objTransaccion.idCuentaBancaria">
-              <option selected disabled value="">
-                Selecciona Cuenta Bancaria
-              </option>
+              <option selected disabled value="">Selecciona Cuenta Bancaria</option>
               <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
             </select>
           </div>
@@ -32,3 +30,4 @@
     </div>
   </form>
 </div>
+<!-- <app-loading-spinner></app-loading-spinner> -->

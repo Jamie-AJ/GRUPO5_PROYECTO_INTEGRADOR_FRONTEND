@@ -5,7 +5,7 @@ import { Observable, catchError, pipe, throwError } from 'rxjs';
 import { TipoTransaccion } from '../interface/tipoTransaccion.interface';
 import { Transaccion } from '../interface/transaccion.interface';
 import Swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,7 @@ export class TransaccionService {
   private http = inject(HttpClient);
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   url: string = 'http://localhost:8091/api';
-  // getTipoTransaction():Observable<TipoTransaccion>{
-  // }
+
 
   getTransaction():Observable<Transaccion[]>{
     return this.http.get<Transaccion[]>(`${this.url}/user/listaTransacciones`);

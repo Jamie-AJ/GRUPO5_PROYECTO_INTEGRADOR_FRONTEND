@@ -22,6 +22,7 @@ import { RetiroComponent } from './pages/retiro/retiro.component';
 import localeEsPE from '@angular/common/locales/es-PE';
 
 import { registerLocaleData } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 
 registerLocaleData(localeEsPE);
@@ -52,7 +53,8 @@ registerLocaleData(localeEsPE);
     ProyectoRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ],
   exports:[
     HomeComponent

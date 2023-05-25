@@ -21,7 +21,7 @@ export class AddCompanyComponent {
     nomEmpresa:['',[Validators.required,Validators.minLength(3)]],
     ruc:['',[Validators.required,Validators.pattern(rucPattern)]],
     razonSocial:['',[Validators.required,Validators.minLength(3)]],
-    nomRepresentante:['',[Validators.required]],
+    representanteLegal:['',[Validators.required]],
     fechaDeInicioActv:['',[Validators.required]],
     direccion:['',[Validators.required]],
     telefono:['',[Validators.required,Validators.pattern(telefonoPattern)]],

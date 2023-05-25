@@ -15,8 +15,7 @@ export class RetiroComponent {
 
    objTransaccion: Transaccion = new Transaccion();
    cuentabancariaCombo: CuentaBancaria[] = [];
-
-
+   transaccion: Transaccion[] = [];
     constructor(private cuentaBancariaService: CuentaBancariaService, private transaccionService: TransaccionService){
    }
 
@@ -25,8 +24,6 @@ export class RetiroComponent {
   }
   @Output() retiroCompletado = new EventEmitter<void>();
     private router = inject(Router);
-
-
 
   obtenerCuentasBancarias(){
     this.cuentaBancariaService.getCuentaBancaria().subscribe(
@@ -43,7 +40,7 @@ export class RetiroComponent {
     this.transaccionService.postRetiro(this.objTransaccion).subscribe(
       response =>{
         Swal.fire('Retiro con Exito', response.mensaje, 'success');
-        this.router.navigate(['/dashboard/account-status']);
+        window.location.reload();
       },
       error =>{
         console.error(error);
