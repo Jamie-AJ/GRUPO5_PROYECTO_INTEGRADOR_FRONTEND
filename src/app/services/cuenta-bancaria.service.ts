@@ -14,11 +14,13 @@ export class CuentaBancariaService {
   
   constructor(private http:HttpClient) { }
 
+  //LISTADO DE CUENTAS BANCARIAS ACTIVAS
   getCuentaBancaria():Observable<CuentaBancaria[]>{
     return this.http.get<CuentaBancaria[]>(`${this.url}/user/listarCuentaBancaria`).pipe(
       map((response) => response as CuentaBancaria[]),
     );
   }
+  
   postCuentaBancaria(cuentaBancaria:CuentaBancaria):Observable<any>{
     return this.http.post<any>(`${ this.url }/registrarCuentaBancaria`,cuentaBancaria,{headers:this.httpHeaders}).pipe(
       catchError(err =>{

@@ -1,0 +1,88 @@
+.factura__container{
+    position: relative;
+    background-color: var(--panel-color);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    border-radius: 10px;
+    height: 100%;
+}
+.factura__container h3{
+    padding: 1rem;
+    background-color: var(--primary-color);
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    color:var(--white-color);
+    font-size: 18px;
+}
+
+.listar__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.listar__button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75rem;
+}
+.listar__table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: var(--table-color);
+    border: 1px solid var(--second-table-color);
+    padding: 0.875rem;
+}
+
+.listar__table .listar__thead th {
+    padding: 1rem 0.75rem;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__thead,
+.listar__table .listar__tbody {
+    text-align: center;
+}
+
+.listar__table .listar__tbody tr {
+    border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.listar__table .listar__tbody tr:last-child {
+    border-bottom: none;
+}
+
+.listar__table .listar__tbody tr td {
+    padding: 0.625rem 0.625rem;
+    font-size: 13px;
+}
+
+.listar__table .listar__tbody tr:hover {
+    background-color: #ececec;
+}
+.btn__save {
+    padding: 0.625rem 1rem;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn__save:hover{
+    background-color: #b86704;
+}

@@ -30,6 +30,11 @@ const router:Routes = [
     loadChildren: () => import('./proyecto/pages/empresas/empresas.module').then(m => m.EmpresasModule)
   },
   {
+    path:'facturas',
+    canActivate:[hasRoleGuard],
+    loadChildren: () => import('./proyecto/pages/factura/factura.module').then(m => m.FacturaModule)
+  },
+  {
     path:'404',
     component:Error404PagesComponent
   },

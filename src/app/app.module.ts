@@ -8,7 +8,11 @@ import { authInterceptorProviders } from './interceptors/auth.interceptor';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import localeEsPE from '@angular/common/locales/es-PE';
 
+import { registerLocaleData } from '@angular/common'; 
+
+registerLocaleData(localeEsPE);
 
 
 @NgModule({

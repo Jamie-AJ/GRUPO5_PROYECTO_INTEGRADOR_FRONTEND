@@ -14,7 +14,7 @@ export class EmpresasService {
   constructor( private http:HttpClient) { }
 
   getEmpresas():Observable<Empresas[]>{
-    return this.http.get<Empresas[]>(`${this.url}/listaEmpresas`).pipe(
+    return this.http.get<Empresas[]>(`${this.url}/active/listaEmpresas`).pipe(
       catchError(e =>{
         Swal.fire('Error al obtener las empresas', e.error.mensaje, 'error');
         return throwError(e);

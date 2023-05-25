@@ -19,8 +19,12 @@ import { MovementListComponent } from './pages/movement-list/movement-list.compo
 import { AuthModule } from '../auth/auth.module';
 import { DepositoComponent } from './pages/deposito/deposito.component';
 import { RetiroComponent } from './pages/retiro/retiro.component';
+import localeEsPE from '@angular/common/locales/es-PE';
+
+import { registerLocaleData } from '@angular/common';
 
 
+registerLocaleData(localeEsPE);
 
 
 @NgModule({
@@ -41,6 +45,7 @@ import { RetiroComponent } from './pages/retiro/retiro.component';
     MovementListComponent,
     DepositoComponent,
     RetiroComponent,
+  
 
   ],
   imports: [
