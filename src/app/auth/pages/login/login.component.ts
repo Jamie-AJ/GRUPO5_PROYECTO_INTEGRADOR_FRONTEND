@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit{
             this.router.navigate(['dashboard/']);
             this.loginService.loginStatusSubjec.next(true);
           }
-          else if(this.loginService.getUserRole() == 'ADMINISTRADOR'){
+          else if(this.loginService.getUserRole() == 'ADMIN'){
             //user dashboard
             //window.location.href = '/user-dashboard';
             this.router.navigate(['/dashboard']);
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit{
           else{
             this.loginService.logout();
           }
-
+          this.isLoading = false;
         })
       },(error) => {
         console.log(error);

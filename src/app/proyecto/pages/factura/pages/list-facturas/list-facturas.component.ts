@@ -7,5 +7,14 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./list-facturas.component.css']
 })
 export class ListFacturasComponent {
-  title = 'Listado de Facturas';
+  title = 'Facturas de Empresas';
+  showModal = false;
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }
