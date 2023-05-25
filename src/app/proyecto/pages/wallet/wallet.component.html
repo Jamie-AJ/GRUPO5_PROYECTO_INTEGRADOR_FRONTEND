@@ -25,7 +25,7 @@
                     <tbody class="listar__tbody">
                         <tr *ngFor="let trans of transaccion">
                             <td>{{trans.idTransaccion}}</td>
-                            <td>{{trans.fecha | date:'fullDate'}}</td>
+                            <td>{{trans.fecha | date:'longDate':'':'es-PE'}}</td>
                             <td>{{trans.tipoTransaccion!.tipo}}</td>
                             <td>{{trans.monto | currency:'PEN&nbsp;':'symbol-narrow'}}</td>
                         </tr>

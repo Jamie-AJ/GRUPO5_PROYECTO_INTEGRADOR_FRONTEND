@@ -55,6 +55,11 @@
     flex-direction: column;
     gap:0.5rem;
 }
+.form__box label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #4F4F4F;
+}
 .form__box:nth-child(1),
 .form__box:nth-child(2),
 .form__box:nth-child(8),

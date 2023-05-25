@@ -2,7 +2,7 @@
   <nav class="nav__container">
     <button type="button" class="btn btn-primary">Nueva Inversión</button>
     <div class="nav__profile">
-      <a  *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
+      <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
         <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'PEN&nbsp;':'symbol-narrow'}}
       </a>
       <div class="dropdown"> 

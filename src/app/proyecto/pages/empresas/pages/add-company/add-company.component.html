@@ -38,7 +38,7 @@
                         <span class="invalid" *ngIf="isValid('fechaDeInicioActv')">{{getFieldError('fechaDeInicioActv')}}</span>
                     </div>
                     <div class="form__box">
-                        <label for="sector">Actividad Comercial</label>
+                        <label for="sector">Rubro de la Empresa</label>
                         <input type="text" formControlName="sector" id="sector">
                         <span class="invalid" *ngIf="isValid('sector')">{{getFieldError('sector')}}</span>
                     </div>
@@ -55,7 +55,7 @@
                     
                 </div>
                 <div class="form__group--btn">
-                    <button class="btn btn-danger" (click)="postEmpresas()">Cancelar</button>
+                    <button class="btn btn-danger" (click)="goBack()">Cancelar</button>
                     <button class="btn btn-primary">Guardar</button>
                 </div>
             </form>

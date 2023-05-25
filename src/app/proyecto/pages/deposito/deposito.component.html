@@ -7,6 +7,7 @@
                 <label for="cuentaBancaria">De las cuentas que tienes registradas, selecciona la que usaras para depositar a InvestGo!</label>
                 <select name="cuentaBancaria" id="cuentaBancaria" class="deposito__input">
                   <option selected disabled value="">Selecciona Cuenta Bancaria</option>
+                  <option *ngFor="let cta of cuentaBancariaList" [ngValue]="cta">{{cta.bancos!.nomBancos}}</option>
                 </select>
               </div>
               <div class="deposito__box">
