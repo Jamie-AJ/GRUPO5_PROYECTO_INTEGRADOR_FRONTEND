@@ -4,7 +4,6 @@ import { Routes, RouterModule} from '@angular/router'
 import { Error404PagesComponent } from './shared/pages/error404-pages/error404-pages.component';
 import { isNotAuthenticatedGuard, isAuthenticatedGuard } from './guards';
 import { hasRoleGuard } from './guards/has-role.guard';
-import { RoleGuard } from './guards/role.guard';
 
 const router:Routes = [
 
@@ -33,6 +32,11 @@ const router:Routes = [
     path:'facturas',
     canActivate:[hasRoleGuard],
     loadChildren: () => import('./proyecto/pages/factura/factura.module').then(m => m.FacturaModule)
+  },
+  {
+    path:'inversiones',
+    canActivate:[hasRoleGuard],
+    loadChildren: () => import('./proyecto/pages/oportunidades/oportunidades.module').then(m => m.OportunidadesModule)
   },
   {
     path:'404',
