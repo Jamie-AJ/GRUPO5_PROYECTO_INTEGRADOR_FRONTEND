@@ -47,6 +47,12 @@
                 <p>Factura</p>
             </a>
     	</li>
+        <li class="sidebar__item">
+            <a *ngIf="isAdministrador" routerLink="/inversiones/list-inversion" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bx-line-chart icon'></i>
+                <p>Inversiones</p>
+            </a>
+    	</li>
         
   	</ul>
     <!-- <app-footer></app-footer> -->
