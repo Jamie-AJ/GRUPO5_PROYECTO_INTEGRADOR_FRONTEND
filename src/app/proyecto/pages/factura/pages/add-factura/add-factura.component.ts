@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
@@ -33,12 +33,36 @@ export class AddFacturaComponent implements OnInit{
       this.empresas = resp;
     })
   }
+
+  @ViewChild('montoInput') montoInput!: ElementRef;
+  showNegativeNumberError: boolean = false;
   postFactura(){
+    if (this.objFactura.monto !== undefined && this.objFactura.monto < 0) {
+      this.showNegativeNumberError = true;
+      this.montoInput.nativeElement.focus();
+    } else {
+      this.showNegativeNumberError = false;
     this.facturaService.postFactura(this.objFactura).subscribe(
       resp =>{
         Swal.fire('Factura Generada', resp.mensaje, 'success');
         this.router.navigate(['/facturas/list-factura']);
       }
-    )
+    );
+    }
   }
+
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    return `${year}-${this.padZero(month)}-${this.padZero(day)}`;
+  }
+
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
+  
 }
+
+
