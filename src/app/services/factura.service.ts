@@ -15,6 +15,7 @@ export class FacturaService {
 
 
   getFacturas():Observable<Factura[]>{
+
     return this.http.get<Factura[]>(`${this.url}/listaFacturas`);
   }
   getFacturasActivas():Observable<Factura[]>{

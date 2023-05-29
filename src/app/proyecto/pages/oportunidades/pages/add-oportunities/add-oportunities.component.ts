@@ -11,6 +11,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 })
 export class AddOportunitiesComponent {
 
+
   public empresas:Empresas[] = [];
   public facturaList:Factura[] = [];
   public mostrarAlerta: boolean = false;

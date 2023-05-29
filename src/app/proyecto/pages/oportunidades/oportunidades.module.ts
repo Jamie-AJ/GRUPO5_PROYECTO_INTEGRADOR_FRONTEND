@@ -9,6 +9,7 @@ import { ProyectoModule } from '../../proyecto.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
+
 @NgModule({
   declarations: [
     AddOportunitiesComponent,
