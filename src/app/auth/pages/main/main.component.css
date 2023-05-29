@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background:#11131b;
+    background:var(--second-table-colo);
     padding:2rem;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
 .box{
     position: relative;
     width: 100%;
-    background-color:var(--sidebar-color-content);
+    background-color:var(--white-color);
     max-width: 1200px;
     height: 680px;
     border-radius:1rem;

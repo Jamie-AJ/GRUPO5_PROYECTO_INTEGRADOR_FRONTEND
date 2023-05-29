@@ -18,7 +18,7 @@
                         <span class="invalid" *ngIf="isValid('nomEmpresa')">{{getFieldError('nomEmpresa')}}</span>
                     </div>
                     <div class="form__box">
-                        <label for="ruc">RUC</label>
+                        <label for="ruc">RUC Empresas</label>
                         <input type="text" formControlName="ruc" id="ruc">
                         <span class="invalid" *ngIf="isValid('ruc')">{{getFieldError('ruc')}}</span>
                     </div>
@@ -38,20 +38,21 @@
                         <span class="invalid" *ngIf="isValid('fechaDeInicioActv')">{{getFieldError('fechaDeInicioActv')}}</span>
                     </div>
                     <div class="form__box">
-                        <label for="sector">Rubro de la Empresa</label>
-                        <input type="text" formControlName="sector" id="sector">
-                        <span class="invalid" *ngIf="isValid('sector')">{{getFieldError('sector')}}</span>
-                    </div>
-                    <div class="form__box">
-                        <label for="direccion">Dirección</label>
-                        <input type="text" formControlName="direccion" id="direccion">
-                        <span class="invalid" *ngIf="isValid('direccion')">{{getFieldError('direccion')}}</span>
-                    </div>
-                    <div class="form__box">
                         <label for="correo">Correo</label>
                         <input type="email" formControlName="correo" id="correo" >
                         <span class="invalid" *ngIf="isValid('correo')">{{getFieldError('correo')}}</span>
                     </div>
+                    <div class="form__box">
+                        <label for="sector">Actividad Economica</label>
+                        <input type="text" formControlName="sector" id="sector">
+                        <span class="invalid" *ngIf="isValid('sector')">{{getFieldError('sector')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="direccion">Dirección Fiscal</label>
+                        <input type="text" formControlName="direccion" id="direccion">
+                        <span class="invalid" *ngIf="isValid('direccion')">{{getFieldError('direccion')}}</span>
+                    </div>
+                    
                     
                 </div>
                 <div class="form__group--btn">

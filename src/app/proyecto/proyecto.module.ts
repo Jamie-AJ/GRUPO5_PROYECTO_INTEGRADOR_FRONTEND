@@ -23,6 +23,7 @@ import localeEsPE from '@angular/common/locales/es-PE';
 
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 
 
 registerLocaleData(localeEsPE);
@@ -46,6 +47,7 @@ registerLocaleData(localeEsPE);
     MovementListComponent,
     DepositoComponent,
     RetiroComponent,
+    BreadcrumbsComponent,
 
   ],
   imports: [
@@ -57,7 +59,8 @@ registerLocaleData(localeEsPE);
     SharedModule
   ],
   exports:[
-    HomeComponent
+    HomeComponent,
+    TabsComponent
   ]
 })
 export class ProyectoModule { }

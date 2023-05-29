@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { Factura } from '../interface/factura.interface';
 import Swal from 'sweetalert2';
 
@@ -15,15 +15,22 @@ export class FacturaService {
 
 
   getFacturas():Observable<Factura[]>{
-    return this.http.get<Factura[]>(`${this.url}/listaFacturas`,{headers:this.httpHeaders}).pipe(
-      catchError(e =>{
-        Swal.fire('Error', e.error.mensaje, 'error' );
-        return throwError(e);
-      })
-    );
+
+    return this.http.get<Factura[]>(`${this.url}/listaFacturas`);
   }
   getFacturasActivas():Observable<Factura[]>{
-    return this.http.get<Factura[]>(`${this.url}/active/listaFactura`,{headers:this.httpHeaders});
+    return this.http.get<Factura[]>(`${this.url}/active/listaFactura`).pipe(
+      catchError(e =>{
+        Swal.fire('Error al obtener las facturas', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    )
+  }
+  getFacturasXEmpresa(id:number):Observable<Factura[] >{
+    return this.http.get<Factura[]>(`${this.url}/facturas/${id}`).pipe(  
+      catchError( err => 
+        of([] as Factura[]))
+    )
   }
   postFactura(factura:Factura):Observable<any>{
     return this.http.post<any>(`${this.url}/registrarFactura`,factura,{headers:this.httpHeaders})
@@ -32,6 +39,6 @@ export class FacturaService {
         Swal.fire('Error', e.error.mensaje, 'error' );
         return throwError(e);
       })
-    );
+    ); 
   }
 }

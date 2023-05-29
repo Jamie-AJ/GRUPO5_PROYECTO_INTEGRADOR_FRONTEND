@@ -1,4 +1,4 @@
-import { Component,Input, OnInit, inject} from '@angular/core';
+import { Component,ElementRef,HostListener,Input, OnInit, inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { Usuario } from 'src/app/interface/usuario.interface';
@@ -23,19 +23,26 @@ export class NavbarComponent implements OnInit {
   @Input() collapse = false;
   @Input() screenWidth= 0;
   isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
-  
+  isDropdownOpen: boolean = false;
   isLoggedIn = false;
   user!:Usuario;
   objSaldo:Saldo = {
     idCartera:0,
     saldo:0,
   }
-  constructor(private login:LoginService, private router:Router){}
+  constructor(private login:LoginService, private router:Router,private elementRef: ElementRef){}
+  
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isDropdownOpen = false;
+    }
+  }
   ngOnInit(): void {
     this.singIn();
     this.getSaldo();
   }
-
+ 
   getSaldo(){
     this.saldoService.getDetallCartera().subscribe(resp =>{
       this.objSaldo = resp;
@@ -55,6 +62,9 @@ export class NavbarComponent implements OnInit {
   public logout(){
     this.login.logout();
     this.router.navigate(['/auth/login']);
+  }
+  toggleDropdown(){
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
   getHeadClass():string{ 
     let styleClass:string='';

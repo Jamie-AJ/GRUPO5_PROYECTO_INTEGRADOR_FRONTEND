@@ -1,12 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
-import { Oportunidades } from 'src/app/interface/oportunidades.interface';
-import { Router } from '@angular/router';
 import { EmpresasService } from 'src/app/services/empresas.service';
-import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import { FacturaService } from 'src/app/services/factura.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-oportunities',
@@ -15,52 +11,35 @@ import Swal from 'sweetalert2';
 })
 export class AddOportunitiesComponent {
 
-  objOportunidades: Oportunidades = new Oportunidades();
 
-  empresaCombo: Empresas[] = [];
-  facturaCombo: Factura[] = [];
+  public empresas:Empresas[] = [];
+  public facturaList:Factura[] = [];
+  public mostrarAlerta: boolean = false;
+  public seEncontraronResultados: boolean = false;
+  public isLoading: boolean = false;
 
-  private router = inject(Router);
-  constructor(private empresaService: EmpresasService, private oportunidadesService: OportunidadesService, private facturaService: FacturaService){
-  }
-  ngOnInit() {
-    this.obtenerEmpresa();
-    this.obtenerFactura();
-  }
-  obtenerEmpresa(){
-    this.empresaService.getEmpresas().subscribe(
-      empresas => {
-        this.empresaCombo = empresas;
-        console.log(empresas);
-      },
-      error =>{
-      console.error(error);
-      }
-    );
+  constructor( private empresasServices:EmpresasService,private facturaService:FacturaService) { }
 
+  filterEmpresas(keyword: String): void{
+    this.isLoading = true;
+    this.empresasServices.filterEmpresas(keyword).subscribe(empresas =>{
+     this.empresas = empresas;
+     this.isLoading = false;
+     this.seEncontraronResultados = this.empresas.length > 0;
+    },err =>{
+      console.log(err);
+      this.mostrarAlerta = true;
+    })
   }
-  obtenerFactura(){
-    this.facturaService.getFacturasActivas().subscribe(
-      facturas =>{
-        this.facturaCombo = facturas;
-        console.log(facturas);
-      },
-      error =>{
-      console.error(error);
-      }
-    );
-
+  //RECUPERA LAS FACTURAS DE LA EMPRESA SELECCIONADA
+  //NO ITERA LAS FACTURAS DE LA EMPRESA SELECCIONADA EN EL HTML
+  addEmpresas(empresa:Empresas){
+    if(empresa.idEmpresa === undefined){
+      return;
+    }
+    this.facturaService.getFacturasXEmpresa(empresa.idEmpresa).subscribe((factura:Factura[]) =>{
+      console.log( factura);
+      this.facturaList = factura;
+  })
   }
-  postInsertarOportunidad(){
-    this.oportunidadesService.postOportunidad(this.objOportunidades).subscribe(
-      response =>{
-        Swal.fire('Registro con exito', response.mensaje, 'success');
-        
-      },
-      error =>{
-        console.error(error);
-      }
-    );
-  }
-
 }
