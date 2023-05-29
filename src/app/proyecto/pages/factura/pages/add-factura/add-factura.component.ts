@@ -1,11 +1,12 @@
 
 import { Component, OnInit,ViewChild,ElementRef  } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import { FacturaService } from 'src/app/services/factura.service';
+import * as customValidators from 'src/app/shared/components/validators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,8 +17,9 @@ import Swal from 'sweetalert2';
 export class AddFacturaComponent implements OnInit{
   title="Factura de Empresas";
 
-  // factura:Factura = new Factura();
+  public factura:Factura = new Factura();
   public empresas:Empresas[] = [];
+  public showNegativeNumberError = false;
   // objFactura: Factura = {
 
   // };
@@ -30,7 +32,7 @@ export class AddFacturaComponent implements OnInit{
     private activedRouter: ActivatedRoute) { }
 
     form:FormGroup = this.builder.group({
-      monto:['',[Validators.required,Validators.minLength(1)]],
+      monto:['',[Validators.required, customValidators.validarNumerosNegativos] ],
       fechaPago:[ '',[Validators.required]],
       codigoFactura:['',[Validators.required]],
       descripcion:['',[Validators.required]],
@@ -57,6 +59,8 @@ export class AddFacturaComponent implements OnInit{
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
           return 'El valor ingresado no tiene formato válido';
+        case 'negativeNumber':
+          return 'El valor ingresado no puede ser negativo';
       }
     }
     return null;
@@ -67,29 +71,16 @@ export class AddFacturaComponent implements OnInit{
       this.empresas = resp;
     })
   }
-  @ViewChild('montoInput') montoInput!: ElementRef;
-  showNegativeNumberError: boolean = false;
   postFactura(){
-    if(this.form.invalid){
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    if (this.form.value.monto !== undefined && this.form.value.monto < 0) {
-      this.showNegativeNumberError = true;
-      // this.montoInput.nativeElement.focus();
-    } else {
-      this.showNegativeNumberError = false;
-
-    this.facturaService.postFactura(this.form.value).subscribe(
-
-      resp =>{
-        console.log(resp);
-        Swal.fire('Factura Generada', resp.mensaje, 'success');
-        this.router.navigate(['/facturas/list-factura']);
-      }
-    );
-    }
+   
+    this.facturaService.postFactura(this.factura).subscribe(
+        resp =>{
+          console.log(resp);
+          Swal.fire('Factura Generada', resp.mensaje, 'success');
+          this.router.navigate(['/facturas/list-factura']);
+        }
+      );
+      
   }
   getCurrentDate(): string {
     const currentDate = new Date();

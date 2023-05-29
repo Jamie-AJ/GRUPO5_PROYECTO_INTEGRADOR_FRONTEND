@@ -1,4 +1,4 @@
-export interface Empresas {
+export class Empresas {
     idEmpresa?:         number;
     nomEmpresa?:        string;
     ruc?:               string;

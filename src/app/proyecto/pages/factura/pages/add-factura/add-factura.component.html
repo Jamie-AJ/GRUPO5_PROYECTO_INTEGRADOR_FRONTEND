@@ -12,34 +12,38 @@
       </div>
     </div>
     <div class="form__content">
-      <form class="factura__content-form"  (ngSubmit)="postFactura()">
+      <form class="factura__content-form" [formGroup]="form" (ngSubmit)="postFactura()">
         <h3>Generar Facturas</h3>
         <div class="form__group">
-          <!-- <div class="form__box">
-            <label for="codigoFactura">Codigó de Factura</label>
-            <input type="text" id="codigoFactura" formControlName="codigoFactura" readonly>
-          </div> -->
+         
           <div class="form__box">
             <label for="empresa">Empresa</label>
-            <select id="empresa" name="idEmpresa" [(ngModel)]="objFactura.idEmpresa" class="form__input"> 
+            <select id="empresa" formControlName="idEmpresa" [(ngModel)]="factura.idEmpresa" class="form__input"> 
               <option disabled select value="undefined">Seleccion la empresa</option>
               <option *ngFor="let emp of empresas" [value]="emp.idEmpresa">{{emp.razonSocial}}</option>
             </select>
             <span class="invalid" *ngIf="isValid('idEmpresa')">{{getFieldError('idEmpresa')}}</span>
+           
           </div>    
           <div class="form__box">
-            <label for="monto">Monto de Factura</label>
+            <label for="monto">Fecha de Factura</label>
             
-            <input type="date" id="fechaPago" name="fechaPago" [(ngModel)]="objFactura.fechaPago" class="form__input" [min]="getCurrentDate()">
+            <input type="date" id="fechaPago" formControlName="fechaPago" [(ngModel)]="factura.fechaPago" class="form__input" [min]="getCurrentDate()">
+            <span class="invalid" *ngIf="isValid('fechaPago')">{{getFieldError('fechaPago')}}</span>
+          
           </div>
           <div class="form__box">
             <label for="monto">Monto de Factura</label>
-            <input type="number" id="monto" name="monto" [(ngModel)]="objFactura.monto" class="form__input" placeholder="0.00" min="0" #montoInput>
-            <span class="invalid" *ngIf="showNegativeNumberError">No se aceptan números negativos</span>
+            <input type="number" id="monto" formControlName="monto" [(ngModel)]="factura.monto" class="form__input" placeholder="0.00">
+            <span class="invalid" *ngIf="isValid('monto')">{{getFieldError('monto')}}</span>
+            <span>form valid: {{form.valid }}</span>
+            <span>form Status: {{form.status }}</span>
+            <span>form pending: {{form.pending}}</span>
+           
           </div>
           <div class="form__box">
             <label for="descripcion">Descripción de factura</label>
-            <textarea id="descripcion" name="descripcion" [(ngModel)]="objFactura.descripcion"></textarea>
+            <textarea id="descripcion" formControlName="descripcion" [(ngModel)]="factura.descripcion"></textarea>
             <span class="invalid" *ngIf="isValid('descripcion')">{{getFieldError('descripcion')}}</span>
           </div>
         </div>  
@@ -47,6 +51,15 @@
           <button class="btn btn-danger" (click)="goBack()">Cancelar</button>
           <button class="btn btn-primary">Guardar</button>
       </div>  
+      <h2>form errors</h2>
+      <h3>Monto</h3>
+      <pre>{{form.value.monto | json}}</pre>
+      <h3>fecha pago</h3>
+    <pre>{{form.value.fechaPago | json}}</pre>
+    <h3>razon social</h3>
+    <pre>{{form.value.empresa.idEmpresa | json}}</pre>
+    <h3>descripcion</h3>
+    <pre>{{form.value.descripcion | json}}</pre>
       </form>
     </div>
   </div>
