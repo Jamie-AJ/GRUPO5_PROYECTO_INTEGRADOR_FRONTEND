@@ -74,12 +74,15 @@ export class AddFacturaComponent implements OnInit{
       this.form.markAllAsTouched();
       return;
     }
+
     if (this.form.value.monto !== undefined && this.form.value.monto < 0) {
       this.showNegativeNumberError = true;
       // this.montoInput.nativeElement.focus();
     } else {
       this.showNegativeNumberError = false;
+
     this.facturaService.postFactura(this.form.value).subscribe(
+
       resp =>{
         console.log(resp);
         Swal.fire('Factura Generada', resp.mensaje, 'success');
