@@ -15,10 +15,10 @@
       <form class="factura__content-form" [formGroup]="form" (ngSubmit)="postFactura()">
         <h3>Generar Facturas</h3>
         <div class="form__group">
-          <div class="form__box">
+          <!-- <div class="form__box">
             <label for="codigoFactura">Codigó de Factura</label>
             <input type="text" id="codigoFactura" formControlName="codigoFactura" readonly>
-          </div>
+          </div> -->
           <div class="form__box">
             <label for="empresa">Empresa</label>
             <select id="empresa" formControlName="idEmpresa"  class="form__input"> 
@@ -28,14 +28,14 @@
             <span class="invalid" *ngIf="isValid('idEmpresa')">{{getFieldError('idEmpresa')}}</span>
           </div>    
           <div class="form__box">
-            <label for="monto">Monto de Factura</label>
-            <input type="number" id="monto" formControlName="monto" class="form__input" placeholder="0.00">
-            <input type="date" id="fechaPago" name="fechaPago" [(ngModel)]="objFactura.fechaPago" class="form__input" [min]="getCurrentDate()">
+            <label for="fechaPago">Fecha de pago</label>
+            <input type="date" id="fechaPago" formControlName="fechaPago" class="form__input" [min]="getCurrentDate()">
+            <span class="invalid" *ngIf="isValid('fechaPago')">{{getFieldError('fechaPago')}}</span>
           </div>
           <div class="form__box">
             <label for="monto">Monto de Factura</label>
-            <input type="number" id="monto" name="monto" [(ngModel)]="objFactura.monto" class="form__input" placeholder="0.00" min="0" #montoInput>
-            <span class="error-message" *ngIf="showNegativeNumberError">No se aceptan números negativos</span>
+            <input type="number" id="monto" formControlName="monto"  class="form__input" placeholder="0.00" min="0" #montoInput>
+            <span class="invalid" *ngIf="isValid('monto')">{{getFieldError('monto')}}</span>
           </div>
           <div class="form__box">
             <label for="descripcion">Descripción de factura</label>

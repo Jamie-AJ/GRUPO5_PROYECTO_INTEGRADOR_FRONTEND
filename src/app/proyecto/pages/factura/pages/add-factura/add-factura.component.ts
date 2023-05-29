@@ -17,14 +17,10 @@ export class AddFacturaComponent implements OnInit{
   title="Factura de Empresas";
 
   // factura:Factura = new Factura();
+  public empresas:Empresas[] = [];
   // objFactura: Factura = {
 
   // };
- public objEmpresa?: Empresas;
- public empresas:Empresas[] = [];
- public mostrarAlerta: boolean = false;
- public seEncontraronResultados: boolean = false;
- public isLoading: boolean = false;
 
   constructor(
     private facturaService:FacturaService,
@@ -35,7 +31,7 @@ export class AddFacturaComponent implements OnInit{
 
     form:FormGroup = this.builder.group({
       monto:['',[Validators.required,Validators.minLength(1)]],
-      fechaPago:['',[Validators.required]],
+      fechaPago:[ '',[Validators.required]],
       codigoFactura:['',[Validators.required]],
       descripcion:['',[Validators.required]],
       empresa:['',[Validators.required]],
@@ -44,12 +40,7 @@ export class AddFacturaComponent implements OnInit{
 
    
   ngOnInit(): void {
-    // this.activedRouter.params.subscribe(params =>{
-    //   let id = +params['id'];
-    //   this.empresasServices.getEmpresasById(id).subscribe(empresas =>{
-    //     this.objEmpresa = empresas;
-    //   })
-    // })
+    this.getEmpresas();
   }
   //VALIDACIONES
   isValid(field: string) {
@@ -70,27 +61,33 @@ export class AddFacturaComponent implements OnInit{
     }
     return null;
   }
-  
+  getEmpresas(){
+    this.empresasServices.getEmpresas().subscribe(resp =>{
+      console.log(resp);
+      this.empresas = resp;
+    })
+  }
   @ViewChild('montoInput') montoInput!: ElementRef;
   showNegativeNumberError: boolean = false;
   postFactura(){
-    if (this.objFactura.monto !== undefined && this.objFactura.monto < 0) {
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
+      return;
+    }
+    if (this.form.value.monto !== undefined && this.form.value.monto < 0) {
       this.showNegativeNumberError = true;
-      this.montoInput.nativeElement.focus();
+      // this.montoInput.nativeElement.focus();
     } else {
       this.showNegativeNumberError = false;
-    this.facturaService.postFactura(this.objFactura).subscribe(
-
+    this.facturaService.postFactura(this.form.value).subscribe(
       resp =>{
         console.log(resp);
-        this.form.reset();
         Swal.fire('Factura Generada', resp.mensaje, 'success');
         this.router.navigate(['/facturas/list-factura']);
       }
     );
     }
   }
-
   getCurrentDate(): string {
     const currentDate = new Date();
     const year = currentDate.getFullYear();

@@ -17,3 +17,8 @@ export const rucPattern: string ="^20[\\d]{9}$";
 
 //El precio no debe ser negativo
 export const precioPattern: string = "^(?!-)[0-9]+(?:\\.[0-9]+)?$"; 
+
+
+export class validadoresEspeciales{
+
+}

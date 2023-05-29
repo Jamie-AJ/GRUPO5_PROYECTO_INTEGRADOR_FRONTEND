@@ -23,20 +23,20 @@
           <table class="listar__table">
             <thead class="listar__thead">
               <tr>
-                <th>Codigó</th>
+                <th>Codigo Factura</th>
+                <th>Fecha de Pago</th>
                 <th>Razon Social</th>
-                <th>RUC</th>
-                <th>Factura</th>
-                <th>Rubro</th>
+                <th>Monto</th>
+                <th>Descripción</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let fac of factura">
+                <td>{{fac.codFactura}}</td>
+                <td>{{fac.fechaPago}}</td>
+                <td>{{fac.empresas!.razonSocial}}</td>
+                <td>{{fac.monto}}</td>
+                <td>{{fac.descripcion}}</td>
               </tr>
             </tbody>
           </table>
@@ -73,40 +73,4 @@
   </div>
    
 </section>
-<!-- <section class="factura__container animate__animated animate__fadeIn animete_faster">
-    <h3>{{title}}</h3>
-    <div class="listar__content">
-        <div class="listar__button">
-          <div>
-            <a routerLink="/facturas/add-factura" class="btn__factura">
-              <i class="bx bx-plus"></i>
-            Agregar facturas
-            </a>
-          </div>
-        </div>
-        <div class="listar__content-table">
-          <table class="listar__table">
-            <thead class="listar__thead">
-              <tr>
-                <th>Codigo Factura</th>
-                <th>Fecha de Pago</th>
-                <th>Razon Social</th>
-                <th>Monto</th>
-                <th>Descripción</th>
-              </tr>
-            </thead>
-            <tbody class="listar__tbody">
-              <tr *ngFor="let fac of factura">
-                <td>{{fac.codFactura}}</td>
-                <td>{{fac.fechaPago}}</td>
-                <td>{{fac.empresas!.razonSocial}}</td>
-                <td>{{fac.monto}}</td>
-                <td>{{fac.descripcion}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</section> -->
 <!-- <app-modal (closeModal)="closeModal()" [showModal]="showModal"></app-modal> -->
-<!-- Modal -->
