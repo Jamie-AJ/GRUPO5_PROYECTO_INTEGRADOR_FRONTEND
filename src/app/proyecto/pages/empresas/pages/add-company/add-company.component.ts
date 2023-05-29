@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AddCompanyComponent {
   title:string ='Agregar empresa'
+
   empresas:Empresas[] = [];
 
   constructor(private empresasService:EmpresasService,private builder:FormBuilder,private router:Router) { }
@@ -58,8 +59,11 @@ export class AddCompanyComponent {
     }
     this.empresasService.postEmpresas(this.form.value).subscribe(resp=>{
       Swal.fire('Empresa registrada', resp.mensaje , 'success');
-      this.empresas = resp;
+      // this.empresas = resp;
       this.form.reset();
+      this.router.navigate(['/empresas/list-company']);
+    },error =>{
+      Swal.fire('Error', error.error.mensaje , 'error');
     })
   }
 }

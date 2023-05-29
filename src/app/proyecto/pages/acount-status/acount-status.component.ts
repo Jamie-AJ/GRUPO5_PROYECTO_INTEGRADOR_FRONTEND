@@ -45,7 +45,6 @@ export class AcountStatusComponent implements OnInit{
       valorMonedas:''
     }
   };
-
   //COMPORTAMIENTO DE LOS TABS
   tabs: string[] = ['Movimientos','Depositos y Retiros','Cuentas Bancaria' ]
   //TAB ACTIVO

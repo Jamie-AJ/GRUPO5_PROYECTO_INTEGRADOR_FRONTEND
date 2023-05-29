@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
+import { EmpresasService } from 'src/app/services/empresas.service';
 import { FacturaService } from 'src/app/services/factura.service';
 
 @Component({
@@ -8,10 +10,28 @@ import { FacturaService } from 'src/app/services/factura.service';
   templateUrl: './list-facturas.component.html',
   styleUrls: ['./list-facturas.component.css']
 })
-export class ListFacturasComponent {
+export class ListFacturasComponent implements OnInit {
   title = 'Facturas de Empresas';
   factura:Factura[] = [];
+  tabs: string[] = ['General', 'Activos' ]
+  activeTabsIndex: number = 0;
+
+
   constructor(private facturaService:FacturaService){}
+  
+  ngOnInit(): void {
+    this.getFaturasActive();
+  }
+  tabsChange(tab:number){
+    this.activeTabsIndex = tab;
+  }
+
+  getFaturasActive(){
+    this.facturaService.getFacturasActivas().subscribe(resp => {
+      console.log(resp);
+      this.factura = resp;
+    })
+  }
   // showModal = false;
 
   // openModal() {
@@ -21,8 +41,6 @@ export class ListFacturasComponent {
   // closeModal() {
   //   this.showModal = false;
   // }
-  agregarFactura(){
-    
-  }
+
 
 }

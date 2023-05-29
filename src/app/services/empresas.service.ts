@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, tap, catchError, throwError, of } from 'rxjs';
 import { Empresas } from '../interface/empresas.interface';
 import Swal from 'sweetalert2';
 
@@ -13,12 +13,25 @@ export class EmpresasService {
    private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   constructor( private http:HttpClient) { }
 
+  private getEmpresasRequest(url: string):Observable<Empresas[]>{
+    return this.http.get<Empresas[]>(url).pipe(
+      catchError( () => of([]) )
+    )
+  }
+
+  filterEmpresas(keyword:String):Observable<Empresas[]>{
+    const url = `${this.url}/active/buscarEmpresasContains/${keyword}`
+    return this.getEmpresasRequest(url);
+  }
   getEmpresas():Observable<Empresas[]>{
-    return this.http.get<Empresas[]>(`${this.url}/active/listaEmpresas`).pipe(
-      catchError(e =>{
-        Swal.fire('Error al obtener las empresas', e.error.mensaje, 'error');
-        return throwError(e);
-      })
+    const url = `${this.url}/active/listaEmpresas`
+    return this.getEmpresasRequest(url);
+  }
+  getEmpresasById(id:number):Observable<Empresas | undefined>{
+    const url = `${this.url}/empresa/buscar/${id}`
+    return this.http.get<Empresas>(url).pipe(
+      catchError( err => 
+        of(undefined))
     )
   }
   postEmpresas(empresas:Empresas):Observable<any>{

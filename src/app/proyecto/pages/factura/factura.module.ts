@@ -5,7 +5,9 @@ import { FacturaRoutingModule } from './factura-routing.module';
 import { AddFacturaComponent } from './pages/add-factura/add-factura.component';
 import { ListFacturasComponent } from './pages/list-facturas/list-facturas.component';
 import { ModalComponent } from '../../components/modal/modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProyectoModule } from '../../proyecto.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -18,7 +20,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FacturaRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ProyectoModule,
+    SharedModule
   ]
 })
 export class FacturaModule { }

@@ -1,7 +1,7 @@
 
 :root{
     --primary-color: #1E2433;
-    --sidebar-color: #fa8b11;
+    --sidebar-color: #434CE6;
     --sidebar-color-content:#1E2433;
     --circle-color: #7DE8FF;
     --white-color: #ffffff;
@@ -12,34 +12,36 @@
     --text-color-btn:#7A7A7A;
     --text-color:#707070;
     --pass-color:#6D6D6D;
-    --carousel-color:#323232;
-    --top-color:#9F96FF;
-    --bot-color:#9A94DE;
     --table-color: #f8f9fc;
     --second-table-color: #e3e6f0;
-    --panel-color: #ffffff;
 
 
+    /* --sidebar-color: #fa8b11; 
+    --primary-color: #1E2433;
+    --sidebar-color-content:#1E2433;
+     --white-color: #ffffff;
+    --black-color: #000000;
+     --grey-color:#6F6F6F;
+      --previus-color-btn:#dadada;
+    --second-table-color: #e3e6f0;*/
     /* TYPOGRAPHY */
     --font-primary: 'Poppins', sans-serif;
 }
 .dark-mode {
-    --primary-color: #ABCDEF;
-    --circle-color: #123456;
-    --white-color: #000000;
-    --black-color: #ffffff;
-    --grey-color: #999999;
-    --form-color: #333333;
-    --previus-color-btn: #333333;
-    --text-color-btn: #ffffff;
-    --text-color: #ffffff;
-    --pass-color: #cccccc;
-    --carousel-color: #dddddd;
-    --top-color: #ABCDEF;
-    --bot-color: #654321;
-    --table-color: #222222;
-    --second-table-color: #333333;
-    --panel-color: #000000;
+    --primary-color: #1E2433;
+    --sidebar-color: #434CE6;
+    --sidebar-color-content: #1E2433;
+    --circle-color: #7DE8FF;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --grey-color: #6F6F6F;
+    --form-color: #B9B6B6;
+    --previus-color-btn: #dadada;
+    --text-color-btn: #7A7A7A;
+    --text-color: #707070;
+    --pass-color: #6D6D6D;
+    --table-color: #f8f9fc;
+    --second-table-color: #e3e6f0;
     --font-primary: 'Poppins', sans-serif;
 }
 *,

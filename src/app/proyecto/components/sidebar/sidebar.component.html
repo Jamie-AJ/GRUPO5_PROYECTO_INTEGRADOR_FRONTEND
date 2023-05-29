@@ -8,6 +8,64 @@
             <i class="bx bx-x" (click)="closeCollapse()"></i>
         </button>
     </div>
+    <ul class="side-menu">
+        <li class="sidebar__item">
+            <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bxs-dashboard icon"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/oportunities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bxs-bar-chart-alt-2 icon"></i>
+                Oportunidad de Inversiones
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/inversiones" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bx-wallet icon"></i>
+               Mis Inversiones
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bx bxs-credit-card icon"></i>
+                Estado de cuenta
+            </a>
+        </li>
+       
+        <!-- <li *ngIf="isAdministrador" class="divider">Main</li> -->
+        <li class="sidebar__item">
+            <a  *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bx-edit icon'></i>
+               Gestion de Empresa
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a *ngIf="isAdministrador" routerLink="/facturas/list-factura" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bxs-report icon'></i>
+                Facturas
+            </a>
+        </li>
+        <li class="sidebar__item">
+            <a  *ngIf="isAdministrador" routerLink="/inversiones/list-inversion" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+                <i class='bx bx-line-chart icon'></i>
+                Oportunidad de Inversiones
+            </a>
+        </li>
+        
+    </ul>
+</div>
+<!-- <div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+    <div class="sidebar__logo">
+        <button class="button-open" (click)="toggleCollapse()">
+            <i class="bx bx-dollar-circle side-open" ></i>
+        </button>
+        <p>Invest <span> Go!</span></p>
+        <button class="button-close" *ngIf="collapse">
+            <i class="bx bx-x" (click)="closeCollapse()"></i>
+        </button>
+    </div>
   	<ul class="sidebar__menu">
     	<li class="sidebar__item">
             <a  routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -32,7 +90,7 @@
                 <i class="bx bxs-credit-card icon"></i>
                 <p>Cuenta</p>
             </a>
-            <!-- <span class="box">Empresas</span> -->
+            <span class="box">Empresas</span>
     	</li>
         <li class="sidebar__item">
             <a *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
@@ -55,6 +113,6 @@
     	</li>
         
   	</ul>
-    <!-- <app-footer></app-footer> -->
+    <app-footer></app-footer>
 </div>
-
+ -->
