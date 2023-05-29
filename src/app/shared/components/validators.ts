@@ -14,4 +14,6 @@ export const passwordPattern: string = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-
 export const cuentaBancariaPattern: string = "^[0-9]{16,20}$";
 export const cvvPattern: string ="^[0-9]{3,4}$";
 export const rucPattern: string ="^20[\\d]{9}$";
-export const montoPattern: string = "/^(?!-)\d+(\.\d+)?$/";
+
+//El precio no debe ser negativo
+export const precioPattern: string = "^(?!-)[0-9]+(?:\\.[0-9]+)?$"; 

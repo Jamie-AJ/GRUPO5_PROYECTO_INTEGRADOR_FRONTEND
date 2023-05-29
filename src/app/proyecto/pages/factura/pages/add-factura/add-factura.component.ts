@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit,ViewChild,ElementRef  } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
@@ -19,7 +20,7 @@ export class AddFacturaComponent implements OnInit{
   // objFactura: Factura = {
 
   // };
-  public objEmpresa?: Empresas;
+ public objEmpresa?: Empresas;
  public empresas:Empresas[] = [];
  public mostrarAlerta: boolean = false;
  public seEncontraronResultados: boolean = false;
@@ -70,21 +71,42 @@ export class AddFacturaComponent implements OnInit{
     return null;
   }
   
+  @ViewChild('montoInput') montoInput!: ElementRef;
+  showNegativeNumberError: boolean = false;
   postFactura(){
-    if(this.form.invalid){
-      this.form.markAllAsTouched();
-      return;
-    }
-    this.facturaService.postFactura(this.form.value).subscribe(
+    if (this.objFactura.monto !== undefined && this.objFactura.monto < 0) {
+      this.showNegativeNumberError = true;
+      this.montoInput.nativeElement.focus();
+    } else {
+      this.showNegativeNumberError = false;
+    this.facturaService.postFactura(this.objFactura).subscribe(
+
       resp =>{
         console.log(resp);
         this.form.reset();
         Swal.fire('Factura Generada', resp.mensaje, 'success');
         this.router.navigate(['/facturas/list-factura']);
       }
-    )
+    );
+    }
   }
+
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    return `${year}-${this.padZero(month)}-${this.padZero(day)}`;
+  }
+
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
+
   goBack(){
     this.router.navigate(['/facturas/list-factura']);
   }
+
 }
+
+
