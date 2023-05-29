@@ -74,12 +74,12 @@ export class AddFacturaComponent implements OnInit{
   @ViewChild('montoInput') montoInput!: ElementRef;
   showNegativeNumberError: boolean = false;
   postFactura(){
-    if (this.objFactura.monto !== undefined && this.objFactura.monto < 0) {
+    if (this.form.value.monto !== undefined && this.form.value.monto < 0) {
       this.showNegativeNumberError = true;
       this.montoInput.nativeElement.focus();
     } else {
       this.showNegativeNumberError = false;
-    this.facturaService.postFactura(this.objFactura).subscribe(
+    this.facturaService.postFactura(this.form.value.monto).subscribe(
 
       resp =>{
         console.log(resp);
