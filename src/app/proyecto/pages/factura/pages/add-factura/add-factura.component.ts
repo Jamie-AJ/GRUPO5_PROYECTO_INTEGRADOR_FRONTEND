@@ -1,11 +1,12 @@
 
 import { Component, OnInit,ViewChild,ElementRef  } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import { FacturaService } from 'src/app/services/factura.service';
+import * as customValidators from 'src/app/shared/components/validators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,15 +17,12 @@ import Swal from 'sweetalert2';
 export class AddFacturaComponent implements OnInit{
   title="Factura de Empresas";
 
-  // factura:Factura = new Factura();
+  public factura:Factura = new Factura();
+  public empresas:Empresas[] = [];
+  public showNegativeNumberError = false;
   // objFactura: Factura = {
 
   // };
- public objEmpresa?: Empresas;
- public empresas:Empresas[] = [];
- public mostrarAlerta: boolean = false;
- public seEncontraronResultados: boolean = false;
- public isLoading: boolean = false;
 
   constructor(
     private facturaService:FacturaService,
@@ -34,8 +32,8 @@ export class AddFacturaComponent implements OnInit{
     private activedRouter: ActivatedRoute) { }
 
     form:FormGroup = this.builder.group({
-      monto:['',[Validators.required,Validators.minLength(1)]],
-      fechaPago:['',[Validators.required]],
+      monto:['',[Validators.required, customValidators.validarNumerosNegativos] ],
+      fechaPago:[ '',[Validators.required]],
       codigoFactura:['',[Validators.required]],
       descripcion:['',[Validators.required]],
       empresa:['',[Validators.required]],
@@ -44,12 +42,7 @@ export class AddFacturaComponent implements OnInit{
 
    
   ngOnInit(): void {
-    // this.activedRouter.params.subscribe(params =>{
-    //   let id = +params['id'];
-    //   this.empresasServices.getEmpresasById(id).subscribe(empresas =>{
-    //     this.objEmpresa = empresas;
-    //   })
-    // })
+    this.getEmpresas();
   }
   //VALIDACIONES
   isValid(field: string) {
@@ -66,31 +59,29 @@ export class AddFacturaComponent implements OnInit{
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
           return 'El valor ingresado no tiene formato válido';
+        case 'negativeNumber':
+          return 'El valor ingresado no puede ser negativo';
       }
     }
     return null;
   }
-  
-  @ViewChild('montoInput') montoInput!: ElementRef;
-  showNegativeNumberError: boolean = false;
-  postFactura(){
-    if (this.form.value.monto !== undefined && this.form.value.monto < 0) {
-      this.showNegativeNumberError = true;
-      this.montoInput.nativeElement.focus();
-    } else {
-      this.showNegativeNumberError = false;
-    this.facturaService.postFactura(this.form.value.monto).subscribe(
-
-      resp =>{
-        console.log(resp);
-        this.form.reset();
-        Swal.fire('Factura Generada', resp.mensaje, 'success');
-        this.router.navigate(['/facturas/list-factura']);
-      }
-    );
-    }
+  getEmpresas(){
+    this.empresasServices.getEmpresas().subscribe(resp =>{
+      console.log(resp);
+      this.empresas = resp;
+    })
   }
-
+  postFactura(){
+   
+    this.facturaService.postFactura(this.factura).subscribe(
+        resp =>{
+          console.log(resp);
+          Swal.fire('Factura Generada', resp.mensaje, 'success');
+          this.router.navigate(['/facturas/list-factura']);
+        }
+      );
+      
+  }
   getCurrentDate(): string {
     const currentDate = new Date();
     const year = currentDate.getFullYear();

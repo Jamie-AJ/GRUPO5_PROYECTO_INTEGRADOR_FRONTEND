@@ -1,3 +1,4 @@
+import { AbstractControl, Form, FormControl, ValidationErrors } from "@angular/forms";
 
 
 //TODO: EXPRESIONES REGULARES
@@ -17,3 +18,13 @@ export const rucPattern: string ="^20[\\d]{9}$";
 
 //El precio no debe ser negativo
 export const precioPattern: string = "^(?!-)[0-9]+(?:\\.[0-9]+)?$"; 
+
+
+//TODO: VALIDACIONES PERSONALIZADAS
+export const validarNumerosNegativos = (control: FormControl): ValidationErrors | null =>{
+    const value:number = control.value;
+    if (value < 0) {
+        return { negativeNumber: true };
+    }
+    return null;
+}

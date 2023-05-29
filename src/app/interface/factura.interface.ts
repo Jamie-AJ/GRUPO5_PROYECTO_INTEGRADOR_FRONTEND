@@ -1,6 +1,6 @@
 import { Empresas } from "./empresas.interface";
 
-export interface Factura {
+export class Factura {
     idFactura?:     number;
     monto?:         number;
     fechaEmision?:  Date;

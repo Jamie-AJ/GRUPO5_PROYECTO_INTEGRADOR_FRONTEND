@@ -21,6 +21,7 @@ export class ListFacturasComponent implements OnInit {
   
   ngOnInit(): void {
     this.getFaturasActive();
+    this.getFacturas();
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
@@ -32,15 +33,11 @@ export class ListFacturasComponent implements OnInit {
       this.factura = resp;
     })
   }
-  // showModal = false;
-
-  // openModal() {
-  //   this.showModal = true;
-  // }
-
-  // closeModal() {
-  //   this.showModal = false;
-  // }
-
-
+  getFacturas(){
+    this.facturaService.getFacturas().subscribe(resp => {
+      console.log(resp);
+      this.factura = resp;
+    })
+  }
+  
 }
