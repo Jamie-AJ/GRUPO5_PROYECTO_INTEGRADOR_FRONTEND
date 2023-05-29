@@ -1,0 +1,11 @@
+<!-- (keyup.enter)="emitValue(txtInput.value)" -->
+<div class="search">
+    <form class="search__box">
+      <input type="text" 
+      [placeholder]="placeholder" 
+      class="search__input"  
+      (keyup)="onKeyPress(txtInput.value)"
+      #txtInput>
+      <!-- <i class="bx bx-search icon"></i> -->
+  </form>
+</div>

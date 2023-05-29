@@ -11,6 +11,7 @@ const routes: Routes = [
     children:[
       {path:'list-factura',component:ListFacturasComponent},
       {path:'add-factura',component:AddFacturaComponent},
+      {path:'add-factura/:id',component:AddFacturaComponent},
     ]
   }
 ];

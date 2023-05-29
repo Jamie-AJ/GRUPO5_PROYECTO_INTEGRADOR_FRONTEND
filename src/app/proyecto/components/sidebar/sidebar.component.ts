@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Role } from 'src/app/interface/role.interface';
@@ -23,26 +23,40 @@ export class SidebarComponent implements OnInit {
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
 
   private authService = inject(LoginService);
+  private elementRef = inject(ElementRef);
   isAdministrador = this.authService.getUserRole() === 'ADMIN';
   isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
 
-  collapse = false;
+  collapse:boolean = false;
+  isDropdownOpen: boolean = false;
   screenWidth = 0;
   user!:Usuario;
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize', ['$event',])
   onResize(event: any): void {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 768) {
       this.collapse = false;
       this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
-    }
+    } 
   }
+  // @HostListener('document:mouseover', ['$event'])
+  // onDocumentClick(event: MouseEvent): void {
+  //   if (!this.elementRef.nativeElement.contains(event.target)) {
+  //     this.collapse = false;
+  //     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
+  //   }
+  // }
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
 
   }
+  
 
+  toggleDropdown(e:Event) {
+    e.preventDefault();
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
   toggleCollapse(): void {
     this.collapse = !this.collapse;
     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });

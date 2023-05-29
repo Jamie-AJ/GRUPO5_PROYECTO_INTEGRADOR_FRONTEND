@@ -1,25 +1,35 @@
-<section class="factura__container animate__animated animate__fadeIn animete_faster">
-  <div>
-    <h2>{{title}}</h2>
-  </div>
-  <div class="factura__form">
+<section class="factura__container animate__animated animate__fadeIn animete_faster" >
+  <div class="factura__content">
+    <div class="factura__nav">
+      <div class="factura__header">
+        <h3>{{title}}</h3>
+      </div>
+      <div clasS="inversion__group">
+        <a routerLink="/facturas/list-factura" class="btn__factura">
+            <i class='bx bx-chevron-left'></i>
+          Regresar
+        </a>
+      </div>
+    </div>
     <div class="form__content">
-      <form action="" class="factura__content-form" (ngSubmit)="postFactura()">
+      <form class="factura__content-form" [formGroup]="form" (ngSubmit)="postFactura()">
         <h3>Generar Facturas</h3>
         <div class="form__group">
-          <!-- <div class="form__box">
-          <label for="numeroFactura">Codigó de Factura</label>
-          <input type="text" id="numeroFactura" name="numeroFactura"  readonly>
-          </div> -->
           <div class="form__box">
-            <label for="empresa">Empresa</label>
-            <select id="empresa" name="empresa" [(ngModel)]="objFactura.idEmpresa" class="form__input"> 
-              <option disabled select [ngValue]="undefined">Seleccion la empresa</option>
-              <option *ngFor="let emp of empresas" [value]="emp.idEmpresa">{{emp.razonSocial}}</option>
-            </select>
+            <label for="codigoFactura">Codigó de Factura</label>
+            <input type="text" id="codigoFactura" formControlName="codigoFactura" readonly>
           </div>
           <div class="form__box">
-            <label for="fechaPago">Fecha de Pago</label>
+            <label for="empresa">Empresa</label>
+            <select id="empresa" formControlName="idEmpresa"  class="form__input"> 
+              <option disabled select value="">Seleccion la empresa</option>
+              <option *ngFor="let emp of empresas" [value]="emp.idEmpresa">{{emp.razonSocial}}</option>
+            </select>
+            <span class="invalid" *ngIf="isValid('idEmpresa')">{{getFieldError('idEmpresa')}}</span>
+          </div>    
+          <div class="form__box">
+            <label for="monto">Monto de Factura</label>
+            <input type="number" id="monto" formControlName="monto" class="form__input" placeholder="0.00">
             <input type="date" id="fechaPago" name="fechaPago" [(ngModel)]="objFactura.fechaPago" class="form__input" [min]="getCurrentDate()">
           </div>
           <div class="form__box">
@@ -29,7 +39,8 @@
           </div>
           <div class="form__box">
             <label for="descripcion">Descripción de factura</label>
-            <textarea id="descripcion" name="descripcion" [(ngModel)]="objFactura.descripcion"></textarea>
+            <textarea id="descripcion" formControlName="descripcion"></textarea>
+            <span class="invalid" *ngIf="isValid('descripcion')">{{getFieldError('descripcion')}}</span>
           </div>
         </div>  
         <div class="form__group--btn">
@@ -39,5 +50,5 @@
       </form>
     </div>
   </div>
-</section>
+</section>  
 

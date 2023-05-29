@@ -1,0 +1,26 @@
+/* Estilos para el breadcrumb */
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .breadcrumb-item {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .breadcrumb-item:last-child {
+    font-weight: bold;
+    color: #333; /* Color para la última migaja de pan */
+  }
+  
+  .breadcrumb-item a {
+    color: #666;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }

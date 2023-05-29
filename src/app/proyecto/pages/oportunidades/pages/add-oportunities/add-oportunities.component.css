@@ -1,0 +1,196 @@
+.inversion__container{
+    position: relative;
+    /* background-color: var(--panel-color);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
+    /* border-radius: 10px; */
+    height: 100%;
+}
+.inversion__container .inversion__title{
+    font-size: 24px;
+    font-weight: 600;
+    /* padding: 1rem;
+    background-color: var(--primary-color);
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    color:var(--white-color);
+     */
+}
+.inversion__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap:2rem;
+}
+.inversion__box{
+    height: 100%;
+    background-color: var(--white-color);
+    padding:1rem ;
+    border-radius: 10px;
+}
+.inversion__form{
+    /* background-color: var(--white-color); */
+    padding: 1rem 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100%;
+}
+.inversion__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem 0 3rem 0;
+}
+.inversion__header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1rem;
+}
+.inversion__subtitle{
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black-color);
+}
+.inversion__form .form__content{
+    background-color: var(--white-color);
+    padding:1rem;
+    border-radius: 10px;
+}
+.listar__tbody .icon{
+    color: #0ede2a;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.listar__content-table{
+    margin-top: 1rem;
+}
+.listar__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.listar__button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75rem;
+}
+.listar__table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    background-color: var(--table-color);
+    border: 1px solid var(--second-table-color);
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+    
+}
+
+.listar__thead{
+    background-color: var(--second-table-color);
+}
+.listar__table .listar__thead th {
+    padding: 1rem 0.75rem;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__thead,
+.listar__table .listar__tbody {
+    text-align: center;
+}
+
+.listar__table .listar__tbody tr {
+    border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__tbody tr:nth-child(even) {
+    background-color: #ffffff;
+    
+}
+
+.listar__table .listar__tbody tr:last-child {
+    border-bottom: none;
+}
+
+.listar__table .listar__tbody tr td {
+    padding: 0.625rem 0.625rem;
+    font-size: 13px;
+}
+
+.listar__table .listar__tbody tr:hover {
+    background-color: #ececec;
+}
+
+.btn__factura {
+    padding: 0.625rem 1rem;
+    border-radius: 20px;
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* outline: none; */
+}
+.btn__factura:hover{
+    background-color: #373ece;
+}
+
+.company__content-form{
+    width:50%;
+    background-color: #EFF1F7;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.inversion__form__content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1.5rem;
+}
+.form__box{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+.form__box label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #4F4F4F;
+}
+.form__box:nth-child(1){
+    grid-column: 1/3;
+}
+.form__input{
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #C4C4C4;
+    outline: none;
+}
+.form__group--btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    gap:1rem;
+}
+.invalid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #d45360;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+}

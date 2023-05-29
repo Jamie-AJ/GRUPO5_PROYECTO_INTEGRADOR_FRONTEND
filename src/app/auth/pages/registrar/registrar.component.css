@@ -20,7 +20,7 @@
 
 .form__title {
     font-weight: 600;
-    color: var(--white-color);
+    color: var(--black-color);
 }
 
 .form__subtitle {
@@ -82,16 +82,8 @@
     background: none;
     border: none;
     outline: none;
-    border-bottom: 1px solid var(--white-color);
-    color: var(--white-color);
-}
-.input__wrap i {
-    position: relative;
-    top: -25%;
-    right: -93%;
-    transform: translateY(-50%);
-    color: var(--white-color);
-    font-size: 1rem;
+    border-bottom: 1px solid var(--black-color);
+    color: var(--black-color);
 }
 .valid__contraseña {
     display: flex;
@@ -103,11 +95,11 @@
 
 .valid__contraseña p {
     font-size: 0.8rem;
-    color: var(--white-color);
+    color: var(--black-color);
 }
 
 .valid__contraseña i {
-    color: var(--white-color);
+    color: var(--black-color);
 }
 .input__field::placeholder{
     color: var(--grey-color);
