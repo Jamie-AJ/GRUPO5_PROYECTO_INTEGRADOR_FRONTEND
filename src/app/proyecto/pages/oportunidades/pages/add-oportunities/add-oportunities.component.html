@@ -1,1 +1,47 @@
-<p>add-oportunities works!</p>
+<section class="company_container animateanimated animate_fadeIn animete_faster">
+    <div>
+        <h3>Agregar oportunidades</h3>
+    </div><div class="company__form">
+        <div class="form__content">
+            <form class="company__content-form" >
+                <div class="form__group">
+                    <div class="form__box">
+                        <label for="empresa">Empresa</label>
+                        <select name="empresa" id="empresa" class="form__input" [(ngModel)]="objOportunidades.idEmpresa">
+                            <option selected disabled [ngValue]="undefined">Selecciona Empresa</option>
+                            <option *ngFor="let empresa of empresaCombo" [value]="empresa.idEmpresa"> {{empresa.nomEmpresa}} </option>
+                        </select>
+                    </div>
+                    <div class="form__box">
+                        <label for="factura">Factura</label>
+                        <select name="factura" id="factura" class="form__input" [(ngModel)]="objOportunidades.idFactura">
+                            <option selected disabled [ngValue]="undefined">Selecciona Factura</option>
+                            <option *ngFor="let factura of facturaCombo" [value]="factura.idFactura"> {{factura.idFactura}} </option>
+                        </select>
+                    </div>
+                    <div class="form__box">
+                        <label for="rendimiento">Rendimiento</label>
+                        <input type="text" [(ngModel)]="objOportunidades.rendimiento" name="rendimiento" id="rendimiento" class="form__input">
+                    </div>
+                    <div class="form__box">
+                        <label for="tir">Tasa Interna de Retorno</label>
+                        <input type="text" [(ngModel)]="objOportunidades.tir" name="tir" id="tir" class="form__input">
+
+                    </div>
+                    <div class="form__box">
+                        <label for="fechaCaducidad">Fecha de caducidad</label>
+                        <input type="date" name="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input">
+                    </div>
+                    <div class="form__box">
+                        <label for="monto">monto</label>
+                        <input type="number" [(ngModel)]="objOportunidades.monto"  name="monto" id="monto" class="form__input">
+                    </div>
+                </div>
+                <div class="form__group--btn">
+                    <button class="btn btn-danger">Cancelar</button>
+                    <button class="btn btn-primary" (click)="postInsertarOportunidad()">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

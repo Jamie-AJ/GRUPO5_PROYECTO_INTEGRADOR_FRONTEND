@@ -15,10 +15,15 @@ export class FacturaService {
 
 
   getFacturas():Observable<Factura[]>{
-    return this.http.get<Factura[]>(`${this.url}/listaFacturas`,{headers:this.httpHeaders});
+    return this.http.get<Factura[]>(`${this.url}/listaFacturas`,{headers:this.httpHeaders}).pipe(
+      catchError(e =>{
+        Swal.fire('Error', e.error.mensaje, 'error' );
+        return throwError(e);
+      })
+    );
   }
   getFacturasActivas():Observable<Factura[]>{
-    return this.http.get<Factura[]>(`${this.url}/active/listaFacturas`,{headers:this.httpHeaders});
+    return this.http.get<Factura[]>(`${this.url}/active/listaFactura`,{headers:this.httpHeaders});
   }
   postFactura(factura:Factura):Observable<any>{
     return this.http.post<any>(`${this.url}/registrarFactura`,factura,{headers:this.httpHeaders})

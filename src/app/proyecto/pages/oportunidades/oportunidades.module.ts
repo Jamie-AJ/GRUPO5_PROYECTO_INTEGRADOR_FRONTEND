@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OportunidadesRoutingModule } from './oportunidades-routing.module';
 import { AddOportunitiesComponent } from './pages/add-oportunities/add-oportunities.component';
 import { ListOportunitiesComponent } from './pages/list-oportunities/list-oportunities.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ListOportunitiesComponent } from './pages/list-oportunities/list-oportu
   ],
   imports: [
     CommonModule,
-    OportunidadesRoutingModule
+    OportunidadesRoutingModule,
+    FormsModule
   ]
 })
 export class OportunidadesModule { }
