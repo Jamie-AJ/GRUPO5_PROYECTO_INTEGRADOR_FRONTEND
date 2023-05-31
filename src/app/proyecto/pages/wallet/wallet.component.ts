@@ -19,13 +19,13 @@ export class WalletComponent implements OnInit{
   
 
   // isModalOpen: boolean = false;
-  formularioActivo: string = ''
-  mostrarLista: boolean = true;
-  isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
-  transaccion: Transaccion[] = [];
+  formularioActivo: string    = ''
+  mostrarLista: boolean       = true;
+  isInversionista             = this.authService.getUserRole() === 'INVERSIONISTA';
+  transaccion: Transaccion[]  = [];
 
   //VARIABLES
-  showFormDeposit:boolean = false;
+  showFormDeposit:boolean     = false;
   //OBJETOS
   objSaldo: Saldo = {
     idCartera: 0,

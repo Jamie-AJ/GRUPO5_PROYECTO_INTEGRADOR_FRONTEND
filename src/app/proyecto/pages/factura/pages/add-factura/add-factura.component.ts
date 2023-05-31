@@ -20,6 +20,7 @@ export class AddFacturaComponent implements OnInit{
   public factura:Factura = new Factura();
   public empresas:Empresas[] = [];
   public showNegativeNumberError = false;
+
   // objFactura: Factura = {
 
   // };
@@ -34,13 +35,13 @@ export class AddFacturaComponent implements OnInit{
     form:FormGroup = this.builder.group({
       monto:['',[Validators.required, customValidators.validarNumerosNegativos] ],
       fechaPago:[ '',[Validators.required]],
-      codigoFactura:['',[Validators.required]],
+      // codigoFactura:['',[Validators.required]],
       descripcion:['',[Validators.required]],
       empresa:['',[Validators.required]],
-      idEmpresa:['',[Validators.required]],
+      // idEmpresa:['',[Validators.required]],
     })
 
-   
+
   ngOnInit(): void {
     this.getEmpresas();
   }
@@ -72,8 +73,11 @@ export class AddFacturaComponent implements OnInit{
     })
   }
   postFactura(){
-   
-    this.facturaService.postFactura(this.factura).subscribe(
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
+      return;
+    }
+    this.facturaService.postFactura(this.form.value).subscribe(
         resp =>{
           console.log(resp);
           Swal.fire('Factura Generada', resp.mensaje, 'success');

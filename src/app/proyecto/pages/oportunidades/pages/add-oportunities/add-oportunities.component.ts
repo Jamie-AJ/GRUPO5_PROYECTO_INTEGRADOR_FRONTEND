@@ -17,6 +17,8 @@ export class AddOportunitiesComponent {
   public mostrarAlerta: boolean = false;
   public seEncontraronResultados: boolean = false;
   public isLoading: boolean = false;
+  public objEmpresa: Empresas = {}
+  empresaSeleccionada:any;
 
   constructor( private empresasServices:EmpresasService,private facturaService:FacturaService) { }
 
@@ -37,13 +39,13 @@ export class AddOportunitiesComponent {
     if(empresa.idEmpresa === undefined){
       return;
     }
+    this.empresaSeleccionada = empresa;
     this.facturaService.getFacturasXEmpresa(empresa.idEmpresa).subscribe((response: any) =>{
       const facturas = response.facturas;
       console.log(facturas);
       this.facturaList = facturas;
-  },(error) =>{
-    console.error(error);
-  } 
-  );
+    },(error) =>{
+      console.error(error);
+    });
   }
 }

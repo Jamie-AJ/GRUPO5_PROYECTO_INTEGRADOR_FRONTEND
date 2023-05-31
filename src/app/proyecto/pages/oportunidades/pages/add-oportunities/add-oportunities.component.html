@@ -16,10 +16,7 @@
         
         <div class="inversion__box">
             <h3 class="inversion__subtitle">Empresa</h3>
-            <app-search-box 
-            (onDebounce)="filterEmpresas($event)"
-             placeholder="Buscar empresa"></app-search-box>
-            
+            <app-search-box (onDebounce)="filterEmpresas($event)" placeholder="Buscar empresa"></app-search-box>
             <div class="listar__content-table">
                 <table class="listar__table">
                     <thead class="listar__thead">
@@ -40,7 +37,7 @@
                             <td>{{emp.representanteLegal}}</td>
                             <td>{{emp.sector}}</td>
                             <td>
-                                <button class='bx bx-plus icon' (click)="addFacturaporEmpresas(emp)"></button>
+                                <a class='bx bx-plus icon' (click)="addFacturaporEmpresas(emp)"></a>
                             </td> 
                         </tr>
                        
@@ -53,7 +50,14 @@
             </div>
         </div>
         <div class="inversion__box">
-            <h3 class="inversion__subtitle">Factura de la empresa seleccionada</h3>
+            <h3 class="inversion__subtitle">
+                <ng-container *ngIf="empresaSeleccionada; else defaultTitle">
+                    Facturas de {{empresaSeleccionada.razonSocial}}
+                </ng-container>
+                <ng-template #defaultTitle>
+                    Facturas de la Empresa
+                </ng-template>
+            </h3>
             <div class="listar__content-table">
                 <table class="listar__table">
                     <thead class="listar__thead">
@@ -74,7 +78,7 @@
                             <td>{{fac.fechaPago}}</td>
                             <td>{{fac.descripcion}}</td>
                             <td>
-                                <button class='bx bx-plus icon'></button>
+                                <a class='bx bx-plus icon'></a>
                             </td> 
                         </tr>
                     </tbody>
@@ -85,18 +89,6 @@
             <form action="" class="inversion__form">
                 <h3 clasS="inversion__subtitle">Agregar Inversión</h3>
                 <div class="inversion__form__content">
-                    <div class="form__box">
-                        <label for="empresa">Empresa</label>
-                        <select name="empresa" id="empresa" class="form__input">
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="form__box">
-                        <label for="factura">Factura</label>
-                        <select name="factura" id="factura" class="form__input">
-                            <option value=""></option>
-                        </select>
-                    </div>
                     <div class="form__box">
                         <label for="rendimiento">Rendimiento</label>
                         <input type="text" name="rendimiento" id="rendimiento" class="form__input">
