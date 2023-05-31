@@ -29,17 +29,21 @@ export class AddOportunitiesComponent {
     },err =>{
       console.log(err);
       this.mostrarAlerta = true;
-    })
+    });
   }
   //RECUPERA LAS FACTURAS DE LA EMPRESA SELECCIONADA
   //NO ITERA LAS FACTURAS DE LA EMPRESA SELECCIONADA EN EL HTML
-  addEmpresas(empresa:Empresas){
+  addFacturaporEmpresas(empresa:Empresas){
     if(empresa.idEmpresa === undefined){
       return;
     }
-    this.facturaService.getFacturasXEmpresa(empresa.idEmpresa).subscribe((factura:Factura[]) =>{
-      console.log( factura);
-      this.facturaList = factura;
-  })
+    this.facturaService.getFacturasXEmpresa(empresa.idEmpresa).subscribe((response: any) =>{
+      const facturas = response.facturas;
+      console.log(facturas);
+      this.facturaList = facturas;
+  },(error) =>{
+    console.error(error);
+  } 
+  );
   }
 }

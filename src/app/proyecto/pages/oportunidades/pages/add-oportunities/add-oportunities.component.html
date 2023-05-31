@@ -40,9 +40,7 @@
                             <td>{{emp.representanteLegal}}</td>
                             <td>{{emp.sector}}</td>
                             <td>
-                                <a>
-                                <i class='bx bx-plus icon'></i>
-                              </a>
+                                <button class='bx bx-plus icon' (click)="addFacturaporEmpresas(emp)"></button>
                             </td> 
                         </tr>
                        
@@ -61,20 +59,23 @@
                     <thead class="listar__thead">
                         <tr>
                             <th>Codigó</th>
-                            <th>Razon Social</th>
-                            <th>RUC</th>
-                            <th>Factura</th>
-                            <th>Rubro</th>
+                            <th>monto</th>
+                            <th>Fecha eminsion</th>
+                            <th>Fecha Pago</th>
+                            <th>Descripcion</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody class="listar__tbody">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr *ngFor="let fac of facturaList">
+                            <td>{{fac.codFactura}}</td>
+                            <td>{{fac.monto}}</td>
+                            <td>{{fac.fechaEmision}}</td>
+                            <td>{{fac.fechaPago}}</td>
+                            <td>{{fac.descripcion}}</td>
+                            <td>
+                                <button class='bx bx-plus icon'></button>
+                            </td> 
                         </tr>
                     </tbody>
                 </table>
