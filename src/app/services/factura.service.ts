@@ -24,13 +24,13 @@ export class FacturaService {
         Swal.fire('Error al obtener las facturas', e.error.mensaje, 'error');
         return throwError(e);
       })
-    )
+    );
   }
-  getFacturasXEmpresa(id:number):Observable<Factura[] >{
+  getFacturasXEmpresa(id:number):Observable<Factura[]>{
     return this.http.get<Factura[]>(`${this.url}/facturas/${id}`).pipe(  
       catchError( err => 
         of([] as Factura[]))
-    )
+    );
   }
   postFactura(factura:Factura):Observable<any>{
     return this.http.post<any>(`${this.url}/registrarFactura`,factura,{headers:this.httpHeaders})

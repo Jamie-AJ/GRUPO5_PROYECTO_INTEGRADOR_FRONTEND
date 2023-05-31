@@ -8,12 +8,11 @@ import Swal from 'sweetalert2';
     providedIn: 'root'
   })
 export class OportunidadesService{
+
     private http = inject(HttpClient);
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
     url: string = 'http://localhost:8091/api';
 
-
-    
 
     postOportunidad(oportunidades : Oportunidades):Observable<any>{
         return this.http.post<any>(`${this.url}/insertaOportunidadInversion`,oportunidades,{headers:this.httpHeaders}).pipe(
