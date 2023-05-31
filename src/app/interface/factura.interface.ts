@@ -8,6 +8,6 @@ export class Factura {
     codFactura?: string;
     enable?:        string;
     descripcion?:   string;
-    empresas?:       Empresas;
-    idEmpresa?:     number;
+    empresa?:       Empresas;
+    // idEmpresa?:     number;
 }
