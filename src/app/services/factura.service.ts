@@ -41,4 +41,19 @@ export class FacturaService {
       })
     ); 
   }
+  postAddFacturaOportunidad(idFactura:number){
+  const url = `${this.url}/addFactura`;
+  const requestBody = { idFactura: idFactura };
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  return this.http.post(url, requestBody, httpOptions);
+  }
+  deleteAddFacturaOportunidad(idFactura:number):Observable<any>{
+    const url = `${this.url}/deleteFacturalist/${idFactura}`;
+    return this.http.delete(url);
+
+  }
 }
