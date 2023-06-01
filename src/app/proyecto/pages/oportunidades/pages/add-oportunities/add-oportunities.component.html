@@ -68,6 +68,7 @@
                             <th>Fecha Pago</th>
                             <th>Descripcion</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="listar__tbody">
@@ -78,7 +79,10 @@
                             <td>{{fac.fechaPago}}</td>
                             <td>{{fac.descripcion}}</td>
                             <td>
-                                <a class='bx bx-plus icon'></a>
+                                <a class='bx bx-plus icon' (click)="addFacturaOportunidad(fac)"></a>
+                            </td> 
+                            <td>
+                                <a class='bx bxs-x-circle bx-flip-horizontal' style='color:#f90000' (click)="deleteFacturaOportunidad(fac)"></a>                             
                             </td> 
                         </tr>
                     </tbody>
@@ -91,25 +95,25 @@
                 <div class="inversion__form__content">
                     <div class="form__box">
                         <label for="rendimiento">Rendimiento</label>
-                        <input type="text" name="rendimiento" id="rendimiento" class="form__input">
+                        <input type="text" [(ngModel)]="objOportunidades.rendimiento" name="rendimiento" id="rendimiento" class="form__input">
                     </div>
                     <div class="form__box">
                         <label for="tir">Tasa Interna de Retorno</label>
-                        <input type="text" name="tir" id="tir" class="form__input">
+                        <input type="text" [(ngModel)]="objOportunidades.tir" name="tir" id="tir" class="form__input">
 
                     </div>
                     <div class="form__box">
                         <label for="fechaCaducidad">Fecha de caducidad</label>
-                        <input type="date" name="fechaCaducidad" id="fechaCaducidad" class="form__input">
+                        <input type="date" name="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input">
                     </div>
                     <div class="form__box">
                         <label for="monto">monto</label>
-                        <input type="number" name="monto" id="monto" class="form__input">
+                        <input type="number" [(ngModel)]="objOportunidades.monto" name="monto" id="monto" class="form__input">
                     </div>
                 </div>
                 <div class="form__group--btn">
                     <button class="btn btn-danger">Cancelar</button>
-                    <button class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-primary"(click)="postInsertarOportunidad()">Guardar</button>
                 </div>
             </form>
         </div>
