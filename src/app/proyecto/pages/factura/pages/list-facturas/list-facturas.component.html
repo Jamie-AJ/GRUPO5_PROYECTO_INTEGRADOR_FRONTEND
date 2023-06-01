@@ -24,6 +24,7 @@
             <thead class="listar__thead">
               <tr>
                 <th>Codigo Factura</th>
+                <th>Razon Social</th>
                 <th>Fecha de Pago</th>
                 <th>Monto</th>
                 <th>Descripción</th>
@@ -32,6 +33,7 @@
             <tbody class="listar__tbody">
               <tr *ngFor="let fac of factura">
                 <td>{{fac.codFactura}}</td>
+                <td>{{fac.empresas?.razonSocial}}</td> 
                 <td>{{fac.fechaPago}}</td>
                 <td>{{fac.monto}}</td>
                 <td>{{fac.descripcion}}</td>
@@ -49,6 +51,7 @@
             <thead class="listar__thead">
               <tr>
                 <th>Codigo Factura</th>
+                <th>Razon Social</th>
                 <th>Fecha de Pago</th>
                 <th>Monto</th>
                 <th>Descripción</th>
@@ -57,6 +60,7 @@
             <tbody class="listar__tbody">
               <tr *ngFor="let fac of factura">
                 <td>{{fac.codFactura}}</td>
+                <td>{{fac.empresas?.razonSocial}}</td> 
                 <td>{{fac.fechaPago}}</td>
                 <td>{{fac.monto}}</td>
                 <td>{{fac.descripcion}}</td>
