@@ -30,8 +30,8 @@ export class ListFacturasComponent implements OnInit {
   getFaturasActive(){
     this.facturaService.getFacturasActivas().subscribe(resp => {
       console.log(resp);
-      this.factura = resp;
-    })
+      this.factura = resp as Factura[]; 
+    });
   }
   getFacturas(){
     this.facturaService.getFacturas().subscribe(resp => {

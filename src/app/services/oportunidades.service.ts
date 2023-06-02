@@ -13,8 +13,10 @@ export class OportunidadesService {
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     url: string = 'http://localhost:8091/api';
 
-    getOportunidades(): Observable<Oportunidades[]> {
-        return this.http.get<Oportunidades[]>(`${this.url}/listarOportunidadInversion`)
+
+    getOportunidad():Observable<Oportunidades[]>{
+        return this.http.get<Oportunidades[]>(`${this.url}/listarOportunidadInversion`);
+
     }
 
     postOportunidad(oportunidades: Oportunidades): Observable<any> {
@@ -25,7 +27,9 @@ export class OportunidadesService {
             })
         );
     }
+
     getOportunidadPorUsuario(): Observable<Oportunidades[]> {
         return this.http.get<Oportunidades[]>(`${this.url}/user/listarOportunidadInversion`)
     }
+
 }
