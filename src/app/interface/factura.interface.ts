@@ -9,5 +9,5 @@ export class Factura {
     enable?:        string;
     descripcion?:   string;
     empresa?:       Empresas;
-    idEmpresa?:     number; //  1*1
+    // idEmpresa?:     number; //  1*1
 }
