@@ -1,4 +1,4 @@
-
+@import 'ngx-toastr/toastr';
 :root{
     --primary-color: #1E2433;
     --sidebar-color: #434CE6;

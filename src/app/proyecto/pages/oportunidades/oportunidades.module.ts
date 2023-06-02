@@ -8,6 +8,7 @@ import { AppModule } from 'src/app/app.module';
 import { ProyectoModule } from '../../proyecto.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -21,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     OportunidadesRoutingModule,
     ProyectoModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class OportunidadesModule { }

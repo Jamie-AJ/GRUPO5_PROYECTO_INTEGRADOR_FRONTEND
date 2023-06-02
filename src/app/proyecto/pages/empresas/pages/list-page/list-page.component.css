@@ -69,6 +69,22 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
+.listar__btn-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+.listar__btn-group a:nth-child(1){
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    padding:0.3rem;
+    border-radius: 5px;
+}
+.listar__btn-group a:nth-child(2){
+    color: var(--primary-color);
+}
 .btn__save {
     padding: 0.625rem 1rem;
     border-radius: 5px;

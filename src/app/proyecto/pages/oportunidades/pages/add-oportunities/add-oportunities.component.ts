@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
 import { Oportunidades } from 'src/app/interface/oportunidades.interface';
@@ -23,10 +24,13 @@ export class AddOportunitiesComponent {
   public seEncontraronResultados: boolean = false;
   public isLoading: boolean = false;
   public objEmpresa: Empresas = {}
+  public facturaAgregada: boolean = false;
   empresaSeleccionada:any;
   private router = inject(Router);
-
-  constructor( private empresasServices:EmpresasService,private facturaService:FacturaService, private oportunidadesService: OportunidadesService) { }
+  constructor( private empresasServices:EmpresasService,
+    private facturaService:FacturaService, 
+    private oportunidadesService: OportunidadesService,
+    private toastService:ToastrService) { }
 
   filterEmpresas(keyword: String): void{
     this.isLoading = true;
@@ -61,9 +65,11 @@ export class AddOportunitiesComponent {
     this.facturaService.postAddFacturaOportunidad(factura.idFactura).subscribe(
       resp =>{
         console.log(resp);
-      }
-    );
-
+       this.toastService.success('Factura registrada Exitosamente', 'Success');
+      },err =>{
+        console.error(err);
+        this.toastService.error(err.error.mensaje, 'Error');
+      });
   }
   deleteFacturaOportunidad(factura:Factura){
     if(factura.idFactura=== undefined){
@@ -72,6 +78,7 @@ export class AddOportunitiesComponent {
     this.facturaService.deleteAddFacturaOportunidad(factura.idFactura).subscribe(
       resp =>{
         console.log(resp);
+        this.toastService.success('Factura eliminada Exitosamente', 'Success');
       }
     );
 

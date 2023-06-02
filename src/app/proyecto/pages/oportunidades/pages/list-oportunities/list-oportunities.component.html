@@ -1,5 +1,3 @@
-
-
 <section class="inversion__container animate__animated animate__fadeIn animete_faster" >
   <div class="inversion__content">
       <div class="inversion__nav">
@@ -24,18 +22,19 @@
             <thead class="listar__thead">
               <tr>
                 <th>Codigó</th>
-                <th>Razon Social</th>
-                <th>RUC</th>
+                <th>Rendimiento</th>
+                <th>Tasa Importe de retorno</th>
                 <th>Factura</th>
-                <th>Rubro</th>
+                <th>RazonSocial</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let opor of oportunidades">
+                <td>{{opor.idOportunidadInversion}}</td>
+                <td>{{opor.rendimiento}}</td>
+                <td>{{opor.tir}}</td>
+                <td>{{opor.facturas?.codFactura}}</td>
+                <td>{{opor.empresa!.razonSocial}}</td>
                 <td></td>
               </tr>
             </tbody>

@@ -3,7 +3,7 @@ import { Factura } from "./factura.interface";
 import { Usuario } from "./usuario.interface";
 
 export class Oportunidades {
-    idOportunidad?:  number;
+    idOportunidadInversion?:  number;
     rendimiento?:    number;
     tir?:            number;
     monto?:          number;
@@ -14,8 +14,9 @@ export class Oportunidades {
     fechaPago?:      Date;
     empresa?:        Empresas;
     idEmpresa?:      number;
-    factura?:        Factura;
+    facturas?:        Factura;
     idFactura?:      number;
     usuario?:        Usuario;
     usuarioId?:      number;
+    // oportunidadFactura?: any;
 }

@@ -68,7 +68,6 @@
                             <th>Fecha Pago</th>
                             <th>Descripcion</th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="listar__tbody">
@@ -79,11 +78,12 @@
                             <td>{{fac.fechaPago}}</td>
                             <td>{{fac.descripcion}}</td>
                             <td>
-                                <a class='bx bx-plus icon' (click)="addFacturaOportunidad(fac)"></a>
-                            </td> 
-                            <td>
-                                <a class='bx bxs-x-circle bx-flip-horizontal' style='color:#f90000' (click)="deleteFacturaOportunidad(fac)"></a>                             
-                            </td> 
+                                <div class="listar__acciones">
+                                    <a  (click)="addFacturaOportunidad(fac)" class="listar__action-buttons"> <i class='bx bx-plus'></i> </a> 
+                                    <a (click)="deleteFacturaOportunidad(fac)" class="listar__action-buttons"> <i class='bx bx-x' ></i></a>    
+                                </div>
+                               
+                            </td>   
                         </tr>
                     </tbody>
                 </table>
