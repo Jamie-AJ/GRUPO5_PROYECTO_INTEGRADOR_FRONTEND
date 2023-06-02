@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { Oportunidades } from 'src/app/interface/oportunidades.interface';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 
@@ -9,9 +10,9 @@ import { OportunidadesService } from 'src/app/services/oportunidades.service';
 })
 export class ListOportunitiesComponent implements OnInit{
   title = 'Oportunidades de inversión'
-  //TABS
-  tabs: string[] = ['Activos', 'Todos' ]
-  //TAB ACTIVA
+  
+  tabs: string[] = ['Todos', 'Activos' ]
+
   activeTabsIndex: number = 0;
 
   //VARIABLAES
@@ -34,4 +35,19 @@ export class ListOportunitiesComponent implements OnInit{
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
   }
+  oportunidad:Oportunidades[] =[];
+
+  constructor(private oportunidades:OportunidadesService){}
+  ngOnInit(): void {
+    this.getOportunidades();
+  }
+
+  getOportunidades(){
+    this.oportunidades.getOportunidad().subscribe(resp => {
+      console.log(resp);
+      this.oportunidad = resp as Oportunidades[];
+    });
+
+  }
+
 }
