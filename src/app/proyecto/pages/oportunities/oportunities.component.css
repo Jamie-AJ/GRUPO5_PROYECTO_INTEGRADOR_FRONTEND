@@ -1,5 +1,82 @@
-.head__title{
-    margin-bottom: 2.5rem;
-    /* font-weight: 500; */
-    font-size: 18px;
+.oportunities__user--container{
+    position: relative;
+    /* background-color: var(--panel-color);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
+    /* border-radius: 10px; */
+    height: 100%;
+}
+.oportunities__user--container h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+.oportunities__user--nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+.oportunities__user--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1rem;
+}
+.oportunities__user--box{
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:1rem;
+}
+.oportunities__box--content{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--white-color);
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.oportunities__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1rem 0;  */
+}
+.oportunities__pago{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 1rem 0;
+}
+.oportunities__pago p{
+    font-size: 13px;
+    /* font-weight: 600; */
+}
+.oportunities__title h4{
+    font-size:17px;
+    font-weight: 600;
+
+}
+.btn__factura {
+    padding: 0.625rem 1rem;
+    border-radius: 20px;
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* outline: none; */
+}
+.btn__factura:hover{
+    background-color: #373ece;
+}
+.factura__group{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
 }

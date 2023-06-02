@@ -9,8 +9,9 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import localeEsPE from '@angular/common/locales/es-PE';
-
+import{ BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(localeEsPE);
 
@@ -22,12 +23,14 @@ registerLocaleData(localeEsPE);
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
     ProyectoModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

@@ -1,3 +1,43 @@
-<section>
-    
-</section>
+
+
+<section class="oportunities__user--container animate__animated animate__fadeIn animete_faster" >
+    <div class="oportunities__user--content">
+        <div class="oportunities__user--nav">
+          <div class="oportunities__user--header">
+            <h3>{{title}}</h3>
+          </div>
+          <!-- <div clasS="oportunities__user--group">
+            <a routerLink="/facturas/add-factura" class="btn__factura">
+              <i class="bx bx-plus"></i>
+                Agregar facturas
+            </a>
+          </div> -->
+        </div>
+        <!-- <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs> -->
+        <div class="oportunities__user--box">
+            <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
+                <div class="oportunities__box">
+                    <div class="oportunities__title">
+                        <h4>{{opor.empresa?.razonSocial}}</h4>
+                        <span>{{opor.monto}}</span>
+                    </div>
+                    <div class="oportunities__riegos">
+                        <span>Riesgo:</span>
+                    </div>
+                    <div class="oportunities__pago">
+                       <div>
+                        <span>Fecha de pago:</span>
+                        <p>Junio del 2023</p>
+                       </div>
+                       <div>
+                            <span>Rendimiento/TIR:</span>
+                            <p>0.20/0.30</p>
+                       </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+     
+  </section>
+  <!-- <app-modal (closeModal)="closeModal()" [showModal]="showModal"></app-modal> -->

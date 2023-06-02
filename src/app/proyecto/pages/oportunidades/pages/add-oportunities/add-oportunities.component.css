@@ -60,12 +60,26 @@
     padding:1rem;
     border-radius: 10px;
 }
-.listar__tbody .icon{
-    color: #0ede2a;
-    font-size: 20px;
-    cursor: pointer;
+.listar__action-buttons {
+    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-align: center;
 }
-
+.listar__acciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor:pointer;
+}  
+.listar__action-buttons:nth-child(1){
+    color: #0da208;
+}
+.listar__action-buttons:nth-child(2){
+    color: #d45360;
+}
 .listar__content-table{
     margin-top: 1rem;
 }
@@ -131,7 +145,11 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-
+.listar__tbody .icon{
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
 .btn__factura {
     padding: 0.625rem 1rem;
     border-radius: 20px;

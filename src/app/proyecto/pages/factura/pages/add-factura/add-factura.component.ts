@@ -38,7 +38,7 @@ export class AddFacturaComponent implements OnInit{
       // codigoFactura:['',[Validators.required]],
       descripcion:['',[Validators.required]],
       empresa:['',[Validators.required]],
-      idEmpresa:['',[Validators.required]],/*NOT*/
+      idEmpresa:['',[Validators.required]] 
     })
 
 
@@ -77,13 +77,13 @@ export class AddFacturaComponent implements OnInit{
     //   this.form.markAllAsTouched();
     //   return;
     // }
-  /* this.facturaService.postFactura(this.form.value).subscribe(
-        resp =>{
-          console.log(resp);
-          Swal.fire('Factura Generada', resp.mensaje, 'success');
-          this.router.navigate(['/facturas/list-factura']);
-        }
-      );*/
+  //  this.facturaService.postFactura(this.form.value).subscribe(
+  //       resp =>{
+  //         console.log(resp);
+  //         Swal.fire('Factura Generada', resp.mensaje, 'success');
+  //         this.router.navigate(['/facturas/list-factura']);
+  //       }
+  //     );
       this.facturaService.postFactura(this.factura).subscribe(
         resp =>{
           console.log(resp);

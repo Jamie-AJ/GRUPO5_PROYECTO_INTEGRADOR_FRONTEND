@@ -41,7 +41,7 @@ export class FacturaService {
       })
     ); 
   }
-  postAddFacturaOportunidad(idFactura:number){
+  postAddFacturaOportunidad(idFactura:number):Observable<any>{
   const url = `${this.url}/addFactura`;
   const requestBody = { idFactura: idFactura };
   const httpOptions = {
@@ -49,8 +49,9 @@ export class FacturaService {
       'Content-Type': 'application/json'
     })
   };
-  return this.http.post(url, requestBody, httpOptions);
+  return this.http.post<any>(url, requestBody, httpOptions);
   }
+
   deleteAddFacturaOportunidad(idFactura:number):Observable<any>{
     const url = `${this.url}/deleteFacturalist/${idFactura}`;
     return this.http.delete(url);
