@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Oportunidades } from 'src/app/interface/oportunidades.interface';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
@@ -14,28 +14,12 @@ export class ListOportunitiesComponent implements OnInit{
   tabs: string[] = ['Todos', 'Activos' ]
 
   activeTabsIndex: number = 0;
+  oportunidad:Oportunidades[] =[];
 
-  //VARIABLAES
-  public oportunidades:Oportunidades[] =[];
-  public objOportunidades:Oportunidades = new Oportunidades();
-  constructor(private oportunidadesService:OportunidadesService){}
-  
-  ngOnInit():void{
-    this.getOportunidades();
-  }
-  
-  getOportunidades(){
-    this.oportunidadesService.getOportunidades().subscribe((data: any)=>{
-
-      this.oportunidades = data;
-      console.log(data);
-    })
-  }
   //METODO PARA ACTIVAR EL TAB
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
   }
-  oportunidad:Oportunidades[] =[];
 
   constructor(private oportunidades:OportunidadesService){}
   ngOnInit(): void {

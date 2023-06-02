@@ -50,7 +50,8 @@ export class DepositoComponent {
     this.transaccionService.postDeposito(this.objTransaccion).subscribe(
       response =>{
         Swal.fire('Depositado con Exito', response.mensaje, 'success');
-        this.router.navigate(['/dashboard/account-status']);
+        this.finalizarDeposito();
+        window.location.reload();
       },
       error =>{
         console.error(error);

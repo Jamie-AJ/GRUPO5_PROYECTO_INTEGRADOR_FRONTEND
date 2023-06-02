@@ -33,10 +33,10 @@
               <tr *ngFor="let opor of oportunidad">
                 <td>{{opor.idOportunidad}}</td>
                 <td>{{opor.empresa?.razonSocial}}</td>
-                <td>{{opor.rendimiento}}</td>
-                <td>{{opor.tir}}</td>
+                <td>{{opor.rendimiento  | percent}}</td>
+                <td>{{opor.tir | percent}}</td>
                 <td>{{opor.fechaCaducidad}}</td>
-                <td>{{opor.monto}}</td>
+                <td>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
               </tr>
             </tbody>
           </table>
@@ -62,10 +62,10 @@
               <tr *ngFor="let opor of oportunidad">
                 <td>{{opor.idOportunidad}}</td>
                 <td>{{opor.empresa?.razonSocial}}</td>
-                <td>{{opor.rendimiento}}</td>
-                <td>{{opor.tir}}</td>
+                <td>{{opor.rendimiento  | percent}}</td>
+                <td>{{opor.tir  | percent}}</td>
                 <td>{{opor.fechaCaducidad}}</td>
-                <td>{{opor.monto}}</td>
+                <td>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
               </tr>
             </tbody>
           </table>
