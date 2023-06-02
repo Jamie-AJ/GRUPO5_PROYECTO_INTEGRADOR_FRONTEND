@@ -104,7 +104,7 @@ export class AddOportunitiesComponent {
     this.oportunidadesService.postOportunidad(oportunidadInversion).subscribe(
       response =>{
         Swal.fire('Registro con exito', response.mensaje, 'success');
-        
+        this.router.navigate(['/inversiones/list-inversion']);
       },
       error =>{
         console.error(error);

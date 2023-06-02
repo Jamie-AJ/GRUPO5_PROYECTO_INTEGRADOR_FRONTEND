@@ -40,6 +40,7 @@ export class RetiroComponent {
     this.transaccionService.postRetiro(this.objTransaccion).subscribe(
       response =>{
         Swal.fire('Retiro con Exito', response.mensaje, 'success');
+        this.finalizarRetiro();
         window.location.reload();
       },
       error =>{
