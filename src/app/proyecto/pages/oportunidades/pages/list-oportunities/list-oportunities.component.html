@@ -25,18 +25,20 @@
               <tr>
                 <th>Codigó</th>
                 <th>Razon Social</th>
-                <th>RUC</th>
-                <th>Factura</th>
-                <th>Rubro</th>
+                <th>rendimiento</th>
+                <th>tir</th>
+                <th>fecha caducidad</th>
+                <th>monto</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let opor of oportunidad">
+                <td>{{opor.idOportunidad}}</td>
+                <td>{{opor.empresa?.razonSocial}}</td>
+                <td>{{opor.rendimiento}}</td>
+                <td>{{opor.tir}}</td>
+                <td>{{opor.fechaCaducidad}}</td>
+                <td>{{opor.monto}}</td>
               </tr>
             </tbody>
           </table>
@@ -52,18 +54,20 @@
               <tr>
                 <th>Codigó</th>
                 <th>Razon Social</th>
-                <th>RUC</th>
-                <th>Factura</th>
-                <th>Rubro</th>
+                <th>rendimiento</th>
+                <th>tir</th>
+                <th>fecha caducidad</th>
+                <th>monto</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let opor of oportunidad">
+                <td>{{opor.idOportunidad}}</td>
+                <td>{{opor.empresa?.razonSocial}}</td>
+                <td>{{opor.rendimiento}}</td>
+                <td>{{opor.tir}}</td>
+                <td>{{opor.fechaCaducidad}}</td>
+                <td>{{opor.monto}}</td>
               </tr>
             </tbody>
           </table>

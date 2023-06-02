@@ -13,6 +13,9 @@ export class OportunidadesService{
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
     url: string = 'http://localhost:8091/api';
 
+    getOportunidad():Observable<Oportunidades[]>{
+        return this.http.get<Oportunidades[]>(`${this.url}/listarOportunidadInversion`);
+    }
 
     postOportunidad(oportunidades : Oportunidades):Observable<any>{
         return this.http.post<any>(`${this.url}/insertaOportunidadInversion`,oportunidades,{headers:this.httpHeaders}).pipe(
@@ -22,5 +25,6 @@ export class OportunidadesService{
               })
         );
     }
+
 
 }
