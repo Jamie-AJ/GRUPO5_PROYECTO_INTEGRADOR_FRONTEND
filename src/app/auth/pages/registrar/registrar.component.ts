@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { dniPattern, emailPattern, passwordPattern, telefonoPattern } from 'src/app/shared/components/validators';
+import { dniPattern, emailPattern, passwordPattern, stringPattern, telefonoPattern } from 'src/app/shared/components/validators';
 
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -21,9 +21,9 @@ export class RegistrarComponent implements OnInit {
 
 
   form: FormGroup = this.builder.group({
-    nombre: ['', [Validators.required, Validators.minLength(3)]],
-    apellidoMa: ['', [Validators.required, Validators.minLength(3)]],
-    apellidoPa: ['', [Validators.required, Validators.minLength(3)]],
+    nombre: ['', [Validators.required, Validators.pattern(stringPattern)]],
+    apellidoMa: ['', [Validators.required, Validators.pattern(stringPattern)]],
+    apellidoPa: ['', [Validators.required, Validators.pattern(stringPattern)]],
     dni: ['', [Validators.required, Validators.pattern(dniPattern)]],
     correo: ['', [Validators.required, Validators.pattern(emailPattern)]],
     telefono: ['', [Validators.required, Validators.pattern(telefonoPattern)]],
@@ -65,7 +65,7 @@ export class RegistrarComponent implements OnInit {
         case 'minlength':
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
-          return 'El valor ingresado no tiene formato válido';
+          return `El valor ingresado no tiene formato válido`;
       }
     }
     return null;

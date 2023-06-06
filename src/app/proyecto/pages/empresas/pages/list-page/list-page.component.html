@@ -1,4 +1,110 @@
-<section class="company__container animate__animated animate__fadeIn animete_faster">
+
+<section class="inversion__container animate__animated animate__fadeIn animete_faster" >
+  <div class="inversion__content">
+      <div class="inversion__nav">
+        <div class="inversion__header">
+          <h3>{{title}}</h3>
+        </div>
+        <div clasS="inversion__group">
+          <a routerLink="/empresas/add-company" class="btn__factura">
+            <i class="bx bx-plus"></i>
+            Agregar facturas
+          </a>
+        </div>
+      </div>
+      <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
+      <div class="inversion__box">
+        <div
+          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          *ngIf="activeTabsIndex === 0"
+        >
+        <div class="listar__content-table">
+          <table class="listar__table">
+            <thead class="listar__thead">
+              <tr>
+                <th>Codigó</th>
+                <th>Razon Social</th>
+                <th>RUC</th>
+                <th>Rep. Legal</th>
+                <th>Nombre Comercial</th>
+                <th>Inicio de Actividad</th>
+                <th>Actividad Comercial</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="listar__tbody">
+              <tr *ngFor="let emp of empresasList">
+                <td>{{emp.idEmpresa}}</td>
+                <td>{{emp.razonSocial}}</td>
+                <td>{{emp.ruc}}</td>
+                <td>{{emp.representanteLegal}}</td>
+                <td>{{emp.nomEmpresa}}</td>
+                <td>{{emp.fechaDeInicioActv}}</td>
+                <td>{{emp.sector}}</td>
+                <td>
+                  <div class="listar__btn-group">
+                    <a routerLink="/empresas/edit-company">
+                      <i class='bx bxs-edit-alt'></i>
+                    </a>
+                    <a href="">
+                      <i class='bx bx-trash' ></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <div
+          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          *ngIf="activeTabsIndex === 1"
+        >
+        <div class="listar__content-table">
+          <table class="listar__table">
+            <thead class="listar__thead">
+              <tr>
+                <th>Codigó</th>
+                <th>Razon Social</th>
+                <th>RUC</th>
+                <th>Rep. Legal</th>
+                <th>Nombre Comercial</th>
+                <th>Inicio de Actividad</th>
+                <th>Actividad Comercial</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="listar__tbody">
+              <tr *ngFor="let emp of empresasList">
+                <td>{{emp.idEmpresa}}</td>
+                <td>{{emp.razonSocial}}</td>
+                <td>{{emp.ruc}}</td>
+                <td>{{emp.representanteLegal}}</td>
+                <td>{{emp.nomEmpresa}}</td>
+                <td>{{emp.fechaDeInicioActv}}</td>
+                <td>{{emp.sector}}</td>
+                <td>
+                  <div class="listar__btn-group">
+                    <a routerLink="/empresas/edit-company">
+                      <i class='bx bxs-edit-alt'></i>
+                    </a>
+                    <a href="">
+                      <i class='bx bx-trash' ></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+  </div>
+   
+</section>
+<!-- <app-modal (closeModal)="closeModal()" [showModal]="showModal"></app-modal> -->
+
+<!-- <section class="company__container animate__animated animate__fadeIn animete_faster">
     <h3>{{title}}</h3>
     <div class="listar__content">
         <div class="listar__button">
@@ -34,7 +140,7 @@
                 <td>{{emp.sector}}</td>
                 <td>
                   <div class="listar__btn-group">
-                    <a href="">
+                    <a routerLink="/empresas/edit-company">
                       <i class='bx bxs-edit-alt'></i>
                     </a>
                     <a href="">
@@ -47,4 +153,4 @@
           </table>
         </div>
       </div>
-</section>
+</section> -->

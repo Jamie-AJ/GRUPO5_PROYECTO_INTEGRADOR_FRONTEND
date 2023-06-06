@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { InversionesComponent } from './pages/inversiones/inversiones.component';
 import { AcountStatusComponent } from './pages/acount-status/acount-status.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { OportunitiesComponent } from './pages/oportunities/oportunities.component';
+import { OportunitiesComponent } from './pages/oportunities-user/page/oportunities/oportunities.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';

@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/f
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import Swal from 'sweetalert2';
-import { rucPattern, telefonoPattern } from '../../../../../shared/components/validators';
+import { rucPattern, stringPattern, telefonoPattern } from '../../../../../shared/components/validators';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-add-company',
   templateUrl: './add-company.component.html',
@@ -19,7 +18,7 @@ export class AddCompanyComponent {
   constructor(private empresasService:EmpresasService,private builder:FormBuilder,private router:Router) { }
 
   form:FormGroup = this.builder.group({
-    nomEmpresa:['',[Validators.required,Validators.minLength(3)]],
+    nomEmpresa:['',[Validators.required,Validators.pattern(stringPattern)]],
     ruc:['',[Validators.required,Validators.pattern(rucPattern)]],
     razonSocial:['',[Validators.required,Validators.minLength(3)]],
     representanteLegal:['',[Validators.required]],
@@ -59,7 +58,6 @@ export class AddCompanyComponent {
     }
     this.empresasService.postEmpresas(this.form.value).subscribe(resp=>{
       Swal.fire('Empresa registrada', resp.mensaje , 'success');
-      // this.empresas = resp;
       this.form.reset();
       this.router.navigate(['/empresas/list-company']);
     },error =>{

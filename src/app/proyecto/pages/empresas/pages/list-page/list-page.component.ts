@@ -9,7 +9,8 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 })
 export class ListPageComponent implements OnInit{
   title: string = 'Listado de empresas';
-
+  tabs: string[] = ['General', 'Activos' ]
+  activeTabsIndex: number = 0;
   empresasList:Empresas[] = [];
   constructor(private empresaService:EmpresasService){}
   
@@ -19,5 +20,7 @@ export class ListPageComponent implements OnInit{
       this.empresasList = empresa;
     })
   }
-
+  tabsChange(tab:number){
+    this.activeTabsIndex = tab;
+  }
 }

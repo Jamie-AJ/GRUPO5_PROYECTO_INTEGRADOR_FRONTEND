@@ -57,7 +57,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content modal-bg">
+    <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">
           Ingresa los datos de tú tarjeta
@@ -79,8 +79,8 @@
           <div class="form__content">
             <div class="form__box">
               <!-- <label for="bancos">Selecciona el banco</label> -->
-              <select class="form__input" formControlName="bancos" id="bancos" [(ngModel)]="objCuentaBancaria.bancos">
-                <option [ngValue]="undefined">Selecciona Bancos</option>
+              <select class="form__input" formControlName="bancos" id="bancos">
+                <option disabled selected value="">Selecciona Bancos</option>
                 <option *ngFor="let banco of bancos" [ngValue]="banco">
                   {{ banco.nomBancos }}
                 </option>
@@ -90,7 +90,7 @@
               }}</span>
             </div>
             <div class="form__box">
-              <input type="text" class="form__input" [(ngModel)]="objCuentaBancaria.nroCuenta"
+              <input type="text" class="form__input"
                 formControlName="nroCuenta"
                 id="nroCuenta"
                 placeholder="Ingrese su número de tarjeta"
@@ -103,7 +103,7 @@
               <input
                 type="text"
                 class="form__input"
-                [(ngModel)]="objCuentaBancaria.nroCuentaCci"
+               
                 formControlName="nroCuentaCci"
                 id="nroCuentaCci"
                 placeholder="Ingrese su número de tarjeta CCI"
@@ -116,7 +116,7 @@
               <select
                 class="form__input"
                 id="monedas"
-                [(ngModel)]="objCuentaBancaria.monedas"
+               
                 formControlName="monedas"
               >
                 <option value="">Selecciona Moneda</option>
@@ -132,7 +132,7 @@
               <select
                 class="form__input"
                 id="mes"
-                [(ngModel)]="objCuentaBancaria.mes"
+               
                 formControlName="mes"
               >
                 <option disabled selected value="">Mes</option>
@@ -145,7 +145,7 @@
               }}</span>
             </div>
             <div class="form__box">
-              <select class="form__input" id="year" [(ngModel)]="objCuentaBancaria.year" formControlName="year" >
+              <select class="form__input" id="year" formControlName="year" >
                 <option disabled selected value="">Año</option>
                 <option *ngFor="let year of years" [value]="year">
                   {{ year }}
@@ -155,7 +155,7 @@
             </div>
             <div class="form__box">
               <!-- <label for="cvv">CVV</label> -->
-              <input type="text" class="form__input" [(ngModel)]="objCuentaBancaria.cvv" id="cvv" formControlName="cvv" placeholder="CVV" />
+              <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" />
               <span *ngIf="isValid('cvv')" class="invalid">{{ getFieldError("cvv") }}</span>
             </div>
           </div>

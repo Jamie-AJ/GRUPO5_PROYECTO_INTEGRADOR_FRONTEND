@@ -24,6 +24,10 @@ const router:Routes = [
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
   },
   {
+    path: 'oportunidades',
+    loadChildren: () => import('./proyecto/pages/oportunities-user/oportunities-user.module').then(m => m.OportunitiesUserModule)
+  },
+  {
     path:'empresas',
     canActivate:[hasRoleGuard],
     loadChildren: () => import('./proyecto/pages/empresas/empresas.module').then(m => m.EmpresasModule)
