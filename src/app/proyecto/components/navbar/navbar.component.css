@@ -1,7 +1,7 @@
 .nav {
     position: sticky;
-    width: calc(100% - 60px);
-    margin-left: 60px;
+    width: calc(100% - 260px);
+    margin-left: 260px;
     top:0;
     z-index:1;
     transition: all .3s ease;
@@ -19,7 +19,7 @@
 .nav__container {
     height: 64px;
     padding:0 40px;
-    background-color: var(--white-color);
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,19 +31,15 @@
    
 }
 .nav .profile .profile-user{
-    border: 1px solid var(--sidebar-color);
-    background-color: var(--sidebar-color);
-    font-size: 1.1rem;
-    border-radius: 50%;
-    padding:0.6rem 1rem;
-    color:var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5rem;
+    color:var(--blak-color);
     cursor: pointer;
-    transition: all .3s ease;
+ 
 }
-.nav .profile .profile-user:hover{
-    background-color: #4456ff;
-    border-color: #4456ff;
-}
+
 .nav .profile .profile-link{
     position: absolute;
     z-index:1;

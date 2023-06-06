@@ -43,4 +43,13 @@ export class EmpresasService {
       })
     )
   }
+  deleteEmpresas(id: number):Observable<any> {
+    return this.http.delete<any>(`${this.url}/eliminarEmpresa/${id}`, { headers: this.httpHeaders }).
+      pipe(
+        catchError(err => { 
+          Swal.fire('Error', err.error.mensaje, 'error');
+          return throwError(err);
+        })
+    )
+  }
 }

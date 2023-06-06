@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./retiro.component.css']
 })
 export class RetiroComponent {
-
+  @Output() retiroCompletado = new EventEmitter<void>();
+  
    objTransaccion: Transaccion = new Transaccion();
    cuentabancariaCombo: CuentaBancaria[] = [];
    transaccion: Transaccion[] = [];
@@ -22,8 +23,7 @@ export class RetiroComponent {
    ngOnInit() {
     this.obtenerCuentasBancarias();
   }
-  @Output() retiroCompletado = new EventEmitter<void>();
-    private router = inject(Router);
+  
 
   obtenerCuentasBancarias(){
     this.cuentaBancariaService.getCuentaBancaria().subscribe(

@@ -18,8 +18,8 @@
             <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
                 <div class="oportunities__box">
                     <div class="oportunities__title">
-                        <h4>{{opor.empresa?.razonSocial}}</h4>
-                        <span>{{opor.monto}}</span>
+                        <h4>{{opor.empresa?.nomEmpresa}}</h4>
+                        <span>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
                     </div>
                     <div class="oportunities__riegos">
                         <span>Riesgo:</span>
@@ -27,11 +27,11 @@
                     <div class="oportunities__pago">
                        <div>
                         <span>Fecha de pago:</span>
-                        <p>Junio del 2023</p>
+                        <p>{{opor.fechaPago | date:'longDate':'':'es-PE'}}</p>
                        </div>
                        <div>
                             <span>Rendimiento/TIR:</span>
-                            <p>0.20/0.30</p>
+                            <p>{{opor.rendimiento | percent}}/{{opor.tir | percent}}</p>
                        </div>
                     </div>  
                 </div>

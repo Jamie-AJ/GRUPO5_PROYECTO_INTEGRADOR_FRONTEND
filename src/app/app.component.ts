@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'investGofrontend';
+  title = 'Invest Go!';
   isDarkMode= false;
 
   onToggleDarkMode(){

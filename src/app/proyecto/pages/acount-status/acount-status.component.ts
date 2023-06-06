@@ -11,7 +11,8 @@ import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service'
 import { DateService } from 'src/app/services/date.service';
 import { MonedaService } from 'src/app/services/moneda.service';
 
-import { cuentaBancariaPattern, cvvPattern } from 'src/app/shared/components/validators';
+import {  cvvPattern } from 'src/app/shared/components/validators';
+import * as customValidators from 'src/app/shared/components/validators';
 import Swal from 'sweetalert2';
 declare var $:any;
 
@@ -62,8 +63,8 @@ export class AcountStatusComponent implements OnInit{
     private dateService:DateService){}
 
     form: FormGroup = this.builder.group({
-      nroCuenta: ['', [Validators.required,Validators.pattern(cuentaBancariaPattern)]],
-      nroCuentaCci: ['', [Validators.required,Validators.pattern(cuentaBancariaPattern)]],
+      nroCuenta: ['', [Validators.required,customValidators.validarTarjetaCredito]],
+      nroCuentaCci: ['', [Validators.required,customValidators.validarTarjetaCredito]],
       cvv: ['', [Validators.required,Validators.pattern(cvvPattern)]],
       mes: ['', [Validators.required]],
       year: ['', [Validators.required]],
@@ -120,7 +121,7 @@ export class AcountStatusComponent implements OnInit{
       return;
     }
     console.log(this.form.value);
-    this.cuentaBancaria.postCuentaBancaria(this.objCuentaBancaria).subscribe(resp => {
+    this.cuentaBancaria.postCuentaBancaria(this.form.value).subscribe(resp => {
       document.getElementById('btnCloseModal')?.click();
       Swal.fire('Excelente', resp.mensaje, 'success');
       this.getCuentaBancarias()
