@@ -15,8 +15,8 @@
                 <table class="listar__table">
                     <thead class="listar__thead">
                         <tr>
-                            <th>Codigó</th>
-                            <th>Fecha</th>
+                            <!-- <th>#</th> -->
+                            <th>Fecha y Hora</th>
                             <th>Transacción</th>
                             <th>Monto</th>
                             <!-- <th>Estado</th> -->
@@ -24,10 +24,16 @@
                     </thead>
                     <tbody class="listar__tbody">
                         <tr *ngFor="let trans of transaccion">
-                            <td>{{trans.idTransaccion}}</td>
-                            <td>{{trans.fecha | date:'longDate':'':'es-PE'}}</td>
-                            <td>{{trans.tipoTransaccion!.tipo}}</td>
-                            <td>{{trans.monto | currency:'PEN&nbsp;':'symbol-narrow'}}</td>
+                            <!-- <td>{{trans.idTransaccion}}</td> -->
+                            <td>{{trans.fecha}}</td>
+                            <td>
+                                <span *ngIf="trans.tipoTransaccion?.tipo === 'Retiro'"><i class='bx bx-down-arrow-alt down'></i></span>
+                                <span *ngIf="trans.tipoTransaccion?.tipo === 'Deposito'"><i class='bx bx-up-arrow-alt up'></i></span>
+                                {{trans.tipoTransaccion!.tipo}}
+                            </td>
+                            <td [ngClass]="{'retiro': trans.tipoTransaccion?.tipo === 'Retiro', 'deposito': trans.tipoTransaccion?.tipo=== 'Deposito'}">
+                                {{trans.tipoTransaccion?.tipo === 'Retiro' ? '-' : '+'}} {{trans.monto | currency:'S/.&nbsp;':'symbol-narrow'}}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

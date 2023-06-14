@@ -3,13 +3,12 @@
     width:60px; 
     height: 100vh;
     top:0;
-    z-index: 2;
+    z-index: 0  ;
     overflow-y: auto;
     scrollbar-width: none;
     background-color:var(--white-color);
     transition: all 0.3s ease;
-    /* border-right: 1px solid var(--previus-color-btn); */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    
 }
 .sidebar::-webkit-scrollbar{
    display: none;

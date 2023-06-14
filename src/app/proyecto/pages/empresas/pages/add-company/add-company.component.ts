@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/f
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import Swal from 'sweetalert2';
-import { rucPattern, stringPattern, telefonoPattern } from '../../../../../shared/components/validators';
+import { razonPattern, rucPattern, stringPattern, telefonoPattern } from '../../../../../shared/components/validators';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-company',
@@ -20,7 +20,7 @@ export class AddCompanyComponent {
   form:FormGroup = this.builder.group({
     nomEmpresa:['',[Validators.required,Validators.pattern(stringPattern)]],
     ruc:['',[Validators.required,Validators.pattern(rucPattern)]],
-    razonSocial:['',[Validators.required,Validators.minLength(3)]],
+    razonSocial:['',[Validators.required]],
     representanteLegal:['',[Validators.required]],
     fechaDeInicioActv:['',[Validators.required]],
     direccion:['',[Validators.required]],

@@ -78,7 +78,14 @@
 .listar__table .listar__tbody {
     text-align: center;
 }
-
+.down{
+    color: #e03131;
+    font-size: 1rem;
+}
+.up{
+    color: #0cbd2a;
+    font-size: 1rem;
+}
 .listar__table .listar__tbody tr {
     border-bottom: 1px solid var(--second-table-color);
 }
@@ -103,4 +110,24 @@
     /* margin-top: 1rem; */
     padding:1rem;
     background-color: var(--white-color);
+}
+.retiro {
+    /* background-color: #FFD1D1; */
+    color: #e03131;
+  }
+  
+.deposito {
+    color:#0cbd2a;
+    /* background-color: #D1FFD9; */
+}
+.arrow-down::before {
+    content: "↓ ";
+    color:#e03131;
+    font-size: 1rem;
+}
+
+.arrow-up::before {
+    content: "↑ ";
+    color:#0cbd2a;
+    font-size: 1rem;
 }

@@ -40,28 +40,33 @@ export class SidebarComponent implements OnInit {
       this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
     } 
   }
-  // @HostListener('document:mouseover', ['$event'])
-  // onDocumentClick(event: MouseEvent): void {
-  //   if (!this.elementRef.nativeElement.contains(event.target)) {
-  //     this.collapse = false;
-  //     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
-  //   }
-  // }
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
 
   }
   
 
+  /**
+   * This function toggles the state of a dropdown menu.
+   * @param {Event} e - Event object, which represents an event that occurred in the browser, such as a
+   * mouse click or a keyboard press.
+   */
   toggleDropdown(e:Event) {
     e.preventDefault();
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+  /**
+   * This function toggles the collapse state of a sidebar and emits an event with the updated state.
+   */
   toggleCollapse(): void {
     this.collapse = !this.collapse;
     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
   }
 
+  /**
+   * The function sets the "collapse" property to false and emits an event with the current screen
+   * width and collapse status.
+   */
   closeCollapse(): void {
     this.collapse = false;
     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });

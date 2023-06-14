@@ -19,11 +19,12 @@ export class WalletComponent implements OnInit{
   
 
   // isModalOpen: boolean = false;
-  formularioActivo: string    = ''
-  mostrarLista: boolean       = true;
-  isInversionista             = this.authService.getUserRole() === 'INVERSIONISTA';
-  transaccion: Transaccion[]  = [];
-
+  public formularioActivo: string    = ''
+  public mostrarLista: boolean       = true;
+  public isInversionista             = this.authService.getUserRole() === 'INVERSIONISTA';
+  public transaccion: Transaccion[]  = [];
+  public opcionTransaccion: string   = '';
+  public monto: number = 0;
   //VARIABLES
   showFormDeposit:boolean     = false;
   //OBJETOS
@@ -31,13 +32,13 @@ export class WalletComponent implements OnInit{
     idCartera: 0,
     saldo: 0,
   }
-  objTransaccion:Transaccion = {
-    idTransaccion:0,
-    monto:0,
-    fecha: new Date(),
-    idTipoTransaccion:0,
+  // objTransaccion:Transaccion = {
+  //   idTransaccion:'',
+  //   monto:0,
+  //   fecha: new Date(),
+  //   idTipoTransaccion:0,
 
-  }
+  // }
 
  ngOnInit(): void {
   if(this.authService.getUserRole() == 'INVERSIONISTA'){
@@ -59,12 +60,21 @@ export class WalletComponent implements OnInit{
     this.mostrarLista = true;
     this.formularioActivo = '';
   }
-
+  
  //MUESTRA LAS TRANSACCIONES
  getTransacciones(){
-    this.transactionService.getTransaction().subscribe(transaccion =>{
+    this.transactionService.getTransaction().subscribe((transaccion: Transaccion[]) =>{
       console.log(transaccion);
       this.transaccion = transaccion;
-    })
- }
+  
+      //Clasificar el arreglo de transaccion por orden de fecha decendente para cada objeto. Obtiene la fecha de cada objeto y la convierte en un objeto Date, luego obtiene el tiempo en milisegundos usando getTime() y luego resta el valor getTime() de dataA de dataB.
+      this.transaccion.sort((a:any, b:any) => {
+        const dataA = new Date(a.fecha);
+        const dataB = new Date(b.fecha);
+        return dataB.getTime() - dataA.getTime();
+      })
+      this.transaccion.reverse();
+    });
+  }
+ 
 }

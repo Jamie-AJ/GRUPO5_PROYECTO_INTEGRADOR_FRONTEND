@@ -23,7 +23,7 @@ declare var $:any;
   styleUrls: ['./acount-status.component.css']
 })
 export class AcountStatusComponent implements OnInit{
- 
+  title:string = 'Estado de Cuenta';
   //LISTA DE BANCOS Y MONEDAS
   cuentaBancariaList:CuentaBancaria[] = []; 
   bancos:Bancos[] = [];

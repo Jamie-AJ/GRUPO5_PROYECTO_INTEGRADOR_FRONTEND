@@ -3,7 +3,8 @@ import { AbstractControl, Form, FormControl, ValidationErrors } from "@angular/f
 
 //TODO: EXPRESIONES REGULARES
 export const stringPattern: string = "^(?:[A-ZÁÉÍÓÚÜÑ]'?|[A-ZÁÉÍÓÚÜÑ])(?:[aA-zZáéíóúüñÁÉÍÓÚÜÑ](?!.*[A-ZÁÉÍÓÚÜÑ]{2})(?:'?[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?:'?[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*)*)+$";
-//El numero de dni debe contener 8 digitos
+export const razonPattern: string = "^(?:[A-ZÁÉÍÓÚÜÑ]'?|[A-ZÁÉÍÓÚÜÑ])(?:[aA-zZáéíóúüñÁÉÍÓÚÜÑ](?:'?[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?:'?[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*)*|\.?[A-ZÁÉÍÓÚÜÑ][A-Za-záéíóúüñÁÉÍÓÚÜÑ]*)+$";
+    //El numero de dni debe contener 8 digitos
 export const dniPattern: string = "^[\\d]{8}$";
 export const emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 export const datePattern: string = "^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|0[1-2])\0\d{4}$";

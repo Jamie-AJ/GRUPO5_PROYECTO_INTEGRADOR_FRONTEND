@@ -1,14 +1,18 @@
 .deposito{
+    width: 100%;
+    margin:auto;
     background-color: var(--white-color);
-    padding:1rem 13rem;
+    padding:1rem;
     border-radius: 10px;
 }
+.form__deposito{
+    margin-top: 1rem;
+}
 .deposito__group{
-    
     display: grid;
     grid-template-columns:1fr;
     gap:1rem;
-    width:100%;
+    /* width:100%; */
 }
 .form__deposito-content{
     background-color: var(--table-color);
@@ -18,7 +22,7 @@
     grid-template-columns:1fr;
     place-content: center;
     margin:auto;
-    gap: 1rem; 
+    gap: 2rem; 
 }
 .form__deposito-content h3{
     text-align: center;
@@ -31,22 +35,72 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     gap: 1rem;  
 }
 .deposito__box label{
     font-size: 13px;
     font-weight: 600;
+    color:var(--grey-color);
 }
 .deposito__input{
     width:100%;
+    border: 1px solid var(--grey-color);
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    color: var(--black-color);
+    outline: none;
 }
-.deposito__group-btn{
+.deposito__box:nth-child(3) input {
+    border: none;
+    border-bottom: 1px solid var(--grey-color);
+    border-radius: 0;
+    background-color: #eaedf8;
+    padding:0.5rem 2.3rem;
+    color:var(--sidebar-color);
+    font-weight: 600;
+}
+.deposito__box:nth-child(3) input::placeholder{
+    color:var(--grey-color);
+    font-weight: 600;
+    font-size: 13px;
+}
+.deposito__box:nth-child(3) input[type="number"]::-webkit-inner-spin-button,
+.deposito__box:nth-child(3) input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input__wrapper{
     display: flex;
     align-items: center;
-    gap: 1rem;
+    position:relative;
 }
-.group-btn{
+.input__wrapper::before{
+    content: "S/.";
+    position: absolute;
+    left: 0.5rem;
+    color: var(--black-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+.input__wrapper::after{
+    content: "PEN";
+    position: absolute;
+    right: 0.5rem;
+    color: var(--grey-color);
+    font-size: 13px;
+}
+.deposito__group-btn{
+   margin-top: 1rem;
+}
+/* .group-btn{
+    
+} */
+.deposito__btn{
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
+    transition: all 0.3s ease;
     border:none;
     width: 100%;
     padding: 0.5rem 0;
@@ -54,19 +108,32 @@
     cursor: pointer;
     font-size: 1rem;
 }
-.deposito__btn{
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-    transition: all 0.3s ease;
-}
 .deposito__btn:hover{
-    background-color: #c57205;
+    background-color: #2b1def;
 }
-.deposito__goBack{
-    background-color: var(--previus-color-btn);
-    color:var(--black-color);
-    transition: all 0.3s ease;
+.deposito__goback{
+    display: inline-block;
+    margin: 1rem 0;
 }
-.deposito__goBack:hover{
-    background-color: #b6b6b6;
+.deposito__goback a{
+    background-color: var(--sidebar-color);
+    padding:0.5rem 1rem;
+    color:var(--white-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* width: 100%; */
 }
+.deposito__goback a i{
+    font-size: 1.5rem;
+}
+.invalid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #d45360;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+  }
