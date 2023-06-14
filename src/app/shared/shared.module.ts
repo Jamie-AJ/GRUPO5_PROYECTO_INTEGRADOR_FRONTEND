@@ -4,6 +4,8 @@ import { Error404PagesComponent } from './pages/error404-pages/error404-pages.co
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerListComponent } from './components/spinner-list/spinner-list.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
 
 
 
@@ -14,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     Error404PagesComponent,
     LoadingSpinnerComponent,
     SearchBoxComponent,
+    SpinnerListComponent,
+    AccordionComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Error404PagesComponent,
     LoadingSpinnerComponent,
     SearchBoxComponent,
+    SpinnerListComponent,
     
   ]
 })

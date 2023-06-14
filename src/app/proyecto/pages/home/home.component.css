@@ -1,12 +1,12 @@
 
 .main{
-    /* position: relative; */
+    /* position: fixed; */
     width:calc(100% - 60px);
     margin-left: 60px;
-    /* top:0; */
+    /* top:4rem; */
     padding: 20px 40px;
     transition: all .3s ease;
-    z-index:2;
+    z-index:1;
     /* height: calc(100vh - 100px); */
 
 }

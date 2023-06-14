@@ -23,10 +23,10 @@ export class AddOportunitiesComponent {
   public mostrarAlerta: boolean = false;
   public seEncontraronResultados: boolean = false;
   public isLoading: boolean = false;
-  public objEmpresa: Empresas = {}
-  public facturaAgregada: boolean = false;
   empresaSeleccionada:any;
   private router = inject(Router);
+
+
   constructor( private empresasServices:EmpresasService,
     private facturaService:FacturaService, 
     private oportunidadesService: OportunidadesService,

@@ -1,1 +1,56 @@
-<p>dashboard works!</p>
+<section class="dash__container animate__animated animate__fadeIn animete_faster">
+    <div class="dash__title">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="dash__content">
+        <div class="dash__flex">
+            <div class="dash__box dash__box-one">
+                <div class="dash__subtitle">
+                     <h4><i class='bx bxs-wallet'></i>Descripción general de tús finanzas</h4>
+                     <span>{{currentMonth}} {{currentYear}}</span>
+                </div>
+                <div class="dash__info">
+                    <div class="dash__info-box">
+                        <span>Credito Disponible</span>
+                        <span>360000</span>
+                    </div>
+                    <div class="dash__info-box">
+                        <span>Depositos</span>
+                        <span>360000</span>
+                    </div>
+                    <div class="dash__info-box"></div>
+                </div>
+            </div>
+            <div class="dash__box dash__box-two">
+                <div class="dash__subtitle">
+                    <h4>
+                        <i class='bx bx-transfer'></i>Mis transacciones
+                    </h4>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Transacción</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/12/2021</td>
+                            <td>Deposito</td>
+                            <td>360000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dash__box dash__box-three">
+                <h4>
+                    <i class='bx bx-bar-chart'></i>Chart</h4>
+            </div>
+        </div>
+        <div class="dash__aside">
+
+        </div>
+    </div>
+</section>

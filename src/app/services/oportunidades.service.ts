@@ -31,5 +31,13 @@ export class OportunidadesService {
     getOportunidadPorUsuario(): Observable<Oportunidades[]> {
         return this.http.get<Oportunidades[]>(`${this.url}/user/listarOportunidadInversion`)
     }
-
+    getOportunidadPorId(id: number): Observable<Oportunidades> { 
+        return this.http.get<Oportunidades>(`${this.url}/user/buscarOportunidades/${id}`).
+            pipe(
+                catchError(e => { 
+                    Swal.fire('Error', e.error.mensaje, 'error');
+                    return throwError(e);
+                })
+            )
+    }
 }

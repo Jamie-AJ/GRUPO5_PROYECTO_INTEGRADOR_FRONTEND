@@ -1,26 +1,34 @@
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
 <div class="deposito">
-    <form action="" class="form__deposito">
-        <div class="deposito__group">
-            <div class="form__deposito-content">
-                <h3>Deposito</h3>
-              <div class="deposito__box">
-                <label for="cuentaBancaria">De las cuentas que tienes registradas, selecciona la que usaras para depositar a InvestGo!</label>
-                <select name="cuentaBancaria" id="cuentaBancaria" class="deposito__input" [(ngModel)]="objTransaccion.idCuentaBancaria">
-                  <option selected disabled [ngValue]="undefined">Selecciona Cuenta Bancaria</option>
-                  <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
-                </select>
-              </div>
-              <div class="deposito__box">
-                <label for="monto">Escribe el monto de deposito</label>
-                <input type="number" [(ngModel)]="objTransaccion.monto" name="monto" class="deposito__input">
-              </div>
-              <div class="deposito__group-btn">
-                <button type="button" class="deposito__btn group-btn" (click)="postDepositar()">Depositar</button>
-                <button type="button" class="deposito__goBack group-btn" (click)="finalizarDeposito()">Cancelar</button>
-            </div>
-            </div>
-            
+  <div class="deposito__goback">
+    
+    <a (click)="finalizarDeposito()">
+      <i class='bx bx-chevron-left'></i>Regresar</a>
+  </div>
+  <form action="" class="form__deposito" [formGroup]="form" (ngSubmit)="postDepositar()">
+    <div class="deposito__group">
+      <div class="form__deposito-content">
+        <h3>Deposito</h3>
+        <div class="deposito__box">
+          <label for="cuentaBancaria">De las cuentas que tienes registradas, selecciona la que usaras para depositar a InvestGo!</label>
+          <select formControlName="idCuentaBancaria" id="idCuentaBancaria" class="deposito__input">
+            <option selected disabled value="">Selecciona Cuenta Bancaria</option>
+            <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
+          </select>
+          <span class="invalid" *ngIf="isValid('idCuentaBancaria')">{{getFieldError('idCuentaBancaria')}}</span>
         </div>
-        
-      </form>
+        <div class="deposito__box">
+          <label for="monto">Escribe el monto de depósito</label>
+          <div class="input__wrapper">
+            <input type="number" id="monto" formControlName="monto" step="0.01" class="deposito__input" placeholder="¿Cuanto quieres depositar?">
+          </div>
+          <span class="invalid" *ngIf="isValid('monto')">{{getFieldError('monto')}}</span>
+        </div>
+        <div class="deposito__group-btn">
+          <button type="submit" class="deposito__btn group-btn">Depositar</button>
+          <!-- <button type="button" class="deposito__goback group-btn" (click)="finalizarDeposito()">Cancelar</button> -->
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

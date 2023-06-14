@@ -6,38 +6,158 @@
           <div class="oportunities__user--header">
             <h3>{{title}}</h3>
           </div>
-          <!-- <div clasS="oportunities__user--group">
-            <a routerLink="/facturas/add-factura" class="btn__factura">
-              <i class="bx bx-plus"></i>
-                Agregar facturas
-            </a>
-          </div> -->
         </div>
-        <!-- <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs> -->
         <div class="oportunities__user--box">
-            <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
+          <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
+        <a *ngIf="selectOportunity" (click)="openModal(opor)">
+        <!-- <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs> -->
                 <div class="oportunities__box">
                     <div class="oportunities__title">
-                        <h4>{{opor.empresa?.nomEmpresa}}</h4>
+                      <h4>{{truncateString(opor.empresa?.razonSocial, 13) }}</h4>
                         <span>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
                     </div>
                     <div class="oportunities__riegos">
                         <span>Riesgo:</span>
                     </div>
                     <div class="oportunities__pago">
-                       <div>
+                       <div class="oportunities__pago-fecha">
                         <span>Fecha de pago:</span>
-                        <p>{{opor.fechaPago | date:'longDate':'':'es-PE'}}</p>
+                        <p>{{opor.fechaPago | date:'mediumDate':'':'es-PE'}}</p>
                        </div>
-                       <div>
+                       <div class="oportunities__pago-tasas">
                             <span>Rendimiento/TIR:</span>
-                            <p>{{opor.rendimiento | percent}}/{{opor.tir | percent}}</p>
+                            <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
                        </div>
                     </div>  
                 </div>
+              </a>
             </div>
         </div>
     </div>
      
   </section>
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h1>{{selectOportunity.empresa?.razonSocial}}</h1>
+        <button class="close-button" (click)="closeModal()">X</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal__body--riesgo">
+          <div class="modal-riesgo">
+            <p>Riesgo:</p>
+            <span>A+</span>
+          </div>
+          <div class="modal-pago">
+            <p>Fecha Promesa de Pago:</p>
+            <span>{{selectOportunity.fechaCaducidad | date:'mediumDate':'':'es-PE'}}</span>
+          </div>
+        </div>
+        <div class="modal-pago">
+          <p>Fecha de pago original</p>
+          <span>{{selectOportunity.fechaPago | date:'mediumDate':'':'es-PE'}}</span>
+        </div>
+        <div class="modal-finances">
+          <div class="modal__percent-finances">
+            <p>Financiada al</p>
+            <span>0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="modal__perfect--progress">
+            <div class="modal-percent">
+              <span>S/.2500.00</span>
+              <p>Financiado</p>
+            </div>
+            <div class="modal-percent">
+              <span>S/.5000.00</span>
+              <p>Restante</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordions">
+          <div class="accordions-content">
+            <header class="accordions-header" (click)="openAccordion(0)">
+              <span>Detalle de deudor</span>
+              <i [ngClass]="isOpen[0] ? 'bx bx-minus' : 'bx bx-plus'" ></i>
+            </header>
+            <div class="accordions-description" [ngClass]="{'hidden': !isOpen[0]}">
+              <div class="accordions-box">
+                <span>RUC</span>
+                <p>{{selectOportunity.empresa?.ruc}}</p>
+              </div>
+              <div class="accordions-box">
+                <span>Razon Social</span>
+                <p>{{selectOportunity.empresa?.razonSocial}}</p>
+              </div>
+              <div class="accordions-box">
+                <span>Nombre comercial</span>
+                <p>{{selectOportunity.empresa?.nomEmpresa}}</p>
+              </div>
+              <div class="accordions-box">
+                <span>Industria</span>
+                <p>{{selectOportunity.empresa?.sector}}</p>
+              </div>
+              <div class="accordions-box">
+                <span>Descripción</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ratione nulla itaque reiciendis. Architecto vero veritatis veniam ex impedit repellat voluptas reiciendis beatae suscipit sed modi consectetur quaerat, vel iusto?. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci nobis aliquid neque atque velit nesciunt porro ullam possimus illum? Laboriosam beatae a eius nemo obcaecati voluptatem voluptatum dolores nobis!</p>
+              </div>
+              <div class="accordions-box">
+                <span>Fecha de inicio de actividades</span>
+                <p>{{selectOportunity.empresa?.fechaDeInicioActv | date:'longDate':'':'es-PE'}}</p>
+              </div>
+              <div class="accordions-box">
+                <span>Actividad Económica</span>
+                <p>{{selectOportunity.empresa?.sector}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordions-content">
+            <header class="accordions-header" (click)="openAccordion(1)">
+              <span>Ranking de compromisos de Inversión</span>
+              <i [ngClass]="isOpen[1] ? 'bx bx-minus' : 'bx bx-plus'" ></i>
+            </header>
+            <div class="accordions-description" [ngClass]="{'hidden': !isOpen[1]}">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam sapiente ullam, aliquid quia tempora dolor, veritatis animi quam, et quisquam perspiciatis cumque! Quo, nemo cum harum tenetur nesciunt provident iste!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal__container--form">
+      <div class="modal__form--header">
+        <h3>Realizar Inversión</h3>
+        <div class="modal__form--saldo">
+          <span>Tú saldo disponible</span>
+          <p>S/.0.00</p>
+        </div>
+      </div>
+      <hr>
+      <div class="modal__form--body">
+        <form>
+          <div class="modal__form--input">
+            <label for="monto">Escribe el monto de tú inversión(PEN)</label>
+            <div class="input__wrapper">
+              <input type="text" formControlName="monto" placeholder="¿Cuanto quieres invertir?" class="modal-input"/>
+            </div>
+          </div>
+          <div class="form-retorno">
+            <span>Retorno final mensual</span>
+            <p>0.0%</p>
+          </div>
+          <div class="form--mensual">
+            <span>Es la mayor tasa posible en un escenario de competencia para que tú inversión resulte ganadora.</span>
+          </div>
+          <div class="form--max">
+            <span>Ganancia maxima PEN</span>
+            <p>0.0%</p>
+          </div>
+          <div class="modal__form--button">
+            <button type="submit">Realizar Inversión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <!-- <app-modal (closeModal)="closeModal()" [showModal]="showModal"></app-modal> -->
