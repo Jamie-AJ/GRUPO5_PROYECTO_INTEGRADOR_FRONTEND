@@ -13,6 +13,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 export class ListFacturasComponent implements OnInit {
   title = 'Facturas de Empresas';
   factura:Factura[] = [];
+  facturasActivas:Factura[] = [];
   tabs: string[] = ['General', 'Activos' ]
   activeTabsIndex: number = 0;
 
@@ -30,7 +31,7 @@ export class ListFacturasComponent implements OnInit {
   getFaturasActive(){
     this.facturaService.getFacturasActivas().subscribe(resp => {
       console.log(resp);
-      this.factura = resp as Factura[]; 
+      this.facturasActivas = resp as Factura[]; 
     });
   }
   getFacturas(){

@@ -33,11 +33,13 @@
 .oportunities__user--box {
   padding: 1rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(4,1fr);
   gap: 1rem;
   width: 100%;
 }
-
+.oportunities__box{
+  color:var(--black-color);
+}
 .oportunities__box--content {
   background-color: var(--white-color);
   padding: 20px;
@@ -195,16 +197,20 @@
   }
 }
 
-.show {
+/* .show {
   right: 0;
-}
+} */
 
-.slide-in {
+/* .slide-in {
   animation: slideIn 0.3s forwards;
 }
 
 .slide-out {
   animation: slideOut 0.3s forwards;
+} */
+.close-button {
+  background-color: transparent;
+  border: none;
 }
 
 @keyframes slideOut {
@@ -213,7 +219,7 @@
   }
 
   to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 }
 
@@ -240,10 +246,7 @@
   border-radius: 50%;
 }
 
-.close-button {
-  background-color: transparent;
-  border: none;
-}
+
 
 .modal-body {
   padding: 10px 0;
@@ -314,11 +317,16 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-
+.modal__form--header .modal__form--saldo span{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+}
 .modal__form--header .modal__form--saldo p {
   font-size: 14px;
-  color: var(--text-color);
+  color: var(--black-color);
   text-align: end;
+  font-weight: 600;
 }
 
 .modal__form--input {
@@ -359,29 +367,21 @@
   font-size: 13px;
 }
 
-.modal-input {
-  width: 100%;
-  border: 1px solid var(--text-color);
-  border-radius: 5px;
-  padding: 0.5rem 0.5rem;
-  font-size: 15px;
-  color: var(--black-color);
-  outline: none;
-}
-
 .modal__form--input input {
+  width: 100%;
   border: none;
   border-bottom: 1px solid var(--text-color);
   border-radius: 0;
-  background-color: var(--white-color);
+  background-color: #eaedf8;
   padding: 0.5rem 2.3rem;
   color: var(--sidebar-color);
+  outline: none;
 
 }
 
 .modal__form--input input::placeholder {
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 13px;
 }
 

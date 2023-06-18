@@ -27,6 +27,7 @@
                 <th>Fecha de Pago</th>
                 <th>Monto</th>
                 <th>Descripción</th>
+                <th>Estado</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
@@ -36,6 +37,7 @@
                 <td>{{fac.fechaPago}}</td>
                 <td>{{fac.monto}}</td>
                 <td>{{fac.descripcion}}</td>
+                <td>{{fac.enable}}</td>
               </tr>
             </tbody>
           </table>
@@ -57,7 +59,7 @@
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr *ngFor="let fac of factura">
+              <tr *ngFor="let fac of facturasActivas">
                 <td>{{fac.codFactura}}</td>
                 <td>{{fac.empresa?.razonSocial}}</td> 
                 <td>{{fac.fechaPago}}</td>

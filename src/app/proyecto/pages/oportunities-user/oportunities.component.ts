@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Oportunidades } from 'src/app/interface/oportunidades.interface';
+import { Saldo } from 'src/app/interface/saldo.interface';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
+import { SaldoService } from 'src/app/services/saldo.service';
 
 @Component({
   selector: 'app-oportunities',
@@ -13,18 +15,27 @@ export class OportunitiesComponent implements OnInit {
   public objOportunidades: Oportunidades[] = [];
   public showModal: boolean = false;
   public selectOportunity: Oportunidades = new Oportunidades();
-  public isOpen:boolean[] = [false,false];
+  public isOpen: boolean[] = [false, false];
+  objSaldo:Saldo = {
+    idCartera:0,
+    saldo:0,
+  }
   
   constructor(
     private oportunidadesService: OportunidadesService,
-    private activatedRouter: ActivatedRoute
+    private saldoService:SaldoService
   ) { }
 
   ngOnInit(): void {
     this.getOportunidadesPorUser();
     // this.getOportunidadesPorId();
+    this.getSaldo();
   }
-
+  getSaldo() {
+    this.saldoService.getDetallCartera().subscribe(resp => {
+      this.objSaldo = resp;
+    })
+  }
   //esta función se encargar de truncar un string par una maxima longitud especifica de caracteres y añade puntos suspensivos al final.
   public truncateString(texto: string | undefined, maxLength: number): string {
     //valida si el texto es undefined o null y retorna un string vacio

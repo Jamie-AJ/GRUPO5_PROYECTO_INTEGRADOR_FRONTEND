@@ -23,6 +23,9 @@ import localeEsPE from '@angular/common/locales/es-PE';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { OportunitiesComponent } from './pages/oportunities-user/oportunities.component';
+
+
 
 
 registerLocaleData(localeEsPE);
@@ -46,7 +49,8 @@ registerLocaleData(localeEsPE);
     DepositoComponent,
     RetiroComponent,
     BreadcrumbsComponent,
-
+    OportunitiesComponent,
+    
   ],
   imports: [
     CommonModule,

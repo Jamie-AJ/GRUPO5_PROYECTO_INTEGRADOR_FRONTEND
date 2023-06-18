@@ -1,8 +1,119 @@
 
-<app-sidebar (onToggleSideBar)="onToggleSideBar($event)"></app-sidebar>
+<nav class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+  <header>
+    <div class="sidebar__logo">
+      <span class="button-open">
+        <i class="bx bx-dollar-circle side-open"></i>
+      </span>
+      <div class="sidebar__title" [ngClass]="collapse ? 'sidebar-opacity' : ''">
+        <span class="name">Web </span>
+        <span class="name_go">Factoring</span>
+      </div>
+    </div>
+    <i class='bx bx-chevron-left toggle' (click)="toggleCollapse()" ></i>
+  </header>
+  <div class="side__menu">
+    <div class="menu">
+      <ul class="menu__links">
+        <li class="sidebar__link">
+          <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bx bxs-dashboard icon"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class="sidebar__link">
+          <a [routerLink]="['/dashboard/oportunities-list']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bx bxs-bar-chart-alt-2 icon"></i>
+            Oportunidad de Inversiones
+        </a>
+        </li>
+        <li class="sidebar__link">
+          <a routerLink="/dashboard/inversiones" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bx bx-wallet icon"></i>
+           Mis Inversiones
+          </a>
+        </li>
+        <li class="sidebar__link">
+          <a [routerLink]="['/dashboard/account-status']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bx bxs-credit-card icon"></i>
+            Estado de cuenta
+          </a>
+        </li>
+        <li class="sidebar__link">
+          <a  *ngIf="isAdministrador" [routerLink]="['/empresas/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <i class='bx bx-edit icon'></i>
+            Empresa
+          </a>
+        </li>
+        <li class="sidebar__link">
+          <a *ngIf="isAdministrador"[routerLink]="['/facturas/list-factura']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <i class='bx bxs-report icon'></i>
+            Facturas
+          </a>
+        </li>
+        <li class="sidebar__link">
+          <a  *ngIf="isAdministrador" [routerLink]="['/inversiones/list-inversion']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <i class='bx bx-line-chart icon'></i>
+            Oportunidad de Inversiones
+        </a>
+        </li>
 
-<app-navbar [collapse]="isSideBarCollapse" [screenWidth]="screenWidth"></app-navbar>
-<div class="main" [ngClass]="getBodyClass()">
-  <!-- <app-breadcrumbs></app-breadcrumbs> -->
+      </ul>
+    </div>
+    <div class="sidebar__bottom">
+      <li class="menu__links">
+        <a (click)="logout()">
+          <i class='bx bx-user icon'></i>
+          <div class="menu__user">
+            <div class="menu__datauser">
+              <span>{{user.nombre}} {{user.apellidoPa}}</span>
+              <p>{{isAdministrador ?'Administrador': 'Inversionista'}}</p>
+            </div>
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </div>
+        </a>
+      </li>
+    </div>
+  </div>
+</nav>
+
+<!-- <div class="nav" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+  <nav class="nav__container">
+    <button type="button" class="btn btn-primary">Nueva Inversión</button>
+    <div class="nav__profile">
+      <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
+        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'PEN&nbsp;':'symbol-narrow'}}
+      </a>
+      <div class="profile">
+        <a class="profile-user" (click)="toggleDropdown()">
+          {{ user.nombre}} {{ user.apellidoPa}} {{ user.apellidoMa}} <i class="bx bx-chevron-down"></i>
+        </a>
+        <ul class="profile-link" [ngClass]="{ 'show': isDropdownOpen }">
+          <li>
+            <a routerLink="/dashboard/details-profile"><i class="bx bx-user-circle icon"></i>Mis Datos</a>
+            
+          </li>
+          <li>
+            <a routerLink="/dashboard/details-profile" (click)="logout()">
+              <i class="bx bx-log-out icon"></i>Logout
+            </a>
+            <i></i>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+</div> -->
+
+<div class="main" [ngClass]="collapse ? 'sidebar-collapse' : ''">
   <router-outlet></router-outlet>
 </div>
+<!-- [ngClass]="collapse ? 'sidebar-collapse' : -->
+<!-- SIDEBAR END-->
+<!-- <app-breadcrumbs></app-breadcrumbs> -->
+<!-- <app-sidebar (onToggleSideBar)="onToggleSideBar($event)"></app-sidebar> -->
+
+<!-- <app-navbar [collapse]="isSideBarCollapse" [screenWidth]="screenWidth"></app-navbar> -->
+
+<!-- NAVBAR END-->

@@ -70,7 +70,8 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="listar__tbody">
+                    
+                    <tbody class="listar__tbody" *ngIf="empresaFacturasRegistradas">
                         <tr *ngFor="let fac of facturaList">
                             <td>{{fac.codFactura}}</td>
                             <td>{{fac.monto}}</td>
@@ -79,98 +80,56 @@
                             <td>{{fac.descripcion}}</td>
                             <td>
                                 <div class="listar__acciones">
-                                    <a  (click)="addFacturaOportunidad(fac)" class="listar__action-buttons"> <i class='bx bx-plus'></i> </a> 
-                                    <a (click)="deleteFacturaOportunidad(fac)" class="listar__action-buttons"> <i class='bx bx-x' ></i></a>    
+                                    <a  (click)="addFacturaOportunidad(fac)" class="listar__action-buttons"><i class='bx bx-plus'></i> </a> 
+                                    <!-- <ng-template #agregarButton> -->
+                                        <a (click)="deleteFacturaOportunidad(fac)" class="listar__action-buttons"> <i  class='bx bx-x' ></i></a>    
+                                    <!-- </ng-template> -->
                                 </div>
                                
                             </td>   
                         </tr>
                     </tbody>
                 </table>
+                <div *ngIf="!empresaFacturasRegistradas" class="alert alert-primary text-center mx-auto w-50">
+                    No hay facturas registradas para esta empresa.
+                  </div>
             </div>
         </div> 
         <div class="inversion__box">
-            <form action="" class="inversion__form">
+            <form  class="inversion__form" [formGroup]="form" (ngSubmit)="postInsertarOportunidad()">
                 <h3 clasS="inversion__subtitle">Agregar Inversión</h3>
                 <div class="inversion__form__content">
                     <div class="form__box">
                         <label for="rendimiento">Rendimiento</label>
-                        <input type="text" [(ngModel)]="objOportunidades.rendimiento" name="rendimiento" id="rendimiento" class="form__input">
+                        <input type="text" formControlName="rendimiento" [(ngModel)]="objOportunidades.rendimiento"  id="rendimiento" class="form__input">
                     </div>
                     <div class="form__box">
                         <label for="tir">Tasa Interna de Retorno</label>
-                        <input type="text" [(ngModel)]="objOportunidades.tir" name="tir" id="tir" class="form__input">
+                        <input type="text" [(ngModel)]="objOportunidades.tir" formControlName="tir" id="tir" class="form__input">
 
                     </div>
                     <!-- <div class="form__box">
                         <label for="riesgo">Riesgo</label>
-                        <select name="riesgo" id="riesgo" class="form__input" [(ngModel)]="objOportunidades">
+                        <select formControlName="riesgo" id="riesgo" class="form__input" [(ngModel)]="objOportunidades">
                             <option selected disabled value="">Seleciona Riesgo</option>
                             <option value="">Bajo</option>
                         </select>
                     </div> -->
                     <div class="form__box">
                         <label for="fechaCaducidad">Fecha de caducidad</label>
-                        <input type="date" name="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input">
+                        <input type="date" formControlName="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input">
                     </div>
                     <div class="form__box">
                         <label for="monto">monto</label>
-                        <input type="number" [(ngModel)]="objOportunidades.monto" name="monto" id="monto" class="form__input">
+                        <input type="number"  [value]="montoTotal" readonly [(ngModel)]="objOportunidades.monto" formControlName="monto" id="monto" class="form__input" placeholder="0.00">
                     </div>
                 </div>
                 <div class="form__group--btn">
-                    <button class="btn btn-danger">Cancelar</button>
-                    <button class="btn btn-primary"(click)="postInsertarOportunidad()">Guardar</button>
+                    <button type="button" class="btn btn-danger" (click)="goBack()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
     
 </section>
-
-<!-- <section class="company__container animate__animated animate__fadeIn animete_faster">
-    <div>
-        <h3>Agregar oportunidades</h3>
-    </div>
-    <div class="company__form">
-
-        <div class="form__content">
-            <form class="company__content-form" >
-                <div class="form__group">
-                    <div class="form__box">
-                        <label for="empresa">Empresa</label>
-                        <select name="empresa" id="empresa" class="form__input">
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="form__box">
-                        <label for="factura">Factura</label>
-                        <select name="factura" id="factura" class="form__input">
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="form__box">
-                        <label for="rendimiento">Rendimiento</label>
-                        <input type="text" name="rendimiento" id="rendimiento" class="form__input">
-                    </div>
-                    <div class="form__box">
-                        <label for="tir">Tasa Interna de Retorno</label>
-                        <input type="text" name="tir" id="tir" class="form__input">
-                    </div>
-                    <div class="form__box">
-                        <label for="fechaCaducidad">Fecha de caducidad</label>
-                        <input type="date" name="fechaCaducidad" id="fechaCaducidad" class="form__input">
-                    </div>
-                    <div class="form__box">
-                        <label for="monto">monto</label>
-                        <input type="number" name="monto" id="monto" class="form__input">
-                    </div>
-                </div>
-                <div class="form__group--btn">
-                    <button class="btn btn-danger">Cancelar</button>
-                    <button class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section> -->

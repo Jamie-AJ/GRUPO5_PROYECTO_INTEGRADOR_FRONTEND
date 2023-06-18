@@ -84,13 +84,6 @@ export class AddFacturaComponent implements OnInit{
           this.router.navigate(['/facturas/list-factura']);
         }
       );
-      // this.facturaService.postFactura(this.factura).subscribe(
-      //   resp =>{
-      //     console.log(resp);
-      //     Swal.fire('Factura Generada', resp.mensaje, 'success');
-      //     this.router.navigate(['/facturas/list-factura']);
-      //   }
-      // );
   }
   getCurrentDate(): string {
     const currentDate = new Date();
