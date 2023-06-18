@@ -10,13 +10,13 @@
     </div>
     <ul class="side-menu">
         <li class="sidebar__item">
-            <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-dashboard icon"></i>
                 Dashboard
             </a>
         </li>
         <li class="sidebar__item">
-            <a routerLink="/oportunidades/oportunities-list" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="['/oportunidades/oportunities-list']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-bar-chart-alt-2 icon"></i>
                 Oportunidad de Inversiones
             </a>
@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="sidebar__item">
-            <a routerLink="/dashboard/account-status" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="['/dashboard/account-status']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bx bxs-credit-card icon"></i>
                 Estado de cuenta
             </a>
@@ -36,19 +36,19 @@
        
         <!-- <li *ngIf="isAdministrador" class="divider">Main</li> -->
         <li class="sidebar__item">
-            <a  *ngIf="isAdministrador" routerLink="/empresas/list-company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <a  *ngIf="isAdministrador" [routerLink]="['/dashboard/empresas/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
                 <i class='bx bx-edit icon'></i>
                Gestion de Empresa
             </a>
         </li>
         <li class="sidebar__item">
-            <a *ngIf="isAdministrador" routerLink="/facturas/list-factura" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <a *ngIf="isAdministrador"[routerLink]="['/facturas/list-factura']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
                 <i class='bx bxs-report icon'></i>
                 Facturas
             </a>
         </li>
         <li class="sidebar__item">
-            <a  *ngIf="isAdministrador" routerLink="/inversiones/list-inversion" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+            <a  *ngIf="isAdministrador" [routerLink]="['/inversiones/list-inversion']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
                 <i class='bx bx-line-chart icon'></i>
                 Oportunidad de Inversiones
             </a>

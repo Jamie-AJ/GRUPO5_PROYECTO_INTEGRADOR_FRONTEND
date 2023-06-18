@@ -23,10 +23,10 @@ const router:Routes = [
     // data:{ allowedRole:['ADMINISTRADOR','INVERSIONISTA']},
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
   },
-  {
-    path: 'oportunidades',
-    loadChildren: () => import('./proyecto/pages/oportunities-user/oportunities-user.module').then(m => m.OportunitiesUserModule)
-  },
+  // {
+  //   path: 'oportunidades',
+  //   loadChildren: () => import('./proyecto/pages/oportunities-user/oportunities-user.module').then(m => m.OportunitiesUserModule)
+  // },
   {
     path:'empresas',
     canActivate:[hasRoleGuard],

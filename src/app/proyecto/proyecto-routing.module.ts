@@ -5,10 +5,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { InversionesComponent } from './pages/inversiones/inversiones.component';
 import { AcountStatusComponent } from './pages/acount-status/acount-status.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { OportunitiesComponent } from './pages/oportunities-user/page/oportunities/oportunities.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
+import { OportunitiesComponent } from './pages/oportunities-user/oportunities.component';
 
 
 const router:Routes = [
@@ -19,10 +19,10 @@ const router:Routes = [
       {path:'',component:DashboardComponent},
       {path:'inversiones', component:InversionesComponent},
       {path:'profile-edit',component:EditProfileComponent},
-      {path:'oportunities',component:OportunitiesComponent},
-      {path:'details-profile', component:ProfileComponent},
+      { path: 'details-profile', component: ProfileComponent },
+      {path:'oportunities-list', component:OportunitiesComponent},
       {path:'account-status', component:AcountStatusComponent},
-      {path:'wallet',component:WalletComponent},
+      {path:'wallet', component: WalletComponent },
       {path:'**', redirectTo:'dashboard'}
     ]
   }

@@ -22,9 +22,9 @@ import { ProyectoModule } from '../../proyecto.module';
     CommonModule,
     EmpresasRoutingModule,
     FormsModule,
+    ProyectoModule,
     ReactiveFormsModule,
     SharedModule,
-    ProyectoModule
   ]
 })
 export class EmpresasModule { }

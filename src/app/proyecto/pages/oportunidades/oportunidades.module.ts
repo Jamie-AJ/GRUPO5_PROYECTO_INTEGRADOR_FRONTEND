@@ -7,7 +7,7 @@ import { ListOportunitiesComponent } from './pages/list-oportunities/list-oportu
 import { AppModule } from 'src/app/app.module';
 import { ProyectoModule } from '../../proyecto.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 
@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     OportunidadesRoutingModule,
+    ReactiveFormsModule,
     ProyectoModule,
     SharedModule,
     FormsModule,

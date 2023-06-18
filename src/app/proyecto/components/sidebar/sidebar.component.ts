@@ -23,7 +23,6 @@ export class SidebarComponent implements OnInit {
   @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
 
   private authService = inject(LoginService);
-  private elementRef = inject(ElementRef);
   isAdministrador = this.authService.getUserRole() === 'ADMIN';
   isInversionista = this.authService.getUserRole() === 'INVERSIONISTA';
 
@@ -45,7 +44,6 @@ export class SidebarComponent implements OnInit {
 
   }
   
-
   /**
    * This function toggles the state of a dropdown menu.
    * @param {Event} e - Event object, which represents an event that occurred in the browser, such as a

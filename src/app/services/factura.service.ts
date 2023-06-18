@@ -15,7 +15,6 @@ export class FacturaService {
 
 
   getFacturas():Observable<Factura[]>{
-
     return this.http.get<Factura[]>(`${this.url}/listaFacturas`);
   }
   getFacturasActivas():Observable<Factura[]>{
@@ -27,7 +26,7 @@ export class FacturaService {
     );
   }
   getFacturasXEmpresa(id:number):Observable<Factura[]>{
-    return this.http.get<Factura[]>(`${this.url}/facturas/${id}`).pipe(  
+    return this.http.get<Factura[]>(`${this.url}/facturas/activas/${id}`).pipe(  
       catchError( err => 
         of([] as Factura[]))
     );
@@ -49,6 +48,7 @@ export class FacturaService {
       'Content-Type': 'application/json'
     })
   };
+  
   return this.http.post<any>(url, requestBody, httpOptions);
   }
 
