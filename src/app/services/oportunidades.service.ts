@@ -18,7 +18,9 @@ export class OportunidadesService {
         return this.http.get<Oportunidades[]>(`${this.url}/listarOportunidadInversion`);
 
     }
-
+    getRefrescarFacturas(): Observable<any> { 
+        return this.http.get<any>(`${this.url}/refrescarListaFactura`);
+    }
     postOportunidad(oportunidades: Oportunidades): Observable<any> {
         return this.http.post<any>(`${this.url}/insertaOportunidadInversion`, oportunidades, { headers: this.httpHeaders }).pipe(
             catchError(error => {

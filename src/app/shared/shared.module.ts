@@ -6,6 +6,7 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerListComponent } from './components/spinner-list/spinner-list.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -18,6 +19,7 @@ import { AccordionComponent } from './components/accordion/accordion.component';
     SearchBoxComponent,
     SpinnerListComponent,
     AccordionComponent,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AccordionComponent } from './components/accordion/accordion.component';
     LoadingSpinnerComponent,
     SearchBoxComponent,
     SpinnerListComponent,
+    ModalComponent
     
   ]
 })

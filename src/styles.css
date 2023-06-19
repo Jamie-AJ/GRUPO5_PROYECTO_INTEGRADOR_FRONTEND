@@ -42,7 +42,7 @@
     --pass-color: #6D6D6D;
     --table-color: #f8f9fc;
     --second-table-color: #e3e6f0;
-    --font-primary: 'Montserrat', sans-serif;
+    /* --font-primary:  */
 }
 *,
 *::before,*::after {
@@ -51,8 +51,8 @@
   margin:0; 
 }
 body{
-    /* position: relative; */
-    font-family:var(--font-primary);
+    position: relative;
+    font-family:'Monserrat', sans-serif;;
     background-color:#f4f6fc;
     line-height: normal;
 }
