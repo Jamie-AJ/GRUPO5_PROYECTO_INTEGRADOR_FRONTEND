@@ -6,7 +6,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     height: 100%;
-    /* z-index:2000; */
+    /* z-index:0; */
 }
 .status h3{
     padding: 1rem;

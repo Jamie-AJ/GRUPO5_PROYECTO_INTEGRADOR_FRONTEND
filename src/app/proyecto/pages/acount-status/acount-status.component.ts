@@ -30,6 +30,7 @@ export class AcountStatusComponent implements OnInit{
   monedas:Monedas[] = [];
   mostrarFormularioDeposito:boolean = false;
   public display = false;
+  isDropdownOpen: boolean = false;
   objCuentaBancaria:CuentaBancaria = {
     idCuentaBancaria:0,
     nroCuenta:'',
