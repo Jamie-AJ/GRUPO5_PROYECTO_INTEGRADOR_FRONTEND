@@ -44,7 +44,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
     private oportunidadesService: OportunidadesService,
     private toastService: ToastrService,
     private router: Router,
-    private modalService: ModalService) { }
+    private modalService: ModalService,
     private builder: FormBuilder) { }
 
     form: FormGroup = this.builder.group({
