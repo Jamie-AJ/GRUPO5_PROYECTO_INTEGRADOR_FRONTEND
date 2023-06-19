@@ -1,12 +1,10 @@
 .main {
     position: relative;
-
     width: calc(100% - 260px);
     left: 260px;
     height: 100%;
     padding: 20px 40px;
     transition: all .4s ease;
-    z-index: 1;
 
 }
 

@@ -6,6 +6,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     height: 100%;
+    /* z-index:2000; */
 }
 .status h3{
     padding: 1rem;
@@ -44,10 +45,8 @@
 }
 .open-modal .icon{
     font-size: 30px;
-    color: var(--primary-color);
-    
+    color: var(--primary-color);   
 }
-
 .account__bank{
     display:flex;
     flex-direction: column;
