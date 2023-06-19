@@ -24,7 +24,7 @@ export class OportunidadesService {
     postOportunidad(oportunidades: Oportunidades): Observable<any> {
         return this.http.post<any>(`${this.url}/insertaOportunidadInversion`, oportunidades, { headers: this.httpHeaders }).pipe(
             catchError(error => {
-                Swal.fire('Error', error.error.mensaje, 'error');
+                Swal.fire('OJO', 'Se debe agregar facturas para poder registrar una oportunidad', 'warning');
                 return throwError(error);
             })
         );
