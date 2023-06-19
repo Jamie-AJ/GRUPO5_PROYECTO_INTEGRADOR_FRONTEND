@@ -5,7 +5,7 @@
               <h3 class="inversion__title">Añadir Oportunidades</h3>
             </div>
             <div clasS="inversion__group">
-                <a routerLink="/inversiones/list-inversion" class="btn__factura">
+                <a (click)="goBack()" class="btn__factura">
                     <i class='bx bx-chevron-left'></i>
                   Regresar
                 </a>
@@ -133,3 +133,20 @@
     </div>
     
 </section>
+<div class="modal-background" [class.active]="display">
+    <div class="modal-container">
+        <div class="modal-header">
+            <button class="close-button">X</button>
+        </div>
+      <div class="modal-content">
+        <i class='bx bx-error-alt'></i>
+        <h3>¿Estás seguro que deseas salir?</h3>
+        <p> Cambiará el flujo de este proceso.</p>
+        <div class="modal-buttons">
+          <button (click)="closeWithoutCancel()">Cerrar sin cancelar el registro</button>
+          <button (click)="cancelRegistration()">Cancelar Registro</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

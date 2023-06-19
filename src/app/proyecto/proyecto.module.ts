@@ -15,15 +15,16 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
+import { OportunitiesComponent } from './pages/oportunities-user/oportunities.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+
 import { AuthModule } from '../auth/auth.module';
+import { SharedModule } from '../shared/shared.module';
 import { DepositoComponent } from './pages/deposito/deposito.component';
 import { RetiroComponent } from './pages/retiro/retiro.component';
 import localeEsPE from '@angular/common/locales/es-PE';
 
 import { registerLocaleData } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { OportunitiesComponent } from './pages/oportunities-user/oportunities.component';
 
 
 

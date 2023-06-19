@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { AddOportunitiesComponent } from './pages/add-oportunities/add-oportunities.component';
 import { ListOportunitiesComponent } from './pages/list-oportunities/list-oportunities.component';
+import { ExitsGuard } from 'src/app/guards/exits.guard';
 
 const routes: Routes = [
   {
     path:'',
     component:HomeComponent,
     children:[
-      {path:'add-inversion',component:AddOportunitiesComponent},
+      {path:'add-inversion',component:AddOportunitiesComponent,canDeactivate: [ExitsGuard]},
       {path:'list-inversion',component:ListOportunitiesComponent},
     ]
   }

@@ -59,7 +59,6 @@ export class OportunitiesComponent implements OnInit {
   public openModal(oportunidades: Oportunidades): void {
     this.showModal = true;
     this.selectOportunity = oportunidades;
-    console.log(oportunidades);
   }
   public closeModal(): void {
     this.showModal = false;

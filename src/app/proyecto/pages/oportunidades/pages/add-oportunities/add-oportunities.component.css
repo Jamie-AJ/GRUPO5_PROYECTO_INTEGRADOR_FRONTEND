@@ -1,65 +1,64 @@
-.inversion__container{
-
-    position: relative;
-    /* background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
-    /* border-radius: 10px; */
-    height: 100%;
-}
-.inversion__container .inversion__title{
+.inversion__container .inversion__title {
     font-size: 24px;
     font-weight: 600;
     /* padding: 1rem;
-
     background-color: var(--primary-color);
     border-top-left-radius:10px;
     border-top-right-radius: 10px;
     color:var(--white-color);
      */
 }
-.inversion__content{
+
+.inversion__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    gap:2rem;
+    gap: 2rem;
 }
-.inversion__box{
+
+.inversion__box {
     height: 100%;
     background-color: var(--white-color);
-    padding:1rem ;
+    padding: 1rem;
     border-radius: 10px;
 }
-.inversion__form{
+
+.inversion__form {
     /* background-color: var(--white-color); */
     padding: 1rem 0;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     height: 100%;
 }
-.inversion__nav{
+
+.inversion__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:1rem 0 3rem 0;
+    padding: 1rem 0 3rem 0;
 }
-.inversion__header-content{
+
+.inversion__header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap:1rem;
+    gap: 1rem;
 }
-.inversion__subtitle{
+
+.inversion__subtitle {
     margin-bottom: 2rem;
     font-size: 20px;
     font-weight: 600;
     color: var(--black-color);
 }
-.inversion__form .form__content{
+
+.inversion__form .form__content {
     background-color: var(--white-color);
-    padding:1rem;
+    padding: 1rem;
     border-radius: 10px;
 }
+
 .listar__action-buttons {
     border: none;
     background-color: transparent;
@@ -67,22 +66,27 @@
     font-size: 1.5rem;
     text-align: center;
 }
+
 .listar__acciones {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    cursor:pointer;
-}  
-.listar__action-buttons:nth-child(1){
+    cursor: pointer;
+}
+
+.listar__action-buttons:nth-child(1) {
     color: #0da208;
 }
-.listar__action-buttons:nth-child(2){
+
+.listar__action-buttons:nth-child(2) {
     color: #d45360;
 }
-.listar__content-table{
+
+.listar__content-table {
     margin-top: 1rem;
 }
+
 .listar__content {
     padding: 1rem;
     display: flex;
@@ -90,12 +94,14 @@
     justify-content: space-between;
     gap: 1rem;
 }
+
 .listar__button {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 0.75rem;
 }
+
 .listar__table {
     border-collapse: collapse;
     width: 100%;
@@ -104,12 +110,13 @@
     border: 1px solid var(--second-table-color);
     padding: 0.875rem;
     margin-bottom: 1rem;
-    
+
 }
 
-.listar__thead{
+.listar__thead {
     background-color: var(--second-table-color);
 }
+
 .listar__table .listar__thead th {
     padding: 1rem 0.75rem;
     font-size: 13px;
@@ -130,7 +137,7 @@
 
 .listar__table .listar__tbody tr:nth-child(even) {
     background-color: #ffffff;
-    
+
 }
 
 .listar__table .listar__tbody tr:last-child {
@@ -145,11 +152,13 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-.listar__tbody .icon{
+
+.listar__tbody .icon {
     font-size: 1.5rem;
     color: var(--primary-color);
     cursor: pointer;
 }
+
 .btn__factura {
     padding: 0.625rem 1rem;
     border-radius: 20px;
@@ -165,46 +174,54 @@
     gap: 0.5rem;
     /* outline: none; */
 }
-.btn__factura:hover{
+
+.btn__factura:hover {
     background-color: #373ece;
 }
 
-.company__content-form{
-    width:50%;
+.company__content-form {
+    width: 50%;
     background-color: #EFF1F7;
     padding: 1rem;
     border-radius: 10px;
 }
-.inversion__form__content{
+
+.inversion__form__content {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap:1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
-.form__box{
+
+.form__box {
     display: flex;
     flex-direction: column;
-    gap:0.5rem;
+    gap: 0.5rem;
 }
-.form__box label{
+
+.form__box label {
     font-size: 14px;
     font-weight: 600;
     color: #4F4F4F;
 }
-.form__box:nth-child(1){
+
+.form__box:nth-child(1) {
     grid-column: 1/3;
 }
-.form__input{
+
+.form__input {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     outline: none;
 }
-.form__group--btn{
+
+.form__group--btn {
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
-    gap:1rem;
+    gap: 1rem;
 }
+
 .invalid {
     display: flex;
     flex-direction: column;
@@ -214,3 +231,97 @@
     font-weight: 600;
     width: 100%;
 }
+
+
+/*MODAL */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity:0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+.modal-background.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+.modal-container {
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+.modal-background.active .modal-container {
+    transform: translateY(0);
+    opacity: 1;
+  }
+.modal-content {
+    text-align: center;
+}
+
+.modal-content i {
+    font-size: 70px;
+    color: #d33847;
+    margin-bottom: 30px;
+}
+.modal-content h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black-color);
+    margin-bottom: 20px;
+}
+.modal-content p{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black-color);
+}
+.modal-buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.modal-buttons button:nth-child(1){
+    background-color: #dde5f7;
+    color: var(--sidebar-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.modal-buttons button:nth-child(2){
+    background-color: #d33847;
+    color: var(--white-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+.close-button {
+    background-color: transparent;
+    border: none;
+  } 

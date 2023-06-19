@@ -10,7 +10,7 @@
         <span class="name_go">Factoring</span>
       </div>
     </div>
-    <i class='bx bx-chevron-left toggle' (click)="toggleCollapse()" ></i>
+    <i [ngClass]="collapse ? 'rotated' : ''" class='bx bx-chevron-left toggle' (click)="toggleCollapse()" ></i>
   </header>
   <div class="side__menu">
     <div class="menu">
