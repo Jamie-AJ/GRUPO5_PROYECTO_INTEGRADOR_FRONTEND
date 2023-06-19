@@ -160,23 +160,38 @@
 }
 
 .btn__factura {
-    padding: 0.625rem 1rem;
-    border-radius: 20px;
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background-color: #d33847;
     border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     /* outline: none; */
 }
 
+.btn__factura i {
+    font-size: 18px;
+    color: var(--white-color);
+}
+
+.btn__guardar {
+    background-color: var(--sidebar-color);
+    border: none;
+    /* outline: none; */
+}
+
+.btn__form {
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.625rem 1rem;
+    border-radius: 20px;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .btn__factura:hover {
-    background-color: #373ece;
+    background-color: #cb1f30;
 }
 
 .company__content-form {
@@ -244,14 +259,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity:0;
+    opacity: 0;
     pointer-events: none;
     transition: all 0.4s ease;
 }
+
 .modal-background.active {
     opacity: 1;
     pointer-events: auto;
-  }
+}
 
 .modal-container {
     background-color: white;
@@ -264,10 +280,12 @@
     opacity: 0;
     transition: all 0.4s ease;
 }
+
 .modal-background.active .modal-container {
     transform: translateY(0);
     opacity: 1;
-  }
+}
+
 .modal-content {
     text-align: center;
 }
@@ -277,17 +295,20 @@
     color: #d33847;
     margin-bottom: 30px;
 }
-.modal-content h3{
+
+.modal-content h3 {
     font-size: 20px;
     font-weight: 600;
     color: var(--black-color);
     margin-bottom: 20px;
 }
-.modal-content p{
+
+.modal-content p {
     font-size: 14px;
     font-weight: 400;
     color: var(--black-color);
 }
+
 .modal-buttons {
     margin-top: 50px;
     display: flex;
@@ -295,7 +316,8 @@
     align-items: center;
     gap: 1rem;
 }
-.modal-buttons button:nth-child(1){
+
+.modal-buttons button:nth-child(1) {
     background-color: #dde5f7;
     color: var(--sidebar-color);
     padding: 0.5rem 1rem;
@@ -305,7 +327,8 @@
     transition: all 0.3s ease;
     outline: none;
 }
-.modal-buttons button:nth-child(2){
+
+.modal-buttons button:nth-child(2) {
     background-color: #d33847;
     color: var(--white-color);
     padding: 0.5rem 1rem;
@@ -315,13 +338,15 @@
     transition: all 0.3s ease;
     outline: none;
 }
+
 .modal-header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
-  }
+}
+
 .close-button {
     background-color: transparent;
     border: none;
-  } 
+}
