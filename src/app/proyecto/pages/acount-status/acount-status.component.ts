@@ -29,7 +29,7 @@ export class AcountStatusComponent implements OnInit{
   bancos:Bancos[] = [];
   monedas:Monedas[] = [];
   mostrarFormularioDeposito:boolean = false;
-
+  public display = false;
   objCuentaBancaria:CuentaBancaria = {
     idCuentaBancaria:0,
     nroCuenta:'',
@@ -79,6 +79,12 @@ export class AcountStatusComponent implements OnInit{
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
+  }
+  openModal() {
+    this.display = true;
+  }
+  closeModal() { 
+    this.display = false;
   }
   //llena el select con los meses
   get meses():Mes[]{

@@ -62,20 +62,10 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">
           Ingresa los datos de tú tarjeta
         </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form
-          class="form"
-          id="form-tarjeta"
-          [formGroup]="form"
-          (ngSubmit)="postCuentaBancaria()"
-        >
+        <form class="form" id="form-tarjeta" [formGroup]="form" (ngSubmit)="postCuentaBancaria()">
           <div class="form__content">
             <div class="form__box">
               <!-- <label for="bancos">Selecciona el banco</label> -->
@@ -90,51 +80,26 @@
               }}</span>
             </div>
             <div class="form__box">
-              <input type="text" class="form__input"
-                formControlName="nroCuenta"
-                id="nroCuenta"
-                placeholder="Ingrese su número de tarjeta"
-              />
+              <input type="text" class="form__input" formControlName="nroCuenta" id="nroCuenta" placeholder="Ingrese su número de tarjeta" />
               <span *ngIf="isValid('nroCuenta')" class="invalid">{{
                 getFieldError("nroCuenta")
               }}</span>
             </div>
             <div class="form__box">
-              <input
-                type="text"
-                class="form__input"
-               
-                formControlName="nroCuentaCci"
-                id="nroCuentaCci"
-                placeholder="Ingrese su número de tarjeta CCI"
-              />
-              <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{
-                getFieldError("nroCuentaCci")
-              }}</span>
+              <input type="text" class="form__input" formControlName="nroCuentaCci" id="nroCuentaCci" placeholder="Ingrese su número de tarjeta CCI" >
+              <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{ getFieldError("nroCuentaCci") }}</span>
             </div>
             <div class="form__box">
-              <select
-                class="form__input"
-                id="monedas"
-               
-                formControlName="monedas"
-              >
+              <select class="form__input" id="monedas" formControlName="monedas">
                 <option value="">Selecciona Moneda</option>
                 <option *ngFor="let moneda of monedas" [ngValue]="moneda">
                   {{ moneda.nomMonedas }}
                 </option>
               </select>
-              <span *ngIf="isValid('monedas')" class="invalid">{{
-                getFieldError("monedas")
-              }}</span>
+              <span *ngIf="isValid('monedas')" class="invalid">{{ getFieldError("monedas") }}</span>
             </div>
             <div class="form__box">
-              <select
-                class="form__input"
-                id="mes"
-               
-                formControlName="mes"
-              >
+              <select class="form__input" id="mes" formControlName="mes" >
                 <option disabled selected value="">Mes</option>
                 <option *ngFor="let mes of meses" [value]="mes">
                   {{ mes }}

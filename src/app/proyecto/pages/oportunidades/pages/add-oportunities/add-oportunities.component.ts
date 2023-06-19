@@ -239,7 +239,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       Swal.fire('Registro con exito', response.mensaje, 'success');
       this.form.reset();
       this.clearArrayList();
-      this.router.navigate(['/inversiones/list-inversion']);
+        this.router.navigate(['/inversiones/list-inversion']);
     
     },
     error => {
