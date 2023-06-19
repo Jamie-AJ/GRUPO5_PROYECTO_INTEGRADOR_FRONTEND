@@ -13,4 +13,7 @@ export class ModalService {
   setShowModal(show: boolean): void {
     this.showModalSubject.next(show);
   }
+  closeShowModal(): void { 
+    this.showModalSubject.next(false);
+  }
 }

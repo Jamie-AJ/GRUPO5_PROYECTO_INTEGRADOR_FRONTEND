@@ -78,10 +78,10 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       this.modalService.showModal$.pipe(first()).subscribe(show => {
         if (!show) {
           // Modal cerrado sin cancelar el registro
-          resolve(true);
+          resolve(false);
         } else {
           // Modal canceló el registro
-          resolve(false);
+          resolve(true);
         }
       });
     });
@@ -95,13 +95,13 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
   closeWithoutCancel(): void {
     // Acción al cerrar el modal sin cancelar el registro
     this.modalService.setShowModal(false);
-    this.clearArrayList();
     
   }
-
+  
   cancelRegistration(): void {
     // Acción al cancelar el registro
-    this.modalService.setShowModal(false);
+    this.clearArrayList();
+    this.modalService.setShowModal(true);
   }
 
   filterEmpresas(keyword: String): void {
