@@ -13,7 +13,7 @@
           <label for="cuentaBancaria">De las cuentas que tienes registradas, selecciona la que usaras para depositar a InvestGo!</label>
           <select formControlName="idCuentaBancaria" id="idCuentaBancaria" class="deposito__input">
             <option selected disabled value="">Selecciona Cuenta Bancaria</option>
-            <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
+            <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria">{{cuenta.bancos?.nomBancos}} | {{cuenta.nroCuenta}}  </option>
           </select>
           <span class="invalid" *ngIf="isValid('idCuentaBancaria')">{{getFieldError('idCuentaBancaria')}}</span>
         </div>

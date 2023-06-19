@@ -5,9 +5,8 @@
               <h3 class="inversion__title">Añadir Oportunidades</h3>
             </div>
             <div clasS="inversion__group">
-                <a (click)="goBack()" class="btn__factura">
-                    <i class='bx bx-chevron-left'></i>
-                  Regresar
+                <a (click)="goBack()" class="btn__factura btn__form ">
+                    <i class='bx bx-chevron-left'></i>Regresar
                 </a>
               </div>
         </div>
@@ -85,7 +84,7 @@
                     </tbody>
                 </table>
                 <div *ngIf="!empresaFacturasRegistradas" class="alert alert-primary text-center mx-auto w-50">
-                    No hay facturas registradas para esta empresa.
+                    No hay facturas registradas.
                   </div>
             </div>
         </div> 
@@ -122,8 +121,7 @@
                     </div>
                 </div>
                 <div class="form__group--btn">
-                    <button class="btn btn-danger" (click)="goBack()">Cancelar</button>
-                    <button class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn__guardar btn__form"> <i class='bx bx-save'></i> Guardar</button>
                 </div>
             </form>
         </div>

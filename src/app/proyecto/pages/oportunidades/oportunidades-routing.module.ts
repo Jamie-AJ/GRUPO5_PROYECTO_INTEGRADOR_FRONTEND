@@ -10,7 +10,7 @@ const routes: Routes = [
     path:'',
     component:HomeComponent,
     children:[
-      {path:'add-inversion',component:AddOportunitiesComponent,canDeactivate: [ExitsGuard]},
+      {path:'add-inversion',component:AddOportunitiesComponent},
       {path:'list-inversion',component:ListOportunitiesComponent},
     ]
   }

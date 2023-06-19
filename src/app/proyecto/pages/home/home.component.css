@@ -6,10 +6,11 @@
     height: 100%;
     padding: 20px 40px;
     transition: all .4s ease;
+    z-index: 1;
 
 }
 
-.sidebar-collapse ~.main {
+.sidebar-collapse~.main {
     left: 78px;
     width: calc(100% - 78px);
 }
@@ -20,7 +21,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     padding: 10px 14px;
     background-color: var(--black-color);
     transition: all 0.4s ease;
@@ -39,7 +40,7 @@
 }
 
 .button-open .side-open {
-    padding:5px;
+    padding: 5px;
     font-size: 35px;
     background: var(--sidebar-color);
     border-radius: 10px;
@@ -69,14 +70,11 @@ header .sidebar__logo .sidebar__title {
 }
 
 .sidebar__title .name {
-   
     font-weight: 600;
 }
 
 .sidebar__title .name_go {
-    font-size: 14px;
     font-weight: 600;
-    color: var(--text-color);
 }
 
 .sidebar header .toggle {
@@ -95,6 +93,7 @@ header .sidebar__logo .sidebar__title {
     background-color: var(--white-color);
     font-size: 22px;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .rotated {
@@ -127,7 +126,7 @@ header .sidebar__logo .sidebar__title {
     border-radius: 10px;
     transition: all .3s ease-in-out;
     white-space: nowrap;
-    
+
 }
 
 .sidebar .menu__links a:hover {
@@ -173,9 +172,11 @@ header .sidebar__logo .sidebar__title {
     flex-direction: column;
     align-items: flex-start;
 }
-.menu__links i{
+
+.menu__links i {
     cursor: pointer;
 }
+
 .menu__datauser span:nth-child(1) {
     font-size: 15px;
     font-weight: 600;
@@ -212,10 +213,11 @@ header .sidebar__logo .sidebar__title {
     width: calc(100% - 260px);
     left: 260px;
     top: 0;
-    z-index: 1;
+    z-index: 0;
     transition: all .4s ease;
 }
-.sidebar-collapse ~.nav {
+
+.sidebar-collapse~.nav {
     left: 78px;
     width: calc(100% - 78px);
 }
@@ -230,7 +232,7 @@ header .sidebar__logo .sidebar__title {
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
@@ -340,7 +342,7 @@ header .sidebar__logo .sidebar__title {
 .wallet-button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     color: var(--black-color);
     gap: 0.5rem;
     border: 0.5px solid #0925f9;

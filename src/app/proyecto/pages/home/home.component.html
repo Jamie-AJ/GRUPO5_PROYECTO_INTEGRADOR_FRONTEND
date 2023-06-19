@@ -6,8 +6,8 @@
         <i class="bx bx-dollar-circle side-open"></i>
       </span>
       <div class="sidebar__title" [ngClass]="collapse ? 'sidebar-opacity' : ''">
-        <span class="name">Web </span>
-        <span class="name_go">Factoring</span>
+        <span class="name">Invest </span>
+        <span class="name_go">GO!</span>
       </div>
     </div>
     <i [ngClass]="collapse ? 'rotated' : ''" class='bx bx-chevron-left toggle' (click)="toggleCollapse()" ></i>
@@ -77,38 +77,36 @@
   </div>
 </nav>
 
-<!-- <div class="nav" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+<div class="nav" [ngClass]="collapse ? 'sidebar-collapse' : ''">
   <nav class="nav__container">
-    <button type="button" class="btn btn-primary">Nueva Inversión</button>
     <div class="nav__profile">
       <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
-        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'PEN&nbsp;':'symbol-narrow'}}
+        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}
       </a>
-      <div class="profile">
-        <a class="profile-user" (click)="toggleDropdown()">
-          {{ user.nombre}} {{ user.apellidoPa}} {{ user.apellidoMa}} <i class="bx bx-chevron-down"></i>
-        </a>
-        <ul class="profile-link" [ngClass]="{ 'show': isDropdownOpen }">
-          <li>
-            <a routerLink="/dashboard/details-profile"><i class="bx bx-user-circle icon"></i>Mis Datos</a>
-            
-          </li>
-          <li>
-            <a routerLink="/dashboard/details-profile" (click)="logout()">
-              <i class="bx bx-log-out icon"></i>Logout
-            </a>
-            <i></i>
-          </li>
-        </ul>
-      </div>
-      
     </div>
   </nav>
-</div> -->
+</div>
 
 <div class="main" [ngClass]="collapse ? 'sidebar-collapse' : ''">
   <router-outlet></router-outlet>
 </div>
+<!-- <div class="profile">
+  <a class="profile-user" (click)="toggleDropdown()">
+    {{ user.nombre}} {{ user.apellidoPa}} {{ user.apellidoMa}} <i class="bx bx-chevron-down"></i>
+  </a>
+  <ul class="profile-link" [ngClass]="{ 'show': isDropdownOpen }">
+    <li>
+      <a routerLink="/dashboard/details-profile"><i class="bx bx-user-circle icon"></i>Mis Datos</a>
+      
+    </li>
+    <li>
+      <a routerLink="/dashboard/details-profile" (click)="logout()">
+        <i class="bx bx-log-out icon"></i>Logout
+      </a>
+      <i></i>
+    </li>
+  </ul>
+</div> -->
 <!-- [ngClass]="collapse ? 'sidebar-collapse' : -->
 <!-- SIDEBAR END-->
 <!-- <app-breadcrumbs></app-breadcrumbs> -->
