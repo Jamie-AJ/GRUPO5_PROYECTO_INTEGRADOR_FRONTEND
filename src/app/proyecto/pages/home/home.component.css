@@ -5,7 +5,6 @@
     height: 100%;
     padding: 20px 40px;
     transition: all .4s ease;
-    /* z-index: 1; */
 
 }
 
@@ -92,7 +91,6 @@ header .sidebar__logo .sidebar__title {
     background-color: var(--white-color);
     font-size: 22px;
     cursor: pointer;
-    z-index: 1000;
 }
 
 .rotated {
@@ -159,7 +157,8 @@ header .sidebar__logo .sidebar__title {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2.5rem;
+    cursor: pointer;
 }
 
 .menu__user i {
@@ -176,8 +175,8 @@ header .sidebar__logo .sidebar__title {
     cursor: pointer;
 }
 
-.menu__datauser span:nth-child(1) {
-    font-size: 15px;
+.menu__datauser span {
+    font-size: 14px;
     font-weight: 600;
     color: var(--white-color);
 }
@@ -212,8 +211,8 @@ header .sidebar__logo .sidebar__title {
     width: calc(100% - 260px);
     left: 260px;
     top: 0;
-    z-index: 0;
     transition: all .4s ease;
+    z-index: 0;
 }
 
 .sidebar-collapse~.nav {
@@ -238,7 +237,7 @@ header .sidebar__logo .sidebar__title {
 
 .nav .profile {
     position: relative;
-
+    z-index: 1;
 }
 
 .nav .profile .profile-user {

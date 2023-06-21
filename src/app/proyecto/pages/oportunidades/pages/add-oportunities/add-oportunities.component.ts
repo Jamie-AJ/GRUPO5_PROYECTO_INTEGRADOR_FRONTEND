@@ -63,15 +63,6 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
   
   //esta funcion muestra un modal y retorna una promesa que se resuelve a verdadero si el modal se cierra sin cancelar el registro, y falso si el modal cancela el registro.
   //se consume el ModalService para mostrar el modal y retorna una promesa que resuelve si el modal se cierra sin cancelar el registro o no.
- /**
-   * This function shows a modal and returns a promise that resolves to true if the modal is closed
-   * without canceling the registration, and false if the modal cancels the registration.
-   * @returns The onExit function returns an Observable that emits a boolean or UrlTree, a Promise that
-   * resolves to a boolean or UrlTree, or a boolean or UrlTree directly. The function first sets a flag
-   * in a modal service to show a modal, then returns a Promise that resolves based on whether the
-   * modal was closed without canceling the registration or not. The Promise is resolved with true if
-   * the modal was
-   */
   onExit(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.modalService.setShowModal(true);
     return new Promise<boolean>((resolve, reject) => {
@@ -214,11 +205,8 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
     return;
   }
   if (this.form.invalid) {
-    console.log('se verifico');
-    //   // Validar si el formulario es inválido
-    //   // Puedes mostrar un mensaje de error o realizar alguna otra acción apropiada
+      console.log('se verifico');
      this.form.markAllAsTouched();
-
    return;
   }
   // Obtener el ID de la empresa seleccionada
@@ -239,7 +227,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       Swal.fire('Registro con exito', response.mensaje, 'success');
       this.form.reset();
       this.clearArrayList();
-        this.router.navigate(['/inversiones/list-inversion']);
+      this.router.navigate(['/inversiones/list-inversion']);
     
     },
     error => {

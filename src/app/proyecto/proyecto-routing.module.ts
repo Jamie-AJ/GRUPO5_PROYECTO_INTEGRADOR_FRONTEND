@@ -8,7 +8,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
-import { OportunitiesComponent } from './pages/oportunities-user/oportunities.component';
+import { OportunitiesComponent } from './pages/oportunities-user/oportunities/oportunities.component';
+
 
 
 const router:Routes = [

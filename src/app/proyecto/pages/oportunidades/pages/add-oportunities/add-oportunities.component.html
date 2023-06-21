@@ -73,7 +73,7 @@
                     <tbody class="listar__tbody" *ngIf="empresaFacturasRegistradas">
                         <tr *ngFor="let fac of facturaList">
                             <td>{{fac.codFactura}}</td>
-                            <td>{{fac.monto}}</td>
+                            <td>{{fac.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                             <td>{{fac.fechaEmision}}</td>
                             <td>{{fac.fechaPago}}</td>
                             <td>{{fac.descripcion}}</td>

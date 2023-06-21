@@ -67,11 +67,11 @@
           </div>
           <div class="modal__perfect--progress">
             <div class="modal-percent">
-              <span>S/.2500.00</span>
+              <span>{{selectOportunity.montoRecaudado | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
               <p>Financiado</p>
             </div>
             <div class="modal-percent">
-              <span>S/.5000.00</span>
+              <span>{{selectOportunity.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
               <p>Restante</p>
             </div>
           </div>
@@ -139,7 +139,7 @@
           <div class="modal__form--input">
             <label for="monto">Escribe el monto de tú inversión(PEN)</label>
             <div class="input__wrapper">
-              <input type="text" formControlName="monto" placeholder="¿Cuanto quieres invertir?" class="modal-input"/>
+              <input type="number" name="monto" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (change)="calcularInteresesRates()"/>
             </div>
           </div>
           <div class="form-retorno">

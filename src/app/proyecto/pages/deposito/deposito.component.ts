@@ -87,8 +87,8 @@ getFieldError(field: string): string | null {
         console.error(error);
         if (error.status === 400) {
           console.error(error.error.mensaje);
-        } else {
-        }
+          this.loading = false;
+        } 
       }
       );
     }, 2000);
