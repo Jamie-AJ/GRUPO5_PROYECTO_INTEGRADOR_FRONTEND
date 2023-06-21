@@ -156,7 +156,7 @@
 }
 /*scroll*/
 .modal-container::-webkit-scrollbar {
-  width:10px;
+  display: none;
 }
 /* Estilos del track */
 .modal-container::-webkit-scrollbar-thumb {
@@ -497,7 +497,7 @@
   color: var(--sidebar-color);
   display: flex;
   align-items: center;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s ease;
 }
 
 .accordions-description p {
@@ -508,7 +508,7 @@
 .accordions-description {
   margin-top: 1rem;
   animation-name: slideDown;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: both;
   max-height: 0;
   opacity: 0;

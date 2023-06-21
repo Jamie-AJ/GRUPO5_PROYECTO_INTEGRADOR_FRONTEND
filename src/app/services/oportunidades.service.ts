@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Oportunidades } from '../interface/oportunidades.interface';
 import { Observable, catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
+import { InversionUsuario } from '../interface/oportunidad_usuario.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -21,15 +22,6 @@ export class OportunidadesService {
     getRefrescarFacturas(): Observable<any> { 
         return this.http.get<any>(`${this.url}/refrescarListaFactura`);
     }
-    postOportunidad(oportunidades: Oportunidades): Observable<any> {
-        return this.http.post<any>(`${this.url}/insertaOportunidadInversion`, oportunidades, { headers: this.httpHeaders }).pipe(
-            catchError(error => {
-                Swal.fire('OJO', 'Se debe agregar facturas para poder registrar una oportunidad', 'warning');
-                return throwError(error);
-            })
-        );
-    }
-
     getOportunidadPorUsuario(): Observable<Oportunidades[]> {
         return this.http.get<Oportunidades[]>(`${this.url}/user/listarOportunidadInversion`)
     }
@@ -42,4 +34,15 @@ export class OportunidadesService {
                 })
             )
     }
+    postOportunidad(oportunidades: Oportunidades): Observable<any> {
+        return this.http.post<any>(`${this.url}/insertaOportunidadInversion`, oportunidades, { headers: this.httpHeaders }).pipe(
+            catchError(error => {
+                Swal.fire('OJO', 'Se debe agregar facturas para poder registrar una oportunidad', 'warning');
+                return throwError(error);
+            })
+        );
+    }
+    
+
+   
 }

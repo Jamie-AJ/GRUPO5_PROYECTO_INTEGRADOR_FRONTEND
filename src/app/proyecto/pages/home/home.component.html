@@ -40,6 +40,12 @@
           </a>
         </li>
         <li class="sidebar__link">
+          <a [routerLink]="['/dashboard/details-profile']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bx bx-cog icon"></i>
+            Configuración
+          </a>
+        </li>
+        <li class="sidebar__link">
           <a  *ngIf="isAdministrador" [routerLink]="['/empresas/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
             <i class='bx bx-edit icon'></i>
             Empresa
@@ -57,7 +63,6 @@
             Oportunidad de Inversiones
         </a>
         </li>
-
       </ul>
     </div>
     <div class="sidebar__bottom">
@@ -69,7 +74,7 @@
               <span>{{user.nombre}} {{user.apellidoPa}}</span>
               <p>{{isAdministrador ?'Administrador': 'Inversionista'}}</p>
             </div>
-            <i class='bx bx-dots-horizontal-rounded'></i>
+            <i class='bx bx-log-out'></i>
           </div>
         </a>
       </li>
@@ -81,26 +86,8 @@
   <nav class="nav__container">
     <div class="nav__profile">
       <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
-        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'PEN&nbsp;':'symbol-narrow'}}
-      </a>
-      <div class="profile">
-        <a class="profile-user" (click)="toggleDropdown()">
-          {{ user.nombre}} {{ user.apellidoPa}} {{ user.apellidoMa}} <i class="bx bx-chevron-down"></i>
-        </a>
-        <ul class="profile-link" [ngClass]="{ 'show': isDropdownOpen }">
-          <li>
-            <a routerLink="/dashboard/details-profile"><i class="bx bx-user-circle icon"></i>Mis Datos</a>
-            
-          </li>
-          <li>
-            <a routerLink="/dashboard/details-profile" (click)="logout()">
-              <i class="bx bx-log-out icon"></i>Logout
-            </a>
-            <i></i>
-          </li>
-        </ul>
-      </div>
-      
+        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}
+      </a>  
     </div>
   </nav>
 </div>
