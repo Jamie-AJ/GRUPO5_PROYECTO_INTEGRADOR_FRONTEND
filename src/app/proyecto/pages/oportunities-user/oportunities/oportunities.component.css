@@ -553,3 +553,12 @@
 .hidden {
   display: none;
 }
+.invalid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #d45360;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+}
