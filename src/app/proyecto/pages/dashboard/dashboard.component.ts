@@ -17,8 +17,9 @@ export class DashboardComponent implements OnInit{
   title = 'Dashboard';
   public currentMonth?: String;
   public currentYear?: Number;
-  public contadorDeposito: number = 0;
+  public totalDeposito: number = 0;
   public transaccionList: Transaccion[] = [];
+  public objTrnsaccion:Transaccion = new Transaccion();
   isLoggedIn = false;
   public user: Usuario = new Usuario();
   objSaldo: Saldo = {
@@ -37,6 +38,13 @@ export class DashboardComponent implements OnInit{
     this.singIn();
     this.getSaldo();
     this.getListarTransacciones();
+    this.calcularTotlaDepositos();
+  }
+  calcularTotlaDepositos() {
+    const monto = this.objTrnsaccion.monto!;
+    this.totalDeposito = this.totalDeposito + monto;
+    console.log(this.totalDeposito);
+
   }
   singIn() {
     this.isLoggedIn = this.login.isLoggedIn();
@@ -47,9 +55,6 @@ export class DashboardComponent implements OnInit{
         this.user = this.login.getUser();
       }
     )
-  }
-  depositoCount() {
-    this.contadorDeposito++;
   }
   getDate() {
     this.monthNames;
