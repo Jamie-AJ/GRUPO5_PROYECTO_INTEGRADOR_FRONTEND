@@ -225,7 +225,7 @@ header .sidebar__logo .sidebar__title {
     width: calc(100% - 78px);
 }
 .nav__container {
-    height: 84px;
+    height: 64px;
     padding: 0 40px;
     background-color: #ffffff;
     display: flex;

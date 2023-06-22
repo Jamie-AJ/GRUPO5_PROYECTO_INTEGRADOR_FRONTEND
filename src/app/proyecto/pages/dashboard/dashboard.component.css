@@ -7,10 +7,18 @@
     width: 100%;
 }
 .dash__title{
-    font-size: 18px;
+    margin-bottom: 1.5rem;
+}
+.dash__title span{
+    font-size: 24px;
     font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
+    color: var(--black-color);
+}
+.dash__title p {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
 }
 .dash__flex{
     display:grid;

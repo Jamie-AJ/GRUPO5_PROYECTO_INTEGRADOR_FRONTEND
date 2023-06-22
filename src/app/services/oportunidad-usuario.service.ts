@@ -22,5 +22,7 @@ export class OportunidadUsuarioService {
       }
       ));
   }
-
+  getOportunidadesUsu(): Observable<InversionUsuario[]> { 
+    return this.http.get<InversionUsuario[]>(`${this.url}/listarOpoUsuXIdi`);	
+  }
 }

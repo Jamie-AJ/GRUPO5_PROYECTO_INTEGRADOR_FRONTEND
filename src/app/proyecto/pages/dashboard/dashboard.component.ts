@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
+import { Usuario } from 'src/app/interface/usuario.interface';
+import { LoginService } from 'src/app/services/login.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 
@@ -17,6 +19,8 @@ export class DashboardComponent implements OnInit{
   public currentYear?: Number;
   public contadorDeposito: number = 0;
   public transaccionList: Transaccion[] = [];
+  isLoggedIn = false;
+  public user: Usuario = new Usuario();
   objSaldo: Saldo = {
     idCartera: 0,
     saldo: 0,
@@ -25,14 +29,25 @@ export class DashboardComponent implements OnInit{
   public monthNames: String[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
   constructor(private saldoService: SaldoService,
-      private transaccion:TransaccionService) { }
+    private transaccion: TransaccionService,
+    private login: LoginService) { }
+  
   ngOnInit(): void {
     this.getDate();
-
+    this.singIn();
     this.getSaldo();
     this.getListarTransacciones();
   }
-
+  singIn() {
+    this.isLoggedIn = this.login.isLoggedIn();
+    this.user = this.login.getUser();
+    this.login.loginStatusSubjec.asObservable().subscribe(
+      data => {
+        this.isLoggedIn = this.login.isLoggedIn();
+        this.user = this.login.getUser();
+      }
+    )
+  }
   depositoCount() {
     this.contadorDeposito++;
   }

@@ -85,8 +85,7 @@
 <div class="nav-bar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
   <nav class="nav__container">
       <div class="profile__user">
-        <span>Bienvenida {{user.nombre}}</span>
-        <p>Este es tú panel de inversión, usalo con sabiduria.</p>
+       
       </div>
       <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
         <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}
