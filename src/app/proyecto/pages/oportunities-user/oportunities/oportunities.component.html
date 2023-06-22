@@ -29,6 +29,11 @@
                             <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
                        </div>
                     </div>  
+                    <div class="oportunities__finances">
+                      <span>Financiado Al </span>
+                      <p>{{ recaudadoRedondeado + '%'}}</p>
+                      <progress class="progress-bar" [value]="montoRecaudado" [max]="montoTotal"></progress>
+                    </div>
                 </div>
               </a>
             </div>
@@ -129,10 +134,10 @@
                     </thead>
                     <tbody class="listar__tbody">
                         <tr *ngFor="let oporUsu of oportunidadUsuario">
-                          <td>{{oporUsu.fecha}}</td>
-                          <td>{{oporUsu.montoInvertido}}</td>
-                          <td>{{tasaMensual}}</td>
-                          <td>{{oporUsu.oportunidadInversion?.tir}}</td>
+                          <td>{{oporUsu.fecha }}</td>
+                          <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                          <td>{{tasaMensualRedondeado + '%'}}</td>
+                          <td>{{oporUsu.oportunidadInversion?.tir | percent}}</td>
                         </tr>
                     </tbody>
                 </table>
