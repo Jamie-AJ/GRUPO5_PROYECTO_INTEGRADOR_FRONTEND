@@ -1,41 +1,36 @@
 .listar {
     position: relative;
-    background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-    border-radius: 10px;
     height: 100%;
-    
 }
 
 .listar h3 {
-    padding: 1rem;
-    border-bottom: 1px solid var(--second-table-color);
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    color: #fff;
-    font-size: 18px;
-    /* font-weight: 600; */
+    font-size: 24px;
+    font-weight: 600;
 }
-
-.listar__content {
-    padding: 1rem;
+.inversion__nav{
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    gap: 1rem;
-}
-.listar__button {
-    display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 0.75rem;
+    padding: 1rem 0;
+}
+.inversion__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1rem;
+}
+.listar__content-table{
+    overflow: auto;
+    max-width: calc(100% - 1rem);
+    margin: 1.5rem auto 0 auto;
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 3px  rgba(0, 0, 0, 0.3);
+    padding:1rem;
+    border-radius: 10px;
 }
 .listar__table {
-    border-collapse: collapse;
     width: 100%;
-    background-color: var(--table-color);
-    border: 1px solid var(--second-table-color);
-    padding: 0.875rem;
+    border-collapse: collapse;
 }
 
 .listar__table .listar__thead th {
@@ -51,7 +46,6 @@
 .listar__table .listar__tbody {
     text-align: center;
 }
-
 .listar__table .listar__tbody tr {
     border-bottom: 1px solid var(--second-table-color);
 }
@@ -75,17 +69,18 @@
 
 .btn__save {
     padding: 0.625rem 1rem;
-    border-radius: 5px;
-    background-color: #157347;
+    border-radius: 20px;
+    background-color: var(--sidebar-color);
     color: var(--white-color);
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     border: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    /* outline: none; */
 }
 .btn__save:hover{
     background-color: #2d2c2c;

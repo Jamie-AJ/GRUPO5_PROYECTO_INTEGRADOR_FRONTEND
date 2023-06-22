@@ -113,12 +113,7 @@
     grid-column: 1/2;
 }
 
-.listar__button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.75rem;
-}
+
 .listar__content-table{
     overflow: auto;
     max-width: calc(100% - 1rem);
