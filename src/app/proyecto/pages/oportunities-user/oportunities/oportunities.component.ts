@@ -28,11 +28,6 @@ export class OportunitiesComponent implements OnInit {
   public tasaDiaria: number = 0;
   public tasaMensual: number = 0;
   public tasaMensualRedondeado: number = 0;
-  public tir: number = 0;
-  public interesAnual: number = 0;
-  public interesDiario: number = 0;
-  public dailyInterestRate: number = 0;
-  public estimatedEarnings: number = 0;
   public inversionPorcentaje: number = 0;
   public inversionRedondeado: number = 0;
   public recaudadoPorcentaje: number = 0;

@@ -1,3 +1,4 @@
+<app-loading-spinner *ngIf="loadingRetiro" [mensaje]="mensajeRetiro"></app-loading-spinner>
 <div class="retiro">
   <div class="deposito__goback">
     
@@ -14,7 +15,8 @@
               para retirar a InvestGo!</label>
             <select formControlName="idCuentaBancaria" id="idCuentaBancaria" class="retiro__input">
               <option selected disabled value="">Selecciona Cuenta Bancaria</option>
-              <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> {{cuenta.nroCuenta}} </option>
+              <option *ngFor="let cuenta of cuentabancariaCombo" [value]="cuenta.idCuentaBancaria"> 
+              {{cuenta.bancos?.nomBancos}} | {{cuenta.nroCuenta}} </option>
             </select>
             <span class="invalid" *ngIf="isValid('idCuentaBancaria')">{{getFieldError('idCuentaBancaria')}}</span>
           </div>
