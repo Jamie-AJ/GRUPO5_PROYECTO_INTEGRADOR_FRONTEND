@@ -9,6 +9,7 @@ import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
+import { callback } from 'chart.js/dist/helpers/helpers.core';
 
 
 @Component({
@@ -201,11 +202,20 @@ export class OportunitiesComponent implements OnInit {
     this.oportunidadesUsuarioService.postRegistroInversionUsuario(inversionUsuario).subscribe(
       resp => {
         console .log (resp);
-        Swal.fire("Registro exitoso", resp.mensaje,'success');
-        this.form.reset();
-        this.closeModal();
-        window.location.reload();
-        
+        Swal.fire({
+          title: "Registro Exitoso",
+          text: "Invirtio de manera exitosa",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+        }).then((result) => {
+          // Si se hace clic en "Aceptar"
+          if (result.isConfirmed) {
+            // Recargar la página
+            this.form.reset();
+            this.closeModal();
+            window.location.reload();
+          }
+        });
       },
       error =>{
         Swal.fire('error',error.error.mensaje,'error')
