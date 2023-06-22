@@ -91,6 +91,19 @@ export class OportunitiesComponent implements OnInit {
     }
     return null;
   }
+  //COLORES DE BADGES
+  getBadgeClassRango(riesgo: string): string {
+    switch (riesgo) {
+      case 'A':
+        return 'text-bg-success';
+      case 'B':
+        return 'text-bg-success';
+      case 'C':
+        return 'text-bg-warning';
+      default:
+        return '';
+    }
+  }
   //MODAL
   public openModal(oportunidades: Oportunidades): void {
     this.showModal = true;

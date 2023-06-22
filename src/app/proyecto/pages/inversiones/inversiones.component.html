@@ -7,7 +7,7 @@
       <div class="inversion__group">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn__save">
           <i class="bx bx-plus"></i>
-          Agregar facturas
+          Agregar Inversión
         </button>
       </div>
     </div>
@@ -30,7 +30,10 @@
             <tbody class="listar__tbody">
               <tr *ngFor="let oporUsu of oportunidadesUsuario">
                 <td>{{oporUsu.fecha }}</td>
-                <td>{{oporUsu.empresa?.razonSocial}}</td>
+                <td>
+                  <span>{{oporUsu.empresa?.razonSocial}}</span>
+                  <span class="badge" [ngClass]="getBadgeClassRango(oporUsu.empresa?.riesgo?.rango!)">{{oporUsu.empresa?.riesgo?.rango}}</span>
+                </td>
                 <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                 <td>{{oporUsu.ganancia | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                 <td>{{oporUsu.oportunidadInversion?.rendimiento | percent}}</td>

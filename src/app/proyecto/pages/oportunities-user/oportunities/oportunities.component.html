@@ -17,6 +17,7 @@
                     </div>
                     <div class="oportunities__riegos">
                         <span>Riesgo:</span>
+                       <p class="badge" [ngClass]="getBadgeClassRango(opor.empresa?.riesgo?.rango!)"> {{opor.empresa?.riesgo?.rango}}</p>
                     </div>
                     <div class="oportunities__pago">
                        <div class="oportunities__pago-fecha">
@@ -30,9 +31,11 @@
                     </div>  
 
                     <div class="oportunities__finances">
-                      <span>Financiado Al </span>
-                      <p>{{ calcularPorcentajeRecaudadoBar!(opor) + '%'}}</p>
-                      <progress class="progress-bar" [value]="opor.montoRecaudado" [max]="opor.monto"></progress>
+                      <div class="oportunities__finances-box">
+                        <span>Financiado Al </span>
+                        <p>{{ calcularPorcentajeRecaudadoBar!(opor) + '%'}}</p>
+                      </div>
+                        <progress class="progress-bar" [value]="opor.montoRecaudado" [max]="opor.monto"></progress>
                     </div>
                   </div>
               </a>
@@ -51,7 +54,7 @@
         <div class="modal__body--riesgo">
           <div class="modal-riesgo">
             <p>Riesgo:</p>
-            <span>A+</span>
+            <span class="badge" [ngClass]="getBadgeClassRango(selectOportunity.empresa?.riesgo?.rango!)"> {{selectOportunity.empresa?.riesgo?.rango}}</span>
           </div>
           <div class="modal-pago">
             <p>Fecha Promesa de Pago:</p>
@@ -65,9 +68,9 @@
         <div class="modal-finances">
           <div class="modal__percent-finances">
             <p>Financiada al</p>
-            <p>{{ recaudadoRedondeado + '%'}}</p>
+            <span>{{ recaudadoRedondeado + '%'}}</span>
           </div>
-          <progress class="progress-bar" [value]="montoRecaudado" [max]="montoTotal"></progress>
+            <progress class="progress-bar" [value]="montoRecaudado" [max]="montoTotal"></progress>
           <div class="modal__perfect--progress">
             <div class="modal-percent">
               <span>{{selectOportunity.montoRecaudado | currency:'S/.&nbsp;':'symbol-narrow'}}</span>

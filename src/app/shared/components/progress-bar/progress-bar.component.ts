@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./progress-bar.component.css']
 })
 export class ProgressBarComponent {
-
+  
 }

@@ -35,8 +35,20 @@ export class InversionesComponent implements OnInit {
       default:
         return '';
     }
+    
   }
-
+  getBadgeClassRango(riesgo: string): string {
+    switch (riesgo) {
+      case 'A':
+        return 'text-bg-success';
+      case 'B':
+        return 'text-bg-success';
+      case 'C':
+        return 'text-bg-warning';
+      default:
+        return '';
+    }
+  }
   getOportunidadesUsu() { 
     this.oportunidadUsuario.getOportunidadesUsu().subscribe(resp => {
       console.log(resp);

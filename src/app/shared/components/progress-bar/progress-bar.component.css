@@ -1,14 +1,13 @@
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color: #eaedf8;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .progress {
-    height: 100%;
-    background-color: #434CE6;
-    width: 0%;
-    transition: width 0.3s ease;
-  }
+.progress-content {
+  width: 100%;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.progress-width {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 50%; /* Puedes ajustar este valor para cambiar el progreso */
+  border-radius: 10px;
+}

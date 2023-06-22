@@ -60,7 +60,12 @@
   font-weight: 600;
   color: var(--black-color);
 }
-
+.oportunities__riegos{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
 .oportunities__pago {
   display: flex;
   /* flex-direction: column; */
@@ -88,6 +93,23 @@
 .oportunities__pago-tasas p {
   font-size: 14px;
   font-weight: 600;
+}
+.oportunities__finances{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.oportunities__finances-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.oportunities__finances-box span{
+  font-size: 14px;
+  /* font-weight: 600; */
+  color: var(--black-color);
 }
 
 .oportunities__title h4 {
@@ -319,8 +341,8 @@
 }
 .modal__form--header .modal__form--saldo span{
   font-size: 13px;
-  font-weight: 600;
-  color: var(--text-color);
+  font-weight: 500;
+  color: var(--primary-color);
 }
 .modal__form--header .modal__form--saldo p {
   font-size: 14px;
@@ -341,7 +363,7 @@
 .modal__form--input label {
   font-size: 13px;
   font-weight: 600;
-  color: var(---color);
+  color: var(--primary-color);
 }
 
 .input__wrapper {
@@ -403,7 +425,7 @@
 .form-retorno span{
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 .form-retorno p{
   font-size: 15px;
@@ -415,13 +437,14 @@
 }
 .form--mensual span{
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-color);
 }
 .form--max{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 0.5rem;
   margin-bottom:1.5rem;
 }
 .form--max span{
