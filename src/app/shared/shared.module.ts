@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerListComponent } from './components/spinner-list/spinner-list.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ChartsComponent } from './components/charts/charts.component';
+
 
 
 
@@ -20,6 +22,7 @@ import { ModalComponent } from './components/modal/modal.component';
     SpinnerListComponent,
     AccordionComponent,
     ModalComponent,
+    ChartsComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { ModalComponent } from './components/modal/modal.component';
     LoadingSpinnerComponent,
     SearchBoxComponent,
     SpinnerListComponent,
-    ModalComponent
+    ModalComponent,
+    ChartsComponent,
     
   ]
 })
