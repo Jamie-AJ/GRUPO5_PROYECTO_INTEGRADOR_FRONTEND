@@ -3,9 +3,14 @@
     width: calc(100% - 260px);
     left: 260px;
     height: 100%;
-    padding: 20px 40px;
+    padding: 20px 20px;
     transition: all .4s ease;
 
+}
+@media screen and (min-width: 768px) {
+    .main{
+        padding: 20px 40px;
+    }
 }
 
 .sidebar-collapse~.main {
@@ -206,34 +211,67 @@ header .sidebar__logo .sidebar__title {
 }
 
 /*NAVBAR */
-.nav {
+.nav-bar {
     position: relative;
     width: calc(100% - 260px);
     left: 260px;
     top: 0;
     transition: all .4s ease;
-    z-index: 0;
+    /* z-index: 1; */
 }
 
-.sidebar-collapse~.nav {
+.sidebar-collapse~.nav-bar {
     left: 78px;
     width: calc(100% - 78px);
 }
-
-/* .head-expanded{
-    width: calc(100% - 60px);
-    margin-left: 60px;
-} */
 .nav__container {
-    height: 64px;
+    height: 84px;
     padding: 0 40px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
+.profile__user span{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black-color);
+}
+.profile__user p {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.wallet-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--black-color);
+    gap: 0.5rem;
+    border: 0.5px solid #0925f9;
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.wallet-button:hover {
+    /* background-color: var(--primary-color); */
+    border: 0.5px solid var(--sidebar-color);
+    /* color: var(--white-color); */
+}
+
+.wallet-button i {
+    font-size: 1.3rem;
+    color: var(--sidebar-color);
+}
+
+/* 
 
 .nav .profile {
     position: relative;
@@ -284,7 +322,7 @@ header .sidebar__logo .sidebar__title {
 
 .nav .profile .profile-link a:hover {
     background-color: var(--previus-color-btn);
-    /* color: var(--white-color); */
+    color: var(--white-color);
 }
 
 .nav__profile .select_btn {
@@ -337,44 +375,19 @@ header .sidebar__logo .sidebar__title {
     color: var(--black-color);
 }
 
-.wallet-button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    color: var(--black-color);
-    gap: 0.5rem;
-    border: 0.5px solid #0925f9;
-    border-radius: 5px;
-    padding: 7px 10px;
-    font-size: 14px;
-    font-weight: 600;
-    /* cursor: pointer; */
-    transition: all .2s ease;
-}
-
-.wallet-button:hover {
-    /* background-color: var(--primary-color); */
-    border: 0.5px solid var(--sidebar-color);
-    /* color: var(--white-color); */
-}
-
-.wallet-button i {
-    font-size: 1.3rem;
-    color: var(--sidebar-color);
-}
 
 .nav__container .icon {
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* .nav__items {
+.nav__items {
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 0.75rem;
     cursor: pointer;
-} */
+}
 .nav__items p {
     font-size: 0.875rem;
     font-weight: 500;
@@ -384,4 +397,4 @@ header .sidebar__logo .sidebar__title {
 .nav__items i {
     font-size: 1.5rem;
     color: var(--primary-color);
-}
+} */

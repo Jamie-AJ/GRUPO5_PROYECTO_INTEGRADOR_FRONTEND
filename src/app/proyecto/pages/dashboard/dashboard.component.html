@@ -4,49 +4,80 @@
     </div>
     <div class="dash__content">
         <div class="dash__flex">
-            <div class="dash__box dash__box-one">
+            <div class="dash__box dash__overview">
                 <div class="dash__subtitle">
-                     <h4><i class='bx bxs-wallet'></i>Descripción general de tús finanzas</h4>
-                     <span>{{currentMonth}} {{currentYear}}</span>
+                     <h4><i class='bx bx-coin-stack'></i>Resumen financiero</h4>
+                     <span>{{currentMonth}}, {{currentYear}}</span>
                 </div>
                 <div class="dash__info">
                     <div class="dash__info-box">
-                        <span>Credito Disponible</span>
-                        <span>360000</span>
+                        <span>Inversiones hechas</span>
+                        <p>360000</p>
                     </div>
+                    <span class="barra-vertical"></span>
                     <div class="dash__info-box">
-                        <span>Depositos</span>
-                        <span>360000</span>
+                        <span><i class='bx bx-up-arrow-alt'></i>Depositos hechos</span>
+                        <p>360000</p>
                     </div>
-                    <div class="dash__info-box"></div>
+                    <span class="barra-vertical"></span>
+                    <div class="dash__info-box">
+                        <span><i class='bx bx-down-arrow-alt'></i>Retiros hechos</span>
+                        <p>360000</p>
+                    </div>
                 </div>
             </div>
-            <div class="dash__box dash__box-two">
+            <div class="dash__box dash__saldo">
+                <div class="dash__subtitle">
+                    <h4><i class='bx bx-wallet'></i>Este es tú saldo</h4>
+                </div>
+                <div class="dash__saldo_info">
+                    <span>{{objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
+                    <span>Fecha Actual</span>
+                </div>
+                <div class="saldo__deposit">
+                    <a [routerLink]="['/dashboard/account-status']">Deposita</a>
+                </div>
+            </div>
+            <div class="dash__box dash__table-transaction">
                 <div class="dash__subtitle">
                     <h4>
-                        <i class='bx bx-transfer'></i>Mis transacciones
+                        <i class='bx bx-transfer'></i>Mis Transacciones
                     </h4>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Transacción</th>
-                            <th>Monto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>12/12/2021</td>
-                            <td>Deposito</td>
-                            <td>360000</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="listar__content-table">
+                    <table class="listar__table">
+                        <thead class="listar__thead">
+                            <tr>
+                                <th>#</th>
+                                <th>Fecha y Hora</th>
+                                <th>Transacción</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody class="listar__tbody">
+                            <tr *ngFor="let trans of transaccionList">
+                                <td>{{trans.idTransaccion}}</td>
+                                <td>{{trans.fecha}}</td>
+                                <td>
+                                    <span *ngIf="trans.tipoTransaccion?.tipo === 'Retiro'"><i class='bx bx-down-arrow-alt down'></i></span>
+                                    <span *ngIf="trans.tipoTransaccion?.tipo === 'Deposito'"><i class='bx bx-up-arrow-alt up'></i></span>
+                                    {{trans.tipoTransaccion!.tipo}}
+                                </td>
+                                <td [ngClass]="{'retiro': trans.tipoTransaccion?.tipo === 'Retiro', 'deposito': trans.tipoTransaccion?.tipo=== 'Deposito'}">
+                                    {{trans.tipoTransaccion?.tipo === 'Retiro' ? '-' : '+'}} {{trans.monto | currency:'S/.&nbsp;':'symbol-narrow'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="dash__box dash__box-three">
-                <h4>
-                    <i class='bx bx-bar-chart'></i>Chart</h4>
+            <div class="dash__box dash__chart">
+                <div class="dash__subtitle">
+                    <h4><i class='bx bx-bar-chart'></i>Graficas</h4>
+                    <div>
+                        <app-charts></app-charts>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="dash__aside">
