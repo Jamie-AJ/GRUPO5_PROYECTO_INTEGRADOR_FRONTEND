@@ -445,6 +445,7 @@
 .modal__form--button button:hover{
   background-color: #373ece;
 }
+
 /*progress bar*/
 .progress-bar {
   width: 100%;
@@ -466,6 +467,13 @@
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem 0 1.25rem 0;
+}
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0; /* Color de fondo de la barra */
+}
+
+progress::-webkit-progress-value {
+  background-color: #434CE6; /* Color de relleno de la barra */
 }
 
 /* Estilos para el ACCORDION */
