@@ -1,6 +1,6 @@
 
 
-<section class="oportunities__user--container animate__animated animate__fadeIn animete_faster" >
+<section class="oportunities__user--container animate__animated animate__fadeIn animete_faster" (click)="calcularPorcentajeRecaudado()" (click)="calcularPorcentajeInversion()" (click)="calcularTasaMensual()" >
     <div class="oportunities__user--content">
         <div class="oportunities__user--nav">
           <div class="oportunities__user--header">
@@ -60,7 +60,7 @@
         <div class="modal-finances">
           <div class="modal__percent-finances">
             <p>Financiada al</p>
-            <span>0%</span>
+            <p>{{ recaudadoRedondeado + '%'}}</p>
           </div>
           <div class="progress-bar">
             <div class="progress-bar"></div>
@@ -139,19 +139,23 @@
           <div class="modal__form--input">
             <label for="monto">Escribe el monto de tú inversión(PEN)</label>
             <div class="input__wrapper">
-              <input type="number" name="monto" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (change)="calcularInteresesRates()"/>
+              <input type="number" name="monto" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
             </div>
           </div>
           <div class="form-retorno">
             <span>Retorno final mensual</span>
-            <p>0.0%</p>
+            <p>{{tasaMensualRedondeado + '%'}}</p>
+          </div>
+          <div class="form-retorno">
+            <span>Porcentaje de la Factura</span>
+            <p>{{inversionRedondeado + '%'}}</p>
           </div>
           <div class="form--mensual">
             <span>Es la mayor tasa posible en un escenario de competencia para que tú inversión resulte ganadora.</span>
           </div>
           <div class="form--max">
             <span>Ganancia maxima PEN</span>
-            <p>0.0%</p>
+            <p>{{'$.'+ gananciaRedondeado}}</p>
           </div>
           <div class="modal__form--button">
             <button type="submit">Realizar Inversión</button>

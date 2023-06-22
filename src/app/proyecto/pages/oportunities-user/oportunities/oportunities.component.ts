@@ -18,13 +18,21 @@ export class OportunitiesComponent implements OnInit {
   public isOpen: boolean[] = [false, false];
 
   //CALCULOS 
-  public montoInvertido: number = 0;
-  public tasaAnual: number = 0;
+  public montoInvertido: number ;
+  public tasaDiaria: number = 0;
+  public tasaMensual: number = 0;
+  public tasaMensualRedondeado: number = 0;
   public tir: number = 0;
   public interesAnual: number = 0;
   public interesDiario: number = 0;
   public dailyInterestRate: number = 0;
   public estimatedEarnings: number = 0;
+  public inversionPorcentaje: number = 0;
+  public inversionRedondeado: number = 0;
+  public recaudadoPorcentaje: number = 0;
+  public recaudadoRedondeado: number = 0;
+  public gananciaMaxima: number = 0;
+  public gananciaRedondeado: number =0;
 
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
@@ -40,14 +48,20 @@ export class OportunitiesComponent implements OnInit {
     private oportunidadesService: OportunidadesService,
     private saldoService: SaldoService,
     private oportunidadesUsuarioService: OportunidadUsuarioService
-  ) { }
+  ) { 
+    this.montoInvertido = 0;
+  }
 
   ngOnInit(): void {
     this.getOportunidadesPorUser();
     // this.getOportunidadesPorId();
     this.getSaldo();
     // this.getOportunidadesUsuPorIdOpor();
-    this.calcularInteresesRates();
+    //this.calcularInteresesRates();
+    this.calcularPorcentajeInversion();
+    this.calcularPorcentajeRecaudado();
+    this.calcularTasaMensual();
+    this.calcularGanancia();
   }
   //MODAL
   public openModal(oportunidades: Oportunidades): void {
@@ -58,6 +72,7 @@ export class OportunitiesComponent implements OnInit {
   }
   public closeModal(): void {
     this.showModal = false;
+    this.montoInvertido=0;
   }
   //ACORDEON
   openAccordion(index:number) {
@@ -92,13 +107,58 @@ export class OportunitiesComponent implements OnInit {
   //     console.log(resp);
   //   });
   // }
-  calcularInteresesRates() {
-    this.tir = (this.objSaldo.saldo! - this.objInversionUsuario.montoInvertido!) / this.objInversionUsuario.montoInvertido!; 
-    const calculos = {
-      montoInvertido: this.tir,
-    }
-    console.log(calculos);
+   // calcularInteresesRates() {
+      //this.tir = (this.objSaldo.saldo! - this.objInversionUsuario.montoInvertido!) / this.objInversionUsuario.montoInvertido!; 
+      //const calculos = {
+      //  montoInvertido: this.tir,
+     // }
+    //  console.log(calculos);
+  //  }
+  calcularPorcentajeInversion(){
+    const montoOportunidad = this.selectOportunity.monto!;
+    this.inversionPorcentaje = (this.montoInvertido / montoOportunidad)*   100;
+    this.inversionRedondeado =+ this.inversionPorcentaje.toFixed(2);
+    //console.log("Monto invertido: ", this.montoInvertido);
+    //console.log("Monto de la oportunidad:", this.selectOportunity.monto);
+    //console.log("monto en porcentaje: " + this.inversionPorcentaje);
+    //console.log("monto en porcentaje redondeado: " + this.inversionRedondeado);
   }
+  calcularPorcentajeRecaudado(){
+    const montoRecaudado = this.selectOportunity.montoRecaudado!;
+    const montoOportunidad = this.selectOportunity.monto!;
+    this.recaudadoPorcentaje = (montoRecaudado * 100) / montoOportunidad;
+    this.recaudadoRedondeado =+ this.recaudadoPorcentaje.toFixed(2);
+    //console.log("Monto recaudado", this.selectOportunity.montoRecaudado)
+    //console.log("Monto de la oportunidad", this.selectOportunity.monto)
+    //console.log("monto porcentaje:", this.recaudadoPorcentaje )
+    //console.log("monto porcentaje redondeado:", this.recaudadoRedondeado)
+  }
+  calcularTasaMensual(){
+    const tasaAnual = this.selectOportunity.rendimiento!;
+    this.tasaMensual = (Math.pow( 1 + tasaAnual, 1.0/12.0 ) -1 ) * 100;
+    this.tasaMensualRedondeado =+ this.tasaMensual.toFixed(2);
+    console.log("tasa mensual", this.tasaMensual)
+
+  }
+  calcularGanancia(){
+    const fechaInicio = this.selectOportunity.fechaRegistro? new Date(this.selectOportunity.fechaRegistro) : undefined;
+    const fechaFinal = this.selectOportunity.fechaPago ? new Date(this.selectOportunity.fechaPago) : undefined;
+
+    const tasaAnual = this.selectOportunity.rendimiento!;
+    const tasaMensual = Math.pow(1+ tasaAnual, 1/12)-1;
+    const tasaDiaria =  Math.pow(1+tasaMensual, 1/30)-1;
+    const diasInversion = Math.floor((fechaFinal!.getTime() - fechaInicio!.getTime()) / (1000*60*60*24));
+    this.gananciaMaxima = this.montoInvertido * Math.pow(1+tasaDiaria, diasInversion)- this.montoInvertido;
+    this.gananciaRedondeado =+ this.gananciaMaxima.toFixed(2);
+    console.log("tasa diaria", tasaDiaria)
+    console.log("resta de dias", diasInversion)
+    console.log("ganancia maxima", this.gananciaMaxima)
+  }
+
+  borrarValoresIniciales() {
+    this.montoInvertido = NaN;
+  }
+
   postRegistrarInversionUsuario() {
     
   }
