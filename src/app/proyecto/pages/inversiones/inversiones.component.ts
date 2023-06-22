@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { InversionUsuario } from 'src/app/interface/oportunidad_usuario.interface';
+import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.service';
 
 @Component({
   selector: 'app-inversiones',
@@ -7,6 +9,20 @@ import { Component } from '@angular/core';
 })
 
 
-export class InversionesComponent {
+export class InversionesComponent implements OnInit {
+
+  public oportunidadesUsuario: InversionUsuario[] = [];
+
+  constructor(private oportunidadUsuario: OportunidadUsuarioService) { }
+  
+  ngOnInit(): void { 
+    this.getOportunidadesUsu();
+  }
+
+  getOportunidadesUsu() { 
+    this.oportunidadUsuario.getOportunidadesUsu().subscribe(resp => {
+      this.oportunidadesUsuario = resp;
+    });
+  }
 
 }
