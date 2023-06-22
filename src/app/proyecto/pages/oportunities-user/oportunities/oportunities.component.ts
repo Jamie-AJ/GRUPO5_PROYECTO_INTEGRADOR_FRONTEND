@@ -107,13 +107,6 @@ export class OportunitiesComponent implements OnInit {
   //     console.log(resp);
   //   });
   // }
-   // calcularInteresesRates() {
-      //this.tir = (this.objSaldo.saldo! - this.objInversionUsuario.montoInvertido!) / this.objInversionUsuario.montoInvertido!; 
-      //const calculos = {
-      //  montoInvertido: this.tir,
-     // }
-    //  console.log(calculos);
-  //  }
   calcularPorcentajeInversion(){
     const montoOportunidad = this.selectOportunity.monto!;
     this.inversionPorcentaje = (this.montoInvertido / montoOportunidad)*   100;

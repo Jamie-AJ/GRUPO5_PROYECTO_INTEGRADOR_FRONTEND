@@ -155,7 +155,7 @@
           </div>
           <div class="form--max">
             <span>Ganancia maxima PEN</span>
-            <p>{{'$.'+ gananciaRedondeado}}</p>
+            <p>{{gananciaRedondeado | currency:'S/.&nbsp;':'symbol-narrow'}}</p>
           </div>
           <div class="modal__form--button">
             <button type="submit">Realizar Inversión</button>
