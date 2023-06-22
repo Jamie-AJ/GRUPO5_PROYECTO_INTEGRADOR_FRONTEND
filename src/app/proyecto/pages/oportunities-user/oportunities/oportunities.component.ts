@@ -61,7 +61,6 @@ export class OportunitiesComponent implements OnInit {
     this.calcularPorcentajeInversion();
     this.calcularPorcentajeRecaudado();
     this.calcularTasaMensual();
-    this.calcularGanancia();
   }
   //MODAL
   public openModal(oportunidades: Oportunidades): void {
