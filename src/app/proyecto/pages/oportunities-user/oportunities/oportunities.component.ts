@@ -9,7 +9,6 @@ import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
-import { callback } from 'chart.js/dist/helpers/helpers.core';
 
 
 @Component({
@@ -69,6 +68,8 @@ export class OportunitiesComponent implements OnInit {
     this.calcularPorcentajeInversion();
     this.calcularPorcentajeRecaudado();
     this.calcularTasaMensual();
+    
+   // this.progressBarInicio();
   }
   isValid(field: string) {
     return this.form.controls[field].errors && this.form.controls[field].touched;
@@ -235,6 +236,28 @@ export class OportunitiesComponent implements OnInit {
   }
   calcularMontoTotal(){
     this.montoTotal = this.selectOportunity.monto!;
+  }
+  //progressBarInicio(){
+   // const montoTotal = this.montoTotal
+   // const montoRecaudado = this.montoRecaudado
+   // const interval = setInterval(() => {
+    //  this.montoRecaudado++;
+      //if(montoRecaudado >= montoTotal){
+      //  clearInterval(interval);
+    //  }
+   // }, this.montoTotal);
+  //} 
+  calcularPorcentajeRecaudadoBar(objOportunidades: Oportunidades): number{
+
+    const montoRecaudado = objOportunidades.montoRecaudado!;
+    const montoOportunidad = objOportunidades.monto!;
+    const recaudadoPorcentaje = (montoRecaudado * 100) / montoOportunidad;
+    const recaudadoRedondeado =+ recaudadoPorcentaje.toFixed(2);
+    return recaudadoRedondeado;
+    //console.log("Monto recaudado", this.selectOportunity.montoRecaudado)
+    //console.log("Monto de la oportunidad", this.selectOportunity.monto)
+    //console.log("monto porcentaje:", this.recaudadoPorcentaje )
+    //console.log("monto porcentaje redondeado:", this.recaudadoRedondeado)
   }
   
 }

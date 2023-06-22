@@ -28,12 +28,13 @@
                             <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
                        </div>
                     </div>  
+
                     <div class="oportunities__finances">
                       <span>Financiado Al </span>
-                      <p>{{ recaudadoRedondeado + '%'}}</p>
-                      <progress class="progress" [value]="montoRecaudado" [max]="montoTotal"></progress>
+                      <p>{{ calcularPorcentajeRecaudadoBar!(opor) + '%'}}</p>
+                      <progress class="progress-bar" [value]="opor.montoRecaudado" [max]="opor.monto"></progress>
                     </div>
-                </div>
+                  </div>
               </a>
             </div>
         </div>

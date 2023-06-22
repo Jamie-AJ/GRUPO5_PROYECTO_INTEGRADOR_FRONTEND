@@ -456,7 +456,7 @@
 
 .progress {
   height: 100%;
-  background-color: var(--sidebar-color);
+  background-color: #434CE6;
   width: 0%;
   transition: width 0.3s ease;
 }
