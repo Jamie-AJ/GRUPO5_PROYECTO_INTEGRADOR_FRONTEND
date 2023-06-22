@@ -22,6 +22,8 @@ export class DepositoComponent {
 
   cuentabancariaCombo: CuentaBancaria[] = [];
   public loading = false;
+  loadingDeposito = false;
+  mensajeDeposito = 'Cargando depósito...';
   constructor(
     private cuentaBancariaService: CuentaBancariaService,
     private transaccionService: TransaccionService,
@@ -32,7 +34,7 @@ export class DepositoComponent {
       monto: ['',[Validators.required,customValidators.validarNumerosNegativos]],
       idCuentaBancaria: ['',Validators.required],
       
-    })
+  })
   ngOnInit() {
     this.obtenerCuentasBancarias();
   }
@@ -72,26 +74,34 @@ getFieldError(field: string): string | null {
       this.form.markAllAsTouched();
       return;
     }
-    this.loading = true;
+    this.loadingDeposito = true;
     setTimeout(() => {
-    this.transaccionService.postDeposito(this.form.value).subscribe(
-      response => {
-        this.loading = false;
-        Swal.fire('Exito', response.mensaje, 'success');
-        this.finalizarDeposito();
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      },
-      error =>{
-        console.error(error);
-        if (error.status === 400) {
-          console.error(error.error.mensaje);
-          this.loading = false;
-        } 
-      }
+      this.transaccionService.postDeposito(this.form.value).subscribe(
+        response => {
+          this.loadingDeposito = false;
+          Swal.fire({
+            title: "Exitoso",
+            text: response.mensaje,
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              //recarga la pagina
+              this.form.reset();
+              window.location.reload();
+            }
+          });
+          this.finalizarDeposito();
+        },
+        error => {
+          console.error(error);
+          if (error.status === 400) {
+            console.error(error.error.mensaje);
+            this.loadingDeposito = false;
+          }
+        }
       );
-    }, 2000);
+    },2000);
   }
   
 

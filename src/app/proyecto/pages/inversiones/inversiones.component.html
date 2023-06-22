@@ -11,30 +11,43 @@
         </button>
       </div>
     </div>
-    <div class="listar__content-table">
-      <table class="listar__table">
-        <thead class="listar__thead">
-          <tr>
-            <th>Fecha inversión</th>
-            <th>Deudor</th>
-            <th>Inversión</th>
-            <th>Ganancia</th>
-            <th>Retorno</th>
-            <th>Fecha Pago</th>
-          </tr>
-        </thead>
-        <tbody class="listar__tbody">
-          <tr *ngFor="let oporUsu of oportunidadesUsuario">
-            <td>{{oporUsu.fecha }}</td>
-            <td>{{oporUsu.empresa?.razonSocial}}</td>
-            <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-            <td>{{oporUsu.ganancia | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-            <td>{{oporUsu.oportunidadInversion?.rendimiento | percent}}</td>
-            <td>{{oporUsu.oportunidadInversion?.fechaPago | date:'longDate':'':'es-PE'}}</td>
-            <!-- <td>{{oporUsu.fecha}}</td>    -->
-          </tr>
-        </tbody>
-      </table>
+    <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
+    <div class="inversion__box">
+      <div class="inversion__content animate__animated animate__fadeIn animete_faster" *ngIf="activeTabsIndex === 0" >
+        <div class="listar__content-table">
+          <table class="listar__table">
+            <thead class="listar__thead">
+              <tr>
+                <th>Fecha inversión</th>
+                <th>Deudor</th>
+                <th>Inversión</th>
+                <th>Ganancia</th>
+                <th>Retorno</th>
+                <th>Estado</th>
+                <th>Fecha Pago</th>
+              </tr>
+            </thead>
+            <tbody class="listar__tbody">
+              <tr *ngFor="let oporUsu of oportunidadesUsuario">
+                <td>{{oporUsu.fecha }}</td>
+                <td>{{oporUsu.empresa?.razonSocial}}</td>
+                <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                <td>{{oporUsu.ganancia | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                <td>{{oporUsu.oportunidadInversion?.rendimiento | percent}}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(oporUsu.estado!)">
+                    {{oporUsu.estado}}
+                  </span>
+                </td>
+                <td>{{oporUsu.oportunidadInversion?.fechaPago | date:'longDate':'':'es-PE'}}</td>
+                <!-- <td>{{oporUsu.fecha}}</td>    -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="inversion__content animate__animated animate__fadeIn animete_faster" *ngIf="activeTabsIndex === 1">
+      </div>
     </div>
   </div>
 </section>
