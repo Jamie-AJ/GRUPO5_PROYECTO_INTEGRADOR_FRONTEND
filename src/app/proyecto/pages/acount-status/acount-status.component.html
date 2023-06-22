@@ -7,50 +7,44 @@
     class="status__content animate__animated animate__fadeIn animete_faster"
     *ngIf="activeTabsIndex === 0"
   >
-    <app-movement-list></app-movement-list>
+  <app-wallet></app-wallet>
   </div>
   <div
     class="status__content animate__animated animate__fadeIn animete_faster"
     *ngIf="activeTabsIndex === 1"
   >
-    <app-wallet></app-wallet>
-  </div>
-  <div
-    class="status__content animate__animated animate__fadeIn animete_faster"
-    *ngIf="activeTabsIndex === 2"
-  >
-    <div class="account">
-      <div class="account__bank" *ngFor="let cta of cuentaBancariaList">
-        <div class="account__info">
-          <h4>{{ cta.bancos?.nomBancos }}</h4>
-          <div class="account__info-content">
-            <p>Titular:</p>
-            <span
-              >{{ cta.usuario?.nombre | uppercase }}
-              {{ cta.usuario?.apellidoPa | uppercase }}
-            </span>
+  <div class="account">
+    <div class="account__bank" *ngFor="let cta of cuentaBancariaList">
+      <div class="account__info">
+        <h4>{{ cta.bancos?.nomBancos }}</h4>
+        <div class="account__info-content">
+          <p>Titular:</p>
+          <span
+            >{{ cta.usuario?.nombre | uppercase }}
+            {{ cta.usuario?.apellidoPa | uppercase }}
+          </span>
+        </div>
+        <div class="account__info-content">
+          <div>
+            <p>Moneda:</p>
+            <span>{{ cta.monedas?.nomMonedas }}</span>
           </div>
-          <div class="account__info-content">
-            <div>
-              <p>Moneda:</p>
-              <span>{{ cta.monedas?.nomMonedas }}</span>
-            </div>
-            <i
-              class="bx bx-trash icon"
-              (click)="desactivarCuentasBancarias(cta)"
-            ></i>
-          </div>
+          <i
+            class="bx bx-trash icon"
+            (click)="desactivarCuentasBancarias(cta)"
+          ></i>
         </div>
       </div>
-      <button
-        class="open-modal"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Agregar Cuenta Bancaria
-        <i class="bx bx-plus icon"></i>
-      </button>
     </div>
+    <button
+      class="open-modal"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Agregar Cuenta Bancaria
+      <i class="bx bx-plus icon"></i>
+    </button>
+  </div>
   </div>
 </div>
 

@@ -34,6 +34,10 @@
                 <div class="dash__saldo_info">
                     <span>{{objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
                 </div>
+                <div>
+                    <span>Depositos totales</span>
+                    <span>{{totalDeposito}}</span>
+                </div>
                 <div class="saldo__deposit">
                     <a [routerLink]="['/dashboard/account-status']">Deposita</a>
                 </div>
