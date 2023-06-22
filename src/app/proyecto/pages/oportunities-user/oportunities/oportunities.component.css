@@ -598,7 +598,7 @@
 
 .listar__table .listar__tbody tr:hover {
   background-color: #ececec;
-
+}
 .invalid {
   display: flex;
   flex-direction: column;
