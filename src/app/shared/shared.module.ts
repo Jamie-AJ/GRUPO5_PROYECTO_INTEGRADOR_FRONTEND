@@ -8,6 +8,8 @@ import { SpinnerListComponent } from './components/spinner-list/spinner-list.com
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ChartsComponent } from './components/charts/charts.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { max } from 'rxjs';
 
 
 
@@ -23,6 +25,7 @@ import { ChartsComponent } from './components/charts/charts.component';
     AccordionComponent,
     ModalComponent,
     ChartsComponent,
+    ProgressBarComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ import { ChartsComponent } from './components/charts/charts.component';
     SpinnerListComponent,
     ModalComponent,
     ChartsComponent,
+    ProgressBarComponent
     
   ]
 })

@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InversionUsuario } from 'src/app/interface/oportunidad_usuario.interface';
 import { Oportunidades } from 'src/app/interface/oportunidades.interface';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.service';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import { SaldoService } from 'src/app/services/saldo.service';
+import Swal from 'sweetalert2';
+import * as customValidators from 'src/app/shared/components/validators';
+
 
 @Component({
   selector: 'app-oportunities',
@@ -18,7 +22,8 @@ export class OportunitiesComponent implements OnInit {
   public isOpen: boolean[] = [false, false];
   public oportunidadSeleccionada:any;
   //CALCULOS 
-  public montoInvertido: number ;
+  public restante: number = 0;
+  public montoInvertido: number = 0;
   public tasaDiaria: number = 0;
   public tasaMensual: number = 0;
   public tasaMensualRedondeado: number = 0;
@@ -33,6 +38,10 @@ export class OportunitiesComponent implements OnInit {
   public recaudadoRedondeado: number = 0;
   public gananciaMaxima: number = 0;
   public gananciaRedondeado: number =0;
+  public inversionTotal: number = 0;
+  public inversionRealizada: number = 0;
+  public montoRecaudado: number= 0;
+  public montoTotal: number=0;
 
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
@@ -48,10 +57,13 @@ export class OportunitiesComponent implements OnInit {
   constructor(
     private oportunidadesService: OportunidadesService,
     private saldoService: SaldoService,
-    private oportunidadesUsuarioService: OportunidadUsuarioService
-  ) { 
-    this.montoInvertido = 0;
-  }
+    private router: Router,
+    private oportunidadesUsuarioService: OportunidadUsuarioService,
+    private builder: FormBuilder
+  ) {  }
+  form: FormGroup = this.builder.group({
+    montoInvertido: ['', [Validators.required, customValidators.validarNumerosNegativos]],
+  });
 
   ngOnInit(): void {
     this.getOportunidadesPorUser();
@@ -62,16 +74,41 @@ export class OportunitiesComponent implements OnInit {
     this.calcularPorcentajeRecaudado();
     this.calcularTasaMensual();
   }
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors: ValidationErrors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+        case 'pattern':
+          return 'El valor ingresado no tiene formato válido';
+        case 'negativeNumber':
+          return 'El valor ingresado no puede ser negativo';
+      }
+    }
+    return null;
+  }
   //MODAL
   public openModal(oportunidades: Oportunidades): void {
     this.showModal = true;
     this.selectOportunity = oportunidades;
     this.objInversionUsuario.oportunidadInversion = oportunidades;
+
     this.getOportunidadesUsuPorIdOpor(oportunidades);
+    // this.getOportunidadesUsuPorIdOpor();
+    this.calcularRestante();
+    this.calcularPorcentajeInversion();
+    this.calcularMontoTotal();
   }
   public closeModal(): void {
     this.showModal = false;
-    this.montoInvertido=0;
+    this.montoInvertido = 0;
   }
   //ACORDEON
   openAccordion(index:number) {
@@ -155,8 +192,44 @@ export class OportunitiesComponent implements OnInit {
   }
 
   postRegistrarInversionUsuario() {
+    if (this.form.invalid) {
+     this.form.markAllAsTouched();
+   return;
+  }
+  if(this.montoInvertido > 0){
+    const inversionUsuario: InversionUsuario = {
+      idOportunidad: this.selectOportunity.idOportunidad,
+      montoInvertido: this.montoInvertido,
+      idEmpresa: this.selectOportunity.idEmpresa,
+      ganancia: this.gananciaRedondeado,
+    };
+    this.oportunidadesUsuarioService.postRegistroInversionUsuario(inversionUsuario).subscribe(
+      resp => {
+        console .log (resp);
+        Swal.fire("Registro exitoso", resp.mensaje,'success');
+        this.form.reset();
+        this.closeModal();
+        window.location.reload();
+        
+      },
+      error =>{
+        Swal.fire('error',error.error.mensaje,'error')
+      }
+      
+    )
+  }else {
+      Swal.fire('error',"El monto de inversion debe ser mayor a 0 ",'error')
+  }
     
   }
-  
+  calcularRestante(){
+    const monto = this.selectOportunity.monto!;
+    this.montoRecaudado = this.selectOportunity.montoRecaudado!;
+    this.restante = monto - this.montoRecaudado
+
+  }
+  calcularMontoTotal(){
+    this.montoTotal = this.selectOportunity.monto!;
+  }
   
 }

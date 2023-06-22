@@ -555,7 +555,6 @@
 }
 
 
-
 .listar__content-table{
   overflow: auto;
   max-width: calc(100% - 1rem);
@@ -599,4 +598,14 @@
 
 .listar__table .listar__tbody tr:hover {
   background-color: #ececec;
+
+.invalid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #d45360;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+
 }
