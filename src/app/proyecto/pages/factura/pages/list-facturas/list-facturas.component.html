@@ -35,7 +35,7 @@
                 <td>{{fac.codFactura}}</td>
                 <td>{{fac.empresa?.razonSocial}}</td> 
                 <td>{{fac.fechaPago}}</td>
-                <td>{{fac.monto}}</td>
+                <td>{{fac.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                 <td>{{fac.descripcion}}</td>
                 <td>{{fac.enable}}</td>
               </tr>

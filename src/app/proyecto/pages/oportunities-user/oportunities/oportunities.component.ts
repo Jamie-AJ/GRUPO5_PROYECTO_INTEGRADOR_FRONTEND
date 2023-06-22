@@ -16,7 +16,7 @@ export class OportunitiesComponent implements OnInit {
   title = 'Oportunidades de Inversión'
   public showModal: boolean = false;
   public isOpen: boolean[] = [false, false];
-
+  public oportunidadSeleccionada:any;
   //CALCULOS 
   public montoInvertido: number ;
   public tasaDiaria: number = 0;
@@ -37,6 +37,7 @@ export class OportunitiesComponent implements OnInit {
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
   public objInversionUsuario: InversionUsuario = new InversionUsuario();
+  public oportunidadUsuario:InversionUsuario[] = [];
 
   objSaldo:Saldo = {
     idCartera:0,
@@ -56,7 +57,6 @@ export class OportunitiesComponent implements OnInit {
     this.getOportunidadesPorUser();
     // this.getOportunidadesPorId();
     this.getSaldo();
-    // this.getOportunidadesUsuPorIdOpor();
     //this.calcularInteresesRates();
     this.calcularPorcentajeInversion();
     this.calcularPorcentajeRecaudado();
@@ -67,7 +67,7 @@ export class OportunitiesComponent implements OnInit {
     this.showModal = true;
     this.selectOportunity = oportunidades;
     this.objInversionUsuario.oportunidadInversion = oportunidades;
-    // this.getOportunidadesUsuPorIdOpor();
+    this.getOportunidadesUsuPorIdOpor(oportunidades);
   }
   public closeModal(): void {
     this.showModal = false;
@@ -98,14 +98,17 @@ export class OportunitiesComponent implements OnInit {
       this.objOportunidades = resp as Oportunidades[]; 
     })
   }
-  // getOportunidadesUsuPorIdOpor() {
-  //   const idOportunidad = this.objInversionUsuario.idOportunidad;
-
-  //   console.log(idOportunidad);
-  //   this.oportunidadesUsuarioService.getOporUsuarioPorIdOpor(idOportunidad).subscribe(resp => { 
-  //     console.log(resp);
-  //   });
-  // }
+  getOportunidadesUsuPorIdOpor(oportunidadInversion:Oportunidades) {
+    if (oportunidadInversion.idOportunidad === undefined) { 
+      return;
+    }
+    this.oportunidadSeleccionada = oportunidadInversion;
+    this.oportunidadesUsuarioService.getOporUsuarioPorIdOpor(oportunidadInversion.idOportunidad).subscribe(resp => { 
+      const inversiones = resp as InversionUsuario[];
+      this.oportunidadUsuario = inversiones;
+      console.log(inversiones);
+    });
+  }
   calcularPorcentajeInversion(){
     const montoOportunidad = this.selectOportunity.monto!;
     this.inversionPorcentaje = (this.montoInvertido / montoOportunidad)*   100;

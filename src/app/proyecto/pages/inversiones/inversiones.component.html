@@ -1,11 +1,13 @@
 <section class="listar animate__animated animate__fadeIn animete_faster">
-  <h3>Mis Inversiones realizadas</h3>
   <div class="listar__content">
-    <div class="listar__button">
-      <div>
-        <button type="button" class="btn__save" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="inversion__nav">
+      <div class="inversion__header">
+        <h3>{{title}}</h3>
+      </div>
+      <div class="inversion__group">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn__save">
           <i class="bx bx-plus"></i>
-          Agregar Inversión
+          Agregar facturas
         </button>
       </div>
     </div>
@@ -23,12 +25,12 @@
         </thead>
         <tbody class="listar__tbody">
           <tr *ngFor="let oporUsu of oportunidadesUsuario">
-            <td>{{oporUsu.fecha}}</td>
+            <td>{{oporUsu.fecha }}</td>
             <td>{{oporUsu.empresa?.razonSocial}}</td>
-            <td>{{oporUsu.montoInvertido}}</td>
-            <td>{{oporUsu.ganancia}}</td>
-            <td>{{oporUsu.oportunidadInversion?.rendimiento}}</td>
-            <td>{{oporUsu.oportunidadInversion?.fechaPago}}</td>
+            <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+            <td>{{oporUsu.ganancia | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+            <td>{{oporUsu.oportunidadInversion?.rendimiento | percent}}</td>
+            <td>{{oporUsu.oportunidadInversion?.fechaPago | date:'longDate':'':'es-PE'}}</td>
             <!-- <td>{{oporUsu.fecha}}</td>    -->
           </tr>
         </tbody>

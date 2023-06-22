@@ -11,6 +11,7 @@ import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.
 
 export class InversionesComponent implements OnInit {
 
+  title = 'Mis inversiones realizadas';
   public oportunidadesUsuario: InversionUsuario[] = [];
 
   constructor(private oportunidadUsuario: OportunidadUsuarioService) { }

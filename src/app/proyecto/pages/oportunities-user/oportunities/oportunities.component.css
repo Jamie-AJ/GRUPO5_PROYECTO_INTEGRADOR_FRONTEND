@@ -553,3 +553,50 @@
 .hidden {
   display: none;
 }
+
+
+
+.listar__content-table{
+  overflow: auto;
+  max-width: calc(100% - 1rem);
+  margin: 1.5rem auto 0 auto;
+}
+.listar__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.listar__table .listar__thead th {
+  padding: 1rem 0.75rem;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__thead,
+.listar__table .listar__tbody {
+  text-align: center;
+}
+
+.listar__table .listar__tbody tr {
+  border-bottom: 1px solid var(--second-table-color);
+}
+
+.listar__table .listar__tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.listar__table .listar__tbody tr:last-child {
+  border-bottom: none;
+}
+
+.listar__table .listar__tbody tr td {
+  padding: 0.625rem 0.625rem;
+  font-size: 13px;
+}
+
+.listar__table .listar__tbody tr:hover {
+  background-color: #ececec;
+}

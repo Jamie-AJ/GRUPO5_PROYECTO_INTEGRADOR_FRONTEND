@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { InversionUsuario } from '../interface/oportunidad_usuario.interface';
 
@@ -24,5 +24,8 @@ export class OportunidadUsuarioService {
   }
   getOportunidadesUsu(): Observable<InversionUsuario[]> { 
     return this.http.get<InversionUsuario[]>(`${this.url}/listarOpoUsuXIdi`);	
+  }
+  getOporUsuarioPorIdOpor(idOportunidad:number):Observable<InversionUsuario[]> {
+    return this.http.get<InversionUsuario[]>(`${this.url}/listarOpoUsuXOpo/${idOportunidad}`);
   }
 }

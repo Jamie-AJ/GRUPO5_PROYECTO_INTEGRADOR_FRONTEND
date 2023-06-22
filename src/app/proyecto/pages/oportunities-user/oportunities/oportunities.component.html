@@ -119,7 +119,26 @@
               <i [ngClass]="isOpen[1] ? 'bx bx-minus' : 'bx bx-plus'" ></i>
             </header>
             <div class="accordions-description" [ngClass]="{'hidden': !isOpen[1]}">
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam sapiente ullam, aliquid quia tempora dolor, veritatis animi quam, et quisquam perspiciatis cumque! Quo, nemo cum harum tenetur nesciunt provident iste!</p>
+              <div class="listar__content-table">
+                <table class="listar__table">
+                    <thead class="listar__thead">
+                        <tr>
+                            <th>Fecha y Hora</th>
+                            <th>Inversión y % de factura</th>
+                            <th>Retorno Mensual</th>
+                            <th>TIR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="listar__tbody">
+                        <tr *ngFor="let oporUsu of oportunidadUsuario">
+                          <td>{{oporUsu.fecha}}</td>
+                          <td>{{oporUsu.montoInvertido}}</td>
+                          <td>{{tasaMensual}}</td>
+                          <td>{{oporUsu.oportunidadInversion?.tir}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             </div>
           </div>
         </div>
