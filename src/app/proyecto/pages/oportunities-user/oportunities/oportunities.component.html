@@ -62,16 +62,14 @@
             <p>Financiada al</p>
             <p>{{ recaudadoRedondeado + '%'}}</p>
           </div>
-          <div class="progress-bar">
-            <div class="progress-bar"></div>
-          </div>
+          <progress class="progress-bar" [value]="montoRecaudado" [max]="montoTotal"></progress>
           <div class="modal__perfect--progress">
             <div class="modal-percent">
               <span>{{selectOportunity.montoRecaudado | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
               <p>Financiado</p>
             </div>
             <div class="modal-percent">
-              <span>{{selectOportunity.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
+              <span>{{restante | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
               <p>Restante</p>
             </div>
           </div>
@@ -135,19 +133,20 @@
       </div>
       <hr>
       <div class="modal__form--body">
-        <form>
+        <form  [formGroup]="form" (ngSubmit)="postRegistrarInversionUsuario()">
           <div class="modal__form--input">
             <label for="monto">Escribe el monto de tú inversión(PEN)</label>
             <div class="input__wrapper">
-              <input type="number" name="monto" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
+              <input type="number" formControlName="montoInvertido" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
             </div>
+            <span class="invalid" *ngIf="isValid('montoInvertido')">{{getFieldError('montoInvertido')}}</span>
           </div>
           <div class="form-retorno">
-            <span>Retorno final mensual</span>
+            <span>Tasa mensual</span>
             <p>{{tasaMensualRedondeado + '%'}}</p>
           </div>
           <div class="form-retorno">
-            <span>Porcentaje de la Factura</span>
+            <span>Porcentaje de la Inversión</span>
             <p>{{inversionRedondeado + '%'}}</p>
           </div>
           <div class="form--mensual">
