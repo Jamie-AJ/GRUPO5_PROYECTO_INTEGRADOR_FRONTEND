@@ -153,6 +153,13 @@ export class OportunitiesComponent implements OnInit {
     this.oportunidadesUsuarioService.getOporUsuarioPorIdOpor(oportunidadInversion.idOportunidad).subscribe(resp => { 
       const inversiones = resp as InversionUsuario[];
       this.oportunidadUsuario = inversiones;
+      this.oportunidadUsuario.sort((a:any, b:any) => {
+        const dataA = new Date(a.fecha);
+        const dataB = new Date(b.fecha);
+        return dataB.getTime() - dataA.getTime();
+      })
+      this.oportunidadUsuario.reverse();
+      this.oportunidadUsuario = this.oportunidadUsuario.slice(0, 5);
       console.log(inversiones);
     });
   }

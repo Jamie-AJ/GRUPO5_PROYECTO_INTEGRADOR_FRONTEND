@@ -129,6 +129,7 @@
                 <table class="listar__table">
                     <thead class="listar__thead">
                         <tr>
+                            <th>#</th>
                             <th>Fecha y Hora</th>
                             <th>Inversión y % de factura</th>
                             <th>Retorno Mensual</th>
@@ -137,6 +138,7 @@
                     </thead>
                     <tbody class="listar__tbody">
                         <tr *ngFor="let oporUsu of oportunidadUsuario">
+                          <td>{{oporUsu.idOportunidadUsuario}}</td> 
                           <td>{{oporUsu.fecha }}</td>
                           <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                           <td>{{tasaMensualRedondeado + '%'}}</td>
