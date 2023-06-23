@@ -38,13 +38,18 @@ export class DashboardComponent implements OnInit{
     this.singIn();
     this.getSaldo();
     this.getListarTransacciones();
-    this.calcularTotlaDepositos();
+    this.calcularTotalDepositos();
   }
-  calcularTotlaDepositos() {
-    const monto = this.objTrnsaccion.monto!;
-    this.totalDeposito = this.totalDeposito + monto;
-    console.log(this.totalDeposito);
-
+  calcularTotalDepositos(): number {
+    let totalDeposito = 0;
+    this.transaccionList.forEach((transaccionList)=>{
+      if (transaccionList.idTipoTransaccion === 1){
+        totalDeposito += transaccionList.monto!;
+      }else if (transaccionList.idTipoTransaccion === 2){
+        totalDeposito -= transaccionList.monto!;
+      }
+    });
+    return totalDeposito;
   }
   singIn() {
     this.isLoggedIn = this.login.isLoggedIn();
