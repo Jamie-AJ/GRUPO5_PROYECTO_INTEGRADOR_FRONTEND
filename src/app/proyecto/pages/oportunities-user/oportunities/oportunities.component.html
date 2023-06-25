@@ -138,11 +138,39 @@
                     </thead>
                     <tbody class="listar__tbody">
                         <tr *ngFor="let oporUsu of oportunidadUsuario">
-                          <td>{{oporUsu.idOportunidadUsuario}}</td> 
+                          <td>{{oporUsu.usuario?.id}}</td> 
                           <td>{{oporUsu.fecha }}</td>
                           <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
                           <td>{{tasaMensualRedondeado + '%'}}</td>
                           <td>{{oporUsu.oportunidadInversion?.tir | percent}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+          </div>
+          <div class="accordions-content">
+            <header class="accordions-header" (click)="openAccordion(2)">
+              <span>Detalle de las facturas</span>
+              <i [ngClass]="isOpen[2] ? 'bx bx-minus' : 'bx bx-plus'" ></i>
+            </header>
+            <div class="accordions-description" [ngClass]="{'hidden': !isOpen[2]}">
+              <div class="listar__content-table">
+                <table class="listar__table">
+                    <thead class="listar__thead">
+                        <tr>
+                            <th>#</th>
+                            <th>Monto</th>
+                            <th>Fecha de apertura</th>
+                            <th>Fecha de Cierra</th>
+                        </tr>
+                    </thead>
+                    <tbody class="listar__tbody">
+                        <tr *ngFor="let oporfac of oportunidadFactura">
+                          <td>{{oporfac.factura?.idFactura}}</td> 
+                          <td>{{oporfac.factura?.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                          <td>{{oporfac.factura?.fechaEmision }}</td>
+                          <td>{{oporfac.factura?.fechaPago}}</td>
                         </tr>
                     </tbody>
                 </table>

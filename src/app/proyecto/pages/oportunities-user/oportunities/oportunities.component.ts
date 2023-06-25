@@ -9,6 +9,7 @@ import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
+import { OportunidadFactura } from 'src/app/interface/oportunidad_factura.interfce';
 
 
 @Component({
@@ -19,7 +20,7 @@ import * as customValidators from 'src/app/shared/components/validators';
 export class OportunitiesComponent implements OnInit {
   title = 'Oportunidades de Inversión'
   public showModal: boolean = false;
-  public isOpen: boolean[] = [false, false];
+  public isOpen: boolean[] = [false, false,false];
   public oportunidadSeleccionada:any;
   //CALCULOS 
   public restante: number = 0;
@@ -41,7 +42,8 @@ export class OportunitiesComponent implements OnInit {
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
   public objInversionUsuario: InversionUsuario = new InversionUsuario();
-  public oportunidadUsuario:InversionUsuario[] = [];
+  public oportunidadUsuario: InversionUsuario[] = [];
+  public oportunidadFactura:OportunidadFactura[] = [];
 
   objSaldo:Saldo = {
     idCartera:0,
@@ -115,6 +117,7 @@ export class OportunitiesComponent implements OnInit {
     this.calcularRestante();
     this.calcularPorcentajeInversion();
     this.calcularMontoTotal();
+    this.getFacturaPorOportunidades(oportunidades);
   }
   public closeModal(): void {
     this.showModal = false;
@@ -144,6 +147,17 @@ export class OportunitiesComponent implements OnInit {
     this.oportunidadesService.getOportunidadPorUsuario().subscribe(resp => {
       this.objOportunidades = resp as Oportunidades[]; 
     })
+  }
+  getFacturaPorOportunidades(oportunidades: Oportunidades) {
+    if(oportunidades.idOportunidad === undefined){
+      return; 
+    }
+    this.oportunidadSeleccionada === oportunidades;
+    this.oportunidadesService.getFacturaPorOportunidad(oportunidades.idOportunidad).subscribe(resp => { 
+      const factura = resp as OportunidadFactura[];
+      this.oportunidadFactura = factura;
+      console.log(factura);
+    });
   }
   getOportunidadesUsuPorIdOpor(oportunidadInversion:Oportunidades) {
     if (oportunidadInversion.idOportunidad === undefined) { 
