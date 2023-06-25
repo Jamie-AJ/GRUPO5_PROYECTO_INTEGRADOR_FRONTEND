@@ -34,6 +34,9 @@ export class OportunidadesService {
                 })
             )
     }
+    getFacturaPorOportunidad(idOportunidad:number): Observable<Oportunidades[]>{
+        return this.http.get<Oportunidades[]>(`${this.url}/listarFacXIdOpo/${idOportunidad}`)
+    }
     postOportunidad(oportunidades: Oportunidades): Observable<any> {
         return this.http.post<any>(`${this.url}/insertaOportunidadInversion`, oportunidades, { headers: this.httpHeaders }).pipe(
             catchError(error => {
