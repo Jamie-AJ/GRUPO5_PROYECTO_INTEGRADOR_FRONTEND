@@ -588,12 +588,14 @@ progress::-webkit-progress-value {
 
 .listar__content-table{
   overflow: auto;
-  max-width: calc(100% - 1rem);
+  /* max-width: calc(100% - 1rem); */
   margin: 1.5rem auto 0 auto;
 }
 .listar__table {
   width: 100%;
   border-collapse: collapse;
+  background-color: var(--white-color);
+  border-radius: 10px;
 }
 
 .listar__table .listar__thead th {

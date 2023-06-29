@@ -54,8 +54,9 @@
               </tr>
             </tbody>
           </table>
-          </div>
         </div>
+      </div>
+      <app-pagination></app-pagination>
         <div
           class="inversion__content animate__animated animate__fadeIn animete_faster"
           *ngIf="activeTabsIndex === 1"
@@ -75,7 +76,7 @@
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr *ngFor="let emp of empresasList">
+              <tr *ngFor="let emp of empresasActivas">
                 <td>{{emp.idEmpresa}}</td>
                 <td>{{emp.razonSocial}}</td>
                 <td>{{emp.ruc}}</td>
@@ -96,6 +97,7 @@
               </tr>
             </tbody>
           </table>
+          <app-pagination></app-pagination>
         </div>
         </div>
       </div>

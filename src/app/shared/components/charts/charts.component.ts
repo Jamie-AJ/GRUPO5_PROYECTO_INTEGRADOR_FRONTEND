@@ -61,7 +61,7 @@ export class ChartsComponent implements OnInit {
       this.chartdata = resp;
       if (this.chartdata != null) {
         for (let i = 0; i < this.chartdata.length; i++) {
-          this.labeldata.push(this.chartdata[i].fecha.substring(0, 8));
+          this.labeldata.push(this.chartdata[i].fecha);
           this.realdata.push(this.chartdata[i].monto);
         }
         this.renderChart(this.labeldata, this.realdata);

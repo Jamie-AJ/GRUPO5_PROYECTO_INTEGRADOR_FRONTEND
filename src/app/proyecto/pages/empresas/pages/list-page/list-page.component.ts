@@ -11,16 +11,27 @@ export class ListPageComponent implements OnInit{
   title: string = 'Listado de empresas';
   tabs: string[] = ['General', 'Activos' ]
   activeTabsIndex: number = 0;
-  empresasList:Empresas[] = [];
+  empresasList: Empresas[] = [];
+  empresasActivas: Empresas[] = [];
   constructor(private empresaService:EmpresasService){}
   
   ngOnInit(): void {
-    this.empresaService.getEmpresas().subscribe(empresa =>{
-      console.log(empresa);
-      this.empresasList = empresa;
-    })
+    this.getEmpresas();
+    this.getEmpresasActivasList();
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
+  }
+  getEmpresasActivasList() {
+    this.empresaService.getEmpresasActive().subscribe(empresa =>{
+      console.log(empresa);
+      this.empresasActivas = empresa;
+    })
+  }
+  getEmpresas() { 
+    this.empresaService.getEmpresasAll().subscribe(empresa => { 
+      console.log(empresa);
+      this.empresasList = empresa;
+    });
   }
 }
