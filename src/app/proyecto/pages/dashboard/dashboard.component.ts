@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { InversionUsuario } from 'src/app/interface/oportunidad_usuario.interface';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
 import { Usuario } from 'src/app/interface/usuario.interface';
@@ -17,9 +18,9 @@ export class DashboardComponent implements OnInit{
   title = 'Dashboard';
   public currentMonth?: String;
   public currentYear?: Number;
-  public totalDeposito: number = 0;
   public transaccionList: Transaccion[] = [];
-  public objTrnsaccion:Transaccion = new Transaccion();
+  public inversionList: InversionUsuario[] = [];
+  public objTransaccion:Transaccion = new Transaccion();
   isLoggedIn = false;
   public user: Usuario = new Usuario();
   objSaldo: Saldo = {
@@ -38,18 +39,35 @@ export class DashboardComponent implements OnInit{
     this.singIn();
     this.getSaldo();
     this.getListarTransacciones();
-    this.calcularTotalDepositos();
   }
-  calcularTotalDepositos(): number {
+  calcularTotalDepositos(value:number): number {
     let totalDeposito = 0;
     this.transaccionList.forEach((transaccionList)=>{
-      if (transaccionList.idTipoTransaccion === 1){
+      if (transaccionList.idTipoTransaccion === value){
         totalDeposito += transaccionList.monto!;
-      }else if (transaccionList.idTipoTransaccion === 2){
-        totalDeposito -= transaccionList.monto!;
       }
     });
     return totalDeposito;
+  }
+  calcularCantidadTotalDepositos(value:number) {
+    let cantidadDepositos = 0;
+    this.transaccionList.forEach((transaccionList)=>{
+      if (transaccionList.idTipoTransaccion === value){
+        cantidadDepositos ++;
+      }
+    });
+    return cantidadDepositos;
+  }
+
+  calcularTotalInversion(): number{
+    let totalInversion = 0;
+    this.inversionList.forEach((inversionList) => {
+      if (inversionList.montoInvertido) {
+        totalInversion += inversionList.montoInvertido!;
+      }
+    });
+    // console.log(this.inversionList);
+    return totalInversion;
   }
   singIn() {
     this.isLoggedIn = this.login.isLoggedIn();
@@ -84,7 +102,6 @@ export class DashboardComponent implements OnInit{
         return dataB.getTime() - dataA.getTime();
       })
       this.transaccionList.reverse();
-      this.transaccionList = this.transaccionList.slice(0, 5);
     });
   }
 }

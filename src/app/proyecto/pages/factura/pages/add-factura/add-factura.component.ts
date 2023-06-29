@@ -67,7 +67,7 @@ export class AddFacturaComponent implements OnInit{
     return null;
   }
   getEmpresas(){
-    this.empresasServices.getEmpresas().subscribe(resp =>{
+    this.empresasServices.getEmpresasActive().subscribe(resp =>{
       console.log(resp);
       this.empresas = resp;
     })

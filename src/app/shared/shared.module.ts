@@ -10,6 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { max } from 'rxjs';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -26,6 +27,7 @@ import { max } from 'rxjs';
     ModalComponent,
     ChartsComponent,
     ProgressBarComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -38,8 +40,8 @@ import { max } from 'rxjs';
     SpinnerListComponent,
     ModalComponent,
     ChartsComponent,
-    ProgressBarComponent
-    
+    ProgressBarComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

@@ -13,17 +13,17 @@
                 <div class="dash__info">
                     <div class="dash__info-box">
                         <span>Inversiones hechas</span>
-                        <p>360000</p>
+                        <!-- <p>{{calcularCantidadTotalInversiones()}}</p> -->
                     </div>
                     <span class="barra-vertical"></span>
                     <div class="dash__info-box">
                         <span><i class='bx bx-up-arrow-alt'></i>Depositos hechos</span>
-                        <p>360000</p>
+                        <p>{{calcularCantidadTotalDepositos(1)}}</p>
                     </div>
                     <span class="barra-vertical"></span>
                     <div class="dash__info-box">
                         <span><i class='bx bx-down-arrow-alt'></i>Retiros hechos</span>
-                        <p>360000</p>
+                        <p>{{calcularCantidadTotalDepositos(2)}}</p>
                     </div>
                 </div>
             </div>
@@ -34,9 +34,13 @@
                 <div class="dash__saldo_info">
                     <span>{{objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
                 </div>
-                <div>
+                <div class="dash__totaldeposito">
                     <span>Depositos totales: </span>
-                    <span>{{ calcularTotalDepositos() | currency:'S/.&nbsp;':'symbol-narrow'  }}</span> 
+                    <span>{{ calcularTotalDepositos(1) | currency:'S/.&nbsp;':'symbol-narrow'  }}</span> 
+                </div>
+                <div class="dash__totalinversion">
+                    <span>Inversiones totales: </span>
+                    <span>{{ calcularTotalInversion() | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
                 </div>
                 <div class="saldo__deposit">
                     <a [routerLink]="['/dashboard/account-status']">Deposita</a>
@@ -61,7 +65,7 @@
                         <tbody class="listar__tbody">
                             <tr *ngFor="let trans of transaccionList">
                                 <td>{{trans.idTransaccion}}</td>
-                                <td>{{trans.fecha}}</td>
+                                <td>{{trans.fecha | date:'longDate':'':'es-PE'}}</td>
                                 <td>
                                     <span *ngIf="trans.tipoTransaccion?.tipo === 'Retiro'"><i class='bx bx-down-arrow-alt down'></i></span>
                                     <span *ngIf="trans.tipoTransaccion?.tipo === 'Deposito'"><i class='bx bx-up-arrow-alt up'></i></span>

@@ -23,8 +23,15 @@ export class EmpresasService {
     const url = `${this.url}/active/buscarEmpresasContains/${keyword}`
     return this.getEmpresasRequest(url);
   }
-  getEmpresas():Observable<Empresas[]>{
+  getEmpresasActive():Observable<Empresas[]>{
     const url = `${this.url}/active/listaEmpresas`
+    return this.getEmpresasRequest(url);
+  }
+  getEmpresasAllPage(keyword: string = '', page: number = 0, size: number = 6): Observable<any> {
+    return this.http.get<any>(`${this.url}/active/empresas?keyword=${keyword}&page=${page}${size}`)
+  }
+  getEmpresasAll(): Observable<Empresas[]> { 
+    const url = `${this.url}/listaEmpresas`
     return this.getEmpresasRequest(url);
   }
   getEmpresasById(id:number):Observable<Empresas | undefined>{
