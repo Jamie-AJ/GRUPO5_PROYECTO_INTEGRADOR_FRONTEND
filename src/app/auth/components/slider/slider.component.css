@@ -1,6 +1,7 @@
 .slide__wrapper {
     position: relative;
-    width: 500px;
+    max-width: 100%;
+    width:80%;
     height: 400px;
     margin: 3rem auto 2rem auto;
     display: grid;
@@ -12,6 +13,7 @@
 
 .slide__wrapper img.active {
     display: block;
+    max-width: 100%;
     width: 100%;
 
 }

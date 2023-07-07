@@ -18,7 +18,7 @@ interface SideNavToggle{
 })
 export class HomeComponent implements OnInit {
   // @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
-  // isSideBarCollapse = false;
+  isSideBarCollapse = false;
   // screenWidth = 0;
 
   isAdministrador = this.login.getUserRole() === 'ADMIN';
@@ -34,28 +34,25 @@ export class HomeComponent implements OnInit {
     idCartera:0,
     saldo:0,
   }
-  constructor(private login:LoginService, private router:Router,private saldoService:SaldoService){}
-  // @HostListener('window:resize', ['$event',])
-  // onResize(event: any): void {
-  //   this.screenWidth = window.innerWidth;
-  //   if (this.screenWidth <= 768) {
-  //     this.collapse = false;
-  //     this.onToggleSideBar.emit({ screenWidth: this.screenWidth, collapse: this.collapse });
-  //   } 
-  // ngOnInit(): void {
-  //   this.screenWidth = window.innerWidth;
-
-  // }
-  ngOnInit(): void {
-    this.singIn();
-    this.getSaldo();
-    
-  }
+  constructor(private login: LoginService, private router: Router, private saldoService: SaldoService) { }
   
-
-  rotateIcon() {
-    this.isIconRotated = !this.isIconRotated;
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: any) {
+    this.closeSidebarIfNeeded(event.target.innerWidth);
   }
+    ngOnInit(): void {
+  
+      this.singIn();
+      this.getSaldo();
+    }
+  private closeSidebarIfNeeded(windowWidth: number) {
+    if (windowWidth <= 768) {
+      this.isSideBarCollapse = false;
+    } else {
+      this.isSideBarCollapse = true;
+    }
+  }
+
   getSaldo() {
     this.saldoService.getDetallCartera().subscribe(resp => {
       this.objSaldo = resp;

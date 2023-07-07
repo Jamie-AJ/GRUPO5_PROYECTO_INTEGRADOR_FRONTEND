@@ -80,7 +80,6 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
   clearArrayList() {
     this.oportunidadesService.getRefrescarFacturas().subscribe((response: any) => { 
       const facturas = response.facturas;
-      console.log(facturas);
     });
   }
   closeWithoutCancel(): void {
@@ -95,7 +94,19 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
     this.modalService.setShowModal(true);
   }
 
+  onPressEnter(event: any): void { 
+    if(event.key === 'Enter'){
+      // this.filterEmpresas(event.target.value);
+      console.log(event.target.value);
+    }
+  }
   filterEmpresas(keyword: String): void {
+  
+    if (keyword.trim() === '') {
+      this.empresas = [];
+      this.seEncontraronResultados = false;
+      return;
+    }
     this.isLoading = true;
     this.empresasServices.filterEmpresas(keyword).subscribe(empresas => {
       this.empresas = empresas;
@@ -105,6 +116,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       console.log(err);
       this.mostrarAlerta = true;
     });
+    
   }
 
   //VALIDACIONES
@@ -141,7 +153,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
   }
 
   goBack() {
-    this.router.navigate(['/inversiones/list-inversion']);
+    this.router.navigate(['/dashboard/inversion/list-inversion']);
   }
   /*VALIDACIÓN*/
   //RECUPERA LAS FACTURAS DE LA EMPRESA SELECCIONADA
@@ -156,7 +168,6 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       console.log(facturas);
       this.facturaList = facturas;
       this.empresaFacturasRegistradas = facturas.length > 0;
-      // Sumar los montos de las facturas agregadas
     });
   }
 
@@ -227,7 +238,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       Swal.fire('Registro con exito', response.mensaje, 'success');
       this.form.reset();
       this.clearArrayList();
-      this.router.navigate(['/inversiones/list-inversion']);
+      this.router.navigate(['/dashboard/inversion/list-inversion']);
     
     },
     error => {

@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap, catchError, throwError, of } from 'rxjs';
+import { Observable, tap, catchError, throwError, of, map } from 'rxjs';
 import { Empresas } from '../interface/empresas.interface';
 import Swal from 'sweetalert2';
 
@@ -21,14 +21,25 @@ export class EmpresasService {
 
   filterEmpresas(keyword:String):Observable<Empresas[]>{
     const url = `${this.url}/active/buscarEmpresasContains/${keyword}`
-    return this.getEmpresasRequest(url);
+    return this.getEmpresasRequest(url).pipe(
+      catchError( () => of([]) )
+    );
   }
   getEmpresasActive():Observable<Empresas[]>{
     const url = `${this.url}/active/listaEmpresas`
     return this.getEmpresasRequest(url);
   }
-  getEmpresasAllPage(keyword: string = '', page: number = 0, size: number = 6): Observable<any> {
-    return this.http.get<any>(`${this.url}/active/empresas?keyword=${keyword}&page=${page}${size}`)
+  getEmpresasAllPage(page:number): Observable<any> {
+    return this.http.get<any>(`${this.url}/buscarEmpresas/${page}`)
+      .pipe(
+        map((response: any) => {
+          (response.content as Empresas[]).map(empresa => {
+            return empresa;
+          });
+          return response;
+        })
+      );
+      
   }
   getEmpresasAll(): Observable<Empresas[]> { 
     const url = `${this.url}/listaEmpresas`
