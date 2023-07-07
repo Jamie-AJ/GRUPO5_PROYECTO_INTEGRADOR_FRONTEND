@@ -48,7 +48,7 @@ export class AddCompanyComponent {
     return null;
   }
   goBack(){
-    this.router.navigate(['/empresas/list-company']);
+    this.router.navigate(['/dashboard/empresa/list-company']);
   }
   //REGISTRAR EMPRESA
   postEmpresas(){
@@ -59,7 +59,7 @@ export class AddCompanyComponent {
     this.empresasService.postEmpresas(this.form.value).subscribe(resp=>{
       Swal.fire('Empresa registrada', resp.mensaje , 'success');
       this.form.reset();
-      this.router.navigate(['/empresas/list-company']);
+      this.router.navigate(['/dashboard/empresa/list-company']);
     },error =>{
       Swal.fire('Error', error.error.mensaje , 'error');
     })

@@ -1,16 +1,15 @@
 
-<div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
+<div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''" [class.closed]="!isSideBarCollapse">
   <header>
     <div class="sidebar__logo">
       <span class="button-open">
         <i class="bx bx-dollar-circle side-open"></i>
       </span>
-      <div class="sidebar__title" [ngClass]="collapse ? 'sidebar-opacity' : ''">
+      <div class="sidebar__title" [ngClass]=" collapse ? '' : 'sidebar-opacity'">
         <span class="name">Invest </span>
         <span class="name_go">GO!</span>
       </div>
     </div>
-    <i [ngClass]="collapse ? 'rotated' : ''" class='bx bx-chevron-left toggle' (click)="toggleCollapse()" ></i>
   </header>
   <div class="side__menu">
     <div class="menu">
@@ -46,19 +45,19 @@
           </a>
         </li>
         <li class="sidebar__link">
-          <a  *ngIf="isAdministrador" [routerLink]="['/empresas/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+          <a  *ngIf="isAdministrador" [routerLink]="['/dashboard/empresa/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
             <i class='bx bx-edit icon'></i>
             Empresa
           </a>
         </li>
         <li class="sidebar__link">
-          <a *ngIf="isAdministrador"[routerLink]="['/facturas/list-factura']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+          <a *ngIf="isAdministrador"[routerLink]="['/dashboard/factura/list-factura']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
             <i class='bx bxs-report icon'></i>
             Facturas
           </a>
         </li>
         <li class="sidebar__link">
-          <a  *ngIf="isAdministrador" [routerLink]="['/inversiones/list-inversion']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
+          <a  *ngIf="isAdministrador" [routerLink]="['/dashboard/inversion/list-inversion']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" > 
             <i class='bx bx-line-chart icon'></i>
             Oportunidad de Inversiones
         </a>
@@ -82,10 +81,10 @@
   </div>
 </div>
 
-<div class="nav-bar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
-  <nav class="nav__container">
+<div class="nav-bar" >
+  <nav class="nav__container" [ngClass]="collapse ? 'sidebar-collapse' : ''">
       <div class="profile__user">
-       
+        <i class='bx bx-menu toggle' (click)="toggleCollapse()" ></i>
       </div>
       <a *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button">
         <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}

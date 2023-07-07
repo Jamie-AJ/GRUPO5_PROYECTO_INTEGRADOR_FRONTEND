@@ -81,7 +81,7 @@ export class AddFacturaComponent implements OnInit{
         resp =>{
           console.log(resp);
           Swal.fire('Factura Generada', resp.mensaje, 'success');
-          this.router.navigate(['/facturas/list-factura']);
+          this.router.navigate(['/dashboard/factura/list-factura']);
         }
       );
   }
@@ -98,7 +98,7 @@ export class AddFacturaComponent implements OnInit{
   }
 
   goBack(){
-    this.router.navigate(['/facturas/list-factura']);
+    this.router.navigate(['/dashboard/factura/list-factura']);
   }
 
 }

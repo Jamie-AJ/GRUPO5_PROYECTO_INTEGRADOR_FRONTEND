@@ -1,6 +1,7 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { inject } from '@angular/core';
+import Swal from 'sweetalert2';
 
 export const hasRoleGuard: CanActivateFn = (route, state) => {
 
@@ -9,7 +10,11 @@ export const hasRoleGuard: CanActivateFn = (route, state) => {
   if(authService.getUserRole() === 'ADMIN'){
     return true;
   }else{
-    alert('Acceso denegado');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No tienes permisos para acceder a esta ruta!',
+    });
     return false;
   }
 };

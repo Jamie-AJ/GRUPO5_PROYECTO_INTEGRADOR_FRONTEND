@@ -19,31 +19,6 @@ const router:Routes = [
     loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
   },
   {
-    path:'dashboard',
-    // canActivate:[hasRoleGuard],
-    // data:{ allowedRole:['ADMINISTRADOR','INVERSIONISTA']},
-    loadChildren: () => import ('./proyecto/proyecto.module').then(m => m.ProyectoModule)
-  },
-  // {
-  //   path: 'oportunidades',
-  //   loadChildren: () => import('./proyecto/pages/oportunities-user/oportunities-user.module').then(m => m.OportunitiesUserModule)
-  // },
-  {
-    path:'empresas',
-    canActivate:[hasRoleGuard],
-    loadChildren: () => import('./proyecto/pages/empresas/empresas.module').then(m => m.EmpresasModule)
-  },
-  {
-    path:'facturas',
-    canActivate:[hasRoleGuard],
-    loadChildren: () => import('./proyecto/pages/factura/factura.module').then(m => m.FacturaModule)
-  },
-  {
-    path:'inversiones',
-    canActivate: [hasRoleGuard],
-    loadChildren: () => import('./proyecto/pages/oportunidades/oportunidades.module').then(m => m.OportunidadesModule)
-  },
-  {
     path:'404',
     component:Error404PagesComponent
   },

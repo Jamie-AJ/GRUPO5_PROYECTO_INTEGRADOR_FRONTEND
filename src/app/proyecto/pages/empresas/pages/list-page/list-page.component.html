@@ -6,7 +6,7 @@
           <h3>{{title}}</h3>
         </div>
         <div clasS="inversion__group">
-          <a routerLink="/empresas/add-company" class="btn__factura">
+          <a routerLink="/dashboard/empresa/add-company" class="btn__factura">
             <i class="bx bx-plus"></i>
             Agregar Empresa
           </a>
@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr *ngFor="let emp of empresasList">
+              <tr *ngFor="let emp of empresasList; let i = index">
                 <td>{{emp.idEmpresa}}</td>
                 <td>{{emp.razonSocial}}</td>
                 <td>{{emp.ruc}}</td>
@@ -43,7 +43,7 @@
                 <td>{{emp.sector}}</td>
                 <td>
                   <div class="listar__btn-group">
-                    <a routerLink="/empresas/edit-company">
+                    <a routerLink="/dashboard/empresa/edit-company">
                       <i class='bx bxs-edit-alt'></i>
                     </a>
                     <a href="">
@@ -54,9 +54,10 @@
               </tr>
             </tbody>
           </table>
+          <app-pagination></app-pagination>
         </div>
+        
       </div>
-      <app-pagination></app-pagination>
         <div
           class="inversion__content animate__animated animate__fadeIn animete_faster"
           *ngIf="activeTabsIndex === 1"

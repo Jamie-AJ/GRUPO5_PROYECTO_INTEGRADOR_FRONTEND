@@ -15,7 +15,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+
 
 import { AuthModule } from '../auth/auth.module';
 import { SharedModule } from '../shared/shared.module';
@@ -26,6 +26,13 @@ import localeEsPE from '@angular/common/locales/es-PE';
 import { registerLocaleData } from '@angular/common';
 
 import { OportunitiesComponent } from './pages/oportunities-user/oportunities/oportunities.component';
+import { ListOportunitiesComponent } from './pages/oportunidades/pages/list-oportunities/list-oportunities.component';
+import { AddOportunitiesComponent } from './pages/oportunidades/pages/add-oportunities/add-oportunities.component';
+import { AddCompanyComponent } from './pages/empresas/pages/add-company/add-company.component';
+import { ListPageComponent } from './pages/empresas/pages/list-page/list-page.component';
+import { EditCompanyComponent } from './pages/empresas/pages/edit-company/edit-company.component';
+import { AddFacturaComponent } from './pages/factura/pages/add-factura/add-factura.component';
+import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
 
 
 
@@ -50,8 +57,14 @@ registerLocaleData(localeEsPE);
     MovementListComponent,
     DepositoComponent,
     RetiroComponent,
-    BreadcrumbsComponent,
     OportunitiesComponent,
+    AddOportunitiesComponent,
+    ListOportunitiesComponent,
+    AddCompanyComponent,
+    ListPageComponent,
+    EditCompanyComponent,
+    AddFacturaComponent,
+    ListFacturasComponent,
     
   ],
   imports: [
