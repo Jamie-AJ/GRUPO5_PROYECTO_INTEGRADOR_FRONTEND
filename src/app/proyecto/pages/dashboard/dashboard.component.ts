@@ -5,6 +5,7 @@ import { Saldo } from 'src/app/interface/saldo.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
 import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
+import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit{
   public transaccionList: Transaccion[] = [];
   public inversionList: InversionUsuario[] = [];
   public objTransaccion:Transaccion = new Transaccion();
+  public objInversionUsuario: InversionUsuario = new InversionUsuario();
   isLoggedIn = false;
   public user: Usuario = new Usuario();
   objSaldo: Saldo = {
@@ -32,13 +34,18 @@ export class DashboardComponent implements OnInit{
 
   constructor(private saldoService: SaldoService,
     private transaccion: TransaccionService,
-    private login: LoginService) { }
+    private login: LoginService,
+    private inversionUsuario: OportunidadUsuarioService
+    )
+    
+    { }
   
   ngOnInit(): void {
     this.getDate();
     this.singIn();
     this.getSaldo();
     this.getListarTransacciones();
+    this.getListarInversionUsuario();
   }
   calcularTotalDepositos(value:number): number {
     let totalDeposito = 0;
@@ -56,18 +63,25 @@ export class DashboardComponent implements OnInit{
         cantidadDepositos ++;
       }
     });
+    console.log(this.transaccionList)
     return cantidadDepositos;
   }
 
   calcularTotalInversion(): number{
     let totalInversion = 0;
     this.inversionList.forEach((inversionList) => {
-      if (inversionList.montoInvertido) {
         totalInversion += inversionList.montoInvertido!;
-      }
     });
-    // console.log(this.inversionList);
+    console.log(this.inversionList);
     return totalInversion;
+  }
+  calcularCantidadInversion(): number{
+    let cantidadInversion = 0;
+    this.inversionList.forEach(() => {
+        cantidadInversion ++;
+    });
+    console.log(this.inversionList);
+    return cantidadInversion;
   }
   singIn() {
     this.isLoggedIn = this.login.isLoggedIn();
@@ -104,4 +118,10 @@ export class DashboardComponent implements OnInit{
       this.transaccionList.reverse();
     });
   }
+  getListarInversionUsuario(){
+    this.inversionUsuario.getOportunidadesUsu().subscribe(resp =>{
+      this.inversionList = resp;
+    });
+  }
+
 }
