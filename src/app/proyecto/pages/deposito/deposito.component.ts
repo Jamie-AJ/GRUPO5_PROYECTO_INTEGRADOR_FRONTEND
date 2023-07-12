@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
@@ -28,36 +28,41 @@ export class DepositoComponent {
     private cuentaBancariaService: CuentaBancariaService,
     private transaccionService: TransaccionService,
     private builder: FormBuilder,
-    private router:Router) { }
-  
-    form:FormGroup = this.builder.group({
-      monto: ['',[Validators.required,customValidators.validarNumerosNegativos]],
-      idCuentaBancaria: ['',Validators.required],
-      
+    private router: Router,
+   private activeRouted:ActivatedRoute) { }
+
+  form: FormGroup = this.builder.group({
+    monto: ['', [Validators.required, customValidators.validarNumerosNegativos]],
+    idCuentaBancaria: ['', Validators.required],
+
   })
   ngOnInit() {
     this.obtenerCuentasBancarias();
+    this.activeRouted.paramMap.subscribe(params => {
+      const activeTab = params.get('activeTab');
+      // Verificar el valor de activeTab y establecer el tab activo correspondiente
+    });
   }
 
- //VALIDACIONES
- isValid(field: string) {
-  return this.form.controls[field].errors && this.form.controls[field].touched;
-}
-getFieldError(field: string): string | null {
-  if (!this.form.controls[field]) return null;
-  const errors:ValidationErrors = this.form.controls[field].errors || {};
-  for (const key of Object.keys(errors)) {
-    switch (key) {
-      case 'required':
-        return 'Este campo es requerido';
-      case 'negativeNumber':
-        return 'El valor ingresado no puede ser negativo';
+  //VALIDACIONES
+  isValid(field: string) {
+    return this.form.controls[field].errors && this.form.controls[field].touched;
+  }
+  getFieldError(field: string): string | null {
+    if (!this.form.controls[field]) return null;
+    const errors: ValidationErrors = this.form.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'negativeNumber':
+          return 'El valor ingresado no puede ser negativo';
+      }
     }
+    return null;
   }
-  return null;
-}
 
-  obtenerCuentasBancarias(){
+  obtenerCuentasBancarias() {
     this.cuentaBancariaService.getCuentaBancaria().subscribe(
       cuentas => {
         this.cuentabancariaCombo = cuentas;
@@ -101,9 +106,9 @@ getFieldError(field: string): string | null {
           }
         }
       );
-    },2000);
+    }, 2000);
   }
-  
+
 
 
   finalizarDeposito() {

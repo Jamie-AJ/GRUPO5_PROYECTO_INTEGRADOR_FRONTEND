@@ -33,6 +33,8 @@ import { ListPageComponent } from './pages/empresas/pages/list-page/list-page.co
 import { EditCompanyComponent } from './pages/empresas/pages/edit-company/edit-company.component';
 import { AddFacturaComponent } from './pages/factura/pages/add-factura/add-factura.component';
 import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
+import { ReportsInversionesComponent } from './pages/reports/reports-inversiones/reports-inversiones.component';
+import { ReportsUsuariosComponent } from './pages/reports/reports-usuarios/reports-usuarios.component';
 
 
 
@@ -65,6 +67,8 @@ registerLocaleData(localeEsPE);
     EditCompanyComponent,
     AddFacturaComponent,
     ListFacturasComponent,
+    ReportsInversionesComponent,
+    ReportsUsuariosComponent,
     
   ],
   imports: [

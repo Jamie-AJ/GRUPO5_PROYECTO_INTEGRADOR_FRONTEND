@@ -39,7 +39,7 @@
 .input__wrap:nth-child(3), .forgot__link{
     text-align: right;
     color: var(--sidebar-color);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .input__field{
@@ -157,7 +157,7 @@ input:not(:placeholder-shown)~.label__field{
         font-size: 1.3rem;
     }
     .input__wrap:nth-child(3), .forgot__link{
-        font-size: 16px;
+        font-size: 14px;
      }
     .input__field{
         font-size: 0.875rem;

@@ -5,12 +5,6 @@ import { Usuario } from 'src/app/interface/usuario.interface';
 import { LoginService } from 'src/app/services/login.service';
 import { SaldoService } from 'src/app/services/saldo.service';
 
-
-interface SideNavToggle{
-  screenWidth:number;
-  collapse:boolean;
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -73,11 +67,17 @@ export class HomeComponent implements OnInit {
     this.login.logout();
     this.router.navigate(['/auth/login']);
   }
+  closeDropdown() {
+    this.isDropdownOpen = false;
+  }
   toggleCollapse(){
     this.collapse = !this.collapse;
   }
   toggleDropdown(){
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  closeDropdownOnClick() {
+    this.closeDropdown();
   }
 
 }

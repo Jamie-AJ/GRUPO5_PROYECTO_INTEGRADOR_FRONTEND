@@ -4,7 +4,6 @@ import { Routes, RouterModule} from '@angular/router'
 import { Error404PagesComponent } from './shared/pages/error404-pages/error404-pages.component';
 import { isNotAuthenticatedGuard, isAuthenticatedGuard } from './guards';
 import { hasRoleGuard } from './guards/has-role.guard';
-import { ExitsGuard } from './guards/exits.guard';
 
 const router:Routes = [
 

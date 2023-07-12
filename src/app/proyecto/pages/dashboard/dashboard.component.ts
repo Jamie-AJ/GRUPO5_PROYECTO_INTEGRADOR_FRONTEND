@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit{
         cantidadDepositos ++;
       }
     });
-    console.log(this.transaccionList)
+    // console.log(this.transaccionList)
     return cantidadDepositos;
   }
 
@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit{
     this.inversionList.forEach((inversionList) => {
         totalInversion += inversionList.montoInvertido!;
     });
-    console.log(this.inversionList);
+    // console.log(this.inversionList);
     return totalInversion;
   }
   calcularCantidadInversion(): number{
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit{
     this.inversionList.forEach(() => {
         cantidadInversion ++;
     });
-    console.log(this.inversionList);
+    // console.log(this.inversionList);
     return cantidadInversion;
   }
   singIn() {
@@ -103,13 +103,13 @@ export class DashboardComponent implements OnInit{
   getSaldo() { 
     this.saldoService.getDetallCartera().subscribe(resp => {
       this.objSaldo = resp;
-      console.log(this.objSaldo);
+      // console.log(this.objSaldo);
     })
   }
   getListarTransacciones() {
     this.transaccion.getTransaction().subscribe(resp => { 
       this.transaccionList = resp;
-      console.log(resp);
+      // console.log(resp);  
       this.transaccionList.sort((a:any, b:any) => {
         const dataA = new Date(a.fecha);
         const dataB = new Date(b.fecha);

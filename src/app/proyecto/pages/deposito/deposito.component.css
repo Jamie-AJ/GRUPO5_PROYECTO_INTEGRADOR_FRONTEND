@@ -113,7 +113,7 @@
 }
 .deposito__goback{
     display: inline-block;
-    margin: 1rem 0;
+
 }
 .deposito__goback a{
     background-color: var(--sidebar-color);
