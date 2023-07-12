@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000;
   color: white;
 }
 
@@ -28,8 +28,8 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  animation: spin 1s linear infinite;
   margin-bottom: 10px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

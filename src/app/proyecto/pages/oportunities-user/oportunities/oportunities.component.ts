@@ -123,6 +123,9 @@ export class OportunitiesComponent implements OnInit {
     this.showModal = false;
     this.montoInvertido = 0;
   }
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
   //ACORDEON
   openAccordion(index:number) {
     this.isOpen[index] = !this.isOpen[index];
@@ -156,7 +159,6 @@ export class OportunitiesComponent implements OnInit {
     this.oportunidadesService.getFacturaPorOportunidad(oportunidades.idOportunidad).subscribe(resp => { 
       const factura = resp as OportunidadFactura[];
       this.oportunidadFactura = factura;
-      console.log(factura);
     });
   }
   getOportunidadesUsuPorIdOpor(oportunidadInversion:Oportunidades) {
@@ -271,16 +273,7 @@ export class OportunitiesComponent implements OnInit {
   calcularMontoTotal(){
     this.montoTotal = this.selectOportunity.monto!;
   }
-  //progressBarInicio(){
-   // const montoTotal = this.montoTotal
-   // const montoRecaudado = this.montoRecaudado
-   // const interval = setInterval(() => {
-    //  this.montoRecaudado++;
-      //if(montoRecaudado >= montoTotal){
-      //  clearInterval(interval);
-    //  }
-   // }, this.montoTotal);
-  //} 
+
   calcularPorcentajeRecaudadoBar(objOportunidades: Oportunidades): number{
 
     const montoRecaudado = objOportunidades.montoRecaudado!;

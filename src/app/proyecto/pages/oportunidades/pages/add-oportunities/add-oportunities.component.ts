@@ -10,7 +10,6 @@ import { FacturaService } from 'src/app/services/factura.service';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
-import { OnExit } from '../../../../../guards/exits.guard';
 import { Observable, first } from 'rxjs';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -21,7 +20,7 @@ import { ModalService } from 'src/app/services/modal.service';
   templateUrl: './add-oportunities.component.html',
   styleUrls: ['./add-oportunities.component.css']
 })
-export class AddOportunitiesComponent implements OnInit, OnExit {
+export class AddOportunitiesComponent implements OnInit {
 
   public objOportunidades: Oportunidades = new Oportunidades();
   public factura: Factura = new Factura();
@@ -38,7 +37,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
   public display = false;
 
 
-  
+
   constructor(private empresasServices: EmpresasService,
     private facturaService: FacturaService,
     private oportunidadesService: OportunidadesService,
@@ -47,12 +46,12 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
     private modalService: ModalService,
     private builder: FormBuilder) { }
 
-    form: FormGroup = this.builder.group({
-      rendimiento: ['', [Validators.required, customValidators.validarNumerosNegativos]],
-      monto: [''],
-      fechaCaducidad: ['', [Validators.required]],
-      tir: ['', [Validators.required, customValidators.validarNumerosNegativos]],
-    });
+  form: FormGroup = this.builder.group({
+    rendimiento: ['', [Validators.required, customValidators.validarNumerosNegativos]],
+    monto: [''],
+    fechaCaducidad: ['', [Validators.required]],
+    tir: ['', [Validators.required, customValidators.validarNumerosNegativos]],
+  });
 
   ngOnInit(): void {
     this.clearArrayList();
@@ -60,48 +59,16 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       this.display = show;
     });
   }
-  
-  //esta funcion muestra un modal y retorna una promesa que se resuelve a verdadero si el modal se cierra sin cancelar el registro, y falso si el modal cancela el registro.
-  //se consume el ModalService para mostrar el modal y retorna una promesa que resuelve si el modal se cierra sin cancelar el registro o no.
-  onExit(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.modalService.setShowModal(true);
-    return new Promise<boolean>((resolve, reject) => {
-      this.modalService.showModal$.pipe(first()).subscribe(show => {
-        if (!show) {
-          // Modal cerrado sin cancelar el registro
-          resolve(false);
-        } else {
-          // Modal canceló el registro
-          resolve(true);
-        }
-      });
-    });
-  }
+
   clearArrayList() {
-    this.oportunidadesService.getRefrescarFacturas().subscribe((response: any) => { 
+    this.oportunidadesService.getRefrescarFacturas().subscribe((response: any) => {
       const facturas = response.facturas;
+      this.facturaList = facturas;
     });
-  }
-  closeWithoutCancel(): void {
-    // Acción al cerrar el modal sin cancelar el registro
-    this.modalService.setShowModal(false);
-    
-  }
-  
-  cancelRegistration(): void {
-    // Acción al cancelar el registro
-    this.clearArrayList();
-    this.modalService.setShowModal(true);
   }
 
-  onPressEnter(event: any): void { 
-    if(event.key === 'Enter'){
-      // this.filterEmpresas(event.target.value);
-      console.log(event.target.value);
-    }
-  }
+
   filterEmpresas(keyword: String): void {
-  
     if (keyword.trim() === '') {
       this.empresas = [];
       this.seEncontraronResultados = false;
@@ -116,7 +83,7 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       console.log(err);
       this.mostrarAlerta = true;
     });
-    
+
   }
 
   //VALIDACIONES
@@ -201,60 +168,60 @@ export class AddOportunitiesComponent implements OnInit, OnExit {
       }
     );
 
-}
+  }
 
   postInsertarOportunidad() {
-  if (!this.empresaSeleccionada || !this.empresaSeleccionada.idEmpresa) {
-    // Validar si no se ha seleccionado una empresa o si no se ha obtenido su ID
-    // Puedes mostrar un mensaje de error o realizar alguna otra acción apropiada
-    Swal.fire('OJO', 'No se ha seleccionado una empresa', 'warning');
-    return;
-  }
-  if (!this.empresaFacturasRegistradas) {
-    // No hay facturas agregadas a la empresa, muestra un mensaje de error o realiza alguna otra acción apropiada
-    Swal.fire('OJO', 'No se han agregado facturas a la empresa', 'warning');
-    return;
-  }
-  if (this.form.invalid) {
-      console.log('se verifico');
-     this.form.markAllAsTouched();
-   return;
-  }
-  // Obtener el ID de la empresa seleccionada
-  const idEmpresaSeleccionada = this.empresaSeleccionada.idEmpresa;
-  console.log('se incia constante');
-  // Crear el objeto de oportunidad de inversión con los demás datos necesarios
-  const oportunidadInversion = {
-    // campos de la oportunidad de inversión
-    idEmpresa: idEmpresaSeleccionada,
-    fechaCaducidad: this.objOportunidades.fechaCaducidad,
-    rendimiento: this.objOportunidades.rendimiento,
-    monto: this.montoTotal,
-    tir: this.objOportunidades.tir,
-  };
-  console.log('se lee todo');
-  this.oportunidadesService.postOportunidad(oportunidadInversion).subscribe(
-    response => {
-      Swal.fire('Registro con exito', response.mensaje, 'success');
-      this.form.reset();
-      this.clearArrayList();
-      this.router.navigate(['/dashboard/inversion/list-inversion']);
-    
-    },
-    error => {
-      Swal.fire('OJO', 'Se debe agregar facturas para poder registrar una oportunidad', 'warning');
+    if (!this.empresaSeleccionada || !this.empresaSeleccionada.idEmpresa) {
+      // Validar si no se ha seleccionado una empresa o si no se ha obtenido su ID
+      // Puedes mostrar un mensaje de error o realizar alguna otra acción apropiada
+      Swal.fire('OJO', 'No se ha seleccionado una empresa', 'warning');
+      return;
     }
-  );
-     
-}
- 
-AgregarFacturaCheckbox(e:any, fac:Factura){
-  if(e.target.checked){
-    this.addFacturaOportunidad(fac)
+    if (!this.empresaFacturasRegistradas) {
+      // No hay facturas agregadas a la empresa, muestra un mensaje de error o realiza alguna otra acción apropiada
+      Swal.fire('OJO', 'No se han agregado facturas a la empresa', 'warning');
+      return;
+    }
+    if (this.form.invalid) {
+      console.log('se verifico');
+      this.form.markAllAsTouched();
+      return;
+    }
+    // Obtener el ID de la empresa seleccionada
+    const idEmpresaSeleccionada = this.empresaSeleccionada.idEmpresa;
+    console.log('se incia constante');
+    // Crear el objeto de oportunidad de inversión con los demás datos necesarios
+    const oportunidadInversion = {
+      // campos de la oportunidad de inversión
+      idEmpresa: idEmpresaSeleccionada,
+      fechaCaducidad: this.objOportunidades.fechaCaducidad,
+      rendimiento: this.objOportunidades.rendimiento,
+      monto: this.montoTotal,
+      tir: this.objOportunidades.tir,
+    };
+    console.log('se lee todo');
+    this.oportunidadesService.postOportunidad(oportunidadInversion).subscribe(
+      response => {
+        Swal.fire('Registro con exito', response.mensaje, 'success');
+        this.form.reset();
+        this.clearArrayList();
+        this.router.navigate(['/dashboard/inversion/list-inversion']);
 
-  }else{
-    this.deleteFacturaOportunidad(fac)
+      },
+      error => {
+        Swal.fire('OJO', 'Se debe agregar facturas para poder registrar una oportunidad', 'warning');
+      }
+    );
+
   }
-}
+
+  AgregarFacturaCheckbox(e: any, fac: Factura) {
+    if (e.target.checked) {
+      this.addFacturaOportunidad(fac)
+
+    } else {
+      this.deleteFacturaOportunidad(fac)
+    }
+  }
 
 }

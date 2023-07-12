@@ -13,13 +13,14 @@ import{ BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 
+
 registerLocaleData(localeEsPE);
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+   
   ],
   imports: [
     BrowserModule,

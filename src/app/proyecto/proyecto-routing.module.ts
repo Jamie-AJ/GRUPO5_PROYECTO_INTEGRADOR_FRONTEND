@@ -16,6 +16,10 @@ import { ListPageComponent } from './pages/empresas/pages/list-page/list-page.co
 import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
 import { AddFacturaComponent } from './pages/factura/pages/add-factura/add-factura.component';
 import { hasRoleGuard } from '../guards/has-role.guard';
+import { ReportsInversionesComponent } from './pages/reports/reports-inversiones/reports-inversiones.component';
+import { ReportsUsuariosComponent } from './pages/reports/reports-usuarios/reports-usuarios.component';
+import { withoutUnsavedChangesGuard } from '../guards/without-unsaved-changes.guard';
+import { RetiroComponent } from './pages/retiro/retiro.component';
 
 
 
@@ -29,9 +33,9 @@ const router: Routes = [
       { path: 'profile-edit', component: EditProfileComponent },
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
-      { path: 'account-status', component: AcountStatusComponent },
-      { path: 'wallet', component: WalletComponent },
-      { path: 'inversion/add-inversion', component: AddOportunitiesComponent},
+      { path: 'account-status', component: AcountStatusComponent},
+      { path: 'account-status/retiro', component: RetiroComponent},
+      { path: 'inversion/add-inversion', component: AddOportunitiesComponent, canDeactivate:[withoutUnsavedChangesGuard]},
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},
       { path: 'empresa/add-company', component: AddCompanyComponent},
       { path: 'empresa/list-company', component: ListPageComponent },
@@ -39,6 +43,8 @@ const router: Routes = [
       { path: 'empresa/edit-company', component: AddCompanyComponent },
       { path: 'factura/list-factura', component: ListFacturasComponent },
       { path: 'factura/add-factura', component: AddFacturaComponent },
+      { path: 'reportes/inversiones', component: ReportsInversionesComponent },
+      { path: 'reportes/usuarios', component: ReportsUsuariosComponent },
       { path: '**', redirectTo: 'dashboard' }
     ]
   }
@@ -52,6 +58,6 @@ const router: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
 })
 export class ProyectoRoutingModule { }

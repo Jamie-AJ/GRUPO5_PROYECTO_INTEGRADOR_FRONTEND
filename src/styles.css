@@ -3,6 +3,7 @@
     --primary-color: #172939;
     --sidebar-color: #434CE6;
     --sidebar-color-content:#293249;
+    --sidebar_color-hover:#313ae4;
     --circle-color: #7DE8FF;
     --white-color: #ffffff;
     --black-color: #1E1E1E;
@@ -14,16 +15,6 @@
     --pass-color:#6D6D6D;
     --table-color: #f8f9fc;
     --second-table-color: #e3e6f0;
-
-
-    /* --sidebar-color: #fa8b11; 
-    --primary-color: #1E2433;
-    --sidebar-color-content:#1E2433;
-     --white-color: #ffffff;
-    --black-color: #000000;
-     --grey-color:#6F6F6F;
-      --previus-color-btn:#dadada;
-    --second-table-color: #e3e6f0;*/
     /* TYPOGRAPHY */
     --font-primary: 'Monserrat', sans-serif;
 }
@@ -55,6 +46,7 @@ body{
     font-family:'Monserrat', sans-serif;;
     background-color:#f4f6fc;
     line-height: normal;
+    overflow-x: hidden;
 }
 ul,
 li{
@@ -75,4 +67,18 @@ button{
 }
 h1,h2,h3,h4,h5{
     margin:0;
+}
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-color);
+    border-radius: 1rem;
+    transition: background-color .8s ease-in-out;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sidebar_color-hover); 
+}
+body::-webkit-scrollbar-track {
+    background: #ffffff;
 }

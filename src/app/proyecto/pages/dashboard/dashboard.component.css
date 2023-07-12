@@ -1,124 +1,137 @@
-.dash__container{
+.dash__container {
     position: relative;
-    /* background-color: var(--panel-color);
-      box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
-    /* border-radius: 10px; */
     height: 100%;
     width: 100%;
+    transition: all 0.3s ease-in-out;
 }
-.dash__title{
+
+.dash__title {
     margin-bottom: 1.5rem;
 }
-.dash__title span{
-    font-size: 24px;
+
+.dash__title span {
+    font-size: 22px;
     font-weight: 600;
     color: var(--black-color);
 }
+
 .dash__title p {
     margin-top: 4px;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-color);
 }
-.dash__flex{
-    display:grid;
-    grid-template-columns: repeat(1,1fr);
+
+.dash__flex {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
 }
-.dash__box{
+
+.dash__box {
     background-color: var(--white-color);
-    box-shadow: 0px 0px 3px  rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
     padding: 1.5rem;
     border-radius: 10px;
 }
-.dash__overview{
+
+.dash__overview {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 0.5rem;
-    width:100%;
+    width: 100%;
     grid-column: 1/2;
 }
-.dash__overview .dash__subtitle{
+
+.dash__overview .dash__subtitle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
 }
-.dash__subtitle h4{
-    font-size: 15px;
+
+.dash__subtitle h4 {
+    font-size: 14px;
     font-weight: 600;
     color: var(--primary-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
+
 .dash__subtitle h4 i {
-    font-size: 20px;
+    font-size: 16px;
     color: var(--sidebar-color);
     background-color: #eaedf8;
-    padding:0.3rem;
+    padding: 0.3rem;
     border-radius: 50%;
 }
-.dash__info .dash__info-box{
+
+.dash__info .dash__info-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
 }
-.dash__info{
+
+.dash__info {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 1rem;
     position: relative;
 }
- .dash__subtitle span{
+
+.dash__subtitle span {
     font-size: 13px;
     font-weight: 500;
     color: var(--primary-color);
 }
 
-.barra-vertical{
+.barra-vertical {
     top: 0;
     height: 100%;
     width: 1px;
     background-color: var(--text-color);
-    border-radius: 0 10px 10px 0;   
+    border-radius: 0 10px 10px 0;
 }
-.dash__info .dash__info-box span{
-    font-size: 13.5px;
+
+.dash__info .dash__info-box span {
+    font-size: 10px;
     font-weight: 400;
     color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 0.25rem;
 }
-.dash__info .dash__info-box p{
-    font-size: 30px;
+
+.dash__info .dash__info-box p {
+    font-size: 20px;
     font-weight: 600;
     color: var(--primary-color);
 }
 
- @media screen and (min-width: 768px){
-    .dash__flex{
-        grid-template-columns: repeat(3,1fr);
-    }
-    .dash__overview{
-        grid-column: 1/3;
-    }
-}
-.dash__table-transaction{
+.dash__table-transaction {
     grid-column: 1/2;
 }
 
 
-.listar__content-table{
+.listar__content-table {
     overflow: auto;
     max-width: calc(100% - 1rem);
     margin: 1.5rem auto 0 auto;
 }
+.listar__content-table::-webkit-scrollbar {
+    height: 0.4rem;
+}
+.listar__content-table::-webkit-scrollbar-thumb{
+    background-color: var(--sidebar-color);
+    border-radius: 1rem;
+    transition: background-color .8s ease-in-out;
+}
+
 .listar__table {
     width: 100%;
     border-collapse: collapse;
@@ -126,7 +139,7 @@
 
 .listar__table .listar__thead th {
     padding: 1rem 0.75rem;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--text-color-light);
     text-transform: uppercase;
@@ -137,14 +150,17 @@
 .listar__table .listar__tbody {
     text-align: center;
 }
-.down{
+
+.down {
     color: #e03131;
     font-size: 1rem;
 }
-.up{
+
+.up {
     color: #0cbd2a;
     font-size: 1rem;
 }
+
 .listar__table .listar__tbody tr {
     border-bottom: 1px solid var(--second-table-color);
 }
@@ -165,66 +181,59 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-.transaccion__group{
+
+.transaccion__group {
     /* margin-top: 1rem; */
-    padding:1rem;
+    padding: 1rem;
     background-color: var(--white-color);
 }
+
 .retiro {
     /* background-color: #FFD1D1; */
     color: #e03131;
-  }
-  
+}
+
 .deposito {
-    color:#0cbd2a;
+    color: #0cbd2a;
     /* background-color: #D1FFD9; */
 }
+
 .arrow-down::before {
     content: "↓ ";
-    color:#e03131;
+    color: #e03131;
     font-size: 1rem;
 }
 
 .arrow-up::before {
     content: "↑ ";
-    color:#0cbd2a;
+    color: #0cbd2a;
     font-size: 1rem;
 }
-@media screen and (min-width: 768px){
-    .dash__table-transaction{
-        grid-column: 1/3;
-    }
-    
-}
-.dash__chart{
-    grid-column: 1/2;
-}
-.dash__chart-info{
-    margin-top: 1rem;
-}
-@media screen and (min-width:768px){
-    .dash__chart{
-        grid-column: 1/3;
-    }
-}
 
-.dash__saldo{
+
+.dash__saldo {
     display: flex;
+    gap: 0.75rem;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.dash__saldo .dash__saldo_info{
-    font-size: 25px;
+.dash__saldo .dash__saldo_info {
+    font-size: 18px;
     text-align: center;
     font-weight: 600;
-    /* margin: 1rem 0 ; */
-    /* color: var(--text-color); */
 }
-.dash__saldo .saldo__deposit{
+
+.dash__totaldeposito,
+.dash__totalinversion {
+    font-size: 13px;
+}
+
+.dash__saldo .saldo__deposit {
     margin-top: 1rem;
 }
-.dash__saldo .saldo__deposit a{
+
+.dash__saldo .saldo__deposit a {
     background-color: #eaedf8;
     color: var(--black-color);
     padding: 0.5rem 1rem;
@@ -237,14 +246,98 @@
     transition: all 0.3s ease;
     cursor: pointer;
 }
-.dash__saldo .saldo__deposit a:hover{
+
+.dash__saldo .saldo__deposit a:hover {
     background-color: #e3e6f0;
 }
-@media screen and (min-width: 768px){
-    .dash__saldo{
+
+@media screen and (min-width: 468px) {
+    .dash__subtitle h4 i {
+        font-size: 20px;
+    }
+
+    .dash__subtitle h4 {
+        font-size: 16px;
+    }
+
+    .dash__info .dash__info-box span {
+        font-size: 11px;
+    }
+
+    .dash__info .dash__info-box p {
+        font-size: 22px;
+    }
+
+    .dash__saldo .dash__saldo_info {
+        font-size: 20px;
+    }
+    .listar__table .listar__thead th {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dash__overview .dash__subtitle:first-child {
+        margin-bottom: 0;
+    }
+    .dash__overview {
+        justify-content: unset;
+        gap:2rem;
+    }
+    /* .dash__info .dash__info-box span {
+        font-size: 12px;
+    } */
+    .dash__info .dash__info-box p {
+        font-size: 24px;
+    }
+
+    .dash__saldo .dash__saldo_info {
+        font-size: 22px;
+    }
+
+    .dash__totaldeposito,
+    .dash__totalinversion {
+        font-size: 14px;
+    }
+
+    .dash__table-transaction {
+        grid-column: 1/3;
+    }
+
+    .dash__chart {
+        grid-column: 1/3;
+    }
+
+    .dash__chart-info {
+        margin-top: 1rem;
+    }
+    .dash__saldo .saldo__deposit {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 998px) {
+    .dash__overview .dash__subtitle:first-child {
+        margin-bottom: 1rem;
+    }
+    .dash__saldo .dash__saldo_info {
+        font-size: 24px;
+    }
+    .dash__flex {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dash__overview {
+        grid-column: 1/3;
+    }
+
+    .dash__saldo {
         grid-column: 3/4;
-        height:250px;
+        height: 250px;
         grid-row: 1/3;
     }
-    
+    .dash__totaldeposito,
+    .dash__totalinversion {
+        font-size: 16px;
+    }
 }

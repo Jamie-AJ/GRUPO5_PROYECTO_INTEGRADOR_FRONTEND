@@ -17,10 +17,9 @@ export class ExitsGuard implements CanDeactivate<OnExit> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('canDeactivate');
-    this.modalService.setShowModal(false); // Asegúrate de cerrar el modal antes de navegar
-  
-    return component.onExit ? component.onExit() : true;
-  }
+    
+     
+      return component.onExit();
+    }
   
 }
