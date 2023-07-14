@@ -28,9 +28,8 @@ export class AcountStatusComponent implements OnInit{
   cuentaBancariaList:CuentaBancaria[] = []; 
   bancos:Bancos[] = [];
   monedas:Monedas[] = [];
-  mostrarFormularioDeposito:boolean = false;
-  public display = false;
-  isDropdownOpen: boolean = false;
+  // mostrarFormularioDeposito:boolean = false;
+
   objCuentaBancaria:CuentaBancaria = {
     idCuentaBancaria:0,
     nroCuenta:'',
@@ -76,16 +75,13 @@ export class AcountStatusComponent implements OnInit{
   ngOnInit(): void {
     this.bancoService.getBancos().subscribe(bancos =>{this.bancos = bancos});
     this.monedasService.getMonedas().subscribe(monedas => {this.monedas = monedas})
-    this.getCuentaBancarias();
+    // this.getCuentaBancarias();
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
   }
-  openModal() {
-    this.display = true;
-  }
-  closeModal() { 
-    this.display = false;
+  resetForm() {
+    this.form.reset();
   }
   //llena el select con los meses
   get meses():Mes[]{
@@ -115,12 +111,7 @@ export class AcountStatusComponent implements OnInit{
     }
     return null;
   }
-  //VALIDACIONES DE LOS SELECTS
-  getCuentaBancarias(){
-    this.cuentaBancaria.getCuentaBancaria().subscribe(cuentaBancaria => {
-      console.log(cuentaBancaria);
-      this.cuentaBancariaList = cuentaBancaria;});
-  }
+
 
   postCuentaBancaria(){
     if(this.form.invalid){
@@ -131,32 +122,8 @@ export class AcountStatusComponent implements OnInit{
     this.cuentaBancaria.postCuentaBancaria(this.form.value).subscribe(resp => {
       document.getElementById('btnCloseModal')?.click();
       Swal.fire('Excelente', resp.mensaje, 'success');
-      this.getCuentaBancarias()
+      // this.getCuentaBancarias()
     });
-  }
-
-  desactivarCuentasBancarias(cuentaBacaria:CuentaBancaria){
-    Swal.fire({
-      title: '¿Estas seguro?',
-      text: "No podras revertir esto!",
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.cuentaBancaria.deleteById(cuentaBacaria.idCuentaBancaria || 0).subscribe(resp =>{
-          this.getCuentaBancarias();
-          Swal.fire(
-            'Deleted!',
-            resp.mensaje,
-            'success'
-          )
-        }) 
-      }
-    })
-    
   }
 
 }

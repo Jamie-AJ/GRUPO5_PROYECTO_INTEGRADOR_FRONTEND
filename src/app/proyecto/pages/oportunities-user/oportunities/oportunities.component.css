@@ -45,8 +45,10 @@
 .oportunities__box--content {
   background-color: var(--white-color);
   padding: 20px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  width: 100%;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  /* width: 100%; */
+  border:1px solid #e6e6e6;
+  border-radius: 10px;
 
 }
 

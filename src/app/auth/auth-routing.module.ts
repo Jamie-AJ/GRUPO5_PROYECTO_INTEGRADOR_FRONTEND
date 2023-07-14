@@ -6,16 +6,16 @@ import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { MainComponent } from './pages/main/main.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
-const router:Routes = [
+const router: Routes = [
   {
-    path:'',
-    component:MainComponent,
-    children:[
-      {path:'login', component:LoginComponent},
-      {path:'forgot', component:ForgotPasswordComponent},
-      {path:'registrar', component:RegistrarComponent},
-      {path:'**', redirectTo:'login'}
-    ] 
+    path: '',
+    component: MainComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'resetpassword', component: ForgotPasswordComponent },
+      { path: 'registrar', component: RegistrarComponent },
+      { path: '**', redirectTo: 'login' }
+    ]
   }
 ]
 
@@ -25,7 +25,7 @@ const router:Routes = [
     CommonModule,
     RouterModule.forChild(router)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

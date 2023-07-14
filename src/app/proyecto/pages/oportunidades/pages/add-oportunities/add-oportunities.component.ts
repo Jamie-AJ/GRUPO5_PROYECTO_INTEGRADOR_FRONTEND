@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
@@ -10,7 +10,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
-import { Observable, first } from 'rxjs';
+
 import { ModalService } from 'src/app/services/modal.service';
 
 
@@ -52,13 +52,21 @@ export class AddOportunitiesComponent implements OnInit {
     fechaCaducidad: ['', [Validators.required]],
     tir: ['', [Validators.required, customValidators.validarNumerosNegativos]],
   });
-
+  @HostListener('document:keydown', ['$event']) 
+  onKeydown(event: KeyboardEvent) {
+    const eventKey = event.key;
+    if (eventKey === 'enter') {
+      event.preventDefault();
+    }
+  }
+  
   ngOnInit(): void {
     this.clearArrayList();
     this.modalService.showModal$.subscribe(show => {
       this.display = show;
     });
   }
+
 
   clearArrayList() {
     this.oportunidadesService.getRefrescarFacturas().subscribe((response: any) => {

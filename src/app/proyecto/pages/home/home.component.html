@@ -9,7 +9,7 @@
           <span class="name_go">GO!</span>
         </div>
       </div>
-      <div class="side_menu" >
+      <div class="side_menu" (click)="closeSideBar()">
         <div>
           <a
             [routerLink]="['/dashboard']"
@@ -88,7 +88,7 @@
           </a>
         </div>
 
-        <div class="dropdown__side" [ngClass]="{ 'dropdown__side--show': isDropdownOpen }" *ngIf="isAdministrador">
+        <!-- <div class="dropdown__side" [ngClass]="{ 'dropdown__side--show': isDropdownOpen }" *ngIf="isAdministrador">
           <a (click)="toggleDropdown()" class="sidebar__links">
             <i class="bx bxs-report icon"></i>
             Reportes
@@ -107,19 +107,19 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="sidebar__bottom">
-      <a (click)="logout()" class="sidebar__links">
+      <a (click)="logout()" class=" sidebar__links sidebar__logout">
         <i class="bx bx-user icon"></i>
         <div class="menu__user">
           <div class="menu__datauser">
             <span>{{ user.nombre }} {{ user.apellidoPa }}</span>
             <p>{{ isAdministrador ? "Administrador" : "Inversionista" }}</p>
           </div>
-          <i class="bx bx-log-out"></i>
+          <i class="bx bx-log-out icon"></i>
         </div>
       </a>
     </div>

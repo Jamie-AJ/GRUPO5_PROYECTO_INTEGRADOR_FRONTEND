@@ -162,13 +162,13 @@
     margin-top: 1rem;
     cursor: pointer;
 }
-
+.sidebar__bottom i{
+}
 .menu__user {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
-
+    gap: 5rem;
 }
 
 .menu__user i {
@@ -182,13 +182,13 @@
 }
 
 .menu__datauser span {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--white-color);
 }
 
 .menu__datauser p {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     /* color: var(--white-color); */
 }
@@ -215,7 +215,7 @@
     left: 0;
     top: 0;
     background-color: #ffffff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
     z-index: 100;
     transition: all .3s ease-in-out;
     padding: 0 15px;
@@ -261,45 +261,45 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 468px) {
-    .main {
-        padding: 90px 20px;
+    @media screen and (min-width: 468px) {
+        .main {
+            padding: 90px 20px;
+        }
+
+        .header {
+            padding: 0 20px;
+        }
     }
 
-    .header {
-        padding: 0 20px;
-    }
-}
+    @media screen and (min-width: 768px) {
+        .header {
+            width: calc(100% - 78px);
+            left: 78px;
+            padding: 0 30px;
+        }
 
-@media screen and (min-width: 768px) {
-    .header {
-        width: calc(100% - 78px);
-        left: 78px;
-        padding: 0 30px;
-    }
+        .collapse-header {
+            width: calc(100% - 290px);
+            left: 290px;
+        }
 
-    .collapse-header {
-        width: calc(100% - 265px);
-        left:265px;
-    }
+        .sidebar {
+            left: 0;
+        }
 
-    .sidebar {
-        left: 0;
-    }
+        .sidebar-collapse {
+            width: 290px;
+        }
 
-    .sidebar-collapse {
-        width:265px;
-    }
+        .main {
+            width: calc(100% - 78px);
+            left: 78px;
+            padding: 90px 30px;
+        }
 
-    .main {
-        width: calc(100% - 78px);
-        left: 78px;
-        padding: 90px 30px;
-    }
+        .main-collapse {
+            width: calc(100% - 290px);
+            left: 290px;
+        }
 
-    .main-collapse {
-        width: calc(100% - 265px);
-        left: 265px;
     }
-
-}

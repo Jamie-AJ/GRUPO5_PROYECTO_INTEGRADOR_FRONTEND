@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   isInversionista = this.login.getUserRole() === 'INVERSIONISTA';
 
   collapse: boolean = false;
-  isIconRotated: boolean = false;
   isDropdownOpen: boolean = false;
   screenWidth = 0;
   isLoggedIn = false;
@@ -30,12 +29,11 @@ export class HomeComponent implements OnInit {
   }
   constructor(private login: LoginService, private router: Router, private saldoService: SaldoService) { }
   
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(event: any) {
-    this.closeSidebarIfNeeded(event.target.innerWidth);
-  }
+  // @HostListener('window:resize', ['$event'])
+  // onWindowResize(event: any) {
+  //   this.closeSidebarIfNeeded(event.target.innerWidth);
+  // }
     ngOnInit(): void {
-  
       this.singIn();
       this.getSaldo();
     }
@@ -76,8 +74,9 @@ export class HomeComponent implements OnInit {
   toggleDropdown(){
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-  closeDropdownOnClick() {
-    this.closeDropdown();
+  closeSideBar() {
+    console.log('closeSideBar');
+    this.collapse = false;
   }
 
 }

@@ -1,0 +1,24 @@
+<section class="status animate__animated animate__fadeIn animete_faster">
+    <div class="status__container">
+      <div class="status__nav">
+        <div class="status__header">
+          <h3>{{title}}</h3>
+        </div>
+      </div>
+    </div>
+    <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
+    <div class="status__box">
+      <div
+        class="status__content animate__animated animate__fadeIn animete_faster"
+        *ngIf="activeTabsIndex === 0"
+      >
+      <app-wallet></app-wallet>
+      </div>
+      <div
+        class="status__content animate__animated animate__fadeIn animete_faster"
+        *ngIf="activeTabsIndex === 1"
+      >
+        <app-account-bank></app-account-bank>
+      </div>
+    </div>
+  </section>
