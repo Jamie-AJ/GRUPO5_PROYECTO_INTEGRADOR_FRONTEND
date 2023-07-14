@@ -1,0 +1,29 @@
+
+<div class="account">
+    <div class="account__bank" *ngFor="let cta of cuentaBancariaList">
+      <div class="account__info">
+        <h4>{{ cta.bancos?.nomBancos }}</h4>
+        <div class="account__info-content">
+          <p>Titular:</p>
+          <span
+            >{{ cta.usuario?.nombre | uppercase }}
+            {{ cta.usuario?.apellidoPa | uppercase }}
+          </span>
+        </div>
+        <div class="account__info-content">
+          <div>
+            <p>Moneda:</p>
+            <span>{{ cta.monedas?.nomMonedas }}</span>
+          </div>
+          <i
+            class="bx bx-trash icon"
+            (click)="desactivarCuentasBancarias(cta)"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <a class="open-modal" [routerLink]="['/dashboard/account-status/addaccount']"> Agregar Cuenta Bancaria <i class="bx bx-plus icon"></i>
+    </a>
+  </div>
+
+  

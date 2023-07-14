@@ -7,7 +7,7 @@ import { AcountStatusComponent } from './pages/acount-status/acount-status.compo
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { WalletComponent } from './pages/wallet/wallet.component';
+
 import { OportunitiesComponent } from './pages/oportunities-user/oportunities/oportunities.component';
 import { AddOportunitiesComponent } from './pages/oportunidades/pages/add-oportunities/add-oportunities.component';
 import { ListOportunitiesComponent } from './pages/oportunidades/pages/list-oportunities/list-oportunities.component';
@@ -15,11 +15,14 @@ import { AddCompanyComponent } from './pages/empresas/pages/add-company/add-comp
 import { ListPageComponent } from './pages/empresas/pages/list-page/list-page.component';
 import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
 import { AddFacturaComponent } from './pages/factura/pages/add-factura/add-factura.component';
-import { hasRoleGuard } from '../guards/has-role.guard';
+
 import { ReportsInversionesComponent } from './pages/reports/reports-inversiones/reports-inversiones.component';
 import { ReportsUsuariosComponent } from './pages/reports/reports-usuarios/reports-usuarios.component';
 import { withoutUnsavedChangesGuard } from '../guards/without-unsaved-changes.guard';
-import { RetiroComponent } from './pages/retiro/retiro.component';
+import { MainAccountComponent } from './pages/account-status/page/main-account/main-account.component';
+import { AddAccountComponent } from './pages/account-status/page/add-account/add-account.component';
+
+
 
 
 
@@ -33,9 +36,9 @@ const router: Routes = [
       { path: 'profile-edit', component: EditProfileComponent },
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
-      { path: 'account-status', component: AcountStatusComponent},
-      { path: 'account-status/retiro', component: RetiroComponent},
-      { path: 'inversion/add-inversion', component: AddOportunitiesComponent, canDeactivate:[withoutUnsavedChangesGuard]},
+      { path: 'account-status', component: MainAccountComponent },
+      { path: 'account-status/addaccount', component: AddAccountComponent},
+      { path: 'inversion/add-inversion', component: AddOportunitiesComponent},
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},
       { path: 'empresa/add-company', component: AddCompanyComponent},
       { path: 'empresa/list-company', component: ListPageComponent },

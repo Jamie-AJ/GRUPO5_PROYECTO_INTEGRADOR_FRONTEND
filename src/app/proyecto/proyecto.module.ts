@@ -13,14 +13,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { WalletComponent } from './pages/wallet/wallet.component';
+import { WalletComponent } from './pages/account-status/page/wallet/wallet.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
 
 
 import { AuthModule } from '../auth/auth.module';
 import { SharedModule } from '../shared/shared.module';
-import { DepositoComponent } from './pages/deposito/deposito.component';
-import { RetiroComponent } from './pages/retiro/retiro.component';
+
+
 import localeEsPE from '@angular/common/locales/es-PE';
 
 import { registerLocaleData } from '@angular/common';
@@ -35,6 +35,14 @@ import { AddFacturaComponent } from './pages/factura/pages/add-factura/add-factu
 import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
 import { ReportsInversionesComponent } from './pages/reports/reports-inversiones/reports-inversiones.component';
 import { ReportsUsuariosComponent } from './pages/reports/reports-usuarios/reports-usuarios.component';
+import { DepositoComponent } from './pages/account-status/page/deposito/deposito.component';
+import { RetiroComponent } from './pages/account-status/page/retiro/retiro.component';
+import { AccountBankComponent } from './pages/account-status/page/account-bank/account-bank.component';
+import { MainAccountComponent } from './pages/account-status/page/main-account/main-account.component';
+import { AddAccountComponent } from './pages/account-status/page/add-account/add-account.component';
+
+
+
 
 
 
@@ -69,6 +77,9 @@ registerLocaleData(localeEsPE);
     ListFacturasComponent,
     ReportsInversionesComponent,
     ReportsUsuariosComponent,
+    AccountBankComponent,
+    MainAccountComponent,
+    AddAccountComponent,
     
   ],
   imports: [

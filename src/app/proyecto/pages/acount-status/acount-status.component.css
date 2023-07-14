@@ -1,5 +1,5 @@
 .status{
-    position: relative;
+    /* position: relative; */
     height: 100%;
     /* z-index:0; */
 }
@@ -18,6 +18,7 @@
 .status__box{
     padding: 1rem 0;
 }
+
 .account{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(333px, 1fr)); /* Columnas con ancho mínimo de 300px y ajustables automáticamente */

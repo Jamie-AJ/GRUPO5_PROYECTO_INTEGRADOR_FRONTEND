@@ -1,16 +1,10 @@
 <div class="status__tabs">
   <ul class="status__tabs--container">
-    <!-- (click)="onTabClick('Movimientos')" -->
-    <!-- [class.active]="activeTabs == 'Movimientos'" -->
+
     <li  *ngFor="let tab of tabs; let sr = index" (click)="onTabClick(sr)">
       <a class="status__link" [ngClass]="activeTabs == sr ? 'active' : ''">  {{ tab }}</a>
     </li>
-    <!-- <li class="status__link" (click)="onTabClick('DepositoRetiros')" [class.active]="activeTabs == 'DepositoRetiros'">
-        Depositos y Retiros
-      </li>
-      <li class="status__link" (click)="onTabClick('CuentaBancaria')" [class.active]="activeTabs == 'CuentaBancaria'">
-        Cuenta Bancaria
-      </li> -->
+  
     <div class="line"></div>
   </ul>
 </div>

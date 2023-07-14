@@ -7,6 +7,7 @@ export class CuentaBancaria {
     nroCuenta?:         string;
     nroCuentaCci?:      string;
     cvv?:               string;
+    nombreCompleto?:    string;
     mes?:               string;
     year?:              string;
     saldo?:             number;

@@ -1,0 +1,10 @@
+.chart_container{
+    max-width: 100%;
+    width: 100%;
+  }
+  .wallet__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:1rem;
+}

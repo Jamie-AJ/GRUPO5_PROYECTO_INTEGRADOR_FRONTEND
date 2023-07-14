@@ -1,4 +1,5 @@
 @import 'ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 :root{
     --primary-color: #172939;
     --sidebar-color: #434CE6;
@@ -16,7 +17,7 @@
     --table-color: #f8f9fc;
     --second-table-color: #e3e6f0;
     /* TYPOGRAPHY */
-    --font-primary: 'Monserrat', sans-serif;
+    --font-primary: Poppins, sans-serif;
 }
 .dark-mode {
     --primary-color: #1E2433;
@@ -43,8 +44,8 @@
 }
 body{
     position: relative;
-    font-family:'Monserrat', sans-serif;;
-    background-color:#f4f6fc;
+    font-family:var(--font-primary);
+    background-color:var(--white-color);
     line-height: normal;
     overflow-x: hidden;
 }
