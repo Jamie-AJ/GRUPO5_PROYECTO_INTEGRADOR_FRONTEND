@@ -37,7 +37,7 @@ const router: Routes = [
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
       { path: 'account-status', component: MainAccountComponent },
-      { path: 'account-status/addaccount', component: AddAccountComponent},
+      { path: 'account-status/addaccount', component: AddAccountComponent, canDeactivate: [withoutUnsavedChangesGuard]},
       { path: 'inversion/add-inversion', component: AddOportunitiesComponent},
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},
       { path: 'empresa/add-company', component: AddCompanyComponent},
