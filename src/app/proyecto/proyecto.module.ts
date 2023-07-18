@@ -40,6 +40,7 @@ import { RetiroComponent } from './pages/account-status/page/retiro/retiro.compo
 import { AccountBankComponent } from './pages/account-status/page/account-bank/account-bank.component';
 import { MainAccountComponent } from './pages/account-status/page/main-account/main-account.component';
 import { AddAccountComponent } from './pages/account-status/page/add-account/add-account.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -80,6 +81,7 @@ registerLocaleData(localeEsPE);
     AccountBankComponent,
     MainAccountComponent,
     AddAccountComponent,
+    PaginationComponent
     
   ],
   imports: [

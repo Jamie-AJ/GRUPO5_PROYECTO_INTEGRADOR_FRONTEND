@@ -162,8 +162,7 @@
     margin-top: 1rem;
     cursor: pointer;
 }
-.sidebar__bottom i{
-}
+
 .menu__user {
     display: flex;
     align-items: center;
@@ -261,45 +260,45 @@
     cursor: pointer;
 }
 
-    @media screen and (min-width: 468px) {
-        .main {
-            padding: 90px 20px;
-        }
-
-        .header {
-            padding: 0 20px;
-        }
+@media screen and (min-width: 468px) {
+    .main {
+        padding: 90px 20px;
     }
 
-    @media screen and (min-width: 768px) {
-        .header {
-            width: calc(100% - 78px);
-            left: 78px;
-            padding: 0 30px;
-        }
-
-        .collapse-header {
-            width: calc(100% - 290px);
-            left: 290px;
-        }
-
-        .sidebar {
-            left: 0;
-        }
-
-        .sidebar-collapse {
-            width: 290px;
-        }
-
-        .main {
-            width: calc(100% - 78px);
-            left: 78px;
-            padding: 90px 30px;
-        }
-
-        .main-collapse {
-            width: calc(100% - 290px);
-            left: 290px;
-        }
-
+    .header {
+        padding: 0 20px;
     }
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        width: calc(100% - 78px);
+        left: 78px;
+        padding: 0 30px;
+    }
+
+    .collapse-header {
+        width: calc(100% - 290px);
+        left: 290px;
+    }
+
+    .sidebar {
+        left: 0;
+    }
+
+    .sidebar-collapse {
+        width: 290px;
+    }
+
+    .main {
+        width: calc(100% - 78px);
+        left: 78px;
+        padding: 90px 30px;
+    }
+
+    .main-collapse {
+        width: calc(100% - 290px);
+        left: 290px;
+    }
+
+}

@@ -3,33 +3,33 @@
   <img src="assets/img/logov3.png" alt="logo" class="logo__img" />
 </div> -->
 <form (ngSubmit) = "formSubmit()" [formGroup]="form" class="form" autocomplete="off">
-  <div class="logo">
-    <img src="assets/img/logov3.png" alt="logo" class="logo__img" />
-  </div>
-  <div class="form__title">
-    <h2 class="form__heading">Bienvenido, Inicia sesión</h2>
-  </div>
-  <div class="form__sign-in">
-    <div class="input__wrap">
-      <input id="username" class="input__field"  formControlName="username"placeholder=" "/>
-      <!-- <i class="bx bx-user form__icon"></i>   -->
-      <label for="username" class="label__field">Usuario</label>
-      <span *ngIf="isValid('username')" class="invalid">{{getFieldError('username')}}</span>
+    <div class="logo">
+        <img src="assets/img/logov3.png" alt="logo" class="logo__img" />
     </div>
-    <div class="input__wrap">
-      <input  type="password" class="input__field" formControlName="password" placeholder=" "/>
-      <!-- <i class="bx bx-lock form__icon"></i> -->
-      <label for="password" class="label__field">Contraseña</label>
-      <span *ngIf="isValid('password')" class="invalid">{{getFieldError('password')}}</span>
+    <div class="form__title">
+        <h2 class="form__heading">Bienvenido, Inicia sesión</h2>
     </div>
-    <div class="input__wrap">
-      <a routerLink="" class="forgot__link">¿Olvidaste tú contraseña?</a>
+    <div class="form__sign-in">
+        <div class="input__wrap">
+            <input id="username" class="input__field"  formControlName="username"placeholder=" "/>
+        <!-- <i class="bx bx-user form__icon"></i>   -->
+            <label for="username" class="label__field">Usuario</label>
+            <span *ngIf="isValid('username')" class="invalid">{{getFieldError('username')}}</span>
+        </div>
+        <div class="input__wrap">
+            <input  type="password" class="input__field" formControlName="password" placeholder=" "/>
+        <!-- <i class="bx bx-lock form__icon"></i> -->
+            <label for="password" class="label__field">Contraseña</label>
+            <span *ngIf="isValid('password')" class="invalid">{{getFieldError('password')}}</span>
+        </div>
+        <div class="input__wrap">
+            <a routerLink="/auth/resetpassword" class="forgot__link">¿Olvidaste tú contraseña?</a>
+        </div>
+        <div class="input__wrap">
+            <button type = "submit" class="btn__acceses" color="primary">Iniciar sesión</button>
+        </div>
+        <p class="form__text">
+        ¿No tienes cuenta? <a routerLink="/auth/registrar">Registrate ahora.</a>
+        </p>
     </div>
-    <div class="input__wrap">
-      <button type = "submit" class="btn__acceses" color="primary">Iniciar sesión</button>
-    </div>
-    <p class="form__text">
-      ¿No tienes cuenta? <a routerLink="/auth/registrar">Registrate ahora.</a>
-    </p>
-  </div>
 </form>

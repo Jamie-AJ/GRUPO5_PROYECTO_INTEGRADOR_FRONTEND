@@ -42,7 +42,7 @@ const router: Routes = [
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},
       { path: 'empresa/add-company', component: AddCompanyComponent},
       { path: 'empresa/list-company', component: ListPageComponent },
-      { path: 'empresa/list-componay/:page', component: ListPageComponent },
+      { path: 'empresa/list-company/:page', component: ListPageComponent },
       { path: 'empresa/edit-company', component: AddCompanyComponent },
       { path: 'factura/list-factura', component: ListFacturasComponent },
       { path: 'factura/add-factura', component: AddFacturaComponent },

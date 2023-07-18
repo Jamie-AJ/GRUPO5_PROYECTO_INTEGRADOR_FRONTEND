@@ -46,6 +46,7 @@ export class ListPageComponent implements OnInit {
       this.empresaService.getEmpresasAllPage(totalPages).subscribe(response => {
         console.log(response);
         this.empresasList = response.content as Empresas[];
+        this.pagination = response;
       });
     })
 

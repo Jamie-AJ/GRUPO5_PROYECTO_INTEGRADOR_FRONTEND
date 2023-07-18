@@ -6,44 +6,43 @@
             <h3>{{title}}</h3>
           </div>
         </div>
-        <div class="oportunities__user--box">
-          <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
-        <a *ngIf="selectOportunity" (click)="openModal(opor)">
-        <!-- <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs> -->
-                <div class="oportunities__box">
-                    <div class="oportunities__title">
-                      <h4>{{truncateString(opor.empresa?.razonSocial, 13) }}</h4>
-                      <span>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
-                    </div>
-                    <div class="oportunities__riegos">
-                        <span>Riesgo:</span>
-                       <p class="badge" [ngClass]="getBadgeClassRango(opor.empresa?.riesgo?.rango!)"> {{opor.empresa?.riesgo?.rango}}</p>
-                    </div>
-                    <div class="oportunities__pago">
-                       <div class="oportunities__pago-fecha">
-                        <span>Fecha de pago:</span>
-                        <p>{{opor.fechaPago | date:'mediumDate':'':'es-PE'}}</p>
-                       </div>
-                       <div class="oportunities__pago-tasas">
-                            <span>Rendimiento/TIR:</span>
-                            <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
-                       </div>
-                    </div>  
 
-                    <div class="oportunities__finances">
-                      <div class="oportunities__finances-box">
-                        <span>Financiado Al </span>
-                        <p>{{ calcularPorcentajeRecaudadoBar!(opor) + '%'}}</p>
-                      </div>
-                        <progress class="progress-bar" [value]="opor.montoRecaudado" [max]="opor.monto"></progress>
+        <div class="oportunities__user--box">
+            <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
+                <a *ngIf="selectOportunity" (click)="openModal(opor)">
+                    <div class="oportunities__box">
+                        <div class="oportunities__title">
+                            <h4>{{truncateString(opor.empresa?.razonSocial, 13) }}</h4>
+                            <span>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
+                        </div>
+                        <div class="oportunities__riegos">
+                            <span>Riesgo:</span>
+                            <p class="badge" [ngClass]="getBadgeClassRango(opor.empresa?.riesgo?.rango!)"> {{opor.empresa?.riesgo?.rango}}</p>
+                        </div>
+                        <div class="oportunities__pago">
+                            <div class="oportunities__pago-fecha">
+                                <span>Fecha de pago:</span>
+                                <p>{{opor.fechaPago | date:'mediumDate':'':'es-PE'}}</p>
+                            </div>
+                            <div class="oportunities__pago-tasas">
+                                    <span>Rendimiento/TIR:</span>
+                                    <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
+                            </div>
+                        </div>  
+
+                        <div class="oportunities__finances">
+                            <div class="oportunities__finances-box">
+                                <span>Financiado Al </span>
+                                <p>{{ calcularPorcentajeRecaudadoBar!(opor) + '%'}}</p>
+                            </div>
+                            <progress class="progress-bar" [value]="opor.montoRecaudado" [max]="opor.monto"></progress>
+                        </div>
                     </div>
-                  </div>
-              </a>
+                </a>
             </div>
         </div>
     </div>
-     
-  </section>
+</section>
   <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
     <div class="modal__container"  (click)="stopPropagation($event)">
       <div class="modal__content">

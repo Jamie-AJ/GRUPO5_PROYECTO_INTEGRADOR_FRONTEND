@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
@@ -28,6 +28,12 @@ export class AddCompanyComponent {
     correo:['',[Validators.required]],
     sector:['',[Validators.required]],
   })
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.postEmpresas();
+    }
+   }
   //VALIDACIONES
   isValid(field: string) {
     return this.form.controls[field].errors && this.form.controls[field].touched;
@@ -38,7 +44,7 @@ export class AddCompanyComponent {
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
-          return 'Este campo es requerido';
+          return 'Este valor es requerido';
         case 'minlength':
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
