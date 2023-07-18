@@ -127,19 +127,10 @@
 </div>
 <header class="header" [ngClass]="collapse ? 'collapse-header' : ''">
   <div class="profile__user">
-    <i
-      class="toggle"
-      [ngClass]="collapse ? 'bx bx-x' : 'bx bx-menu'"
-      (click)="toggleCollapse()"
-    ></i>
+    <i class="toggle" [ngClass]="collapse ? 'bx bx-x' : 'bx bx-menu'" (click)="toggleCollapse()"></i>
   </div>
-  <span
-    *ngIf="isInversionista"
-    routerLink="/dashboard/account-status"
-    class="wallet-button"
-  >
-    <i class="bx bx-coin-stack"></i
-    >{{ objSaldo.saldo | currency : "S/.&nbsp;" : "symbol-narrow" }}
+  <span *ngIf="isInversionista" routerLink="/dashboard/account-status" class="wallet-button" >
+    <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency : "S/.&nbsp;" : "symbol-narrow" }}
   </span>
 </header>
 

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   isAdministrador = this.login.getUserRole() === 'ADMIN';
   isInversionista = this.login.getUserRole() === 'INVERSIONISTA';
-
+  darkMode = false;
   collapse: boolean = false;
   isDropdownOpen: boolean = false;
   screenWidth = 0;
@@ -44,7 +44,9 @@ export class HomeComponent implements OnInit {
       this.isSideBarCollapse = true;
     }
   }
-
+  darkTheme() {
+    this.darkMode = !this.darkMode;
+  }
   getSaldo() {
     this.saldoService.getDetallCartera().subscribe(resp => {
       this.objSaldo = resp;

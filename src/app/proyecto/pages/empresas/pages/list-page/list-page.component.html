@@ -54,7 +54,7 @@
               </tr>
             </tbody>
           </table>
-          <app-pagination></app-pagination>
+          <app-pagination *ngIf="pagination" [pagination]="pagination"></app-pagination>
         </div>
         
       </div>

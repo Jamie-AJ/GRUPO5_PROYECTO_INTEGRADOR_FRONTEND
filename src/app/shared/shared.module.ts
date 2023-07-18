@@ -9,8 +9,7 @@ import { AccordionComponent } from './components/accordion/accordion.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { max } from 'rxjs';
-import { PaginationComponent } from './components/pagination/pagination.component';
+
 
 
 
@@ -27,7 +26,6 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ModalComponent,
     ChartsComponent,
     ProgressBarComponent,
-    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +39,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ModalComponent,
     ChartsComponent,
     ProgressBarComponent,
-    PaginationComponent
+
   ]
 })
 export class SharedModule { }

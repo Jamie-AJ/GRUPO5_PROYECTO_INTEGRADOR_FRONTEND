@@ -1,7 +1,5 @@
 .bank {
     margin: 0 auto;
-    /* height: 100%; */
-    /* padding: 0 90px; */
 }
 
 .main {
@@ -36,7 +34,6 @@
     /* width: 80%; */
     display: grid;
     grid-template-columns: 1fr;
-    /* grid-template-columns: 1fr; */
 }
 
 .bank__box {
@@ -141,9 +138,6 @@
     background-size: contain;
     display: none;
 }
-
-
-
 .card__bank-number {
     font-size: 16px;
     font-weight: 500;

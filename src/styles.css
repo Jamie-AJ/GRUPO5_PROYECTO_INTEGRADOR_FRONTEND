@@ -19,21 +19,39 @@
     /* TYPOGRAPHY */
     --font-primary: Poppins, sans-serif;
 }
-.dark-mode {
-    --primary-color: #1E2433;
-    --sidebar-color: #434CE6;
-    --sidebar-color-content: #1E2433;
-    --circle-color: #7DE8FF;
+.light-theme{
+    --primary-color: #5E7B8C;
+    --sidebar-color: #232B42;
+    --sidebar-color-content: #3E4A60;
+    --sidebar-color-hover: #394A6D;
+    --circle-color: #93C5D8;
     --white-color: #ffffff;
-    --black-color: #000000;
-    --grey-color: #6F6F6F;
-    --form-color: #B9B6B6;
-    --previus-color-btn: #dadada;
-    --text-color-btn: #7A7A7A;
-    --text-color: #707070;
-    --pass-color: #6D6D6D;
-    --table-color: #f8f9fc;
-    --second-table-color: #e3e6f0;
+    --black-color: #ffffff;
+    --grey-color: #A8A8A8;
+    --form-color: #6C757D;
+    --previous-color-btn: #363636;
+    --text-color-btn: #D9D9D9;
+    --text-color: #C6C6C6;
+    --pass-color: #8C8C8C;
+    --table-color: #333C4F;
+    --second-table-color: #3C455C;
+}
+.dark-mode {
+    --primary-color: #5E7B8C;
+  --sidebar-color: #232B42;
+  --sidebar-color-content: #3E4A60;
+  --sidebar-color-hover: #394A6D;
+  --circle-color: #93C5D8;
+  --white-color: #ffffff;
+  --black-color: #ffffff;
+  --grey-color: #A8A8A8;
+  --form-color: #6C757D;
+  --previous-color-btn: #363636;
+  --text-color-btn: #D9D9D9;
+  --text-color: #C6C6C6;
+  --pass-color: #8C8C8C;
+  --table-color: #333C4F;
+  --second-table-color: #3C455C;
     /* --font-primary:  */
 }
 *,
