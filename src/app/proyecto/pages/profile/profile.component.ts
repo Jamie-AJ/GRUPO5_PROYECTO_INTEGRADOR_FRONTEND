@@ -13,8 +13,8 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements  OnInit{
-
+export class ProfileComponent implements OnInit{
+  title='Mis datos personales';
   // id:number = 0;
 
   usuario:Usuario = {

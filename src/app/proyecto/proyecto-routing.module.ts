@@ -33,9 +33,11 @@ const router: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'inversiones', component: InversionesComponent },
+      { path: 'inversiones/:page', component: InversionesComponent},
       { path: 'profile-edit', component: EditProfileComponent },
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
+      
       { path: 'account-status', component: MainAccountComponent },
       { path: 'account-status/addaccount', component: AddAccountComponent, canDeactivate: [withoutUnsavedChangesGuard]},
       { path: 'inversion/add-inversion', component: AddOportunitiesComponent},

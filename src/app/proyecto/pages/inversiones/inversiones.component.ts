@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { InversionUsuario } from 'src/app/interface/oportunidad_usuario.interface';
 import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.service';
 
@@ -12,14 +13,16 @@ import { OportunidadUsuarioService } from 'src/app/services/oportunidad-usuario.
 export class InversionesComponent implements OnInit {
 
   title = 'Mis inversiones realizadas';
+  pagination: any;
   public oportunidadesUsuario: InversionUsuario[] = [];
   tabs: string[] = ['A Tiempo', 'Pagadas','Con retraso' ]
   activeTabsIndex: number = 0;
 
-  constructor(private oportunidadUsuario: OportunidadUsuarioService) { }
+  constructor(private oportunidadUsuario: OportunidadUsuarioService, private activeRouted:ActivatedRoute) { }
   
   ngOnInit(): void { 
-    this.getOportunidadesUsu();
+    // this.getOportunidadesUsu();
+    this.gerOportunidadUsuPage();
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
@@ -55,5 +58,18 @@ export class InversionesComponent implements OnInit {
       this.oportunidadesUsuario = resp;
     });
   }
-
+  gerOportunidadUsuPage() {
+    this.activeRouted.paramMap.subscribe((params) => { 
+      let totalPages: number = +params.get('page')!;
+      if(!totalPages){
+        totalPages = 0;
+      }
+      this.oportunidadUsuario.getOportunidadesUsuPage(totalPages).subscribe(resp => { 
+        console.log(resp);
+        this.oportunidadesUsuario = resp.content as InversionUsuario[];
+        this.pagination = resp;
+      });
+    });
+    
+  }
 }

@@ -1,11 +1,11 @@
 
-<section class="inversion__container animate__animated animate__fadeIn animete_faster" >
-  <div class="inversion__content">
-      <div class="inversion__nav">
-        <div class="inversion__header">
+<section class="company__container">
+  <div class="company__content">
+      <div class="company__nav">
+        <div class="company__header">
           <h3>{{title}}</h3>
         </div>
-        <div clasS="inversion__group">
+        <div clasS="company__group">
           <a routerLink="/dashboard/empresa/add-company" class="btn__factura">
             <i class="bx bx-plus"></i>
             Agregar Empresa
@@ -13,9 +13,9 @@
         </div>
       </div>
       <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
-      <div class="inversion__box">
+      <div class="company__box">
         <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          class="company__content"
           *ngIf="activeTabsIndex === 0"
         >
         <div class="listar__content-table">
@@ -54,12 +54,12 @@
               </tr>
             </tbody>
           </table>
-          <app-pagination *ngIf="pagination" [pagination]="pagination"></app-pagination>
+          <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/empresa/list-company"></app-pagination>
         </div>
         
       </div>
         <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          class="company__content"
           *ngIf="activeTabsIndex === 1"
         >
         <div class="listar__content-table">
@@ -98,7 +98,7 @@
               </tr>
             </tbody>
           </table>
-          <app-pagination></app-pagination>
+          
         </div>
         </div>
       </div>
