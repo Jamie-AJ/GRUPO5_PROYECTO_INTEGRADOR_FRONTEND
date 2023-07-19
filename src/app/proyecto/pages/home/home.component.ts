@@ -11,10 +11,8 @@ import { SaldoService } from 'src/app/services/saldo.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // @Output() onToggleSideBar: EventEmitter<SideNavToggle> = new EventEmitter();
-  isSideBarCollapse = false;
-  // screenWidth = 0;
 
+  isSideBarCollapse = false;
   isAdministrador = this.login.getUserRole() === 'ADMIN';
   isInversionista = this.login.getUserRole() === 'INVERSIONISTA';
   darkMode = false;
@@ -28,22 +26,12 @@ export class HomeComponent implements OnInit {
     saldo:0,
   }
   constructor(private login: LoginService, private router: Router, private saldoService: SaldoService) { }
-  
-  // @HostListener('window:resize', ['$event'])
-  // onWindowResize(event: any) {
-  //   this.closeSidebarIfNeeded(event.target.innerWidth);
-  // }
+
     ngOnInit(): void {
       this.singIn();
       this.getSaldo();
     }
-  private closeSidebarIfNeeded(windowWidth: number) {
-    if (windowWidth <= 768) {
-      this.isSideBarCollapse = false;
-    } else {
-      this.isSideBarCollapse = true;
-    }
-  }
+  
   darkTheme() {
     this.darkMode = !this.darkMode;
   }
@@ -52,7 +40,9 @@ export class HomeComponent implements OnInit {
       this.objSaldo = resp;
     })
   }
-  
+  concatNameComplete() {
+    return this.user.nombre + ' ' + this.user.apellidoPa + ' ' + this.user.apellidoMa;
+  }
   singIn() {
     this.isLoggedIn = this.login.isLoggedIn();
     this.user = this.login.getUser();

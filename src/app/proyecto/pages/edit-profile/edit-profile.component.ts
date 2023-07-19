@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-
+  title='Mis datos personales';
   mostrarInput: boolean = false;
 
   form: FormGroup = this.builder.group({

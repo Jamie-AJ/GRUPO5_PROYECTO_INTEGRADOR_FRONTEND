@@ -25,6 +25,17 @@ export class OportunidadUsuarioService {
   getOportunidadesUsu(): Observable<InversionUsuario[]> { 
     return this.http.get<InversionUsuario[]>(`${this.url}/listarOpoUsuXIdi`);	
   }
+  getOportunidadesUsuPage(page:number): Observable<any>{
+    return this.http.get<any>(`${this.url}/listarOpoUsuXIdi/${page}`)
+      .pipe(
+        map((response: any) => {
+          (response.content as InversionUsuario[]).map(inversionUsuario => { 
+            return inversionUsuario;
+          })
+          return response;
+       })
+    )
+  }
   getOporUsuarioPorIdOpor(idOportunidad:number):Observable<InversionUsuario[]> {
     return this.http.get<InversionUsuario[]>(`${this.url}/listarOpoUsuXOpo/${idOportunidad}`);
   }
