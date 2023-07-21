@@ -1,11 +1,3 @@
-.oportunities__user--container {
-  position: relative;
-  /* background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
-  /* border-radius: 10px; */
-  height: 100%;
-  width: 100%;
-}
 
 .oportunities__user--content a {
   cursor: pointer;
@@ -672,7 +664,55 @@ progress::-webkit-progress-value {
   width: 100%;
 
 }
+.message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7rem;
 
+}
+.message__img{
+  width: 250px;
+  max-width: 100%;
+}
+.message__alert{
+  margin-top: 1rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black-color);
+}
+.message__info{
+  margin-top: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.message__button{
+  margin-top: 1rem;
+  padding: 0.625rem 1rem;
+  border-radius: 20px;
+  color: var(--sidebar-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--sidebar-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.message__button i {
+  font-size: 18px;
+  color: var(--sidebar-color);
+  transition: all 0.3s ease;
+}
+.message__button:hover i{
+  color:var(--white-color);
+}
+.message__button:hover{
+  background-color: var(--sidebar-color);
+  color: var(--white-color);
+}
 @media screen and (min-width: 380px) {
 
   .oportunities__user--header h3 {

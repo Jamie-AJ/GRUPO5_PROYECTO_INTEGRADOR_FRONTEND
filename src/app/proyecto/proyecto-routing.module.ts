@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { InversionesComponent } from './pages/inversiones/inversiones.component';
-import { AcountStatusComponent } from './pages/acount-status/acount-status.component';
+
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
@@ -37,15 +37,14 @@ const router: Routes = [
       { path: 'profile-edit', component: EditProfileComponent },
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
-      
       { path: 'account-status', component: MainAccountComponent },
       { path: 'account-status/addaccount', component: AddAccountComponent, canDeactivate: [withoutUnsavedChangesGuard]},
       { path: 'inversion/add-inversion', component: AddOportunitiesComponent},
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},
       { path: 'empresa/add-company', component: AddCompanyComponent},
+      { path: 'empresa/edit-company', component: AddCompanyComponent },
       { path: 'empresa/list-company', component: ListPageComponent },
       { path: 'empresa/list-company/:page', component: ListPageComponent },
-      { path: 'empresa/edit-company', component: AddCompanyComponent },
       { path: 'factura/list-factura', component: ListFacturasComponent },
       { path: 'factura/add-factura', component: AddFacturaComponent },
       { path: 'reportes/inversiones', component: ReportsInversionesComponent },

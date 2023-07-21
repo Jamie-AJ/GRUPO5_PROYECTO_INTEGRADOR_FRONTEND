@@ -56,7 +56,7 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
   form: FormGroup = this.builder.group({
     nroCuenta: ['', [Validators.required, customValidators.validarTarjetaCredito]],
     nroCuentaCci: ['', [Validators.required]],
-    nombreCompleto: ['', [Validators.required, Validators.pattern(customValidators.stringPattern)]],
+    nombreCompleto: ['', [Validators.required, Validators.pattern(customValidators.stringPattern),Validators.minLength(15)]],
     cvv: ['', [Validators.required, Validators.pattern(customValidators.cvvPattern)]],
     mes: ['', [Validators.required]],
     year: ['', [Validators.required]],
@@ -142,14 +142,14 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
     let inputMonthCard: any = document.getElementById('mes');
     let yearCard: any = document.querySelector('.card__year');
     let inputYearCard: any = document.getElementById('year');
-    inputMonthCard.addEventListener('input', () => {
+    inputMonthCard.addEventListener('change', () => {
       if (inputMonthCard.value === '') {
         monthCard.textContent = 'MM';
       } else {
         monthCard.innerText = inputMonthCard.value;
       }
     })
-    inputYearCard.addEventListener('input', () => { 
+    inputYearCard.addEventListener('change', () => { 
       if (inputYearCard.value === '') {
         yearCard.textContent = 'YY';
       } else {

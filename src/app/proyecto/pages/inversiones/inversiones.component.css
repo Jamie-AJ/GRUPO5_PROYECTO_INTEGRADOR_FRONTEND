@@ -31,6 +31,7 @@
 .listar__table {
     width: 100%;
     border-collapse: collapse;
+    caption-side: bottom;
 }
 
 .listar__table .listar__thead th {
@@ -107,4 +108,10 @@
     font-size: 14px;
     font-weight: 500;
     color:var(--text-color);
+}
+
+.inversion__alert{
+    margin-top: 1rem;
+    margin-bottom: 0;
+    text-align: center;
 }

@@ -1,6 +1,6 @@
 import { CanDeactivateFn } from '@angular/router';
 
-import { AcountStatusComponent } from '../proyecto/pages/acount-status/acount-status.component';
+
 
 export interface HasUnsavedChanges { 
   hasUnsavedChanges():boolean;

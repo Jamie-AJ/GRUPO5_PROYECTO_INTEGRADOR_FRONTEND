@@ -154,44 +154,40 @@
 }
 
 .listar__tbody .icon {
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    font-size: 1.2rem;
+    color: var(--sidebar-color);
     cursor: pointer;
+    border: 1px solid var(--sidebar-color);
+    border-radius: 10px;
 }
 
 .btn__factura {
-    background-color: #d33847;
-    border: none;
-    /* outline: none; */
+
+    border: 1px solid var(--sidebar-color);
+    
 }
 
 .btn__factura i {
     font-size: 18px;
-    color: var(--white-color);
+    color: var(--sidebar-color);
 }
 
 .btn__guardar {
-    background-color: var(--sidebar-color);
-    border: none;
-    /* outline: none; */
+    border: 1px solid var(--sidebar-color);
+    background-color: transparent;
 }
 
 .btn__form {
-
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0.625rem 1rem;
     border-radius: 20px;
-    color: var(--white-color);
+    color: var(--sidebar-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.btn__factura:hover {
-    background-color: #cb1f30;
 }
 
 .company__content-form {
