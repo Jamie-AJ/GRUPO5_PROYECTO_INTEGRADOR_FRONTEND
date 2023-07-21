@@ -26,7 +26,7 @@
                           <div class="form__box">
                             <label for="nombreCompleto">Nombre Completo</label>
                             <div>
-                              <input type="text" class="form__input" formControlName="nombreCompleto" id="nombreCompleto" placeholder="e.g. Nombre Completo" [class.error]="isValid('nombreCompleto')"/>
+                              <input type="text" class="form__input" formControlName="nombreCompleto" id="nombreCompleto" placeholder="e.g. Nombre Completo" [class.error]="isValid('nombreCompleto')" maxlength="24"/>
                               <span *ngIf="isValid('nombreCompleto')" class="invalid">{{
                                 getFieldError("nombreCompleto")
                               }}</span>

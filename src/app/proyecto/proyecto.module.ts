@@ -8,7 +8,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InversionesComponent } from './pages/inversiones/inversiones.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AcountStatusComponent } from './pages/acount-status/acount-status.component';
+
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TabsComponent } from './components/tabs/tabs.component';
@@ -59,7 +59,6 @@ registerLocaleData(localeEsPE);
     NavbarComponent,
     InversionesComponent,
     ProfileComponent,
-    AcountStatusComponent,
     DashboardComponent,
     FooterComponent,
     TabsComponent,

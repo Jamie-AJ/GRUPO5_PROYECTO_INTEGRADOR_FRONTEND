@@ -10,6 +10,7 @@ import { SaldoService } from 'src/app/services/saldo.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
 import { OportunidadFactura } from 'src/app/interface/oportunidad_factura.interfce';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -19,13 +20,17 @@ import { OportunidadFactura } from 'src/app/interface/oportunidad_factura.interf
 })
 export class OportunitiesComponent implements OnInit {
   title = 'Oportunidades de Inversión'
+  //MODAL
   public showModal: boolean = false;
-  public isOpen: boolean[] = [false, false,false];
-  public oportunidadSeleccionada:any;
+  //ACORDEON
+  public isOpen: boolean[] = [false, false, false];
+  //SELECCIONAR OPORTUNIDAD
+  public oportunidadSeleccionada: any;
+  
   //CALCULOS 
   public restante: number = 0;
   public montoInvertido: number = 0;
-  public tasaDiaria: number = 0;
+  // public tasaDiaria: number = 0;
   public tasaMensual: number = 0;
   public tasaMensualRedondeado: number = 0;
   public inversionPorcentaje: number = 0;
@@ -34,29 +39,31 @@ export class OportunitiesComponent implements OnInit {
   public recaudadoRedondeado: number = 0;
   public gananciaMaxima: number = 0;
   public gananciaRedondeado: number =0;
-  public inversionTotal: number = 0;
-  public inversionRealizada: number = 0;
+  // public inversionTotal: number = 0;
+  // public inversionRealizada: number = 0;
   public montoRecaudado: number= 0;
   public montoTotal: number=0;
 
+  // OBJETOS Y ARREGLOS
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
   public objInversionUsuario: InversionUsuario = new InversionUsuario();
   public oportunidadUsuario: InversionUsuario[] = [];
   public oportunidadFactura:OportunidadFactura[] = [];
-
   objSaldo:Saldo = {
     idCartera:0,
     saldo:0,
-    
   }
+  //VALIDAR EL ROL DEL USUARIO
+  public isAdministrador = this.loginService.getUserRole() === 'ADMIN'
 
   constructor(
     private oportunidadesService: OportunidadesService,
     private saldoService: SaldoService,
-    private router: Router,
     private oportunidadesUsuarioService: OportunidadUsuarioService,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    private loginService: LoginService
+
   ) {  }
   form: FormGroup = this.builder.group({
     montoInvertido: ['', [Validators.required, customValidators.validarNumerosNegativos]],
@@ -174,7 +181,7 @@ export class OportunitiesComponent implements OnInit {
         const dataB = new Date(b.fecha);
         return dataB.getTime() - dataA.getTime();
       })
-      this.oportunidadUsuario.reverse();
+      // this.oportunidadUsuario.reverse();
       this.oportunidadUsuario = this.oportunidadUsuario.slice(0, 5);
       console.log(inversiones);
     });

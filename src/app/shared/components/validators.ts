@@ -14,7 +14,7 @@ export const telefonoPattern: string = "^9[\\d]{8}$";
 export const passwordPattern: string = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Za-z]).{8,}$";
 
 // export const cuentaBancariaPattern: string = "^[0-9]{16,20}$";
-export const cvvPattern: string = "^[0-9]{3}$";
+export const cvvPattern: string = "^[0-9]{4}$";
 export const rucPattern: string = "^20[\\d]{9}$";
 export const letrasPattern: string = "^[a-zA-Z]$";
 

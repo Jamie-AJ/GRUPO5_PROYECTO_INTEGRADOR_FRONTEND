@@ -6,7 +6,7 @@
             <h3>{{title}}</h3>
           </div>
         </div>
-
+        <ng-container *ngIf="objOportunidades.length > 0; else noShowData">
         <div class="oportunities__user--box">
             <div class="oportunities__box--content" *ngFor="let opor of objOportunidades ">
                 <a *ngIf="selectOportunity" (click)="openModal(opor)">
@@ -41,6 +41,20 @@
                 </a>
             </div>
         </div>
+      </ng-container>
+      <ng-template #noShowData>
+        <div class="message" role="alert">
+          <img src="./assets/img/empty.svg" alt="empty" class="message__img"> 
+          <p class="message__alert">No hay oportunidades todavia.</p>
+          <span class="message__info">Esta sección continene la lista de oportunidades.</span>
+          <ng-container *ngIf="isAdministrador">
+            <a routerLink="/dashboard/inversion/add-inversion" class="message__button">
+              <i class="bx bx-plus"></i>
+              Agregar
+            </a>
+          </ng-container>
+        </div>
+      </ng-template>
     </div>
 </section>
   <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">

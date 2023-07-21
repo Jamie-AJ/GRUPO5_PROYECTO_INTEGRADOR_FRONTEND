@@ -16,12 +16,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem;
     margin-bottom: 3rem;
 }
 
 .form__heading {
-    margin-top: 2.2rem;
+    margin-top: 1rem;
 }
 
 .form__title {
@@ -36,15 +36,18 @@
 }
 
 .form__sign-up {
-    display: flex;
-    flex-direction: column;
+
     justify-content: space-around;
     gap: 1rem;
 }
 
 .input__wrap {
     /* position: relative; */
-    height: 37px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+    margin-bottom: 0.3125rem;
+    height:40px;
 }
 
 .input__button {
@@ -113,7 +116,6 @@
     gap: 0.25rem;
     color: #ff4747;
     font-size: 10px;
-    font-weight: 600;
     width: 100%;
     margin-top: 0.5rem;
 }
@@ -145,7 +147,7 @@
 
 @media screen and (min-width: 768px) {
     .form {
-        max-width: 450px;
+        max-width: 500px;
         /* margin-bottom: 0; */
     }
 
@@ -154,7 +156,7 @@
     }
 
     .invalid {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .btn__back,

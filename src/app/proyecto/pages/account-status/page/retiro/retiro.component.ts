@@ -3,7 +3,7 @@ import { CuentaBancaria } from 'src/app/interface/cuentaBancaria.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
 import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
-import { Router } from '@angular/router';
+
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import * as customValidators from 'src/app/shared/components/validators';

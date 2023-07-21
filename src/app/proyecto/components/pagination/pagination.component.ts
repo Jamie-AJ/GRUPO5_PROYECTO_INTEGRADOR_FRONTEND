@@ -25,9 +25,16 @@ export class PaginationComponent implements  OnInit, OnChanges{
       this.initPaginator();
     }
   }
-  private initPaginator():void {
+  private initPaginator(): void {
+    //Este metodo esta calculando el numero de pagina inicial para el componente de paginacion.
+    /* The line `this.desde = Math.min(Math.max(1, this.pagination.number - 2),
+    this.pagination.totalPages - 4);` is calculating the starting page number for the pagination
+    component. */
     this.desde = Math.min(Math.max(1, this.pagination.number - 2), this.pagination.totalPages - 4);
     this.hasta = Math.max(Math.min(this.pagination.totalPages, this.pagination.number + 2), 6);
+    
+    /* This code block is responsible for generating the array of page numbers that will be displayed
+    in the pagination component. */
     if (this.pagination.totalPages > 5) { 
       this.pages = new Array(this.hasta - this.desde + 1).fill(0).map((_valor, indice) => indice + this.desde);
     } else {
