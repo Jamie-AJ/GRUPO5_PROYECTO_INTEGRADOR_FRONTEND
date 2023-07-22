@@ -7,7 +7,7 @@
         <div class="dash__flex">
             <div class="dash__box dash__overview">
                 <div class="dash__subtitle">
-                     <h4><i class='bx bx-coin-stack'></i>Resumen financiero</h4>
+                     <h5><i class='bx bx-coin-stack'></i>Resumen financiero</h5>
                      <span>{{currentMonth}}, {{currentYear}}</span>
                 </div>
                 <div class="dash__info">
@@ -31,7 +31,7 @@
             </div>
             <div class="dash__box dash__saldo">
                 <div class="dash__subtitle">
-                    <h4><i class='bx bx-wallet'></i>Este es tú saldo</h4>
+                    <h5><i class='bx bx-wallet'></i>Este es tú saldo</h5>
                 </div>
                 <div class="dash__saldo_info">
                     <span>{{objSaldo.saldo | currency:'S/.&nbsp;':'symbol-narrow'}}</span>
@@ -50,9 +50,9 @@
             </div>
             <div class="dash__box dash__table-transaction">
                 <div class="dash__subtitle">
-                    <h4>
+                    <h5>
                         <i class='bx bx-transfer'></i>Mis Transacciones
-                    </h4>
+                    </h5>
                 </div>
                 <div class="listar__content-table">
                     <table class="listar__table">
@@ -83,7 +83,7 @@
             </div>
             <div class="dash__box dash__chart">
                 <div class="dash__subtitle">
-                    <h4><i class='bx bx-bar-chart'></i>Graficas</h4>
+                    <h5><i class='bx bx-bar-chart'></i>Graficas</h5>
                     <div class="dash__chart-info">
                         <app-charts></app-charts>
                     </div>

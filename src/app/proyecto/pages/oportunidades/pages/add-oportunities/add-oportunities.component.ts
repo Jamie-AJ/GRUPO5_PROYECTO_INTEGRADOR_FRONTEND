@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -10,8 +10,6 @@ import { FacturaService } from 'src/app/services/factura.service';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 import Swal from 'sweetalert2';
 import * as customValidators from 'src/app/shared/components/validators';
-
-import { ModalService } from 'src/app/services/modal.service';
 
 
 
@@ -43,7 +41,6 @@ export class AddOportunitiesComponent implements OnInit {
     private oportunidadesService: OportunidadesService,
     private toastService: ToastrService,
     private router: Router,
-    private modalService: ModalService,
     private builder: FormBuilder) { }
 
   form: FormGroup = this.builder.group({
@@ -62,9 +59,6 @@ export class AddOportunitiesComponent implements OnInit {
   
   ngOnInit(): void {
     this.clearArrayList();
-    this.modalService.showModal$.subscribe(show => {
-      this.display = show;
-    });
   }
 
 
@@ -140,7 +134,6 @@ export class AddOportunitiesComponent implements OnInit {
     this.empresaSeleccionada = empresa;
     this.facturaService.getFacturasXEmpresa(empresa.idEmpresa).subscribe((response: any) => {
       const facturas = response.facturas;
-      console.log(facturas);
       this.facturaList = facturas;
       this.empresaFacturasRegistradas = facturas.length > 0;
     });
@@ -153,7 +146,7 @@ export class AddOportunitiesComponent implements OnInit {
     this.facturaService.postAddFacturaOportunidad(factura.idFactura).subscribe(
       resp => {
         console.log(resp);
-        this.toastService.success('Factura registrada Exitosamente', 'Success');
+        this.toastService.success('Factura Registrada', 'Success', { timeOut: 2000 });
         this.montoTotal += factura.monto!;
         console.log(this.montoTotal);
         this.agregarFactura = true;
