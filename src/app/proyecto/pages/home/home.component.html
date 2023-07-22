@@ -1,4 +1,39 @@
-
+<header class="header" [ngClass]="collapse ? 'collapse-header' : ''">
+  <div class="header__menu">
+    <i class="header__menu-toggle" [ngClass]="collapse ? 'bx bx-x' : 'bx bx-menu'" (click)="toggleCollapse()"></i>
+  </div>
+  <div class="header__data">
+    <ng-container *ngIf="isInversionista">
+      <span routerLink="/dashboard/account-status" class="wallet-button" >
+        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency : "S/.&nbsp;" : "symbol-narrow" }}
+      </span>
+    </ng-container>
+    <div class="header__data-user" (click)="toggleDropdown()">
+      <a class="header__data-user-info">
+        <p>{{concatNameComplete().charAt(0)}}</p>
+      </a>
+    </div>
+    <div class="dropdown" [ngClass]="{ 'dropdown__side--show': isDropdownOpen }">
+      <div class="dropdown__menu" (click)="closeDropdown()">
+        <div class="dropdown__menu-info">
+          <span class="dropdown__menu-name">{{concatNameComplete()}}</span>
+        </div>
+        <hr class="dropdown__menu-line">
+        <ul class="dropdown__menu-items">
+          <li>
+            <a routerLink="/dashboard/details-profile" class="dropdown__menu-item">
+              Mi cuenta
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/details-profile" class="dropdown__menu-item">Mi perfil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+</header>
 <div class="sidebar" [ngClass]="collapse ? 'sidebar-collapse' : ''">
   <nav class="side">
     <div>
@@ -81,42 +116,7 @@
     </div>
   </nav>
 </div>
-<header class="header" [ngClass]="collapse ? 'collapse-header' : ''">
-  <div class="header__menu">
-    <i class="header__menu-toggle" [ngClass]="collapse ? 'bx bx-x' : 'bx bx-menu'" (click)="toggleCollapse()"></i>
-  </div>
-  <div class="header__data">
-    <ng-container *ngIf="isInversionista">
-      <span routerLink="/dashboard/account-status" class="wallet-button" >
-        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency : "S/.&nbsp;" : "symbol-narrow" }}
-      </span>
-    </ng-container>
-    <div class="header__data-user" (click)="toggleDropdown()">
-      <a class="header__data-user-info">
-        <p>{{concatNameComplete().charAt(0)}}</p>
-      </a>
-    </div>
-    <div class="dropdown" [ngClass]="{ 'dropdown__side--show': isDropdownOpen }">
-      <div class="dropdown__menu" (click)="closeDropdown()">
-        <div class="dropdown__menu-info">
-          <span class="dropdown__menu-name">{{concatNameComplete()}}</span>
-        </div>
-        <hr class="dropdown__menu-line">
-        <ul class="dropdown__menu-items">
-          <li>
-            <a routerLink="/dashboard/details-profile" class="dropdown__menu-item">
-              Mi cuenta
-            </a>
-          </li>
-          <li>
-            <a routerLink="/dashboard/details-profile" class="dropdown__menu-item">Mi perfil</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  
-</header>
+
 
 <div class="main" [ngClass]="collapse ? 'main-collapse' : ''">
   <router-outlet></router-outlet>

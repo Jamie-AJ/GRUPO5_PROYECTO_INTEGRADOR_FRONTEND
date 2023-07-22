@@ -16,6 +16,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 
 
 
+
 @NgModule({
   declarations: [
     Error404PagesComponent,
@@ -26,6 +27,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     ModalComponent,
     ChartsComponent,
     ProgressBarComponent,
+
   ],
   imports: [
     CommonModule,
