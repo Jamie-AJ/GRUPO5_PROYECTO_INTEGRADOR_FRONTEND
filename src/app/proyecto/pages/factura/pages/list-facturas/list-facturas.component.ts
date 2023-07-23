@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { Factura } from 'src/app/interface/factura.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
@@ -16,13 +17,14 @@ export class ListFacturasComponent implements OnInit {
   facturasActivas:Factura[] = [];
   tabs: string[] = ['General', 'Activos' ]
   activeTabsIndex: number = 0;
+  pagination: any;
 
-
-  constructor(private facturaService:FacturaService){}
+  constructor(private facturaService:FacturaService, private activeRouted:ActivatedRoute){}
   
   ngOnInit(): void {
     this.getFaturasActive();
-    this.getFacturas();
+    // this.getFacturas();
+    this.getFacturaspages();
   }
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
@@ -38,6 +40,18 @@ export class ListFacturasComponent implements OnInit {
     this.facturaService.getFacturas().subscribe(resp => {
       console.log(resp);
       this.factura = resp;
+    })
+  }
+  getFacturaspages() {
+    this.activeRouted.paramMap.subscribe(params => {
+      let totalPages: number = +params.get('page')!;
+      if (!totalPages) {
+        totalPages = 0;
+      }
+      this.facturaService.getFacturasPages(totalPages).subscribe(resp => {
+        this.factura = resp.content as Factura[];
+        this.pagination = resp;
+      })
     })
   }
   

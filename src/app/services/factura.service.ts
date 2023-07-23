@@ -17,6 +17,9 @@ export class FacturaService {
   getFacturas():Observable<Factura[]>{
     return this.http.get<Factura[]>(`${this.url}/listaFacturas`);
   }
+  getFacturasPages(page: number): Observable<any>{
+    return this.http.get(`${this.url}/listaFacturas/page/${page}`);
+  }
   getFacturasActivas():Observable<Factura[]>{
     return this.http.get<Factura[]>(`${this.url}/active/listaFactura`).pipe(
       catchError(e =>{
