@@ -20,7 +20,6 @@
 .inversion__box {
     height: 100%;
     background-color: var(--white-color);
-    padding: 1rem;
     border-radius: 10px;
 }
 

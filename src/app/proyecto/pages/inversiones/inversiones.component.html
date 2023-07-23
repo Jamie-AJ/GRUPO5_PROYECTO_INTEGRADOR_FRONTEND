@@ -5,10 +5,10 @@
         <h3>{{title}}</h3>
       </div>
       <div class="inversion__group">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn__save">
+        <a  routerLink="/dashboard/oportunities-list" class="btn__save">
           <i class="bx bx-plus"></i>
           Agregar Inversión
-        </button>
+        </a>
       </div>
     </div>
     <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
@@ -66,43 +66,3 @@
   </div>
 </section>
 
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Ingresar Inversión
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form class="form" id="form-tarjeta">
-          <div class="form__content">
-            <div class="form__box">
-                <label for="titular">Monto</label>
-                <input type="text" class="form__input" name="titular" id="titular">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-success">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>

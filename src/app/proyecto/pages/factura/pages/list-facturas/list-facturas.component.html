@@ -14,61 +14,56 @@
       </div>
       <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
       <div class="inversion__box">
-        <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
-          *ngIf="activeTabsIndex === 0"
-        >
-        <div class="listar__content-table">
-          <table class="listar__table">
-            <thead class="listar__thead">
-              <tr>
-                <th>Codigo Factura</th>
-                <th>Razon Social</th>
-                <th>Fecha de Pago</th>
-                <th>Monto</th>
-                <th>Descripción</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody class="listar__tbody">
-              <tr *ngFor="let fac of factura">
-                <td>{{fac.codFactura}}</td>
-                <td>{{fac.empresa?.razonSocial}}</td> 
-                <td>{{fac.fechaPago}}</td>
-                <td>{{fac.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-                <td>{{fac.descripcion}}</td>
-                <td>{{fac.enable}}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="inversion__content animate__animated animate__fadeIn animete_faster" *ngIf="activeTabsIndex === 0" >
+          <div class="listar__content-table">
+            <table class="listar__table">
+              <thead class="listar__thead">
+                <tr>
+                  <th>Codigo Factura</th>
+                  <th>Razon Social</th>
+                  <th>Fecha de Pago</th>
+                  <th>Monto</th>
+                  <th>Descripción</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody class="listar__tbody">
+                <tr *ngFor="let fac of factura">
+                  <td>{{fac.codFactura}}</td>
+                  <td>{{fac.empresa?.razonSocial}}</td> 
+                  <td>{{fac.fechaPago}}</td>
+                  <td>{{fac.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                  <td>{{fac.descripcion}}</td>
+                  <td>{{fac.enable}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/factura/list-factura/page"></app-pagination>
           </div>
         </div>
-        <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
-          *ngIf="activeTabsIndex === 1"
-        >
-        <div class="listar__content-table">
-          <table class="listar__table">
-            <thead class="listar__thead">
-              <tr>
-                <th>Codigo Factura</th>
-                <th>Razon Social</th>
-                <th>Fecha de Pago</th>
-                <th>Monto</th>
-                <th>Descripción</th>
-              </tr>
-            </thead>
-            <tbody class="listar__tbody">
-              <tr *ngFor="let fac of facturasActivas">
-                <td>{{fac.codFactura}}</td>
-                <td>{{fac.empresa?.razonSocial}}</td> 
-                <td>{{fac.fechaPago}}</td>
-                <td>{{fac.monto}}</td>
-                <td>{{fac.descripcion}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="inversion__content animate__animated animate__fadeIn animete_faster" *ngIf="activeTabsIndex === 1" >
+          <div class="listar__content-table">
+            <table class="listar__table">
+              <thead class="listar__thead">
+                <tr>
+                  <th>Codigo Factura</th>
+                  <th>Razon Social</th>
+                  <th>Fecha de Pago</th>
+                  <th>Monto</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody class="listar__tbody">
+                <tr *ngFor="let fac of facturasActivas">
+                  <td>{{fac.codFactura}}</td>
+                  <td>{{fac.empresa?.razonSocial}}</td> 
+                  <td>{{fac.fechaPago}}</td>
+                  <td>{{fac.monto}}</td>
+                  <td>{{fac.descripcion}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
   </div>

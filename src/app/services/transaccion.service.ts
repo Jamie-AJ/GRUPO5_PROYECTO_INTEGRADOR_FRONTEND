@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
 import { Observable, catchError, pipe, throwError } from 'rxjs';
-import { TipoTransaccion } from '../interface/tipoTransaccion.interface';
 import { Transaccion } from '../interface/transaccion.interface';
 import Swal from 'sweetalert2';
 
@@ -13,12 +12,15 @@ import Swal from 'sweetalert2';
 export class TransaccionService {
 
   private http = inject(HttpClient);
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   url: string = 'http://localhost:8091/api';
 
 
-  getTransaction():Observable<Transaccion[]>{
+  getTransaction(): Observable<Transaccion[]> {
     return this.http.get<Transaccion[]>(`${this.url}/user/listaTransacciones`);
+  }
+  getTransaccionPage(page: number): Observable<any>{
+    return this.http.get<any>(`${this.url}/user/listaTransacciones/page/${page}`);
   }
   postDeposito(transaccion:Transaccion):Observable<any>{
 

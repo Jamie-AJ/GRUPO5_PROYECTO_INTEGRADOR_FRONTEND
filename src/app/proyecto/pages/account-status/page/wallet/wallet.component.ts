@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
 import { CuentaBancariaService } from 'src/app/services/cuenta-bancaria.service';
@@ -16,7 +17,7 @@ export class WalletComponent implements OnInit{
   private saldoService          = inject(SaldoService);
   private transactionService    = inject(TransaccionService);
   private authService           = inject(LoginService);
-  
+  private activatedRouter       = inject(ActivatedRoute);
 
   // isModalOpen: boolean = false;
   public formularioActivo: string    = ''
@@ -32,21 +33,14 @@ export class WalletComponent implements OnInit{
     idCartera: 0,
     saldo: 0,
   }
-  // objTransaccion:Transaccion = {
-  //   idTransaccion:'',
-  //   monto:0,
-  //   fecha: new Date(),
-  //   idTipoTransaccion:0,
-
-  // }
-
+  
  ngOnInit(): void {
   if(this.authService.getUserRole() == 'INVERSIONISTA'){
     this.saldoService.getDetallCartera().subscribe(saldo =>{this.objSaldo = saldo;})
 
   }
   this.getTransacciones();
-  
+  this.getTransaccionPage();
 }
   mostrarFormularioRetiro(){
     this.formularioActivo = 'retiro';
@@ -76,5 +70,16 @@ export class WalletComponent implements OnInit{
       this.transaccion.reverse();
     });
   }
- 
+  getTransaccionPage() {
+    this.activatedRouter.paramMap.subscribe((params) => {
+      let totalPages: number = +params.get('page')!;
+      if (!totalPages) {
+        totalPages = 0;
+      }
+      this.transactionService.getTransaccionPage(totalPages).subscribe((response) => {
+        this.transaccion = response.content as Transaccion[];
+        console.log(response.content);
+      });
+    });
+  }
 }

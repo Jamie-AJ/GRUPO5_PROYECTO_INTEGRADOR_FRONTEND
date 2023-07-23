@@ -46,6 +46,7 @@ const router: Routes = [
       { path: 'empresa/list-company', component: ListPageComponent },
       { path: 'empresa/list-company/:page', component: ListPageComponent },
       { path: 'factura/list-factura', component: ListFacturasComponent },
+      { path: 'factura/list-factura/page/:page', component: ListFacturasComponent},
       { path: 'factura/add-factura', component: AddFacturaComponent },
       { path: 'reportes/inversiones', component: ReporteInversionesComponent },
       { path: 'reportes/usuarios', component: ReporteUsuarioComponent },
