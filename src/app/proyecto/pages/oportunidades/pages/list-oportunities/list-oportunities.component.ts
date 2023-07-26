@@ -14,24 +14,41 @@ export class ListOportunitiesComponent implements OnInit{
   tabs: string[] = ['Todos', 'Activos' ]
 
   activeTabsIndex: number = 0;
-  oportunidad:Oportunidades[] =[];
+  oportunidad: Oportunidades[] = [];
+  oportunidadActivas: Oportunidades[] = [];
 
-  //METODO PARA ACTIVAR EL TAB
-  tabsChange(tab:number){
-    this.activeTabsIndex = tab;
-  }
+  
 
   constructor(private oportunidades:OportunidadesService){}
   ngOnInit(): void {
     this.getOportunidades();
+    this.getOportundadesActivas();
   }
-
+  //METODO PARA ACTIVAR EL TAB
+  tabsChange(tab:number){
+    this.activeTabsIndex = tab;
+  }
+  getBadgeClass(riesgo: string): string {
+    switch (riesgo) {
+      case 'Activo':
+        return 'text-bg-success';
+      case 'No Activo':
+        return 'text-bg-danger';
+      default:
+        return '';
+    }
+  }
   getOportunidades(){
     this.oportunidades.getOportunidad().subscribe(resp => {
       console.log(resp);
       this.oportunidad = resp as Oportunidades[];
     });
-
+  }
+  getOportundadesActivas() {
+    this.oportunidades.getOportunidadActivas().subscribe(resp => { 
+      console.log(resp);
+      this.oportunidadActivas = resp as Oportunidades[];
+    })
   }
 
 }

@@ -1,5 +1,5 @@
 
-<section class="oportunities__user--container animate__animated animate__fadeIn animete_faster" (click)="calcularPorcentajeRecaudado()" (click)="calcularPorcentajeInversion()" (click)="calcularTasaMensual()" >
+<section class="oportunities__user--container" (click)="calcularPorcentajeRecaudado()" (click)="calcularPorcentajeInversion()" (click)="calcularTasaMensual()" >
     <div class="oportunities__user--content">
         <div class="oportunities__user--nav">
           <div class="oportunities__user--header">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="oportunities__pago-tasas">
                                     <span>Rendimiento/TIR:</span>
-                                    <p>{{opor.rendimiento | percent}} / {{opor.tir | percent}}</p>
+                                    <p>{{opor.rendimiento + '%' }} / {{opor.tir + '%'}}</p>
                             </div>
                         </div>  
 
@@ -208,7 +208,7 @@
             <div class="modal__form--input">
               <label for="monto">Escribe el monto de tú inversión(PEN)</label>
               <div class="input__wrapper">
-                <input type="number" formControlName="montoInvertido" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
+                <input type="number" id="monto" [class.error]="isValid('montoInvertido')" formControlName="montoInvertido" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
               </div>
               <span class="invalid" *ngIf="isValid('montoInvertido')">{{getFieldError('montoInvertido')}}</span>
             </div>

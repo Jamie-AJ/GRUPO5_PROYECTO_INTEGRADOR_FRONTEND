@@ -106,7 +106,7 @@ export class DepositoComponent {
           }
         }
       );
-    }, 1000);
+    }, 2000);
   }
 
 

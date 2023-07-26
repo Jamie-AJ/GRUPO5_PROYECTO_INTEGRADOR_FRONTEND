@@ -20,12 +20,6 @@ import { ReporteUsuarioComponent } from './pages/mantenimientos/reporte-usuario/
 import { ReporteInversionesComponent } from './pages/mantenimientos/reporte-inversiones/reporte-inversiones.component';
 import { withoutUnsavedChangesGuard } from '../guards/without-unsaved-changes.guard';
 
-
-
-
-
-
-
 const router: Routes = [
   {
     path: '',
@@ -38,6 +32,7 @@ const router: Routes = [
       { path: 'details-profile', component: ProfileComponent },
       { path: 'oportunities-list', component: OportunitiesComponent },
       { path: 'account-status', component: MainAccountComponent },
+      { path: 'account-status/page/:page', component: MainAccountComponent },
       { path: 'account-status/addaccount', component: AddAccountComponent, canDeactivate: [withoutUnsavedChangesGuard]},
       { path: 'inversion/add-inversion', component: AddOportunitiesComponent},
       { path: 'inversion/list-inversion', component: ListOportunitiesComponent},

@@ -19,9 +19,9 @@ export class TransaccionService {
   getTransaction(): Observable<Transaccion[]> {
     return this.http.get<Transaccion[]>(`${this.url}/user/listaTransacciones`);
   }
-  getTransaccionPage(page: number): Observable<any>{
-    return this.http.get<any>(`${this.url}/user/listaTransacciones/page/${page}`);
-  }
+  getTransactionPagexUserId(page: number): Observable<any> { 
+    return this.http.get<any>(`${this.url}/user/listTransacciones/page/${page}`)
+  };
   postDeposito(transaccion:Transaccion):Observable<any>{
 
     return this.http.post<any>(`${this.url}/deposito`,transaccion,{headers:this.httpHeaders}).pipe(

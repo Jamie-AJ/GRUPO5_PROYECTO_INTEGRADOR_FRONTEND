@@ -653,14 +653,16 @@ progress::-webkit-progress-value {
 .listar__table .listar__tbody tr:hover {
   background-color: #ececec;
 }
-
+.error{
+  border: 1px solid #d45360;
+}
 .invalid {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   color: #d45360;
   font-size: 12px;
-  font-weight: 600;
+
   width: 100%;
 
 }

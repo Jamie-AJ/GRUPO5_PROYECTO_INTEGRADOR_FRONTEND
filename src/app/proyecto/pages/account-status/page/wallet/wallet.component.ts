@@ -26,6 +26,7 @@ export class WalletComponent implements OnInit{
   public transaccion: Transaccion[]  = [];
   public opcionTransaccion: string   = '';
   public monto: number = 0;
+  public pagination: any;
   //VARIABLES
   showFormDeposit:boolean     = false;
   //OBJETOS
@@ -35,11 +36,8 @@ export class WalletComponent implements OnInit{
   }
   
  ngOnInit(): void {
-  if(this.authService.getUserRole() == 'INVERSIONISTA'){
-    this.saldoService.getDetallCartera().subscribe(saldo =>{this.objSaldo = saldo;})
-
-  }
-  this.getTransacciones();
+  
+  // this.getTransacciones();
   this.getTransaccionPage();
 }
   mostrarFormularioRetiro(){
@@ -76,9 +74,9 @@ export class WalletComponent implements OnInit{
       if (!totalPages) {
         totalPages = 0;
       }
-      this.transactionService.getTransaccionPage(totalPages).subscribe((response) => {
+      this.transactionService.getTransactionPagexUserId(totalPages).subscribe((response) => {
         this.transaccion = response.content as Transaccion[];
-        console.log(response.content);
+        this.pagination = response;
       });
     });
   }

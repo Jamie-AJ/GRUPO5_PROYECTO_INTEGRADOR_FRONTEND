@@ -5,7 +5,7 @@
 }
 .page-content{
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     column-gap: 10px;
 }
@@ -22,28 +22,4 @@
     column-gap: 5px;   
     color:var(--sidebar-color);
     
-}
-.scroll-page{
-    overflow: scroll;
-}
-.page-content ul li{
-    display: inline-block;
-    cursor: pointer;
-}
-.page-content ul li .paginacion:hover{
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-}
-.page-content ul li .paginacion{
-    font-size: 14px;
-    color: var(--sidebar-color);
-    background-color: var(--white-color);
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    padding: 5px 7px;
-    border-radius: 5px;
-}
-.page-content ul li .paginacion.active,
-.page-content ul li .paginacion.active:hover{
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
 }

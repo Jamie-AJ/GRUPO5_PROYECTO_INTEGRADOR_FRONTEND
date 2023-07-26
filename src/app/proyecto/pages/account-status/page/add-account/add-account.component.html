@@ -4,7 +4,7 @@
         <h4>Datos de la tarjeta.</h4>
     </div>
     <div class="bank__container">
-        <div>
+        <div class="bank__">
             <div class="bank__box">
                 <div class="bank__form">
                     <form class="form" id="form-tarjeta" [formGroup]="form" (ngSubmit)="postCuentaBancaria()">
@@ -91,7 +91,7 @@
                           <div class="form__box">
                             <label for="cvv">Código de Seguridad</label>
                             <div>
-                              <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="4"/>
+                              <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="3"/>
                               <span *ngIf="isValid('cvv')" class="invalid">{{ getFieldError("cvv") }}</span>
                             </div>    
                           </div>

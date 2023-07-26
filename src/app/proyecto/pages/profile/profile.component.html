@@ -1,182 +1,68 @@
-<section class="profile animate__animated animate__fadeIn animete_faster">
-  <h3>{{title}}</h3>
+<section class="profile">
+  <div class="profile__header">
+    <h3>{{title}}</h3>
+  </div>
+  <div class="profile__container">
+    <div class="box">
+      <div class="box__title">
+        <div class="box__img">
+          <img src="/assets/img/avatar2.png" alt="foto-defaul" />
+        </div>
+        <div class="box__text">
+          <p>{{concatNameComplete()}}</p>
+          <span>{{isAdministrador ? 'Administrador':'Inversionista'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+       <div class="box__info">
+         <div class="box__info--title">
+          <h4>Información personal</h4>
+         </div>
+          <div class="box__info--content">
+            <div class="box__info--data">
+              <p class="box__info--text">Nombres</p>
+              <span class="box__info--name">{{usuario.nombre}}</span>
+            </div>
+            <div class="box__info--data">
+              <p class="box__info--text">Apellidos</p>
+              <span class="box__info--name">{{usuario.apellidoPa}} {{usuario.apellidoMa}}</span>
+            </div>
+            <div class="box__info--data">
+              <p class="box__info--text">Correo electronico</p>
+              <span class="box__info--name">{{usuario.correo  }}</span>
+            </div>
+            <div class="box__info--data">
+              <p class="box__info--text">Telefono</p>
+              <span class="box__info--name">{{usuario.telefono  }}</span>
+            </div>
+            
+          </div>
+       </div>
+    </div>
+    <div class="box">
+      <div class="box__info--title">
+        <h4>Cambiar contraseña</h4>
+      </div>
+      <form class="box__info--security">
+        <div class="box__info--password"> 
+          <label for="newpassword" class="box__info--label">Nueva contraseña</label>
+          <input type="text" class="box__info--input" id="newpassword">
+        </div>
+        <div class="box__info--password">
+          <label for="repitpass" class="box__info--label">Repetir contraseña</label>
+          <input type="text" class="box__info--input" id="repitpass">
+        </div>
+        <div class="box__info--password box__btn">
+          <button type="button" class="box__info--btn--edit" (click)="openModal()" >
+            <i class='bx bx-edit'></i>
+            Editar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
-
-<div class="profile animate__animated animate__fadeIn animete_faster">
-  <h3>Mis datos Personales</h3>
+<div *ngIf="showModal === true">
+  <app-modal title="Cuidado" message="Esta en proceso de implementación."></app-modal>
 </div>
-<section class="profile__container">
-  <div class="profile__content">
-    <div class="contenedor">
-      <div class="profile__box">
-        <div class="profile__box--content">
-          <span class="profile__tiny">Nombre del inversionista</span>
-          <span class="profile__normal">{{usuario.nombre}}</span>
-        </div>
-        
-        <div class="profile__box--content">
-          <span class="profile__tiny-one profile__tiny ">Documento de identidad</span>
-          <span class="profile__normal profile__tiny-one">{{usuario.dni}}</span>
-        </div>
-      </div>
-      <div class="profile__box">
-        <div class="profile__box--content">
-          <span class="profile__tiny">Apellido Paterno</span>
-          <span class="profile__normal">{{usuario.apellidoPa}}</span>
-        </div>
-        <div class="profile__box--content">
-          <span class="profile__tiny-one profile__tiny">Correo Electronico</span>
-          <span class="profile__normal">{{usuario.correo}}</span>
-        </div>
-      </div>
-      <div class="profile__box">
-        <div class="profile__box--content">
-          <span class="profile__tiny">Apellido Materno</span>
-          <span class="profile__normal">{{usuario.apellidoMa}}</span>
-        </div>
-        <div class="profile__box--content">
-          <span class="profile__tiny">Telefono celular</span>
-          <span class="profile__normal">{{usuario.telefono}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="profiel__button">
-      <a routerLink="/dashboard/profile-edit" class="btn__save">
-        <i class="bx bx-edit"></i>
-       Guardar
-      </a>
-    </div>
-    
-  </div>
-  <div class="profile__photo">
-    <img src="/assets/img/foto-default.png" alt="foto-defaul" />
-  </div>
-</section>
-
-<!-- <div *ngIf="mostrarForm">
-  <p>ACTUALIZADO</p>
-</div> -->
-
-<!-- Modal -->
-<!-- <div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Actualizar mis datos
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form class="form" autocomplete="off" (ngSubmit)="putUsuario()">
-          <div class="form__content">
-            <div class="form__box">
-              <label for="nombre">Nombres</label>
-            <input
-              type="text"
-              id="nombre"
-              name="id"
-              class="input__field"
-              placeholder="Nombre completo"
-              [(ngModel)]="usuario.id"
-            />
-             <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span> 
-          </div>
-            <div class="form__box">
-                <label for="nombre">Nombres</label>
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                class="input__field"
-                placeholder="Nombre completo"
-                [(ngModel)]="usuario.nombre"
-              />
-               <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span> 
-            </div>
-            <div class="form__box">
-                <label for="apeMaterno">Apellido Paterno</label>
-              <input
-                type="text"
-                id="apeMaterno"
-                name="apellidoMa"
-                class="input__field"
-                placeholder="Apellido paterno"
-                [(ngModel)]="usuario.apellidoPa"
-              />
-              <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span> 
-            </div>
-            <div class="form__box">
-                <label for="apePaterno">Apellido Materno</label>
-              <input
-                type="text"
-                id="apePaterno"
-                name="apellidoPa"
-                class="input__field"
-                placeholder="Apellido materno"
-                [(ngModel)]="usuario.apellidoMa"
-              />
-            <span *ngIf="isValid('apellidoMa')" class="invalid">{{getFieldError('apellidoMa')}}</span> 
-            </div>
-            <div class="form__box">
-                <label for="dni">Documento de identidad</label>
-              <input
-                type="text"
-                id="dni"
-                name="dni"
-                class="input__field"
-                placeholder="DNI"
-                [(ngModel)]="usuario.dni"
-
-              />
-            <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span> 
-            </div>
-
-            <div class="form__box">
-                <label for="telefono">Telefono de contacto</label>
-              <input
-                type="text"
-                id="telefono"
-                name="telefono"
-                class="input__field"
-                placeholder="Telefono de contacto"
-                [(ngModel)]="usuario.telefono"
-              />
-
-         <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span>
-            </div>
-            <div class="form__box">
-                <label for="correo">Correo</label>
-              <input
-                type="email"
-                id="correo"
-                class="input__field"
-                name="correo"
-                placeholder="Correo electronico"
-                [(ngModel)]="usuario.correo"
-              />
-             <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span> 
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="submit" class="btn btn-primary" (click)="putUsuario()">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div> -->

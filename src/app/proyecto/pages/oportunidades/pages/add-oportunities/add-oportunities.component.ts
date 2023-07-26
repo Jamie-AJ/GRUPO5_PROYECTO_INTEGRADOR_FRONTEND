@@ -99,8 +99,6 @@ export class AddOportunitiesComponent implements OnInit {
       switch (key) {
         case 'required':
           return 'Este campo es requerido';
-        case 'minlength':
-          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
           return 'El valor ingresado no tiene formato válido';
         case 'negativeNumber':

@@ -15,11 +15,15 @@
     align-items: center;
     
 }
+.wallet__saldo{
+    font-size: 14px;
+}
 .wallet__btn{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
+    font-size: 13px;
 }
 .wallet__btn .deposit{
     background-color: var(--sidebar-color);
@@ -39,16 +43,6 @@
     cursor: pointer;
 }
 
-/* .listar__content {
-    background-color: #f0f2f8;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-} */
 .listar__button {
     display: flex;
     justify-content: flex-end;
@@ -129,4 +123,9 @@
     content: "↑ ";
     color:#0cbd2a;
     font-size: 1rem;
+}
+@media screen and (min-width: 998px) {
+    .wallet__btn{
+        font-size: 14px;
+    }
 }

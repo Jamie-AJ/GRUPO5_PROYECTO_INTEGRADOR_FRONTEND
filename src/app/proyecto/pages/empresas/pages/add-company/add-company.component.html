@@ -1,10 +1,13 @@
-<section class="company main animate__animated animate__fadeIn animete_faster">
+<section class="company main">
     <div class="company__header">
-        <h2>{{title}}</h2>
+        <div class="company__header-content">
+            <h2>{{title}}</h2>
+            <span>Datos de la empresa.</span>
+        </div>
         <div class="company__header-btn">
-            <a class="company__header-btn--back" (click)="goBack()">
+            <a class="company__header-btn--back" routerLink="/dashboard/empresa/list-company">
                 <i class="bx bx-chevron-left"></i>
-                Volver
+               <span>volver</span>
             </a>
         </div>
     </div>

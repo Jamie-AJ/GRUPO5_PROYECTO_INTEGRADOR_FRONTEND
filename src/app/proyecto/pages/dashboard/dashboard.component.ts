@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { InversionUsuario } from 'src/app/interface/oportunidad_usuario.interface';
 import { Saldo } from 'src/app/interface/saldo.interface';
 import { Transaccion } from 'src/app/interface/transaccion.interface';
@@ -17,9 +18,11 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 export class DashboardComponent implements OnInit{
   
   title = 'Dashboard';
+  public pagination: any;
   public currentMonth?: String;
   public currentYear?: Number;
   public transaccionList: Transaccion[] = [];
+  public ultimos8registros: Transaccion[] = [];
   public inversionList: InversionUsuario[] = [];
   public objTransaccion:Transaccion = new Transaccion();
   public objInversionUsuario: InversionUsuario = new InversionUsuario();
@@ -35,7 +38,8 @@ export class DashboardComponent implements OnInit{
   constructor(private saldoService: SaldoService,
     private transaccion: TransaccionService,
     private login: LoginService,
-    private inversionUsuario: OportunidadUsuarioService
+    private inversionUsuario: OportunidadUsuarioService,
+    private activatedRoute:ActivatedRoute
     )
     
     { }
@@ -44,6 +48,7 @@ export class DashboardComponent implements OnInit{
     this.getDate();
     this.singIn();
     this.getSaldo();
+    this.getListarTransaccionesPage();
     this.getListarTransacciones();
     this.getListarInversionUsuario();
   }
@@ -115,8 +120,19 @@ export class DashboardComponent implements OnInit{
         const dataB = new Date(b.fecha);
         return dataB.getTime() - dataA.getTime();
       })
-      this.transaccionList.reverse();
     });
+  }
+  getListarTransaccionesPage() {
+    this.activatedRoute.paramMap.subscribe(params => {
+      let totalPage: number = +params.get('page')!;
+      if (!totalPage) {
+        totalPage = 0;
+      }
+      this.transaccion.getTransactionPagexUserId(totalPage).subscribe(resp => { 
+        this.ultimos8registros = resp.content as Transaccion[];
+        this.pagination = resp;
+      });
+    })
   }
   getListarInversionUsuario(){
     this.inversionUsuario.getOportunidadesUsu().subscribe(resp =>{

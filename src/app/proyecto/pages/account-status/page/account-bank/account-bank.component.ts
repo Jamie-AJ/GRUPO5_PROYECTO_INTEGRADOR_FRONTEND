@@ -96,40 +96,27 @@ export class AccountBankComponent implements OnInit {
       this.cuentaBancariaList = cuentaBancaria;
     });
   }
-
-  postCuentaBancaria() {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-    console.log(this.form.value);
-    this.cuentaBancaria.postCuentaBancaria(this.form.value).subscribe(resp => {
-      document.getElementById('btnCloseModal')?.click();
-      Swal.fire('Excelente', resp.mensaje, 'success');
-      this.getCuentaBancarias()
-    });
-  }
-  desactivarCuentasBancarias(cuentaBacaria: CuentaBancaria) {
-    Swal.fire({
-      title: '¿Estas seguro?',
-      text: "No podras revertir esto!",
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.cuentaBancaria.deleteById(cuentaBacaria.idCuentaBancaria || 0).subscribe(resp => {
-          this.getCuentaBancarias();
-          Swal.fire(
-            'Deleted!',
-            resp.mensaje,
-            'success'
-          )
-        })
-      }
-    })
-
+  desactivarCuentasBancarias(cuentaBancaria: CuentaBancaria) {
+  
+      Swal.fire({
+        title: '¿Estas seguro?',
+        text: "No seras capaz de revertir esto!.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#434CE6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar'
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.cuentaBancaria.deleteById(cuentaBancaria.idCuentaBancaria!).subscribe(response => {
+            Swal.fire(
+              'Eliminado!',
+              response.mensaje,
+              'success'
+            )
+          })
+        }
+      })
   }
 }

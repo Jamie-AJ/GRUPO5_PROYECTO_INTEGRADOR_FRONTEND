@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Empresas } from 'src/app/interface/empresas.interface';
 import { EmpresasService } from 'src/app/services/empresas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-page',
@@ -10,7 +11,7 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 })
 export class ListPageComponent implements OnInit {
   title: string = 'Listado de empresas';
-  tabs: string[] = ['General', 'Activos']
+  tabs: string[] = ['Todos', 'Activos']
   activeTabsIndex: number = 0;
   empresasList: Empresas[] = [];
   empresasActivas: Empresas[] = [];
@@ -51,8 +52,26 @@ export class ListPageComponent implements OnInit {
     })
 
   }
-  // onPageChange(page: number): void {
-  //   this.currentPage = page;
-  //   this.getEmpresasPage();
-  // }
+  deleteEmpresas(id:number) {
+    return this.empresaService.deleteEmpresas(id).subscribe(response => { 
+      console.log('Empresa eliminada');
+      Swal.fire({
+        title: '¿Estas seguro?',
+        text: "No seras capaz de revertir esto!.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#434CE6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            response.mensaje,
+            'success'
+          )
+        }
+      })
+    });
+ }
 }

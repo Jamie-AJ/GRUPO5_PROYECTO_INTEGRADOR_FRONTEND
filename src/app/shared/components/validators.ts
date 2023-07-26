@@ -63,3 +63,10 @@ export const validarTarjetaNroCci = (control: FormControl): ValidationErrors | n
     })
     return null;
 }
+export const validarMontoIngresado = (control: FormControl): ValidationErrors | null => { 
+    const monto: number = control.value;
+    if (monto <= 300) { 
+        return { montoInvalido: true };
+    }
+    return null;
+}

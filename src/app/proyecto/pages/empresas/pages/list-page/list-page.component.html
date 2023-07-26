@@ -6,7 +6,7 @@
           <h3>{{title}}</h3>
         </div>
         <div clasS="company__group">
-          <a routerLink="/dashboard/empresa/add-company" class="btn__factura">
+          <a routerLink="/dashboard/empresa/add-company" class="btn__company">
             <i class="bx bx-plus"></i>
             Agregar Empresa
           </a>
@@ -14,10 +14,7 @@
       </div>
       <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
       <div class="company__box">
-        <div
-          class="company__content"
-          *ngIf="activeTabsIndex === 0"
-        >
+        <div class="company__content" *ngIf="activeTabsIndex === 0">
         <div class="listar__content-table">
           <table class="listar__table">
             <thead class="listar__thead">
@@ -33,7 +30,7 @@
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr *ngFor="let emp of empresasList; let i = index">
+              <tr *ngFor="let emp of empresasList">
                 <td>{{emp.idEmpresa}}</td>
                 <td>{{emp.razonSocial}}</td>
                 <td>{{emp.ruc}}</td>
@@ -46,7 +43,7 @@
                     <a routerLink="/dashboard/empresa/edit-company">
                       <i class='bx bxs-edit-alt'></i>
                     </a>
-                    <a href="">
+                    <a (click)="deleteEmpresas(emp.idEmpresa!)">
                       <i class='bx bx-trash' ></i>
                     </a>
                   </div>
@@ -54,9 +51,9 @@
               </tr>
             </tbody>
           </table>
-          <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/empresa/list-company"></app-pagination>
+          
         </div>
-        
+        <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/empresa/list-company"></app-pagination>
       </div>
         <div
           class="company__content"

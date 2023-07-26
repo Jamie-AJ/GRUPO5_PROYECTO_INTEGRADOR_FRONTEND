@@ -1,8 +1,6 @@
 .dash__container {
-    position: relative;
     height: 100%;
-    width: 100%;
-    transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
 }
 
 .dash__title {
@@ -234,8 +232,8 @@
 }
 
 .dash__saldo .saldo__deposit a {
-    background-color: #eaedf8;
-    color: var(--black-color);
+    background-color: var(--sidebar-color);
+    color: var(--white-color);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 14px;
@@ -247,7 +245,8 @@
 }
 
 .dash__saldo .saldo__deposit a:hover {
-    background-color: #e3e6f0;
+    background-color: var(--sidebar-color-hover);
+    
 }
 
 @media screen and (min-width: 468px) {
@@ -256,7 +255,7 @@
     }
 
     .dash__info .dash__info-box span {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .dash__info .dash__info-box p {
@@ -294,7 +293,7 @@
     }
 
     .dash__table-transaction {
-        grid-column: 1/3;
+        grid-column: 1/4;
     }
 
     .dash__chart {
@@ -326,7 +325,5 @@
 
     .dash__saldo {
         grid-column: 3/4;
-        height: 250px;
-        grid-row: 1/3;
     }
 }

@@ -66,8 +66,7 @@ export class HomeComponent implements OnInit {
   toggleDropdown(){
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-  closeSideBar() {
-    console.log('closeSideBar');
+  closeSidebar() {
     this.collapse = false;
   }
 

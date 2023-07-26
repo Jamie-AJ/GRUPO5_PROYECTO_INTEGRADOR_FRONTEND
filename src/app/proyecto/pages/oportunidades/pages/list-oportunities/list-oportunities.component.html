@@ -1,4 +1,4 @@
-<section class="inversion__container animate__animated animate__fadeIn animete_faster" >
+<section class="inversion__container" >
   <div class="inversion__content">
       <div class="inversion__nav">
         <div class="inversion__header">
@@ -14,7 +14,7 @@
       <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
       <div class="inversion__box">
         <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          class="inversion__content"
           *ngIf="activeTabsIndex === 0"
         >
         <div class="listar__content-table">
@@ -27,6 +27,7 @@
                 <th>tir</th>
                 <th>fecha caducidad</th>
                 <th>monto</th>
+                <th>estado</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
@@ -37,13 +38,18 @@
                 <td>{{opor.tir | percent}}</td>
                 <td>{{opor.fechaCaducidad}}</td>
                 <td>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(opor.enable!)">
+                    {{opor.enable}}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>
           </div>
         </div>
         <div
-          class="inversion__content animate__animated animate__fadeIn animete_faster"
+          class="inversion__content"
           *ngIf="activeTabsIndex === 1"
         >
         <div class="listar__content-table">
@@ -56,16 +62,22 @@
                 <th>tir</th>
                 <th>fecha caducidad</th>
                 <th>monto</th>
+                <th>estado</th>
               </tr>
             </thead>
             <tbody class="listar__tbody">
-              <tr *ngFor="let opor of oportunidad">
+              <tr *ngFor="let opor of oportunidadActivas">
                 <td>{{opor.idOportunidad}}</td>
                 <td>{{opor.empresa?.razonSocial}}</td>
                 <td>{{opor.rendimiento  | percent}}</td>
                 <td>{{opor.tir  | percent}}</td>
                 <td>{{opor.fechaCaducidad}}</td>
                 <td>{{opor.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(opor.enable!)">
+                    {{opor.enable}}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>

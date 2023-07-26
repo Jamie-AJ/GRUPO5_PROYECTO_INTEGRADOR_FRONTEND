@@ -18,6 +18,7 @@
     padding: 35px;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
     border-radius: 10px;
+    grid-row: 1/2;
 }
 .open-modal:hover{
     border: 1.5px dotted var(--primary-color);
