@@ -19,6 +19,9 @@ export class OportunidadesService {
         return this.http.get<Oportunidades[]>(`${this.url}/listarOportunidadInversion`);
 
     }
+    getOportunidadActivas(): Observable<Oportunidades[]>{
+        return this.http.get<Oportunidades[]>(`${this.url}/admin/listarOportunidadInversion`);
+    }
     getRefrescarFacturas(): Observable<any> { 
         return this.http.get<any>(`${this.url}/refrescarListaFactura`);
     }

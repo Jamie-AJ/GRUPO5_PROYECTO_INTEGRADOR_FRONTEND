@@ -64,16 +64,16 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
     monedas: ['', [Validators.required, Validators.minLength(1)]],
   });
   @HostListener('window:beforeunload', ['$event'])
-  onBeforeUnloadHandler($event: BeforeUnloadEvent): boolean { 
+  onBeforeUnloadHandler(event: BeforeUnloadEvent): boolean { 
     return this.hasUnsavedChanges() === false;
   }
   hasUnsavedChanges(): boolean {
-    return this.form.dirty;
-   }
+    return this.form.dirty && this.form.touched;
+  }
+  
   ngOnInit(): void {
     this.bancoService.getBancos().subscribe(bancos => { this.bancos = bancos });
     this.monedasService.getMonedas().subscribe(monedas => { this.monedas = monedas })
-    // this.getCuentaBancarias();
     this.changeNameCard();
     this.changeNumberCard();
     this.dateCard();

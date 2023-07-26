@@ -30,6 +30,12 @@ export class CuentaBancariaService {
     );
   }
   deleteById(id:number):Observable<any>{
-    return this.http.delete<any>(`${this.url}/user/eliminarCuentaBancaria/${id}`, {headers:this.httpHeaders})
+    return this.http.delete<any>(`${this.url}/user/eliminarCuentaBancaria/${id}`, { headers: this.httpHeaders })
+    .pipe(
+      catchError(err => { 
+        Swal.fire('Error', err.error.mensaje, 'error');
+        return throwError(err);
+      })
+    )
   }
 }

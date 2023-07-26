@@ -12,8 +12,9 @@
     opacity:0;
     pointer-events: none;
     transition: all 0.4s ease;
+    z-index:100;
 }
-.modal-background.active {
+.modal-active {
     opacity: 1;
     pointer-events: auto;
   }
@@ -29,7 +30,7 @@
     opacity: 0;
     transition: all 0.4s ease;
 }
-.modal-background.active .modal-container {
+.modal-background .modal-container {
     transform: translateY(0);
     opacity: 1;
   }
@@ -46,7 +47,7 @@
     font-size: 20px;
     font-weight: 600;
     color: var(--black-color);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .modal-content p{
     font-size: 14px;
@@ -54,32 +55,23 @@
     color: var(--black-color);
 }
 .modal-buttons {
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 }
-.modal-buttons button:nth-child(1){
+.modal-buttons button{
     background-color: #dde5f7;
     color: var(--sidebar-color);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     outline: none;
 }
-.modal-buttons button:nth-child(2){
-    background-color: #d33847;
-    color: var(--white-color);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-}
+
 .modal-header {
     display: flex;
     justify-content: flex-end;
@@ -90,3 +82,7 @@
     background-color: transparent;
     border: none;
   } 
+  .icon{
+    font-size: 20px;
+    color: var(--black-color);
+  }

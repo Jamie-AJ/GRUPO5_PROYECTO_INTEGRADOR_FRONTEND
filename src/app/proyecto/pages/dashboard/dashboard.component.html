@@ -1,4 +1,4 @@
-<section class="dash__container animate__animated animate__fadeIn animete_faster">
+<section class="dash__container">
     <div class="dash__title">
         <span>Bienvenida {{user.nombre}}</span>
         <p>Este es tú panel de inversión, usalo con sabiduria.</p>
@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody class="listar__tbody">
-                            <tr *ngFor="let trans of transaccionList">
+                            <tr *ngFor="let trans of ultimos8registros">
                                 <td>{{trans.idTransaccion}}</td>
                                 <td>{{trans.fecha | date:'longDate':'':'es-PE'}}</td>
                                 <td>
@@ -81,17 +81,14 @@
                     </table>
                 </div>
             </div>
-            <div class="dash__box dash__chart">
+            <!-- <div class="dash__box dash__chart">
                 <div class="dash__subtitle">
                     <h5><i class='bx bx-bar-chart'></i>Graficas</h5>
                     <div class="dash__chart-info">
                         <app-charts></app-charts>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="dash__aside">
-
+            </div> -->
         </div>
     </div>
 </section>

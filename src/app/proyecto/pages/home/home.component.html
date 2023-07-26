@@ -1,6 +1,6 @@
 <header class="header" [ngClass]="collapse ? 'collapse-header' : ''">
   <div class="header__menu">
-    <i class="header__menu-toggle" [ngClass]="collapse ? 'bx bx-x' : 'bx bx-menu'" (click)="toggleCollapse()"></i>
+    <i class=" bx bx-menu header__menu-toggle"  (click)="toggleCollapse()"></i>
   </div>
   <div class="header__data">
     <ng-container *ngIf="isInversionista">
@@ -44,7 +44,7 @@
           <span class="name_go">GO!</span>
         </div>
       </div>
-      <div class="side_menu" (click)="closeSideBar()">
+      <div class="side_menu" (click)="closeSidebar()">
         <div>
             <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
             <i class="bx bxs-dashboard icon"></i>
@@ -116,8 +116,6 @@
     </div>
   </nav>
 </div>
-
-
-<div class="main" [ngClass]="collapse ? 'main-collapse' : ''">
+<main class="main" [ngClass]="collapse ? 'main-collapse' : ''">
   <router-outlet></router-outlet>
-</div>
+</main>

@@ -66,7 +66,7 @@ export class OportunitiesComponent implements OnInit {
 
   ) {  }
   form: FormGroup = this.builder.group({
-    montoInvertido: ['', [Validators.required, customValidators.validarNumerosNegativos]],
+    montoInvertido: ['', [Validators.required, customValidators.validarNumerosNegativos, customValidators.validarMontoIngresado]],
   });
 
   ngOnInit(): void {
@@ -74,9 +74,9 @@ export class OportunitiesComponent implements OnInit {
     // this.getOportunidadesPorId();
     this.getSaldo();
     //this.calcularInteresesRates();
-    this.calcularPorcentajeInversion();
-    this.calcularPorcentajeRecaudado();
-    this.calcularTasaMensual();
+    // this.calcularPorcentajeInversion();
+    // this.calcularPorcentajeRecaudado();
+    // this.calcularTasaMensual();
     
    // this.progressBarInicio();
   }
@@ -89,13 +89,11 @@ export class OportunitiesComponent implements OnInit {
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
-          return 'Este campo es requerido';
-        case 'minlength':
-          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
-        case 'pattern':
-          return 'El valor ingresado no tiene formato válido';
+          return 'Este campo es requerido.';
+        case 'montoInvalido':
+          return 'El monto ingresado debe ser mayor o igual a S/.300.';
         case 'negativeNumber':
-          return 'El valor ingresado no puede ser negativo';
+          return 'El valor ingresado no puede ser negativo.';
       }
     }
     return null;
@@ -209,17 +207,17 @@ export class OportunitiesComponent implements OnInit {
     const tasaAnual = this.selectOportunity.rendimiento!;
     this.tasaMensual = (Math.pow( 1 + tasaAnual, 1.0/12.0 ) -1 ) * 100;
     this.tasaMensualRedondeado =+ this.tasaMensual.toFixed(2);
-    console.log("tasa mensual", this.tasaMensual)
+    // console.log("tasa mensual", this.tasaMensual)
 
   }
   calcularGanancia(){
-    const fechaInicio = this.selectOportunity.fechaRegistro? new Date(this.selectOportunity.fechaRegistro) : undefined;
-    const fechaFinal = this.selectOportunity.fechaPago ? new Date(this.selectOportunity.fechaPago) : undefined;
+    const fechaInicio:any = this.selectOportunity.fechaRegistro? new Date(this.selectOportunity.fechaRegistro) : undefined;
+    const fechaFinal:any = this.selectOportunity.fechaPago ? new Date(this.selectOportunity.fechaPago) : undefined;
 
-    const tasaAnual = this.selectOportunity.rendimiento!;
-    const tasaMensual = Math.pow(1+ tasaAnual, 1/12)-1;
-    const tasaDiaria =  Math.pow(1+tasaMensual, 1/30)-1;
-    const diasInversion = Math.floor((fechaFinal!.getTime() - fechaInicio!.getTime()) / (1000*60*60*24));
+    const tasaAnual:number = this.selectOportunity.rendimiento!;
+    const tasaMensual:number  = Math.pow(1+ tasaAnual, 1/12)-1;
+    const tasaDiaria:number  =  Math.pow(1+tasaMensual, 1/30)-1;
+    const diasInversion:number  = Math.floor((fechaFinal!.getTime() - fechaInicio!.getTime()) / (1000*60*60*24));
     this.gananciaMaxima = this.montoInvertido * Math.pow(1+tasaDiaria, diasInversion)- this.montoInvertido;
     this.gananciaRedondeado =+ this.gananciaMaxima.toFixed(2);
     console.log("tasa diaria", tasaDiaria)
@@ -234,9 +232,9 @@ export class OportunitiesComponent implements OnInit {
   postRegistrarInversionUsuario() {
     if (this.form.invalid) {
      this.form.markAllAsTouched();
-   return;
-  }
-  if(this.montoInvertido > 0){
+        return;
+    }
+  if(this.montoInvertido >=  300){
     const inversionUsuario: InversionUsuario = {
       idOportunidad: this.selectOportunity.idOportunidad,
       montoInvertido: this.montoInvertido,
@@ -267,7 +265,7 @@ export class OportunitiesComponent implements OnInit {
       
     )
   }else {
-      Swal.fire('error',"El monto de inversion debe ser mayor a 0 ",'error')
+      Swal.fire('error',"El monto de inversion debe ser mayor a S/.300. ",'error')
   }
     
   }

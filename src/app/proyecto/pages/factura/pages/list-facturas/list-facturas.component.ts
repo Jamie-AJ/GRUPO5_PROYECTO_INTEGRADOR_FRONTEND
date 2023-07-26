@@ -15,7 +15,7 @@ export class ListFacturasComponent implements OnInit {
   title = 'Facturas de Empresas';
   factura:Factura[] = [];
   facturasActivas:Factura[] = [];
-  tabs: string[] = ['General', 'Activos' ]
+  tabs: string[] = ['Todos', 'Activos' ]
   activeTabsIndex: number = 0;
   pagination: any;
 
@@ -29,7 +29,16 @@ export class ListFacturasComponent implements OnInit {
   tabsChange(tab:number){
     this.activeTabsIndex = tab;
   }
-
+  getBadgeClass(riesgo: string): string {
+    switch (riesgo) {
+      case 'Acivo':
+        return 'text-bg-success';
+      case 'No Activo':
+        return 'text-bg-danger';
+      default:
+        return '';
+    }
+  }
   getFaturasActive(){
     this.facturaService.getFacturasActivas().subscribe(resp => {
       console.log(resp);

@@ -21,13 +21,11 @@ import { ListPageComponent } from './pages/empresas/pages/list-page/list-page.co
 import { ListFacturasComponent } from './pages/factura/pages/list-facturas/list-facturas.component';
 import { MovementListComponent } from './pages/movement-list/movement-list.component';
 import { MainAccountComponent } from './pages/account-status/page/main-account/main-account.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { OportunitiesComponent } from './pages/oportunities-user/oportunities/oportunities.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ReporteUsuarioComponent } from './pages/mantenimientos/reporte-usuario/reporte-usuario.component';
 import { RetiroComponent } from './pages/account-status/page/retiro/retiro.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { WalletComponent } from './pages/account-status/page/wallet/wallet.component';
 
@@ -57,14 +55,11 @@ registerLocaleData(localeEsPE);
     ListFacturasComponent,
     MovementListComponent,
     MainAccountComponent,
-    NavbarComponent,
-    NavbarComponent,
     OportunitiesComponent,
     ProfileComponent,
     PaginationComponent,
     ReporteUsuarioComponent,
     RetiroComponent,
-    SidebarComponent,
     TabsComponent,
     WalletComponent,
     FooterComponent,

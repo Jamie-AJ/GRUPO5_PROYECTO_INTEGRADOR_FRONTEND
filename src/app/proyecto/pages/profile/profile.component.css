@@ -1,32 +1,161 @@
 .profile{
-    position: relative;
-    background-color: var(--panel-color);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    margin: 0 auto;
     height: 100%;
 }
-.profile h3{
-    padding: 1rem;
-    border-bottom: 1px solid var(--second-table-color);
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    color:var(--white-color);
-    font-size: 18px;
-    font-weight: 500;
+.profile__header{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:1rem 0;
 }
+
 .profile__container{
     margin-top: 1rem;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 2rem;
-}
-.profile__content{
-    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
     padding:1rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
 }
+.box{
+    width: 100%;
+    border:1px solid var(--second-table-color);
+    padding:1.5rem;
+    border-radius: 10px;
+ }
+.box__title{
+    display: flex;
+    justify-content: flex-start;
+    gap:0.5rem;
+}
+.box__img img{
+    width:80px;
+}
+.box__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.box__text p{
+    /* font-size: 1px; */
+    font-weight: 600;
+    color:var(--black-color);
+}
+.box__text span{
+    font-size: 12px;
+    font-weight: 500;
+    color:var(--grey-color);
+}
+
+.box__info--title{
+    margin-bottom: 1.5rem;
+}
+.box__info--title h4{
+    font-size: 16px;
+    font-weight: 600;
+    color:var(--black-color);
+}
+.box__info--content{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+}
+.box__info--data{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+.box__info--text{
+    font-size: 12px;
+    font-weight: 500;
+    color:var(--text-color);
+}
+.box__info--name{
+    /* font-size: 16px; */
+    font-weight: 600;
+    color:var(--black-color);
+}
+.box__info--security{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:1rem;
+}
+.box__info--password{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:0.5rem;
+}
+.box__info--input{
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--sidebar-color);
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    font-size: 14px;
+    font-weight: 500;
+    color:var(--text-color);
+    
+}
+.box__info--label{
+    font-size: 14px;
+    font-weight: 500;
+    color:var(--black-color);
+}
+.box__info--btn--edit{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-color: var(--sidebar-color);
+    padding:10px 20px;
+    border-radius: 10px;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+    font-size: 14px;
+}
+.box__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box__info--btn--edit i{
+    font-size: 18px;
+}
+@media screen and (min-width: 680px) {
+    .box__info--content{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .box__info--security{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .box__info--input{
+        width:220px;
+    }
+}
+ @media screen and (min-width: 992px) {
+    .profile{
+        width: 970px;
+    }
+ }
+ @media screen and (min-width: 1200px) {
+    .profile{
+        width: 1140px;
+    }
+ }
+ @media screen and (min-width: 1366px) {
+    .profile{
+        width:1200px;
+    }
+ }
+ /*
 .contenedor{
     margin-top: 3rem;
 }
@@ -45,7 +174,7 @@
 }
 .profiel__button button{
     border:none;
-    /* background-color:; */
+    background-color:;
     color:var(--white-color);
     padding:0.8rem 2rem;
     display: flex;
@@ -120,5 +249,5 @@
     padding: 0 0.5rem;
     font-size: 14px;
     font-weight: 500;
-    /* color:var(--text-color); */
-}
+    color:var(--text-color);
+} */

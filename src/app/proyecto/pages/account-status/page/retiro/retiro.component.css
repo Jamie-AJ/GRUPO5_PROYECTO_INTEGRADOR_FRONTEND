@@ -25,7 +25,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--black-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .retiro__box{
     display: flex;
@@ -107,6 +107,7 @@
 }
 .deposito__goback{
     display: inline-block;
+    margin-bottom: 1rem;
 }
 .deposito__goback a{
     background-color: var(--sidebar-color);

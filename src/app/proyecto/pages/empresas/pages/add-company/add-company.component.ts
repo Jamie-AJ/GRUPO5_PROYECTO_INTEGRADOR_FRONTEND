@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-company.component.css']
 })
 export class AddCompanyComponent {
-  title:string ='Agregar empresa'
+  title:string ='Estás por agregar una empresa.'
 
   empresas:Empresas[] = [];
 
@@ -53,9 +53,7 @@ export class AddCompanyComponent {
     }
     return null;
   }
-  goBack(){
-    this.router.navigate(['/dashboard/empresa/list-company']);
-  }
+
   //REGISTRAR EMPRESA
   postEmpresas(){
     if(this.form.invalid){
