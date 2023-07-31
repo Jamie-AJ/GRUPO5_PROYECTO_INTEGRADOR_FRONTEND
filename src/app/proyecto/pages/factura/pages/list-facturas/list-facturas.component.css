@@ -2,21 +2,24 @@
     position: relative;
     height: 100%;
 }
-.inversion__container h3{
-    font-size: 24px;
+.inversion__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1rem;
+}
+.inversion__header h3{
+    font-size: 20px;
     font-weight: 600;
+}
+.btn__factura span{
+    display: none;
 }
 .inversion__nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-}
-.inversion__header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap:1rem;
 }
 
 .inversion__box{
@@ -38,13 +41,26 @@
     color:var(--white-color);
     font-size: 18px;
 }
-/* .listar__content-table{
-    padding: 1rem;
-    background-color: var(--white-color);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 100%;
-} */
+.listar__content-table{
+    overflow-y: auto;
+}
+.listar__content-table::-webkit-scrollbar {
+    display: none;
+}
+
+.listar__content-table::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-color);
+    border-radius: 1rem;
+    transition: background-color .8s ease-in-out;
+}
+
+.listar__content-table::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sidebar-color-hover);
+}
+
+.listar__content-table::-webkit-scrollbar-track {
+    background: #ffffff;
+}
 .listar__content {
     padding: 1rem;
     display: flex;
@@ -105,19 +121,18 @@
     background-color: #ececec;
 }
 .btn__factura {
-    padding: 0.625rem 1rem;
-    border-radius: 20px;
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    /* outline: none; */
+    justify-content: center;
+    background-color: var(--sidebar-color);
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--white-color);
+    cursor: pointer;
+
+}
+.btn__factura i{
+    font-size: 20px;
 }
 .btn__factura:hover{
     background-color: #373ece;
@@ -126,4 +141,16 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
+}
+@media screen and (min-width: 768px) {
+    .inversion__header h3{
+        font-size: 24px;
+    }
+    .btn__factura{
+        padding: 10px 20px;
+    }
+    .btn__factura span{
+        font-size: 14px;
+        display: block;
+    }
 }

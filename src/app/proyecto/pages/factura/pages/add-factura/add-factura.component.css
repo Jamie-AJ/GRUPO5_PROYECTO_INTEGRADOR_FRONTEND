@@ -1,139 +1,131 @@
-.factura__container{
+.factura__container {
     position: relative;
     height: 100%;
 }
-.factura__container .factura__title{
-    font-size: 24px;
-    font-weight: 600;
-}
-.factura__content{
+
+.factura__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap:2rem;
-}
-.factura__form{
-    padding: 1rem 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 100%;
-}
-.factura__nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:1rem 0;
-}
-.factura__header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap:1rem;
-}
-.factura__subtitle{
-    margin-bottom: 2rem;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--grey-color);
+    gap: 2rem;
 }
 
-.factura__form{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 1rem;
-    /* padding:1rem; */
-}
-.factura__form .form__content{
-    background-color: var(--white-color);
-    padding:1rem;
-    border-radius: 10px;
-}
-.factura__form .form__img{
-    display:flex;
-    justify-content: center;
+.factura__nav {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    max-width: 100%;
-    
+    padding: 1rem 0;
 }
-.form__img img{
-    background-color: var(--white-color);
-    max-width: 100%;
-    height: 100%;
-    border-radius: 10px;
+
+.factura__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-.factura__content-form{
-    /* width:50%; */
+
+.factura__header h3 {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black-color);
+    display: none;
+}
+
+.factura__header span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form__content {
     background-color: #EFF1F7;
     padding: 1rem;
     border-radius: 10px;
 }
-.factura__content-form h3{
-    margin-bottom:1rem ;
+.form__content h3 {
+    margin-bottom: 1rem;
     font-size: 22px;
 }
-.form__group{
+
+.form__group {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap:1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
-.form__box{
+
+.form__box {
     display: flex;
     flex-direction: column;
-    gap:0.5rem;
+    gap: 0.5rem;
 }
-.form__box label{
+
+.form__box label {
     font-size: 14px;
     font-weight: 600;
     color: #4F4F4F;
 }
-.form__box:nth-child(1),
-.form__box:nth-child(4){
-    grid-column: 1/3;
-}
+
 .form__box:nth-child(3) input[type="number"]::-webkit-inner-spin-button,
 .form__box:nth-child(3) input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
-.form__input{
+
+.form__input {
+    width: 100%;
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     outline: none;
+    font-size: 13px;
 }
-.form__box textarea{
+
+.form__box textarea {
     resize: none;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #C4C4C4;
-    outline: none;
     height: 8rem;
 
 }
-.form__group--btn{
+
+.form__group--btn {
     display: flex;
     justify-content: flex-start;
     margin-top: 1rem;
-    gap:1rem;
+    gap: 1rem;
 }
+
 .btn__factura {
-    padding: 0.625rem 1rem;
-    border-radius: 20px;
-    background-color:#d33847;
-    color: var(--white-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    background-color: var(--sidebar-color);
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--white-color);
+    cursor: pointer;
 
 }
-.btn__factura:hover{
-    background-color: #cb1f30;
+
+.btn__factura:hover {
+    background-color: var(--sidebar-color-hover);
+}
+.btn__factura i{
+    font-size: 20px;
+}
+.btn__factura span{
+    display: none;
+}
+
+.btn__guardar{
+    height: 50px;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--sidebar-color);
+    z-index: 100;
+    border: none;
+    border-radius: 10px;
+    color: var(--white-color);
+    cursor: pointer;
+
+}
+.error{
+    border: 1px solid #d45360;
 }
 .invalid {
     display: flex;
@@ -141,7 +133,47 @@
     gap: 0.25rem;
     color: #d45360;
     font-size: 12px;
-    font-weight: 600;
     width: 100%;
-  }
- 
+}
+@media screen and (min-width: 768px) {
+    .form__group{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .form__box:nth-child(1),
+    .form__box:nth-child(4) {
+        grid-column: 1/3;
+    }
+    .form__input{
+        font-size: 14px;
+    }
+    .btn__guardar {
+        width: 0;
+        height: 40px;
+        position: relative;
+        border: 1px solid var(--sidebar-color);
+        background-color: transparent;
+        padding: 13px 20px;
+        border-radius: 20px;
+        min-width: 150px;
+        color: var(--sidebar-color);
+        line-height: 14px;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+    }
+}
+@media screen and (min-width: 998px) {
+    
+    .factura__header h3{
+        display: block;
+    }
+    .factura__header span {
+        margin-top: 1rem;
+    }
+    .btn__factura{
+        height: 40px;
+        padding: 13px 30px;
+    }
+    .btn__factura span{
+        display: block;
+    }
+}

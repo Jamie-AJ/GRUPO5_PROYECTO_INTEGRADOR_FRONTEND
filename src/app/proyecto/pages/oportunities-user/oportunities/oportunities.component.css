@@ -5,7 +5,7 @@
 
 .oportunities__user--header h3 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .oportunities__user--nav {
@@ -787,7 +787,7 @@ progress::-webkit-progress-value {
   }
 }
 
-@media screen and (min-width: 998px) {
+@media screen and (min-width: 1024px) {
   .oportunities__title h4 {
     font-size: 17px;
   }
@@ -797,6 +797,11 @@ progress::-webkit-progress-value {
   }
 
   .oportunities__user--box {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .oportunities__user--box{
+    grid-template-columns: repeat(4,1fr);
   }
 }

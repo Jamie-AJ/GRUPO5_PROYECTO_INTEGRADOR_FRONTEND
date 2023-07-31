@@ -16,8 +16,16 @@
     
 }
 .wallet__saldo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem;
     font-size: 14px;
 }
+.wallet__saldo p {
+    font-weight: 500;
+}
+
 .wallet__btn{
     display: flex;
     justify-content: center;
@@ -125,6 +133,10 @@
     font-size: 1rem;
 }
 @media screen and (min-width: 998px) {
+    .wallet__saldo{
+        font-size: 16px;
+        
+    }
     .wallet__btn{
         font-size: 14px;
     }

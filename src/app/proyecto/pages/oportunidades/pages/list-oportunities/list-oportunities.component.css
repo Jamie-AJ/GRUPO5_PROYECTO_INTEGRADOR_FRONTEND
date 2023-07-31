@@ -1,12 +1,9 @@
-.inversion__container{
+.inversion{
     position: relative;
-    /* background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
-    /* border-radius: 10px; */
     height: 100%;
 }
-.inversion__container h3{
-    font-size: 24px;
+.inversion__header h3{
+    font-size:1.25rem;
     font-weight: 600;
 }
 .inversion__nav{
@@ -48,21 +45,6 @@
     border-radius: 10px;
 } */
 
-.factura__container{
-    position: relative;
-    background-color: var(--panel-color);
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-    border-radius: 10px;
-    height: 100%;
-}
-.factura__container h3{
-    padding: 1rem;
-    background-color: var(--primary-color);
-    border-top-left-radius:10px;
-    border-top-right-radius: 10px;
-    color:var(--white-color);
-    font-size: 18px;
-}
 /* .listar__content-table{
     padding: 1rem;
     background-color: var(--white-color);
@@ -82,6 +64,26 @@
     justify-content: flex-end;
     align-items: center;
     gap: 0.75rem;
+}
+.listar__content-table{
+    overflow-y: auto;
+}
+.listar__content-table::-webkit-scrollbar {
+    display: none;
+}
+
+.listar__content-table::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-color);
+    border-radius: 1rem;
+    transition: background-color .8s ease-in-out;
+}
+
+.listar__content-table::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sidebar-color-hover);
+}
+
+.listar__content-table::-webkit-scrollbar-track {
+    background: #ffffff;
 }
 .listar__table {
     border-collapse: collapse;
@@ -129,26 +131,37 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-.btn__factura {
-    padding: 0.625rem 1rem;
-    border-radius: 20px;
-    background-color: var(--sidebar-color);
-    color: var(--white-color);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
+.inversion__back {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    /* outline: none; */
+    background-color: var(--sidebar-color);
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--white-color);
+    cursor: pointer;
 }
-.btn__factura:hover{
+
+.inversion__back:hover{
     background-color: #373ece;
 }
-.factura__group{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.inversion__back span{
+    display: none;
+    
+}
+.inversion__back i{
+    font-size: 20px;
+}
 
+@media screen and (min-width: 768px) {
+    .inversion__header h3{
+        font-size: 1.5rem;
+    }
+    .inversion__back{
+        height: 40px;
+        padding: 13px 30px;
+    }
+    .inversion__back span{
+        display: block;
+        font-size: 14px;
+    }
 }

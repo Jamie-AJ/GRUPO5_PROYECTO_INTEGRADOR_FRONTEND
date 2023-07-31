@@ -94,7 +94,7 @@ export class RetiroComponent {
           }
         }
       );
-      }, 2000);
+      }, 3000);
     }
   finalizarRetiro() {
     // Restablecer el estado del componente principal

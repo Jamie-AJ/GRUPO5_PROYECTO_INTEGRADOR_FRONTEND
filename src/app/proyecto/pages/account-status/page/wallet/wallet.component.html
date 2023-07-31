@@ -1,9 +1,9 @@
 <section class="wallet" *ngIf="mostrarLista">
     <div class="wallet__container" >
         <div class="wallet__box">
-            <div>
-                <span class="wallet__saldo">Saldo: {{objSaldo.saldo  |  currency:'S/.&nbsp;':'symbol-narrow' }}</span>
-                <span></span>
+            <div class="wallet__saldo">
+                <span>Saldo: </span>
+                <p>{{objSaldo.saldo  |  currency:'S/.&nbsp;':'symbol-narrow' }}</p>
             </div>
             <div class="wallet__btn">
                 <button type="button" class="deposit" (click)="mostrarFormularioDeposito()" >Deposito</button>

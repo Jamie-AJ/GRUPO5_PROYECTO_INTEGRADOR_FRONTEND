@@ -19,7 +19,7 @@ import * as customValidators from 'src/app/shared/components/validators';
   styleUrls: ['./add-oportunities.component.css']
 })
 export class AddOportunitiesComponent implements OnInit {
-
+  title = 'Estás por agregar una oportunidad.';
   public objOportunidades: Oportunidades = new Oportunidades();
   public factura: Factura = new Factura();
   public empresas: Empresas[] = [];

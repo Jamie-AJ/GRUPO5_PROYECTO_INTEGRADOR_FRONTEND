@@ -36,7 +36,7 @@ export class WalletComponent implements OnInit{
   }
   
  ngOnInit(): void {
-  
+   this.getSaldo();
   // this.getTransacciones();
   this.getTransaccionPage();
 }
@@ -52,7 +52,12 @@ export class WalletComponent implements OnInit{
     this.mostrarLista = true;
     this.formularioActivo = '';
   }
-  
+  //MOSTRAR EL SALDO DE LA CARTERA
+  getSaldo() {
+    this.saldoService.getDetallCartera().subscribe(response => {
+      this.objSaldo = response;
+    })
+  }
  //MUESTRA LAS TRANSACCIONES
  getTransacciones(){
     this.transactionService.getTransaction().subscribe((transaccion: Transaccion[]) =>{
