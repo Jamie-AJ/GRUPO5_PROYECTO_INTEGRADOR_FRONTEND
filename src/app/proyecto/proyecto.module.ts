@@ -64,6 +64,7 @@ registerLocaleData(localeEsPE);
     WalletComponent,
     FooterComponent,
     ReporteInversionesComponent,
+
     
 
   ],

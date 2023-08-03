@@ -169,10 +169,11 @@
     }
 
     .btn__company {
-        padding:10px 20px;
+        padding: 10px 20px;
     }
 
     .btn__company span {
+        font-size: 14px;
         display: block;
     }
 
