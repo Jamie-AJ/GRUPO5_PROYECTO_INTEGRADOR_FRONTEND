@@ -4,7 +4,7 @@
     grid-template-columns: repeat(auto-fill, minmax(333px, 1fr)); /* Columnas con ancho mínimo de 300px y ajustables automáticamente */
     gap: 1rem;
 }
-.open-modal{
+.account__add{
     border:1px solid #d6d6d6;
     display: flex;
     flex-direction: column;
@@ -19,11 +19,13 @@
     box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
     border-radius: 10px;
     grid-row: 1/2;
+    transition: all .3s ease;
 }
-.open-modal:hover{
-    border: 1.5px dotted var(--primary-color);
+.account__add:hover{
+    border: 1.5px solid var(--sidebar-color);
+    color:var(--sidebar-color);
 }
-.open-modal .icon{
+.account__add .icon{
     font-size: 30px;
     color: var(--primary-color);   
 }

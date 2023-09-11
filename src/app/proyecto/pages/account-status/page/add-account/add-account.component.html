@@ -45,7 +45,7 @@
                             <div class="form__box">
                                 <label for="nroCuentacci">Número cci</label>
                                 <div>
-                                <input type="text" class="form__input" formControlName="nroCuentaCci" id="nroCuentaCci" placeholder="Ingrese su número de tarjeta CCI" [class.error]="isValid('nroCuentaCci')" maxlength="24">
+                                <input type="text" class="form__input" formControlName="nroCuentaCci" id="nroCuentacci" placeholder="Ingrese su número de tarjeta CCI" [class.error]="isValid('nroCuentaCci')" maxlength="24">
                                 <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{ getFieldError("nroCuentaCci") }}</span>
                                 </div>
                                 
@@ -90,7 +90,7 @@
                             <div class="form__box">
                                 <label for="cvv">Código de Seguridad</label>
                                 <div>
-                                <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="3"/>
+                                <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="4"/>
                                 <span *ngIf="isValid('cvv')" class="invalid">{{ getFieldError("cvv") }}</span>
                                 </div>    
                             </div>
@@ -107,7 +107,9 @@
                 </div>
             </div>
             <div class="bank__btn">
-                <button type="submit" class="bank__btn-add btn-fixed" (click)="postCuentaBancaria()">Agregar</button>
+                <button type="submit" class="bank__btn-add" (click)="postCuentaBancaria()">
+                    <i class="bx bx-save"></i>
+                    Agregar</button>
             </div>
         </div>
         <div class="bank__box bank__info">
