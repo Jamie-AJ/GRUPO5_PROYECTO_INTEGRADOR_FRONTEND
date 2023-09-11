@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
   closeDropdown() {
-    this.isDropdownOpen = false;
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
   toggleCollapse(){
     this.collapse = !this.collapse;

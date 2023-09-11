@@ -1,6 +1,6 @@
 <app-loading-spinner *ngIf="loadingRetiro" [mensaje]="mensajeRetiro"></app-loading-spinner>
 <div class="retiro">
-  <div class="deposito__goback">
+  <div class="retiro__goback">
     <a (click)="finalizarRetiro()">
       <i class='bx bx-chevron-left'></i>Regresar</a>
   </div>
@@ -9,8 +9,8 @@
       <div class="form__retiro-content">
         <h3>Retiro</h3>
           <div class="retiro__box">
-            <label for="idCuentaBancaria"
-              >De las cuentas que tienes registradas, selecciona la que usaras
+            <label for="idCuentaBancaria"> 
+              De las cuentas que tienes registradas, selecciona la que usaras
               para retirar a InvestGo!</label>
             <select formControlName="idCuentaBancaria" id="idCuentaBancaria" class="retiro__input">
               <option selected disabled value="">Selecciona Cuenta Bancaria</option>
@@ -26,13 +26,10 @@
             </div>
             <span class="invalid" *ngIf="isValid('monto')">{{getFieldError('monto')}}</span>
           </div>
-          <div class="deposito__group-btn">
-            <button type="submit" class="deposito__btn group-btn">
+          <div class="retiro__group-btn">
+            <button type="submit" class="retiro__btn group-btn">
               Retirar
             </button>
-            <!-- <button type="button" class="deposito__goBack group-btn" (click)="finalizarRetiro()">
-              Cancelar
-            </button> -->
           </div>
         </div>
       </div>

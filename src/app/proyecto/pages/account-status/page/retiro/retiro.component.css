@@ -36,7 +36,7 @@
 
 .retiro__box label{
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color:var(--grey-color);
 }
 .retiro__input{
@@ -44,7 +44,7 @@
     border:1px solid var(--grey-color);
     border-radius: 5px;
     padding: 0.5rem 0.5rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--black-color);
     outline: none;
 }
@@ -87,10 +87,8 @@
     color: var(--grey-color);
     font-size: 13px;
 }
-.deposito__group-btn{
- margin-top: 1rem;
-}
-.deposito__btn{
+
+.retiro__btn{
     background-color: var(--sidebar-color);
     color: var(--white-color);
     transition: all 0.3s ease;
@@ -102,14 +100,14 @@
     font-size: 1rem;
     transition: all 0.3s ease;
 }
-.deposito__btn:hover{
+.retiro__btn:hover{
     background-color: #2b1def;
 }
-.deposito__goback{
+.retiro__goback{
     display: inline-block;
     margin-bottom: 1rem;
 }
-.deposito__goback a{
+.retiro__goback a{
     background-color: var(--sidebar-color);
     padding:0.5rem 1rem;
     color:var(--white-color);
@@ -117,9 +115,9 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    /* width: 100%; */
+    font-size: 0.875rem;
 }
-.deposito__goback a i{
+.retiro__goback a i{
     font-size: 1.5rem;
 }
 .invalid {
@@ -130,4 +128,15 @@
     font-size: 12px;
     font-weight: 600;
     width: 100%;
+  }
+  @media screen and (min-width: 998px) {
+    .retiro__box label{
+        font-size: 0.875rem;
+    }
+    .retiro__input{
+        font-size: 1rem;
+    }
+    .retiro__goback a{
+        font-size: 1rem;
+    }
   }

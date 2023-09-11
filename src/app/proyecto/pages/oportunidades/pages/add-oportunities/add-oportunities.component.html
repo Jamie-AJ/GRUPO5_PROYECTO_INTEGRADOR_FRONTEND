@@ -1,19 +1,20 @@
 
-<section class="inversion__container" >
+<section class="inversion" >
     <div class="inversion__header">
         <div class="inversion__nav">
             <div class="inversion__header-content">
-              <h3 class="inversion__title">Añadir Oportunidades</h3>
+              <h3>{{title}}</h3>
+              <span>Ingresando oportunidad</span>
             </div>
-            <div clasS="inversion__group">
-                <a (click)="goBack()" class="btn__factura btn__form ">
-                    <i class='bx bx-chevron-left'></i>Regresar
+            <div clasS="inversion__btn">
+                <a (click)="goBack()" class="inversion__back">
+                    <i class='bx bx-chevron-left'></i>
+                    <span>Regresar</span>
                 </a>
               </div>
         </div>
     </div>
     <div class="inversion__content">
-        
         <div class="inversion__box">
             <h3 class="inversion__subtitle">Empresa</h3>
             <app-search-box (onDebounce)="filterEmpresas($event)" placeholder="Buscar empresa"></app-search-box>
@@ -26,7 +27,7 @@
                             <th>RUC</th>
                             <th>Factura</th>
                             <th>Rubro</th>
-                            <th></th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="listar__tbody" *ngIf="seEncontraronResultados">
@@ -40,7 +41,6 @@
                                 <a class='bx bx-plus icon' (click)="addFacturaporEmpresas(emp)"></a>
                             </td> 
                         </tr>
-                       
                       </tbody>
                 </table>
                 <app-spinner-list *ngIf="isLoading"></app-spinner-list>
@@ -68,7 +68,7 @@
                             <th>Fecha eminsion</th>
                             <th>Fecha Pago</th>
                             <th>Descripcion</th>
-                            <th></th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     
@@ -87,13 +87,13 @@
                 </table>
                 <div *ngIf="!empresaFacturasRegistradas" class="alert alert-primary text-center mx-auto w-50">
                     No hay facturas registradas.
-                  </div>
+                </div>
             </div>
         </div> 
         <div class="inversion__box">
             <form  class="inversion__form" [formGroup]="form" (ngSubmit)="postInsertarOportunidad()">
                 <h3 clasS="inversion__subtitle">Agregar Inversión</h3>
-                <div class="inversion__form__content">
+                <div class="inversion__form--content">
                     <div class="form__box">
                         <label for="rendimiento">Rendimiento</label>
                         <input type="text" formControlName="rendimiento" [(ngModel)]="objOportunidades.rendimiento"  id="rendimiento" class="form__input">
@@ -122,10 +122,10 @@
                         <input type="number"  [value]="montoTotal" readonly [(ngModel)]="objOportunidades.monto" formControlName="monto" id="monto" class="form__input" placeholder="0.00">
                     </div>
                 </div>
-                <div class="form__group--btn">
-                    <button type="submit" class="btn__guardar btn__form"> <i class='bx bx-save'></i> Guardar</button>
-                </div>
             </form>
+            <div class="form__group--btn">
+                <button type="submit" class="btn__guardar" (click)="postInsertarOportunidad()"> <i class='bx bx-save'></i> Guardar</button>
+            </div>
         </div>
     </div>
    

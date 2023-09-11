@@ -1,5 +1,63 @@
 
-<div class="edit animate__animated animate__fadeIn animete_faster">
+<section class="edit">
+    <div class="edit__header">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="edit__container">
+        <div class="edit__box">
+            <form [formGroup]="form" class="form" (ngSubmit)="putUsuario()">
+                <div class="form__content">
+                    <div class="form__box">
+                        <label for="nombre">Nombres</label>
+                        <div>
+                            <input type="text" id="nombre" formControlName="nombre" class="edit__input">
+                            <span *ngIf="isValid('nombre')" class="invalid">{{getFieldError('nombre')}}</span>
+                        </div>
+                    </div>
+                    <div class="form__box">
+                        <label for="apellidoPa">Apellido Paterno</label>
+                        <div>
+                            <input type="text" id="apellidoPa" formControlName="apellidoPa" class="edit__input">
+                            <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>
+                        </div>
+                    </div>
+                    <div class="form__box">
+                        <label for="apellidoMa">Apellido Materno</label>
+                        <div>
+                            <input type="text" id="apellidoMa" formControlName="apellidoMa" class="edit__input">
+                            <span *ngIf="isValid('apellidoPa')" class="invalid">{{getFieldError('apellidoPa')}}</span>
+                        </div>
+                    </div>
+                    <div class="form__box">
+                        <label for="dni">Nro. de Identidad</label>
+                        <input type="text" id="dni" formControlName="dni" class="edit__input">
+                        <span *ngIf="isValid('dni')" class="invalid">{{getFieldError('dni')}}</span>
+                    </div>
+                    <div class="form__box">
+                        <label for="correo">Correo Electronico</label>
+                        <div>
+                            <input type="email" id="correo" formControlName="correo" class="edit__input">
+                            <span *ngIf="isValid('correo')" class="invalid">{{getFieldError('correo')}}</span>
+                        </div>
+                    </div>
+                    <div class="form__box">
+                        <label for="telefono">Telefono</label>
+                        <div>
+                            <input type="text" id="telefono" formControlName="telefono" class="edit__input">
+                            <span *ngIf="isValid('telefono')" class="invalid">{{getFieldError('telefono')}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="edit__btn-group">
+                    <button type="submit" class="edit__save">
+                    <i class='bx bx-save'></i>Guardar</button>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</section>
+<!-- <div class="edit">
     <h3>Editar Perfil</h3>
 </div>
 <section class="edit__container">
@@ -39,9 +97,9 @@
             </div>
             <div class="edit__btn-group">
                 <button type="submit" class="edit__save">
-                    <i class='bx bx-save'></i>Guardar</button>
+                <i class='bx bx-save'></i>Guardar</button>
             </div>
         </form>
     </div>
 
-</section>
+</section> -->

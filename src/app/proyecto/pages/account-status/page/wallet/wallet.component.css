@@ -1,31 +1,43 @@
-.wallet__container{
+.wallet__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap:1rem;
+    gap: 1rem;
 }
 
-.wallet__box{
+.wallet__box {
     background-color: #f0f2f8;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 1rem;
+
+}
+
+.wallet__content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+    flex-direction: column;
+    gap: 1rem;
 }
-.wallet__saldo{
-    font-size: 14px;
-}
-.wallet__btn{
+
+.wallet__saldo {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 0.5rem;
+    font-size: 16px;
+}
+
+.wallet__saldo p {
+    font-weight: 500;
+}
+
+.wallet__btn {
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
     font-size: 13px;
 }
-.wallet__btn .deposit{
+
+.wallet__btn .deposit {
     background-color: var(--sidebar-color);
     color: var(--white-color);
     border-radius: 5px;
@@ -33,7 +45,8 @@
     border: none;
     cursor: pointer;
 }
-.wallet__btn .withdraw{
+
+.wallet__btn .withdraw {
     background-color: transparent;
     border: 1px solid var(--sidebar-color);
     color: var(--black-color);
@@ -49,6 +62,7 @@
     align-items: center;
     gap: 0.75rem;
 }
+
 .listar__table {
     border-collapse: collapse;
     border-radius: 10px;
@@ -71,14 +85,17 @@
 .listar__table .listar__tbody {
     text-align: center;
 }
-.down{
+
+.down {
     color: #e03131;
     font-size: 1rem;
 }
-.up{
+
+.up {
     color: #0cbd2a;
     font-size: 1rem;
 }
+
 .listar__table .listar__tbody tr {
     border-bottom: 1px solid var(--second-table-color);
 }
@@ -99,33 +116,64 @@
 .listar__table .listar__tbody tr:hover {
     background-color: #ececec;
 }
-.transaccion__group{
+
+.transaccion__group {
     /* margin-top: 1rem; */
-    padding:1rem;
+    padding: 1rem;
     background-color: var(--white-color);
 }
+
 .retiro {
     /* background-color: #FFD1D1; */
     color: #e03131;
-  }
-  
+}
+
 .deposito {
-    color:#0cbd2a;
+    color: #0cbd2a;
     /* background-color: #D1FFD9; */
 }
+
 .arrow-down::before {
     content: "↓ ";
-    color:#e03131;
+    color: #e03131;
     font-size: 1rem;
 }
 
 .arrow-up::before {
     content: "↑ ";
-    color:#0cbd2a;
+    color: #0cbd2a;
     font-size: 1rem;
 }
+
+@media screen and (min-width: 480px) {
+    .wallet__content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wallet__saldo {
+        justify-content: center;
+        align-items: center;
+    }
+    .wallet__saldo p {
+        font-weight: 500;
+    }
+
+    .wallet__btn {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @media screen and (min-width: 998px) {
-    .wallet__btn{
+    .wallet__saldo {
+        font-size: 16px;
+
+    }
+
+    .wallet__btn {
         font-size: 14px;
     }
 }

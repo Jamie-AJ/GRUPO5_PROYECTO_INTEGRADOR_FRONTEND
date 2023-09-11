@@ -53,7 +53,7 @@ export class EmpresasService {
     )
   }
   postEmpresas(empresas:Empresas):Observable<any>{
-    return this.http.post<any>(`${this.url}/registrarEmpresa`,empresas,{ headers:this.httpHeaders}).
+    return this.http.post<any>(`${this.url}/registrarEmpresa`,empresas).
     pipe(
       catchError(err =>{
         Swal.fire('Error', err.error.mensaje, 'error');
@@ -62,7 +62,7 @@ export class EmpresasService {
     )
   }
   deleteEmpresas(id: number):Observable<any> {
-    return this.http.delete<any>(`${this.url}/eliminarEmpresa/${id}`, { headers: this.httpHeaders }).
+    return this.http.delete<any>(`${this.url}/eliminarEmpresa/${id}`).
       pipe(
         catchError(err => { 
           Swal.fire('Error', err.error.mensaje, 'error');

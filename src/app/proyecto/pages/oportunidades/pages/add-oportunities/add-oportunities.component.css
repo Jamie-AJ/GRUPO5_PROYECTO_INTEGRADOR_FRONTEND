@@ -1,12 +1,56 @@
-.inversion__container .inversion__title {
-    font-size: 24px;
-    font-weight: 600;
-    /* padding: 1rem;
-    background-color: var(--primary-color);
-    border-top-left-radius:10px;
-    border-top-right-radius: 10px;
-    color:var(--white-color);
-     */
+.inversion {
+    margin-bottom: 3.125rem;
+}
+
+.inversion__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.inversion__header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inversion__header-content h3 {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black-color);
+    display: none;
+}
+
+.inversion__header-content span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.inversion__btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.inversion__back {
+    display: flex;
+    align-items: center;
+    background-color: var(--sidebar-color);
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.inversion__back span {
+    display: none;
+}
+
+.inversion__back i {
+    font-size: 20px;
+    color: var(--white-color);
 }
 
 .inversion__content {
@@ -23,82 +67,29 @@
     border-radius: 10px;
 }
 
-.inversion__form {
-    /* background-color: var(--white-color); */
-    padding: 1rem 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 100%;
-}
-
-.inversion__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0 3rem 0;
-}
-
-.inversion__header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-
-.inversion__subtitle {
-    margin-bottom: 2rem;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--black-color);
-}
-
-.inversion__form .form__content {
-    background-color: var(--white-color);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.listar__action-buttons {
-    border: none;
-    background-color: transparent;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.listar__acciones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-}
-
-.listar__action-buttons:nth-child(1) {
-    color: #0da208;
-}
-
-.listar__action-buttons:nth-child(2) {
-    color: #d45360;
-}
+/* --> TABLAS <--- */
 
 .listar__content-table {
     margin-top: 1rem;
+    overflow-y: auto;
 }
 
-.listar__content {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+.listar__content-table::-webkit-scrollbar {
+    display: none;
 }
 
-.listar__button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.75rem;
+.listar__content-table::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-color);
+    border-radius: 1rem;
+    transition: background-color .8s ease-in-out;
+}
+
+.listar__content-table::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sidebar-color-hover);
+}
+
+.listar__content-table::-webkit-scrollbar-track {
+    background: #ffffff;
 }
 
 .listar__table {
@@ -160,45 +151,23 @@
     border-radius: 10px;
 }
 
-.btn__factura {
-
-    border: 1px solid var(--sidebar-color);
-    
-}
-
-.btn__factura i {
-    font-size: 18px;
-    color: var(--sidebar-color);
-}
-
-.btn__guardar {
-    border: 1px solid var(--sidebar-color);
-    background-color: transparent;
-}
-
-.btn__form {
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.625rem 1rem;
-    border-radius: 20px;
-    color: var(--sidebar-color);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.company__content-form {
-    width: 50%;
-    background-color: #EFF1F7;
-    padding: 1rem;
+/* --> Formulario <--- */
+.inversion__form {
+    border: 1px solid var(--second-table-color);
     border-radius: 10px;
+    padding: 1rem;
 }
 
-.inversion__form__content {
+.inversion__subtitle {
+    margin-bottom: 2rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black-color);
+}
+
+.inversion__form--content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
@@ -214,22 +183,36 @@
     color: #4F4F4F;
 }
 
-.form__box:nth-child(1) {
-    grid-column: 1/3;
-}
-
 .form__input {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     outline: none;
+    font-size: 13px;
 }
 
 .form__group--btn {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1rem;
-    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn__guardar {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--sidebar-color);
+    z-index: 100;
+    border: none;
+    border-radius: 10px;
+    color: var(--white-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.375rem;
+}
+.btn__guardar i{
+    font-size: 17px;
 }
 
 .invalid {
@@ -242,8 +225,51 @@
     width: 100%;
 }
 
+@media screen and (min-width: 576px) {
+
+    .inversion__form--content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (min-width: 768px) {
-    .inversion__subtitle{
+    .inversion__subtitle {
         font-size: 18px;
+    }
+
+    .btn__guardar {
+        width: 0;
+        height: 40px;
+        position: relative;
+        border: 1px solid var(--sidebar-color);
+        background-color: transparent;
+        padding: 13px 20px;
+        border-radius: 20px;
+        min-width: 150px;
+        color: var(--sidebar-color);
+        line-height: 14px;
+        transition: all 0.3s ease-in-out;
+    }
+    .form__input{
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 998px) {
+    .inversion__header-content{
+        align-items: flex-start;
+    }
+    .inversion__header-content span{
+        margin-top:1rem;
+    }
+    .inversion__header-content h3{
+        display: block;
+    }
+    .inversion__back{
+        height: 40px;
+        padding: 13px 30px;
+    }
+    .inversion__back span{
+        display: block;
     }
 }

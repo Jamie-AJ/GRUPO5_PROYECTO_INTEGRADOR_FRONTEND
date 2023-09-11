@@ -108,7 +108,7 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
         case 'minlength':
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres.`;
         case 'pattern':
-          return 'El valor ingresado no tiene formato válido.';
+          return 'El valor ingresado no es válido.';
       }
     }
     return null;

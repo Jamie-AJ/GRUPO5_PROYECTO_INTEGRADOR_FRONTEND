@@ -20,7 +20,12 @@ export class ProfileComponent implements OnInit{
   isAdministrador = this.loginService.getUserRole() === 'ADMIN';
   showModal:boolean = false;
   usuario: Usuario = new Usuario();
-  constructor(private activatedRoute: ActivatedRoute, private builder: FormBuilder, private router: Router, private loginService: LoginService, private modalService:ModalService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private loginService: LoginService,
+    private modalService: ModalService,
+    private userService: UserService) { }
   
   ngOnInit(): void {
     this.getUsuarioAct();
@@ -33,7 +38,7 @@ export class ProfileComponent implements OnInit{
       switchMap(({id}) => this.loginService.getCurrentUser())
     ).subscribe(usuario =>
       {
-        if(!usuario)return this.router.navigate(['/dashboard/dashboard']);
+        if(!usuario) return this.router.navigate(['/dashboard/dashboard']);
         this.usuario = usuario;
         // console.log(usuario);
         return;

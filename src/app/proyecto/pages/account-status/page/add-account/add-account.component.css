@@ -16,21 +16,20 @@
 
 }
 
-.bank__header h2 {
+.bank__header h3 {
     font-size: 32px;
     font-weight: 500;
     color: var(--black-color);
     display: none;
 }
 
-.bank__header h4 {
+.bank__header span {
     font-size: 16px;
     font-weight: 500;
     margin-top: 1rem;
 }
 
 .bank__container {
-
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -46,18 +45,22 @@
 }
 
 .bank__btn-add {
-    height: 60px;
     width: 100%;
     padding: 1rem;
     background-color: var(--sidebar-color);
-    z-index: 100;
     border: none;
     border-radius: 10px;
     color: var(--white-color);
     cursor: pointer;
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem;
 }
-
+.bank__btn-add i{
+    font-size: 20px;
+}
 
 .form__content {
     display: grid;
@@ -75,23 +78,13 @@
 .form__box:nth-child(1),
 .form__box:nth-child(2),
 .form__box:nth-child(3),
-.form__box:nth-child(4),
-.form__box:nth-child(5) {
+.form__box:nth-child(4) {
     grid-column: 1/3;
-
 }
 
-.form__error{
+.form__error {
     margin-top: 0.75rem;
 }
-/* .form__box:nth-child(2) {
-    grid-column: 1/3;
-}
-
-.form__box:nth-child(3) {
-    grid-column: 1/3;
-} */
-
 
 .form__box label {
     margin: 10px 0 10px;
@@ -111,12 +104,10 @@
     outline: none;
 }
 
-/* .form__input::placeholder{
-    color:var(--white-color);
-} */
-.error{
+.error {
     border: 1px solid #d45360;
 }
+
 .invalid {
     display: flex;
     flex-direction: column;
@@ -124,7 +115,7 @@
     color: #d45360;
     font-size: 12px;
     width: 100%;
-    margin-top:0.5rem;
+    margin-top: 0.5rem;
 }
 
 .card__bank {
@@ -136,6 +127,7 @@
     background-size: contain;
     display: none;
 }
+
 .card__bank-number {
     font-size: 16px;
     font-weight: 500;
@@ -162,21 +154,21 @@
 
     .bank__btn-add {
         width: 0;
-        height: 40px;
-        position: relative;
+        /* height: 50px; */
         border: 1px solid var(--sidebar-color);
         background-color: transparent;
-        padding: 13px 20px;
         border-radius: 20px;
         min-width: 150px;
         color: var(--sidebar-color);
         line-height: 14px;
-        display: inline-block;
+        /* display: inline-block; */
         transition: all 0.3s ease-in-out;
+        margin: 0;
     }
-    .bank__btn-add:hover{
+
+    .bank__btn-add:hover {
         background-color: var(--sidebar-color);
-        color:var(--white-color);
+        color: var(--white-color);
     }
 }
 
@@ -197,15 +189,16 @@
         justify-content: space-between;
         height: 200px;
     }
-    .bank__btn-invert{
+
+    .bank__btn-invert {
         text-align: center;
         border-radius: 10px;
-        background-color: var(--sidebar-color);   
-        color:var(--white-color);
-        padding:8px;
+        background-color: var(--sidebar-color);
+        color: var(--white-color);
+        padding: 8px;
     }
 
-    .bank__header h2 {
+    .bank__header h3 {
         display: block;
     }
 
@@ -235,7 +228,7 @@
 
 @media screen and (min-width: 1366px) {
     .bank {
-        width: 1200px;
+        width: 1300px;
     }
 
     .card__bank-logo {
@@ -245,7 +238,7 @@
     .card__bank {
         width: 420px;
         height: 247px;
-        padding: 30px;
+        padding: 30px 30px 0px 30px;
 
     }
 }

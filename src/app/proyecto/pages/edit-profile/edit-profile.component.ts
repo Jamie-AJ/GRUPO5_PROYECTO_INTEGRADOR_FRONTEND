@@ -13,9 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  title='Mis datos personales';
+  title='Editar mi cuenta';
   mostrarInput: boolean = false;
-
   form: FormGroup = this.builder.group({
     id:[''],
     nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -63,7 +62,8 @@ export class EditProfileComponent implements OnInit {
     }
     return null;
   }
-
+ 
+  
   putUsuario(){
     if(this.form.invalid){
       this.form.markAllAsTouched();
@@ -76,8 +76,5 @@ export class EditProfileComponent implements OnInit {
       })
     }
    
-  }
-  goBack(){
-    this.router.navigate(['/dashboard/']);
   }
 }

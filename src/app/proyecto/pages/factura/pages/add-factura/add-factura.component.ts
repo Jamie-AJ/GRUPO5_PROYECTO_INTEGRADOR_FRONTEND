@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-factura.component.css']
 })
 export class AddFacturaComponent implements OnInit{
-  title="Factura de Empresas";
+  title="Estas por ingresar una factura.";
 
   public factura:Factura = new Factura();
   public empresas:Empresas[] = [];
@@ -55,9 +55,7 @@ export class AddFacturaComponent implements OnInit{
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
-          return 'Este campo es requerido';
-        case 'minlength':
-          return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
+          return 'Este valor es requerido';
         case 'pattern':
           return 'El valor ingresado no tiene formato válido';
         case 'negativeNumber':

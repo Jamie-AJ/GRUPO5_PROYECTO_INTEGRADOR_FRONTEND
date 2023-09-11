@@ -1,100 +1,99 @@
-<section class="bank main animate__animated animate__fadeIn animete_faster">
+<section class="bank main">
     <div class="bank__header">
-        <h2>{{title}}</h2>
-        <h4>Datos de la tarjeta.</h4>
+        <h3>{{title}}</h3>
+        <span>Datos de la tarjeta.</span>
     </div>
     <div class="bank__container">
-        <div class="bank__">
+        <div>
             <div class="bank__box">
                 <div class="bank__form">
                     <form class="form" id="form-tarjeta" [formGroup]="form" (ngSubmit)="postCuentaBancaria()">
                         <div class="form__content">
-                          <div class="form__box">
-                            <label for="bancos">Bancos</label>
-                            <div>
-                              <select class="form__input" formControlName="bancos" id="bancos" [class.error]="isValid('bancos')">
-                                <option disabled selected value="">Selecciona Bancos</option>
-                                <option *ngFor="let banco of bancos" [ngValue]="banco">
-                                  {{ banco.nomBancos }}
-                                </option>
-                              </select>
-                              <span *ngIf="isValid('bancos')" class="invalid">{{
-                                getFieldError("bancos")
-                              }}</span> 
+                            <div class="form__box">
+                                <label for="bancos">Bancos</label>
+                                <div>
+                                    <select class="form__input" formControlName="bancos" id="bancos" [class.error]="isValid('bancos')">
+                                        <option disabled selected value="">Selecciona Bancos</option>
+                                        <option *ngFor="let banco of bancos" [ngValue]="banco">
+                                        {{ banco.nomBancos }}
+                                        </option>
+                                    </select>
+                                    <span *ngIf="isValid('bancos')" class="invalid">{{
+                                        getFieldError("bancos")
+                                    }}</span> 
+                                </div>
                             </div>
-                          </div>
-                          <div class="form__box">
-                            <label for="nombreCompleto">Nombre Completo</label>
-                            <div>
-                              <input type="text" class="form__input" formControlName="nombreCompleto" id="nombreCompleto" placeholder="e.g. Nombre Completo" [class.error]="isValid('nombreCompleto')" maxlength="24"/>
-                              <span *ngIf="isValid('nombreCompleto')" class="invalid">{{
-                                getFieldError("nombreCompleto")
-                              }}</span>
+                            <div class="form__box">
+                                <label for="nombreCompleto">Nombre Completo</label>
+                                <div>
+                                <input type="text" class="form__input" formControlName="nombreCompleto" id="nombreCompleto" placeholder="e.g. Nombre Completo" [class.error]="isValid('nombreCompleto')" maxlength="24"/>
+                                <span *ngIf="isValid('nombreCompleto')" class="invalid">{{
+                                    getFieldError("nombreCompleto")
+                                }}</span>
+                                </div>
                             </div>
-                            
-                          </div>
-                          <div class="form__box">
-                            <label for="nroCuenta">Número</label>
-                            <div>
-                              <input type="text" class="form__input" formControlName="nroCuenta" id="nroCuenta" placeholder="e.g. 4557 9856 3622 8959" [class.error]="isValid('nroCuenta')" maxlength="19"/>
-                              <span *ngIf="isValid('nroCuenta')" class="invalid">{{
-                                getFieldError("nroCuenta")
-                              }}</span>
+                            <div class="form__box">
+                                <label for="nroCuenta">Número</label>
+                                <div>
+                                <input type="text" class="form__input" formControlName="nroCuenta" id="nroCuenta" placeholder="e.g. 4557 9856 3622 8959" [class.error]="isValid('nroCuenta')" maxlength="19"/>
+                                <span *ngIf="isValid('nroCuenta')" class="invalid">{{
+                                    getFieldError("nroCuenta")
+                                }}</span>
+                                </div>
+                                
                             </div>
-                            
-                          </div>
-                          <div class="form__box">
-                            <label for="nroCuentacci">Número cci</label>
-                            <div>
-                              <input type="text" class="form__input" formControlName="nroCuentaCci" id="nroCuentaCci" placeholder="Ingrese su número de tarjeta CCI" [class.error]="isValid('nroCuentaCci')" maxlength="24">
-                              <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{ getFieldError("nroCuentaCci") }}</span>
+                            <div class="form__box">
+                                <label for="nroCuentacci">Número cci</label>
+                                <div>
+                                <input type="text" class="form__input" formControlName="nroCuentaCci" id="nroCuentacci" placeholder="Ingrese su número de tarjeta CCI" [class.error]="isValid('nroCuentaCci')" maxlength="24">
+                                <span *ngIf="isValid('nroCuentaCci')" class="invalid">{{ getFieldError("nroCuentaCci") }}</span>
+                                </div>
+                                
                             </div>
-                            
-                          </div>
-                          <div class="form__box">
-                            <label for="monedas">Tipo de Moneda</label>
-                            <div>
-                              <select class="form__input" id="monedas" formControlName="monedas" [class.error]="isValid('monedas')">
-                                <option value="">Selecciona Moneda</option>
-                                <option *ngFor="let moneda of monedas" [ngValue]="moneda">
-                                  {{ moneda.nomMonedas }}
-                                </option>
-                              </select>
-                              <span *ngIf="isValid('monedas')" class="invalid">{{ getFieldError("monedas") }}</span>
+                            <div class="form__box">
+                                <label for="monedas">Tipo de Moneda</label>
+                                <div>
+                                <select class="form__input" id="monedas" formControlName="monedas" [class.error]="isValid('monedas')">
+                                    <option value="">Selecciona Moneda</option>
+                                    <option *ngFor="let moneda of monedas" [ngValue]="moneda">
+                                    {{ moneda.nomMonedas }}
+                                    </option>
+                                </select>
+                                <span *ngIf="isValid('monedas')" class="invalid">{{ getFieldError("monedas") }}</span>
+                                </div>
                             </div>
-                          </div>
-                          <div class="form__box">
-                            <label for="mes">Mes</label>
-                            <div>
-                              <select class="form__input" id="mes" formControlName="mes" [class.error]="isValid('mes')">
-                                <option disabled selected value="">Mes</option>
-                                <option *ngFor="let mes of meses" [value]="mes">
-                                  {{ mes }}
-                                </option>
-                              </select>
-                              <span *ngIf="isValid('mes')" class="invalid">{{getFieldError("mes")}}</span>
+                            <div class="form__box">
+                                <label for="mes">Mes</label>
+                                <div>
+                                <select class="form__input" id="mes" formControlName="mes" [class.error]="isValid('mes')">
+                                    <option disabled selected value="">Mes</option>
+                                    <option *ngFor="let mes of meses" [value]="mes">
+                                    {{ mes }}
+                                    </option>
+                                </select>
+                                <span *ngIf="isValid('mes')" class="invalid">{{getFieldError("mes")}}</span>
+                                </div>
+                                
                             </div>
-                            
-                          </div>
-                          <div class="form__box">
-                            <label for="year">Año</label>
-                            <div>
-                              <select class="form__input" id="year" formControlName="year" [class.error]="isValid('year')">
-                                <option disabled selected value="">Año</option>
-                                <option *ngFor="let year of years" [value]="year">
-                                  {{ year }}
-                                </option>
-                              </select>  
-                              <span *ngIf="isValid('year')" class="invalid">{{ getFieldError("year") }}</span>
+                            <div class="form__box">
+                                <label for="year">Año</label>
+                                <div>
+                                <select class="form__input" id="year" formControlName="year" [class.error]="isValid('year')">
+                                    <option disabled selected value="">Año</option>
+                                    <option *ngFor="let year of years" [value]="year">
+                                    {{ year }}
+                                    </option>
+                                </select>  
+                                <span *ngIf="isValid('year')" class="invalid">{{ getFieldError("year") }}</span>
+                                </div>
                             </div>
-                          </div>
-                          <div class="form__box">
-                            <label for="cvv">Código de Seguridad</label>
-                            <div>
-                              <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="3"/>
-                              <span *ngIf="isValid('cvv')" class="invalid">{{ getFieldError("cvv") }}</span>
-                            </div>    
-                          </div>
+                            <div class="form__box">
+                                <label for="cvv">Código de Seguridad</label>
+                                <div>
+                                <input type="text" class="form__input"  id="cvv" formControlName="cvv" placeholder="CVV" [class.error]="isValid('cvv')" maxlength="4"/>
+                                <span *ngIf="isValid('cvv')" class="invalid">{{ getFieldError("cvv") }}</span>
+                                </div>    
+                            </div>
                         </div>
                     </form>
                     <div class="card__bank">
@@ -108,7 +107,9 @@
                 </div>
             </div>
             <div class="bank__btn">
-                <button type="submit" class="bank__btn-add btn-fixed" (click)="postCuentaBancaria()">Agregar</button>
+                <button type="submit" class="bank__btn-add" (click)="postCuentaBancaria()">
+                    <i class="bx bx-save"></i>
+                    Agregar</button>
             </div>
         </div>
         <div class="bank__box bank__info">

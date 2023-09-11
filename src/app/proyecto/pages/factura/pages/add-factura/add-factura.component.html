@@ -1,19 +1,19 @@
-<section class="factura__container animate__animated animate__fadeIn animete_faster" >
+<section class="factura__container" >
   <div class="factura__content">
     <div class="factura__nav">
       <div class="factura__header">
         <h3>{{title}}</h3>
+        <span>Datos de factura.</span>
       </div>
       <div clasS="inversion__group">
         <a routerLink="/dashboard/factura/list-factura" class="btn__factura">
             <i class='bx bx-chevron-left'></i>
-          Regresar
+          <span>Regresar</span>
         </a>
       </div>
     </div>
-    <div class="form__content">
-      <form class="factura__content-form" [formGroup]="form" (ngSubmit)="postFactura()">
-        <h3>Generar Facturas</h3>
+    <div class="form">
+      <form class="form__content" [formGroup]="form" (ngSubmit)="postFactura()">
         <div class="form__group">
           <!-- <div class="form__box">
             <label for="" form="codFactura">Codigo Factura</label>
@@ -21,30 +21,30 @@
           </div>  -->
           <div class="form__box">
             <label for="empresa">Empresa</label>
-            <select id="empresa" formControlName="empresa"class="form__input"> 
+            <select id="empresa" formControlName="empresa" class="form__input" [class.error]="isValid('empresa')"> 
               <option disabled select value="">Seleccion la empresa</option>
-              <option *ngFor="let emp of empresas" [ngValue]="emp">{{emp.razonSocial}}</option>
+              <option *ngFor="let emp of empresas"  [ngValue]="emp">{{emp.razonSocial}}</option>
             </select>
             <span class="invalid" *ngIf="isValid('empresa')">{{getFieldError('empresa')}}</span>
           </div>    
           <div class="form__box">
             <label for="monto">Fecha de Factura</label>
-            <input type="date" id="fechaPago" formControlName="fechaPago" class="form__input" [min]="getCurrentDate()">
+            <input type="date" id="fechaPago" formControlName="fechaPago" [class.error]="isValid('fechaPago')" class="form__input" [min]="getCurrentDate()">
             <span class="invalid" *ngIf="isValid('fechaPago')">{{getFieldError('fechaPago')}}</span>
           </div>
           <div class="form__box">
             <label for="monto">Monto de Factura</label>
-            <input type="number" id="monto" formControlName="monto"class="form__input" placeholder="0.00">
+            <input type="number" id="monto" formControlName="monto" [class.error]="isValid('monto')" class="form__input" placeholder="0.00">
             <span class="invalid" *ngIf="isValid('monto')">{{getFieldError('monto')}}</span>
           </div>
           <div class="form__box">
             <label for="descripcion">Descripción de factura</label>
-            <textarea id="descripcion" formControlName="descripcion"></textarea>
+            <textarea id="descripcion" class="form__input" [class.error]="isValid('descripcion')" formControlName="descripcion"></textarea>
             <span class="invalid" *ngIf="isValid('descripcion')">{{getFieldError('descripcion')}}</span>
           </div>
         </div>  
         <div class="form__group--btn">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn__guardar">Guardar</button>
         </div> 
       </form>
     </div>

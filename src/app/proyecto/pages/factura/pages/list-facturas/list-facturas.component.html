@@ -1,4 +1,3 @@
-
 <section class="inversion__container" >
   <div class="inversion__content">
       <div class="inversion__nav">
@@ -8,7 +7,7 @@
         <div clasS="inversion__group">
           <a routerLink="/dashboard/factura/add-factura" class="btn__factura">
             <i class="bx bx-plus"></i>
-            Agregar facturas
+            <span>Agregar</span>
           </a>
         </div>
       </div>
@@ -42,8 +41,8 @@
                 </tr>
               </tbody>
             </table>
-            <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/factura/list-factura/page"></app-pagination>
           </div>
+          <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/factura/list-factura/page"></app-pagination>
         </div>
         <div class="inversion__content" *ngIf="activeTabsIndex === 1" >
           <div class="listar__content-table">

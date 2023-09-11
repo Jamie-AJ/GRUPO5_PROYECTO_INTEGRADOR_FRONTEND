@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns:1fr;
     gap:1rem;
-    /* width:100%; */
+
 }
 .form__deposito-content{
     background-color: var(--table-color);
@@ -40,7 +40,7 @@
 }
 .deposito__box label{
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color:var(--grey-color);
 }
 .deposito__input{
@@ -48,7 +48,7 @@
     border: 1px solid var(--grey-color);
     border-radius: 5px;
     padding: 0.5rem 0.5rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--black-color);
     outline: none;
 }
@@ -94,9 +94,7 @@
 .deposito__group-btn{
    margin-top: 1rem;
 }
-/* .group-btn{
-    
-} */
+
 .deposito__btn{
     background-color: var(--sidebar-color);
     color: var(--white-color);
@@ -123,7 +121,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    /* width: 100%; */
+    font-size: 0.875rem;
 }
 .deposito__goback a i{
     font-size: 1.5rem;
@@ -134,6 +132,16 @@
     gap: 0.25rem;
     color: #d45360;
     font-size: 12px;
-    font-weight: 600;
     width: 100%;
+  }
+  @media screen and (min-width: 998px) {
+    .deposito__box label{
+        font-size: 0.875rem;
+    }
+    .deposito__input{
+        font-size: 1rem;
+    }
+    .deposito__goback a{
+        font-size: 1rem;
+    }
   }

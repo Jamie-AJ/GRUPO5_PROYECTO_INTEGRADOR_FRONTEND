@@ -3,11 +3,7 @@
     <i class=" bx bx-menu header__menu-toggle"  (click)="toggleCollapse()"></i>
   </div>
   <div class="header__data">
-    <ng-container *ngIf="isInversionista">
-      <span routerLink="/dashboard/account-status" class="wallet-button" >
-        <i class="bx bx-coin-stack"></i>{{ objSaldo.saldo | currency : "S/.&nbsp;" : "symbol-narrow" }}
-      </span>
-    </ng-container>
+    
     <div class="header__data-user" (click)="toggleDropdown()">
       <a class="header__data-user-info">
         <p>{{concatNameComplete().charAt(0)}}</p>
@@ -21,7 +17,7 @@
         <hr class="dropdown__menu-line">
         <ul class="dropdown__menu-items">
           <li>
-            <a routerLink="/dashboard/details-profile" class="dropdown__menu-item">
+            <a routerLink="/dashboard/profile-edit" class="dropdown__menu-item">
               Mi cuenta
             </a>
           </li>
