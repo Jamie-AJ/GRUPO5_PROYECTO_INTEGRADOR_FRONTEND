@@ -151,6 +151,15 @@
 .inversion__back i{
     font-size: 20px;
 }
+.oportunity__message{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.oportunity__alert{
+    width: 40%;
+    text-align: center;
+}
 
 @media screen and (min-width: 768px) {
     .inversion__header h3{

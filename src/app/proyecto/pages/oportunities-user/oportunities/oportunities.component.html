@@ -208,7 +208,7 @@
             <div class="modal__form--input">
               <label for="monto">Escribe el monto de tú inversión(PEN)</label>
               <div class="input__wrapper">
-                <input type="number" id="monto" [class.error]="isValid('montoInvertido')" formControlName="montoInvertido" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input" (focus)="borrarValoresIniciales()" (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
+                <input type="number" id="monto" [class.error]="isValid('montoInvertido')" formControlName="montoInvertido" placeholder="¿Cuanto quieres invertir?" [(ngModel)]="montoInvertido" class="modal-input"  (input)="calcularPorcentajeInversion()" (input)="calcularGanancia()"/>
               </div>
               <span class="invalid" *ngIf="isValid('montoInvertido')">{{getFieldError('montoInvertido')}}</span>
             </div>

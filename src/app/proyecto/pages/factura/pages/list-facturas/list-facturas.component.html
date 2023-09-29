@@ -1,80 +1,90 @@
-<section class="inversion__container" >
-  <div class="inversion__content">
-      <div class="inversion__nav">
-        <div class="inversion__header">
-          <h3>{{title}}</h3>
-        </div>
-        <div clasS="inversion__group">
-          <a routerLink="/dashboard/factura/add-factura" class="btn__factura">
-            <i class="bx bx-plus"></i>
-            <span>Agregar</span>
-          </a>
-        </div>
+<section class="factura__container">
+  <div class="factura__content">
+    <div class="factura__nav">
+      <div class="factura__header">
+        <h3>{{ title }}</h3>
       </div>
-      <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
-      <div class="inversion__box">
-        <div class="inversion__content" *ngIf="activeTabsIndex === 0" >
-          <div class="listar__content-table">
-            <table class="listar__table">
-              <thead class="listar__thead">
-                <tr>
-                  <th>Codigo Factura</th>
-                  <th>Razon Social</th>
-                  <th>Fecha de Pago</th>
-                  <th>Monto</th>
-                  <th>Descripción</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody class="listar__tbody">
-                <tr *ngFor="let fac of factura">
-                  <td>{{fac.codFactura}}</td>
-                  <td>{{fac.empresa?.razonSocial}}</td> 
-                  <td>{{fac.fechaPago}}</td>
-                  <td>{{fac.monto | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-                  <td>{{fac.descripcion}}</td>
-                  <td>
-                    <span class="badge" [ngClass]="getBadgeClass(fac.enable!)">
-                      {{fac.enable}}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/factura/list-factura/page"></app-pagination>
+      <div clasS="factura__group">
+        <a routerLink="/dashboard/invoice/add-invoice" class="btn__factura">
+          <i class="bx bx-plus"></i>
+          <span>Agregar</span>
+        </a>
+      </div>
+    </div>
+    <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
+    <div class="factura__box">
+      <div class="factura__content" *ngIf="activeTabsIndex === 0">
+        <div class="listar__content-table">
+          <table class="listar__table">
+            <thead class="listar__thead">
+              <tr>
+                <th>Codigo Factura</th>
+                <th>Razon Social</th>
+                <th>Fecha de Pago</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody class="listar__tbody">
+              <tr *ngFor="let fac of factura">
+                <td>{{ fac.codFactura }}</td>
+                <td>{{ fac.empresa?.razonSocial }}</td>
+                <td>{{ fac.fechaPago }}</td>
+                <td>
+                  {{ fac.monto | currency : "S/.&nbsp;" : "symbol-narrow" }}
+                </td>
+                <td>{{ fac.descripcion }}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(fac.enable!)">
+                    {{ fac.enable }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="inversion__content" *ngIf="activeTabsIndex === 1" >
-          <div class="listar__content-table">
-            <table class="listar__table">
-              <thead class="listar__thead">
-                <tr>
-                  <th>Codigo Factura</th>
-                  <th>Razon Social</th>
-                  <th>Fecha de Pago</th>
-                  <th>Monto</th>
-                  <th>Descripción</th>
-                </tr>
-              </thead>
-              <tbody class="listar__tbody">
-                <tr *ngFor="let fac of facturasActivas">
-                  <td>{{fac.codFactura}}</td>
-                  <td>{{fac.empresa?.razonSocial}}</td> 
-                  <td>{{fac.fechaPago}}</td>
-                  <td>{{fac.monto}}</td>
-                  <td>{{fac.descripcion}}</td>
-                  <td>
-                    <span class="badge" [ngClass]="getBadgeClass(fac.enable!)">
-                      {{fac.enable}}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="factura__message" *ngIf="factura.length === 0">
+          <div class="alert alert-info factura__alert" role="alert">
+            No hay ningun factura disponible.
           </div>
         </div>
+        <app-pagination
+          *ngIf="pagination"
+          [pagination]="pagination"
+          urlBase="/dashboard/invoice/list-invoice/page"
+        ></app-pagination>
       </div>
+      <div class="factura__content" *ngIf="activeTabsIndex === 1">
+        <div class="listar__content-table">
+          <table class="listar__table">
+            <thead class="listar__thead">
+              <tr>
+                <th>Codigo Factura</th>
+                <th>Razon Social</th>
+                <th>Fecha de Pago</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody class="listar__tbody">
+              <tr *ngFor="let fac of facturasActivas">
+                <td>{{ fac.codFactura }}</td>
+                <td>{{ fac.empresa?.razonSocial }}</td>
+                <td>{{ fac.fechaPago }}</td>
+                <td>{{ fac.monto }}</td>
+                <td>{{ fac.descripcion }}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(fac.enable!)">
+                    {{ fac.enable }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-   
 </section>
 <!-- <app-modal (closeModal)="closeModal()" [showModal]="showModal"></app-modal> -->

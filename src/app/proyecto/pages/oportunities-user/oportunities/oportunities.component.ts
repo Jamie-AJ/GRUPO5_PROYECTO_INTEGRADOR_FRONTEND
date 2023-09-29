@@ -26,7 +26,7 @@ export class OportunitiesComponent implements OnInit {
   public isOpen: boolean[] = [false, false, false];
   //SELECCIONAR OPORTUNIDAD
   public oportunidadSeleccionada: any;
-  
+
   //CALCULOS 
   public restante: number = 0;
   public montoInvertido: number = 0;
@@ -38,21 +38,21 @@ export class OportunitiesComponent implements OnInit {
   public recaudadoPorcentaje: number = 0;
   public recaudadoRedondeado: number = 0;
   public gananciaMaxima: number = 0;
-  public gananciaRedondeado: number =0;
+  public gananciaRedondeado: number = 0;
   // public inversionTotal: number = 0;
   // public inversionRealizada: number = 0;
-  public montoRecaudado: number= 0;
-  public montoTotal: number=0;
+  public montoRecaudado: number = 0;
+  public montoTotal: number = 0;
 
   // OBJETOS Y ARREGLOS
   public objOportunidades: Oportunidades[] = [];
   public selectOportunity: Oportunidades = new Oportunidades();
   public objInversionUsuario: InversionUsuario = new InversionUsuario();
   public oportunidadUsuario: InversionUsuario[] = [];
-  public oportunidadFactura:OportunidadFactura[] = [];
-  objSaldo:Saldo = {
-    idCartera:0,
-    saldo:0,
+  public oportunidadFactura: OportunidadFactura[] = [];
+  objSaldo: Saldo = {
+    idCartera: 0,
+    saldo: 0,
   }
   //VALIDAR EL ROL DEL USUARIO
   public isAdministrador = this.loginService.getUserRole() === 'ADMIN'
@@ -64,7 +64,7 @@ export class OportunitiesComponent implements OnInit {
     private builder: FormBuilder,
     private loginService: LoginService
 
-  ) {  }
+  ) { }
   form: FormGroup = this.builder.group({
     montoInvertido: ['', [Validators.required, customValidators.validarNumerosNegativos, customValidators.validarMontoIngresado]],
   });
@@ -74,11 +74,11 @@ export class OportunitiesComponent implements OnInit {
     // this.getOportunidadesPorId();
     this.getSaldo();
     //this.calcularInteresesRates();
-    // this.calcularPorcentajeInversion();
-    // this.calcularPorcentajeRecaudado();
-    // this.calcularTasaMensual();
-    
-   // this.progressBarInicio();
+    this.calcularPorcentajeInversion();
+    this.calcularPorcentajeRecaudado();
+    this.calcularTasaMensual();
+
+    // this.progressBarInicio();
   }
   isValid(field: string) {
     return this.form.controls[field].errors && this.form.controls[field].touched;
@@ -132,7 +132,7 @@ export class OportunitiesComponent implements OnInit {
     event.stopPropagation();
   }
   //ACORDEON
-  openAccordion(index:number) {
+  openAccordion(index: number) {
     this.isOpen[index] = !this.isOpen[index];
   }
   //esta función se encargar de truncar un string par una maxima longitud especifica de caracteres y añade puntos suspensivos al final.
@@ -150,31 +150,31 @@ export class OportunitiesComponent implements OnInit {
       this.objSaldo = resp;
     })
   }
-  
-  getOportunidadesPorUser(){
+
+  getOportunidadesPorUser() {
     this.oportunidadesService.getOportunidadPorUsuario().subscribe(resp => {
-      this.objOportunidades = resp as Oportunidades[]; 
+      this.objOportunidades = resp as Oportunidades[];
     })
   }
   getFacturaPorOportunidades(oportunidades: Oportunidades) {
-    if(oportunidades.idOportunidad === undefined){
-      return; 
+    if (oportunidades.idOportunidad === undefined) {
+      return;
     }
     this.oportunidadSeleccionada === oportunidades;
-    this.oportunidadesService.getFacturaPorOportunidad(oportunidades.idOportunidad).subscribe(resp => { 
+    this.oportunidadesService.getFacturaPorOportunidad(oportunidades.idOportunidad).subscribe(resp => {
       const factura = resp as OportunidadFactura[];
       this.oportunidadFactura = factura;
     });
   }
-  getOportunidadesUsuPorIdOpor(oportunidadInversion:Oportunidades) {
-    if (oportunidadInversion.idOportunidad === undefined) { 
+  getOportunidadesUsuPorIdOpor(oportunidadInversion: Oportunidades) {
+    if (oportunidadInversion.idOportunidad === undefined) {
       return;
     }
     this.oportunidadSeleccionada = oportunidadInversion;
-    this.oportunidadesUsuarioService.getOporUsuarioPorIdOpor(oportunidadInversion.idOportunidad).subscribe(resp => { 
+    this.oportunidadesUsuarioService.getOporUsuarioPorIdOpor(oportunidadInversion.idOportunidad).subscribe(resp => {
       const inversiones = resp as InversionUsuario[];
       this.oportunidadUsuario = inversiones;
-      this.oportunidadUsuario.sort((a:any, b:any) => {
+      this.oportunidadUsuario.sort((a: any, b: any) => {
         const dataA = new Date(a.fecha);
         const dataB = new Date(b.fecha);
         return dataB.getTime() - dataA.getTime();
@@ -184,112 +184,112 @@ export class OportunitiesComponent implements OnInit {
       console.log(inversiones);
     });
   }
-  calcularPorcentajeInversion(){
-    const montoOportunidad = this.selectOportunity.monto!;
-    this.inversionPorcentaje = (this.montoInvertido / montoOportunidad)*   100;
-    this.inversionRedondeado =+ this.inversionPorcentaje.toFixed(2);
+  calcularPorcentajeInversion() {
+    const montoOportunidad: number = this.selectOportunity.monto!;
+    this.inversionPorcentaje = (this.montoInvertido / montoOportunidad) * 100;
+    this.inversionRedondeado = + this.inversionPorcentaje.toFixed(2);
     //console.log("Monto invertido: ", this.montoInvertido);
     //console.log("Monto de la oportunidad:", this.selectOportunity.monto);
     //console.log("monto en porcentaje: " + this.inversionPorcentaje);
     //console.log("monto en porcentaje redondeado: " + this.inversionRedondeado);
   }
-  calcularPorcentajeRecaudado(){
-    const montoRecaudado = this.selectOportunity.montoRecaudado!;
-    const montoOportunidad = this.selectOportunity.monto!;
+  calcularPorcentajeRecaudado() {
+    const montoRecaudado:number = this.selectOportunity.montoRecaudado!;
+    const montoOportunidad: number = this.selectOportunity.monto!;
     this.recaudadoPorcentaje = (montoRecaudado * 100) / montoOportunidad;
-    this.recaudadoRedondeado =+ this.recaudadoPorcentaje.toFixed(2);
+    this.recaudadoRedondeado = + this.recaudadoPorcentaje.toFixed(2);
     //console.log("Monto recaudado", this.selectOportunity.montoRecaudado)
     //console.log("Monto de la oportunidad", this.selectOportunity.monto)
     //console.log("monto porcentaje:", this.recaudadoPorcentaje )
     //console.log("monto porcentaje redondeado:", this.recaudadoRedondeado)
   }
-  calcularTasaMensual(){
-    const tasaAnual = this.selectOportunity.rendimiento!;
-    this.tasaMensual = (Math.pow( 1 + tasaAnual, 1.0/12.0 ) -1 ) * 100;
-    this.tasaMensualRedondeado =+ this.tasaMensual.toFixed(2);
+  calcularTasaMensual() {
+    const tasaAnual:number = this.selectOportunity.rendimiento!;
+    this.tasaMensual = (Math.pow(1 + tasaAnual, 1.0 / 12.0) - 1) * 100;
+    this.tasaMensualRedondeado = + this.tasaMensual.toFixed(2);
     // console.log("tasa mensual", this.tasaMensual)
 
   }
-  calcularGanancia(){
-    const fechaInicio:any = this.selectOportunity.fechaRegistro? new Date(this.selectOportunity.fechaRegistro) : undefined;
-    const fechaFinal:any = this.selectOportunity.fechaPago ? new Date(this.selectOportunity.fechaPago) : undefined;
+  calcularGanancia() {
+    const fechaInicio: any = this.selectOportunity.fechaRegistro ? new Date(this.selectOportunity.fechaRegistro) : undefined;
+    const fechaFinal: any = this.selectOportunity.fechaPago ? new Date(this.selectOportunity.fechaPago) : undefined;
 
-    const tasaAnual:number = this.selectOportunity.rendimiento!;
-    const tasaMensual:number  = Math.pow(1+ tasaAnual, 1/12)-1;
-    const tasaDiaria:number  =  Math.pow(1+tasaMensual, 1/30)-1;
-    const diasInversion:number  = Math.floor((fechaFinal!.getTime() - fechaInicio!.getTime()) / (1000*60*60*24));
-    this.gananciaMaxima = this.montoInvertido * Math.pow(1+tasaDiaria, diasInversion)- this.montoInvertido;
-    this.gananciaRedondeado =+ this.gananciaMaxima.toFixed(2);
+    const tasaAnual: number = this.selectOportunity.rendimiento!;
+    const tasaMensual: number = Math.pow(1 + tasaAnual, 1 / 12) - 1;
+    const tasaDiaria: number = Math.pow(1 + tasaMensual, 1 / 30) - 1;
+    const diasInversion: number = Math.floor((fechaFinal!.getTime() - fechaInicio!.getTime()) / (1000 * 60 * 60 * 24));
+    this.gananciaMaxima = this.montoInvertido * Math.pow(1 + tasaDiaria, diasInversion) - this.montoInvertido;
+    this.gananciaRedondeado = + this.gananciaMaxima.toFixed(2);
     console.log("tasa diaria", tasaDiaria)
     console.log("resta de dias", diasInversion)
     console.log("ganancia maxima", this.gananciaMaxima)
   }
 
-  borrarValoresIniciales() {
-    this.montoInvertido = NaN;
-  }
+  // borrarValoresIniciales() {
+  //   this.montoInvertido = NaN;
+  // }
 
   postRegistrarInversionUsuario() {
     if (this.form.invalid) {
-     this.form.markAllAsTouched();
-        return;
+      this.form.markAllAsTouched();
+      return;
     }
-  if(this.montoInvertido >=  300){
-    const inversionUsuario: InversionUsuario = {
-      idOportunidad: this.selectOportunity.idOportunidad,
-      montoInvertido: this.montoInvertido,
-      idEmpresa: this.selectOportunity.idEmpresa,
-      ganancia: this.gananciaRedondeado,
-    };
-    this.oportunidadesUsuarioService.postRegistroInversionUsuario(inversionUsuario).subscribe(
-      resp => {
-        console .log (resp);
-        Swal.fire({
-          title: "Registro Exitoso",
-          text: "Invirtio de manera exitosa",
-          icon: "success",
-          confirmButtonText: "Aceptar",
-        }).then((result) => {
-          // Si se hace clic en "Aceptar"
-          if (result.isConfirmed) {
-            // Recargar la página
-            this.form.reset();
-            this.closeModal();
-            window.location.reload();
-          }
-        });
-      },
-      error =>{
-        Swal.fire('error',error.error.mensaje,'error')
-      }
-      
-    )
-  }else {
-      Swal.fire('error',"El monto de inversion debe ser mayor a S/.300. ",'error')
+    if (this.montoInvertido >= 300) {
+      const inversionUsuario: InversionUsuario = {
+        idOportunidad: this.selectOportunity.idOportunidad,
+        montoInvertido: this.montoInvertido,
+        idEmpresa: this.selectOportunity.idEmpresa,
+        ganancia: this.gananciaRedondeado,
+      };
+      this.oportunidadesUsuarioService.postRegistroInversionUsuario(inversionUsuario).subscribe(
+        resp => {
+          console.log(resp);
+          Swal.fire({
+            title: "Registro Exitoso",
+            text: "Invirtio de manera exitosa",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            // Si se hace clic en "Aceptar"
+            if (result.isConfirmed) {
+              // Recargar la página
+              this.form.reset();
+              this.closeModal();
+              window.location.reload();
+            }
+          });
+        },
+        error => {
+          Swal.fire('error', error.error.mensaje, 'error')
+        }
+
+      )
+    } else {
+      Swal.fire('error', "El monto de inversion debe ser mayor a S/.300. ", 'error')
+    }
+
   }
-    
-  }
-  calcularRestante(){
+  calcularRestante() {
     const monto = this.selectOportunity.monto!;
     this.montoRecaudado = this.selectOportunity.montoRecaudado!;
     this.restante = monto - this.montoRecaudado
 
   }
-  calcularMontoTotal(){
+  calcularMontoTotal() {
     this.montoTotal = this.selectOportunity.monto!;
   }
 
-  calcularPorcentajeRecaudadoBar(objOportunidades: Oportunidades): number{
+  calcularPorcentajeRecaudadoBar(objOportunidades: Oportunidades): number {
 
     const montoRecaudado = objOportunidades.montoRecaudado!;
     const montoOportunidad = objOportunidades.monto!;
     const recaudadoPorcentaje = (montoRecaudado * 100) / montoOportunidad;
-    const recaudadoRedondeado =+ recaudadoPorcentaje.toFixed(2);
+    const recaudadoRedondeado = + recaudadoPorcentaje.toFixed(2);
     return recaudadoRedondeado;
     //console.log("Monto recaudado", this.selectOportunity.montoRecaudado)
     //console.log("Monto de la oportunidad", this.selectOportunity.monto)
     //console.log("monto porcentaje:", this.recaudadoPorcentaje )
     //console.log("monto porcentaje redondeado:", this.recaudadoRedondeado)
   }
-  
+
 }

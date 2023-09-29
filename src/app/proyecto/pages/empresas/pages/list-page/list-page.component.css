@@ -91,13 +91,11 @@
 }
 
 .listar__table {
-
     border-collapse: collapse;
     width: 100%;
     background-color: var(--table-color);
     border: 1px solid var(--second-table-color);
     padding: 0.875rem;
-
 }
 
 .listar__thead {
@@ -161,6 +159,17 @@
 
 .btn__company:hover {
     background-color: #373ece;
+}
+
+.alert__content {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.company__alert {
+    width: 50%;
+    text-align: center; 
 }
 
 @media screen and (min-width: 768px) {

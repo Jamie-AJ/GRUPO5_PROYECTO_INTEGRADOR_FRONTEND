@@ -42,33 +42,33 @@
       </div>
       <div class="side_menu" (click)="closeSidebar()">
         <div>
-            <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+            <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="dashboard">
             <i class="bx bxs-dashboard icon"></i>
             Dashboard
           </a>
-            <a [routerLink]="['/dashboard/oportunities-list']" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+            <a [routerLink]="['/dashboard/oportunities-list']" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Oportunidades de inversión">
                 <i class="bx bxs-bar-chart-alt-2 icon"></i>
                 Oportunidad de Inversiones
             </a>
-            <a routerLink="/dashboard/inversiones" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+            <a routerLink="/dashboard/investment" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Mis inversiones">
                 <i class="bx bx-wallet icon"></i>
                 Mis Inversiones
             </a>
-            <a [routerLink]="['/dashboard/account-status']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+            <a [routerLink]="['/dashboard/account-status']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Estado de cuenta">
                 <i class="bx bxs-credit-card icon"></i>
                 Estado de cuenta
             </a>
             <ng-container *ngIf="isLoggedIn">
                 <ng-container *ngIf="isAdministrador">
-                    <a  [routerLink]="['/dashboard/empresa/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+                    <a  [routerLink]="['/dashboard/company/list-company']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Empresa">
                         <i class="bx bx-buildings icon"></i>
                         Empresa
                     </a>
-                    <a [routerLink]="['/dashboard/factura/list-factura']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+                    <a [routerLink]="['/dashboard/invoice/list-invoice']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Registrar Facturas">
                         <i class="bx bx-file icon"></i>
                         Facturas
                     </a>
-                    <a [routerLink]="['/dashboard/inversion/list-inversion']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links">
+                    <a [routerLink]="['/dashboard/oportunities/list-oportunities']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar__links" title="Registrar oportunidades de inversión">
                         <i class="bx bx-line-chart icon"></i>
                         Oportunidad de Inversiones
                     </a>
