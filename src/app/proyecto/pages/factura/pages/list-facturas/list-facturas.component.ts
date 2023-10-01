@@ -31,7 +31,7 @@ export class ListFacturasComponent implements OnInit {
   }
   getBadgeClass(riesgo: string): string {
     switch (riesgo) {
-      case 'Acivo':
+      case 'Activo':
         return 'text-bg-success';
       case 'No Activo':
         return 'text-bg-danger';

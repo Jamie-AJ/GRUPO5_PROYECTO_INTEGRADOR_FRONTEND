@@ -2,18 +2,17 @@
   <div class="listar__content">
     <div class="inversion__nav">
       <div class="inversion__header">
-        <h3>{{title}}</h3>
+        <h3>{{ title }}</h3>
       </div>
       <div class="inversion__group">
-        <a  routerLink="/dashboard/oportunities-list" class="btn__add">
-          <i class="bx bx-plus"></i>
+        <a routerLink="/dashboard/oportunities-list" class="btn__add">
           Agregar Inversión
         </a>
       </div>
     </div>
     <app-tabs [tabs]="tabs" (onTabsChange)="tabsChange($event)"></app-tabs>
     <div class="inversion__box">
-      <div class="inversion__content" *ngIf="activeTabsIndex === 0" >
+      <div class="inversion__content" *ngIf="activeTabsIndex === 0">
         <div class="listar__content-table">
           <table class="listar__table">
             <thead class="listar__thead">
@@ -27,42 +26,71 @@
                 <th>Fecha Pago</th>
               </tr>
             </thead>
-            <ng-container *ngIf="oportunidadesUsuario.length > 0; else noDataMessage" >
-              <tbody class="listar__tbody">
-                <tr *ngFor="let oporUsu of oportunidadesUsuario">
-                  <td>{{oporUsu.fecha }}</td>
-                  <td>
-                    <span>{{oporUsu.empresa?.razonSocial}}</span>
-                    <span class="badge" [ngClass]="getBadgeClassRango(oporUsu.empresa?.riesgo?.rango!)">{{oporUsu.empresa?.riesgo?.rango}}</span>
-                  </td>
-                  <td>{{oporUsu.montoInvertido | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-                  <td>{{oporUsu.ganancia | currency:'S/.&nbsp;':'symbol-narrow'}}</td>
-                  <td>{{oporUsu.oportunidadInversion?.rendimiento | percent}}</td>
-                  <td>
-                    <span class="badge" [ngClass]="getBadgeClass(oporUsu.estado!)">
-                      {{oporUsu.estado}}
-                    </span>
-                  </td>
-                  <td>{{oporUsu.oportunidadInversion?.fechaPago | date:'longDate':'':'es-PE'}}</td>
-                  <!-- <td>{{oporUsu.fecha}}</td>    -->
-                </tr>
-              </tbody>
-            </ng-container>
-            <ng-template #noDataMessage>
-              <div class="alert alert-info inversion__alert" role="alert">
-                No hay ningun dato disponible.
-              </div>
-            </ng-template>
-            
+
+            <tbody class="listar__tbody">
+              <tr *ngFor="let oporUsu of oportunidadesUsuario">
+                <td>{{ oporUsu.fecha }}</td>
+                <td>
+                  <span>{{ oporUsu.empresa?.razonSocial }}</span>
+                  <span
+                    class="badge"
+                    [ngClass]="
+                      getBadgeClassRango(oporUsu.empresa?.riesgo?.rango!)
+                    "
+                    >{{ oporUsu.empresa?.riesgo?.rango }}</span
+                  >
+                </td>
+                <td>
+                  {{
+                    oporUsu.montoInvertido
+                      | currency : "S/.&nbsp;" : "symbol-narrow"
+                  }}
+                </td>
+                <td>
+                  {{
+                    oporUsu.ganancia | currency : "S/.&nbsp;" : "symbol-narrow"
+                  }}
+                </td>
+                <td>{{ oporUsu.oportunidadInversion?.rendimiento + "%" }}</td>
+                <td>
+                  <span
+                    class="badge"
+                    [ngClass]="getBadgeClass(oporUsu.estado!)"
+                  >
+                    {{ oporUsu.estado }}
+                  </span>
+                </td>
+                <td>
+                  {{
+                    oporUsu.oportunidadInversion?.fechaPago
+                      | date : "longDate" : "" : "es-PE"
+                  }}
+                </td>
+                <!-- <td>{{oporUsu.fecha}}</td>    -->
+              </tr>
+            </tbody>
           </table>
         </div>
-        
-        <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/inversiones"></app-pagination>
+        <div
+          *ngIf="oportunidadesUsuario.length === 0"
+          class="inversion__message"
+        >
+          <div class="alert alert-info inversion__alert" role="alert">
+            No hay ninguna inversión realizada.
+          </div>
+        </div>
+
+        <app-pagination
+          *ngIf="pagination"
+          [pagination]="pagination"
+          urlBase="/dashboard/inversiones"
+        ></app-pagination>
       </div>
-      
-      <div class="inversion__content animate__animated animate__fadeIn animete_faster" *ngIf="activeTabsIndex === 1">
-      </div>
+
+      <div
+        class="inversion__content animate__animated animate__fadeIn animete_faster"
+        *ngIf="activeTabsIndex === 1"
+      ></div>
     </div>
   </div>
 </section>
-

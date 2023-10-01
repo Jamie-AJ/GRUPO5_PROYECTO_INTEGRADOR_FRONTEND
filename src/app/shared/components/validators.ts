@@ -30,7 +30,7 @@ export const validarNumerosNegativos = (control: FormControl): ValidationErrors 
     }
     return null;
 }
-//TODO: VALDATE CREDIT CARD
+//TODO: VALIDACIÓN DE TARJETA DE CREDITO
 export const validarTarjetaCredito = (control: FormControl): ValidationErrors | null => {
 
     const cardNumber: any = document.getElementById('nroCuenta');
@@ -49,23 +49,21 @@ export const validarTarjetaCredito = (control: FormControl): ValidationErrors | 
 
     return null;
 }
-export const validarTarjetaNroCci = (control: FormControl): ValidationErrors | null => {
-    const cardNumber: any = document.getElementById('nroCuentaCci');
-    cardNumber?.addEventListener('keyup', (event: any) => {
+//TODO: VALIDACIÓN CCI
+export const validarCuentaCCI = (control: FormControl): ValidationErrors | null => {
+    const cci: any = document.querySelector('#nroCuentacci');
+    cci?.addEventListener('keyup', (event: any) => {
         let valor = event.target.value;
-        cardNumber.value =
-            //eliminar espacios en blanco
-            valor.replace(/\s/g, '')
-                //eliminar letras
-                .replace(/\D/g, '')
-                //poner espacio cada 3 numeros
-                .replace(/([0-9]{3})/g, '$1 ')
-    })
+        cci.value =
+            valor.replace(/\s/g, '').replace(/\D/g, '').trim();
+    });
     return null;
 }
-export const validarMontoIngresado = (control: FormControl): ValidationErrors | null => { 
+
+//TODO: VALIDACIÓN DE MONTO
+export const validarMontoIngresado = (control: FormControl): ValidationErrors | null => {
     const monto: number = control.value;
-    if (monto <= 300) { 
+    if (monto < 300) {
         return { montoInvalido: true };
     }
     return null;

@@ -5,7 +5,7 @@
           <h3>{{title}}</h3>
         </div>
         <div clasS="company__group">
-          <a routerLink="/dashboard/empresa/add-company" class="btn__company">
+          <a routerLink="/dashboard/company/add-company" class="btn__company">
             <i class="bx bx-plus"></i>
             <span>Agregar</span>
           </a>
@@ -50,9 +50,13 @@
               </tr>
             </tbody>
           </table>
-          
         </div>
-        <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/empresa/list-company"></app-pagination>
+        <div class="alert__content">
+          <div class="alert alert-info company__alert" role="alert" *ngIf="empresasList.length === 0">
+            No hay ninguna empresa disponible.
+          </div>
+        </div>
+        <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/company/list-company"></app-pagination>
       </div>
         <div
           class="company__content"

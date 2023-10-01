@@ -144,6 +144,15 @@
     color: #0cbd2a;
     font-size: 1rem;
 }
+.transaccion__message{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.transicion__alert{
+    width: 50%;
+    text-align: center;
+}
 
 @media screen and (min-width: 480px) {
     .wallet__content {

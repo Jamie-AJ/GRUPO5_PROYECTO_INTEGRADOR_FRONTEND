@@ -1,32 +1,32 @@
-.inversion__container{
+.factura__container{
     position: relative;
     height: 100%;
 }
-.inversion__header{
+.factura__header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap:1rem;
 }
-.inversion__header h3{
+.factura__header h3{
     font-size: 20px;
     font-weight: 600;
 }
 .btn__factura span{
     display: none;
 }
-.inversion__nav{
+.factura__nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
 }
 
-.inversion__box{
+.factura__box{
     padding: 1rem 0;
 }
 
-.factura__container{
+/* .factura__container{
     position: relative;
     background-color: var(--panel-color);
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
@@ -40,7 +40,7 @@
     border-top-right-radius: 10px;
     color:var(--white-color);
     font-size: 18px;
-}
+} */
 .listar__content-table{
     overflow-y: auto;
 }
@@ -137,13 +137,18 @@
 .btn__factura:hover{
     background-color: #373ece;
 }
-.factura__group{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
+.factura__message{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
+.factura__alert{
+    width:50%;
+    text-align: center;
+}
+
 @media screen and (min-width: 768px) {
-    .inversion__header h3{
+    .factura__header h3{
         font-size: 24px;
     }
     .btn__factura{

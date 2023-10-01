@@ -45,21 +45,13 @@
 }
 
 .bank__btn-add {
+    margin-top: 1rem;
     width: 100%;
-    padding: 1rem;
-    background-color: var(--sidebar-color);
     border: none;
     border-radius: 10px;
+    background-color: var(--sidebar-color);
     color: var(--white-color);
-    cursor: pointer;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:0.5rem;
-}
-.bank__btn-add i{
-    font-size: 20px;
+    padding: 0.5rem;
 }
 
 .form__content {
@@ -147,23 +139,16 @@
     }
 
     .bank__btn {
-        margin-top: 2rem;
         display: flex;
         justify-content: flex-end;
     }
 
     .bank__btn-add {
-        width: 0;
-        /* height: 50px; */
-        border: 1px solid var(--sidebar-color);
+        width: 150px;
         background-color: transparent;
-        border-radius: 20px;
-        min-width: 150px;
+        border: 1px solid var(--sidebar-color);
         color: var(--sidebar-color);
-        line-height: 14px;
-        /* display: inline-block; */
         transition: all 0.3s ease-in-out;
-        margin: 0;
     }
 
     .bank__btn-add:hover {

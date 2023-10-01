@@ -55,7 +55,7 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
 
   form: FormGroup = this.builder.group({
     nroCuenta: ['', [Validators.required, customValidators.validarTarjetaCredito]],
-    nroCuentaCci: ['', [Validators.required]],
+    nroCuentaCci: ['', [Validators.required, customValidators.validarCuentaCCI]],
     nombreCompleto: ['', [Validators.required, Validators.pattern(customValidators.stringPattern),Validators.minLength(15)]],
     cvv: ['', [Validators.required, Validators.pattern(customValidators.cvvPattern)]],
     mes: ['', [Validators.required]],
@@ -63,12 +63,13 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
     bancos: ['', [Validators.required]],
     monedas: ['', [Validators.required, Validators.minLength(1)]],
   });
+
   @HostListener('window:beforeunload', ['$event'])
   onBeforeUnloadHandler(event: BeforeUnloadEvent): boolean { 
     return this.hasUnsavedChanges() === false;
   }
   hasUnsavedChanges(): boolean {
-    return this.form.dirty && this.form.touched;
+    return this.form.dirty;
   }
   
   ngOnInit(): void {
@@ -115,8 +116,8 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
   }
   
   changeNameCard() {
-    let nameCard: any = document.querySelector('.card__details-name');
-    let inputNameCard: any = document.getElementById('nombreCompleto');
+    const nameCard: any = document.querySelector('.card__details-name');
+    const inputNameCard: any = document.getElementById('nombreCompleto');
     inputNameCard.addEventListener('input', () => {
       if (inputNameCard.value === '') {
         nameCard.textContent = 'NOMBRE COMPLETO';
@@ -127,8 +128,8 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
 
   }
   changeNumberCard() {
-    let numbercard: any = document.querySelector('.card__bank-number');
-    let inputNumberCard: any = document.getElementById('nroCuenta');
+    const numbercard: any = document.querySelector('.card__bank-number');
+    const inputNumberCard: any = document.getElementById('nroCuenta');
     inputNumberCard.addEventListener('input', () => {
       if (inputNumberCard.value === '') {
         numbercard.textContent = '0000 0000 0000 0000';
@@ -138,10 +139,10 @@ export class AddAccountComponent implements OnInit, HasUnsavedChanges{
     });
   }
   dateCard() {
-    let monthCard: any = document.querySelector('.card__month');
-    let inputMonthCard: any = document.getElementById('mes');
-    let yearCard: any = document.querySelector('.card__year');
-    let inputYearCard: any = document.getElementById('year');
+    const monthCard: any = document.querySelector('.card__month');
+    const inputMonthCard: any = document.getElementById('mes');
+    const yearCard: any = document.querySelector('.card__year');
+    const inputYearCard: any = document.getElementById('year');
     inputMonthCard.addEventListener('change', () => {
       if (inputMonthCard.value === '') {
         monthCard.textContent = 'MM';

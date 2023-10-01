@@ -24,26 +24,32 @@
                             <!-- <th>Estado</th> -->
                         </tr>
                     </thead>
-                    <tbody class="listar__tbody">
-                        <tr *ngFor="let trans of transaccion">
-                            <!-- <td>{{trans.idTransaccion}}</td> -->
-                            <td>{{trans.fecha}}</td>
-                            <td>
-                                <span *ngIf="trans.tipoTransaccion?.tipo === 'Retiro'"><i class='bx bx-down-arrow-alt down'></i></span>
-                                <span *ngIf="trans.tipoTransaccion?.tipo === 'Deposito'"><i class='bx bx-up-arrow-alt up'></i></span>
-                                {{trans.tipoTransaccion!.tipo}}
-                            </td>
-                            <td [ngClass]="{'retiro': trans.tipoTransaccion?.tipo === 'Retiro', 'deposito': trans.tipoTransaccion?.tipo=== 'Deposito'}">
-                                {{trans.tipoTransaccion?.tipo === 'Retiro' ? '-' : '+'}} {{trans.monto | currency:'S/.&nbsp;':'symbol-narrow'}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/account-status/page"></app-pagination>
+                    <ng-template #table>
+                        <tbody class="listar__tbody">
+                            <tr *ngFor="let trans of transaccion">
+                                <!-- <td>{{trans.idTransaccion}}</td> -->
+                                <td>{{trans.fecha}}</td>
+                                <td>
+                                    <span *ngIf="trans.tipoTransaccion?.tipo === 'Retiro'"><i class='bx bx-down-arrow-alt down'></i></span>
+                                    <span *ngIf="trans.tipoTransaccion?.tipo === 'Deposito'"><i class='bx bx-up-arrow-alt up'></i></span>
+                                    {{trans.tipoTransaccion!.tipo}}
+                                </td>
+                                <td [ngClass]="{'retiro': trans.tipoTransaccion?.tipo === 'Retiro', 'deposito': trans.tipoTransaccion?.tipo=== 'Deposito'}">
+                                    {{trans.tipoTransaccion?.tipo === 'Retiro' ? '-' : '+'}} {{trans.monto | currency:'S/.&nbsp;':'symbol-narrow'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </ng-template>
+                    </table>
+                </div>
+            
+            <div class="transaccion__message" *ngIf="transaccion.length === 0; else table">
+                <div class="alert alert-info transicion__alert" role="alert">
+                    No hay ninguna transacción realizada.
+                </div>    
             </div>
+            <app-pagination *ngIf="pagination" [pagination]="pagination" urlBase="/dashboard/account-status/page"></app-pagination>
         </div>
-        
-       
     </div>
 </section>
 

@@ -38,7 +38,9 @@
                             <td>{{emp.representanteLegal}}</td>
                             <td>{{emp.sector}}</td>
                             <td>
-                                <a class='bx bx-plus icon' (click)="addFacturaporEmpresas(emp)"></a>
+                                <a (click)="addFacturaporEmpresas(emp)">
+                                    <i class='bx bx-plus icon'></i>
+                                </a>
                             </td> 
                         </tr>
                       </tbody>
@@ -114,7 +116,7 @@
                     </div> -->
                     <div class="form__box">
                         <label for="fechaCaducidad">Fecha de caducidad</label>
-                        <input type="date" formControlName="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input">
+                        <input type="date" formControlName="fechaCaducidad" [(ngModel)]="objOportunidades.fechaCaducidad" id="fechaCaducidad" class="form__input" [min]="getCurrentDate()">
                         <span class="invalid" *ngIf="isValid('fechaCaducidad')">{{getFieldError('fechaCaducidad')}}</span>
                     </div>
                     <div class="form__box">

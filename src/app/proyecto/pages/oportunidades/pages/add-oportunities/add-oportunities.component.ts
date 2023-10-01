@@ -49,14 +49,14 @@ export class AddOportunitiesComponent implements OnInit {
     fechaCaducidad: ['', [Validators.required]],
     tir: ['', [Validators.required, customValidators.validarNumerosNegativos]],
   });
-  @HostListener('document:keydown', ['$event']) 
+  @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent) {
     const eventKey = event.key;
     if (eventKey === 'enter') {
       event.preventDefault();
     }
   }
-  
+
   ngOnInit(): void {
     this.clearArrayList();
   }
@@ -120,7 +120,7 @@ export class AddOportunitiesComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/dashboard/inversion/list-inversion']);
+    this.router.navigate(['/dashboard/oportunities/list-oportunities']);
   }
   /*VALIDACIÓN*/
   //RECUPERA LAS FACTURAS DE LA EMPRESA SELECCIONADA

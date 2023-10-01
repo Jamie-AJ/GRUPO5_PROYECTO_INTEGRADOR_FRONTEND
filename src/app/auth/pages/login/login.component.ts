@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
-          return 'Este campo es requerido';
+          return 'Este valor es requerido';
         case 'minlength':
           return `Debe tener Minimo ${errors['minlength']['requiredLength']} caracteres`;
         case 'pattern':
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit{
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Datos Incorrectos',
+          text: error.error.message,
         })
       }
     )
