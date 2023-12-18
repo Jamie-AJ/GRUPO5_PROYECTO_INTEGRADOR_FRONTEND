@@ -18,6 +18,7 @@ export class LoginService {
   public getCurrentUser(){
     return this.http.get(`${baserUrl}/actual-usuario`);
   }
+  
   public loginUser(token:any){
     localStorage.setItem('token',token);
     return true;

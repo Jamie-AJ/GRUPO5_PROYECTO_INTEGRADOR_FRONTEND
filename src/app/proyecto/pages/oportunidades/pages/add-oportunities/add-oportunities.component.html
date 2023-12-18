@@ -54,13 +54,13 @@
         </div>
         <div class="inversion__box">
             <h3 class="inversion__subtitle">
-                <ng-container *ngIf="empresaSeleccionada; else defaultTitle">
-                    Facturas de {{empresaSeleccionada.razonSocial}}
-                </ng-container>
-                <ng-template #defaultTitle>
-                    Facturas de la Empresa
-                </ng-template>
-            </h3>
+                    <ng-container *ngIf="empresaSeleccionada; else defaultTitle">
+                        Facturas de {{empresaSeleccionada.razonSocial}}
+                    </ng-container> 
+                    <ng-template #defaultTitle>
+                        Facturas de la Empresa
+                    </ng-template>
+                </h3>
             <div class="listar__content-table">
                 <table class="listar__table">
                     <thead class="listar__thead">

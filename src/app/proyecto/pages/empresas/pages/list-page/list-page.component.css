@@ -3,12 +3,12 @@
     height: 100%;
 }
 
-.company__header h3 {
+.company__title h3 {
     font-size: 1.25rem;
     font-weight: 600;
 }
 
-.company__nav {
+.company__header {
     display: flex;
     justify-content: space-between;
     align-items: center;

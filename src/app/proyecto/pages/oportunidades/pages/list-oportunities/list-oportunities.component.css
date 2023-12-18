@@ -45,13 +45,6 @@
     border-radius: 10px;
 } */
 
-/* .listar__content-table{
-    padding: 1rem;
-    background-color: var(--white-color);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 100%;
-} */
 .listar__content {
     padding: 1rem;
     display: flex;

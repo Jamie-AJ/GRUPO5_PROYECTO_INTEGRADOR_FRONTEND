@@ -11,7 +11,7 @@
     </div>
     <div class="form__sign-in">
         <div class="input__wrap">
-            <input id="username" class="input__field"  formControlName="username"placeholder=" "/>
+            <input id="username" class="input__field"  formControlName="username" placeholder=" "/>
         <!-- <i class="bx bx-user form__icon"></i>   -->
             <label for="username" class="label__field">Usuario</label>
             <span *ngIf="isValid('username')" class="invalid">{{getFieldError('username')}}</span>
@@ -29,7 +29,7 @@
             <button type = "submit" class="btn__acceses" color="primary">Iniciar sesión</button>
         </div>
         <p class="form__text">
-        ¿No tienes cuenta? <a routerLink="/auth/registrar">Registrate ahora.</a>
+        ¿No tienes cuenta? <a routerLink="/auth/registrar">Registrate.</a>
         </p>
     </div>
 </form>

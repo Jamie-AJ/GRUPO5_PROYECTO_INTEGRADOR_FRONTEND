@@ -33,6 +33,7 @@ export const validarNumerosNegativos = (control: FormControl): ValidationErrors 
 //TODO: VALIDACIÓN DE TARJETA DE CREDITO
 export const validarTarjetaCredito = (control: FormControl): ValidationErrors | null => {
 
+
     const cardNumber: any = document.getElementById('nroCuenta');
     cardNumber?.addEventListener('keyup', (event: any) => {
         let valor = event.target.value;

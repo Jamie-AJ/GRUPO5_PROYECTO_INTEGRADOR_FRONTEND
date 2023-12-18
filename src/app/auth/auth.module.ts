@@ -17,7 +17,6 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     MainComponent,
     RegistrarComponent,
     SliderComponent,
-
     ForgotPasswordComponent,
   ],
   imports: [
